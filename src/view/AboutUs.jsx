@@ -6,15 +6,26 @@ import { Images } from "../utils/images";
 import { User, CheckCircle, Award, Smile } from "lucide-react";
 
 const data = {
-  heading: "Deck Up from Slide Expess",
-  description: `This unique PowerPoint add-in has been developed by the communication design experts at SlideXpress. 
+  heading: "DeckUp from Slide Expess",
+  description: [
+    {
+      text: `This unique PowerPoint add-in has been developed by the communication design experts at SlideXpress.`,
+      class: "mb-4 font-[500] text-bodyColor",
+    },
 
-With over 10 years of creating expressive decks at express speeds, and over 100 satisfied clients (MNCs, leading pharma companies, independent consultants and more), SlideXpress was the natural place for DeckUp to be born.
-
-Recognizing the need to boost efficiency and productivity for our own design teams, we searched for existing tools that could help.
-When none met our specific requirements, we decided to create our own solution based on first-hand experience of the repetitive challenges of working with PowerPoint.
-
-The result was DeckUp. Designed to simplify and enhance the presentation creation process, making life easier for everyone.`,
+    {
+      text: "With over 10 years of creating expressive decks at express speeds, and over 100 satisfied clients (MNCs, leading pharma companies, independent consultants and more), SlideXpress was the natural place for DeckUp to be born.",
+      class: "mb-4 text-bodyColor",
+    },
+    {
+      text: "Recognizing the need to boost efficiency and productivity for our own design teams, we searched for existing tools that could help.When none met our specific requirements, we decided to create our own solution based on first-hand experience of the repetitive challenges of working with PowerPoint.",
+      class: "mb-4 text-bodyColor",
+    },
+    {
+      text: `The result was DeckUp. Designed to simplify and enhance the presentation creation process, making life easier for everyone.`,
+      class: "font-[500] text-bodyColor",
+    },
+  ],
   btnText: "",
 };
 
@@ -46,20 +57,19 @@ const AboutUS = () => {
     <>
       {/* <Header /> */}
       <LeftImage data={data} image={Images.about} />
+      <div>
+        <p className="text-paleBlue text-center text-headline">
+          Made with you in mind
+        </p>
+        <p className="text-midGray ">
+          We are delighted to have created a tool that reduces the time and
+          effort it takes to prepare a professional and polished deck. Every
+          feature has been designed to prioritize easy and efficient integration
+          into existing workflows.
+        </p>
+      </div>
       <div className="bg-opacity-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Made with you in mind
-            </h2>
-            <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-              We are delighted to have created a tool that reduces the time and
-              effort it takes to prepare a professional and polished deck. Every
-              feature has been designed to prioritize easy and efficient
-              integration into existing workflows.
-            </p>
-          </div>
-
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <div

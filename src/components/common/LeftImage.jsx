@@ -5,26 +5,28 @@ export default function LeftImage({ image = "", data = {} }) {
   console.log("data", data, "image", image);
   return (
     <section className="flex items-center">
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex flex-col lg:flex-row items-center">
+      <div
+        style={{ maxWidth: "1450px" }}
+        className="container mx-auto px-4 py-16 "
+      >
+        <div className="flex flex-col lg:flex-row items-center gap-8">
           <div className="lg:w-1/2 mb-10 lg:mb-0">
-            <div className="relative w-full h-[400px] lg:h-[500px]">
+            <div className="relative w-full max-w-[816px] mr-[-195px]">
               <img
                 src={image}
                 alt="Person relaxing in office chair"
-                layout="fill"
-                objectFit="contain"
-                priority
-                className="w-full h-[550px]"
+                className="w-full"
               />
             </div>
           </div>
-          <div className="flex flex-col lg:w-1/2">
+          <div className="flex flex-col w-1/3">
             <div className="text-left">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-[60px]">
-                {data?.heading}
-              </h1>
-              <p className="text-lg text-gray-600 mb-8">{data?.description}</p>
+              <p className="text-paleBlue text-banner mb-6">{data?.heading}</p>
+              {data?.description?.map((item) => {
+               return <p className={item.class}>
+                {item?.text}
+              </p>
+              })}
             </div>
             {data?.btnText !== "" && (
               <div className="flex flex-col sm:flex-row gap-4">

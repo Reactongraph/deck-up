@@ -16,7 +16,9 @@ module.exports = {
         bodyColor: "#52565A",
         linear: "#318BB4",
         lightGray: "#CBDEFF",
-        paleBlue: "#1D375E"
+        paleBlue: "#1D375E",
+        smallBlue: "#64A4C0",
+        midGray: "#576676",
       },
       fontSize: {
         banner: ["55px", { lineHeight: "70px", fontWeight: "800" }], // Banner headline
