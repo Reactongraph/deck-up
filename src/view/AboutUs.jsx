@@ -54,11 +54,10 @@ const features = [
 
 const AboutUS = () => {
   return (
-    <>
-      {/* <Header /> */}
+    <div className="bg-gradient-to-b from-[#fff] to-[#ECF1F6]">
       <LeftImage data={data} image={Images.about} />
       <div className="max-w-[1090px] m-auto lg-[60%] w-[83%] pt-10">
-        <p className="text-paleBlue text-start text-headline">
+        <p className="text-paleBlue text-start text-headline font-bold">
           Made with you in mind
         </p>
         <p className="text-midGray mt-4 max-w-6xl">
@@ -67,33 +66,33 @@ const AboutUS = () => {
           feature has been designed to prioritize easy and efficient integration
           into existing workflows.
         </p>
-      <div className="bg-opacity-50 py-16">
-        <div className="max-w-7xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white max-w-[256px] rounded-lg shadow-md pt-[50px] pb-[40px] px-[20px] flex flex-col items-center text-center"
-              >
+        <div className="bg-opacity-50 py-16">
+          <div className="max-w-7xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-12 lg:gap-x-4">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white max-w-[100%] lg:max-w-[256px] rounded-lg shadow-md pt-[21px] pb-[31px] px-[46px] xl:pt-[42px] xl:pb-[57px] xl:px-[57px] flex flex-col items-center text-center"
+                >
                   <img
                     src={feature.icon}
                     alt="icons"
                     className="w-[140px] h-[140px] text-blue-600"
                   />
-                <div className="max-w-[197px] pt-[10px]">
-                <h3 className="text-xl font-semibold text-paleBlue mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-bodyColor">{feature.description}</p>
+                  <div className="max-w-[197px] pt-[10px]">
+                    <h3 className="text-xl text-paleBlue mb-2 font-bold">
+                      {feature.title}
+                    </h3>
+                    <p className="text-bodyColor">{feature.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      </div>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 };
 
