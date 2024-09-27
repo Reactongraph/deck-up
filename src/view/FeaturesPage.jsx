@@ -101,8 +101,13 @@ function TutorialCard({ title, thumbnail, duration, description }) {
 
 const data = {
   heading: "Sign Up Today",
-  description: ` Your superpower packed plug and play ppt tool is just a click
+  description: [
+    {
+      text: ` Your superpower packed plug and play ppt tool is just a click
                 away.`,
+      class: "font-[500] text-bodyColor",
+      },
+  ],
   btnText: "Get Started",
 };
 

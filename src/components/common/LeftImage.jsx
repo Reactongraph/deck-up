@@ -10,7 +10,7 @@ export default function LeftImage({ image = "", data = {} }) {
         className="container mx-auto px-4 py-16 "
       >
         <div className="flex flex-col lg:flex-row items-center gap-8">
-          <div className="lg:w-1/2 mb-10 lg:mb-0">
+          <div className="mb-10 lg:mb-0 lg:w-1/2 w-[85%]">
             <div className="relative w-full max-w-[816px] mr-[-195px]">
               <img
                 src={image}
@@ -19,7 +19,7 @@ export default function LeftImage({ image = "", data = {} }) {
               />
             </div>
           </div>
-          <div className="flex flex-col w-1/3">
+          <div className="flex flex-col lg:w-1/2 w-[85%]">
             <div className="text-left">
               <p className="text-paleBlue text-banner mb-6">{data?.heading}</p>
               {data?.description?.map((item) => {
