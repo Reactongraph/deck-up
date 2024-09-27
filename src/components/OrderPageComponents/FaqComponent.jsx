@@ -9,23 +9,25 @@ export default function FaqComponent() {
   ];
 
   return (
-    <div className="p-6 flex items-center justify-center">
-      <div className="w-full max-w-3xl p-8 bg-white bg-opacity-70">
-        <h2 className="text-headline text-center text-paleBlue mb-6">
+    <div className="flex justify-center">
+      <div className="w-full max-w-3xl  bg-white bg-opacity-70 pt-20">
+        <h2 className="text-headline text-center text-paleBlue font-bold ">
           Clear up your doubts
         </h2>
-        <div className="space-y-4">
+        <div className="mt-[113px] mb-[116px] border-b border-b-smallBlue sm:mx-20 mx-8">
           {questions.map((question, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-4 bg-white border-t border-t-smallBlue"
+              className="flex items-center justify-between  py-7 bg-white border-t border-t-smallBlue"
             >
-              <span className="text-midGray text-body">{question}</span>
-              <img
-                src="/images/right_arrow.svg"
-                alt="right"
-                className="h-6 w-6"
-              />
+              <span className="text-midGray text-body ">{question}</span>
+              <span className="h-8 w-8 mr-6">
+                <img
+                  src="/images/right_arrow.svg"
+                  alt="right"
+                  className="h-5 w-4"
+                />
+              </span>
             </div>
           ))}
         </div>

@@ -1,9 +1,8 @@
 import { PlayCircle, Volume2, SkipBack, SkipForward } from "lucide-react";
-// import Header from "../components/Header";
-// import Footer from "../components/Foorter";
 import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
 
+// Sample Filters for Dynamic Filtering
 const filters = [
   "All",
   "Slide Elements",
@@ -22,78 +21,58 @@ const filters = [
   "Agendas",
 ];
 
+// List of tutorials for demo purposes
 const tutorials = [
   {
     title: "{Company}'s Cybersecurity Awareness",
     thumbnail: "/placeholder.svg?height=200&width=400&text=Cybersecurity",
     duration: "5:30",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis vero risus donec et fusce morbi.",
+      "Learn how to protect yourself and your organization from common cyber threats.",
   },
   {
     title: "From Everyone Here",
     thumbnail: "/placeholder.svg?height=200&width=400&text=From+Everyone",
     duration: "4:15",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis vero risus donec et fusce morbi.",
+      "A short message from everyone here at the company to all our customers and partners.",
   },
   {
-    title: "Join us",
+    title: "Join Us",
     thumbnail: "/placeholder.svg?height=200&width=400&text=Join+Us",
     duration: "3:45",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis vero risus donec et fusce morbi.",
-  },
-  {
-    title: "From Everyone Here",
-    thumbnail: "/placeholder.svg?height=200&width=400&text=From+Everyone+2",
-    duration: "6:00",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis vero risus donec et fusce morbi.",
-  },
-  {
-    title: "From Everyone Here",
-    thumbnail: "/placeholder.svg?height=200&width=400&text=From+Everyone+3",
-    duration: "5:15",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis vero risus donec et fusce morbi.",
-  },
-  {
-    title: "From Everyone Here",
-    thumbnail: "/placeholder.svg?height=200&width=400&text=From+Everyone+4",
-    duration: "4:30",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis vero risus donec et fusce morbi.",
+      "An invitation to join us and be a part of our growing community.",
   },
 ];
 
 function TutorialCard({ title, thumbnail, duration, description }) {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md">
-      <div className="relative">
-        <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <PlayCircle className="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-          <h3 className="text-white text-lg font-semibold">{title}</h3>
-        </div>
-        <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-          {duration}
-        </div>
+    <div className="relative rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      <img
+        src={thumbnail}
+        alt={title}
+        className="w-full h-48 object-cover md:h-56 lg:h-64"
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-60 transition-colors duration-300">
+        <PlayCircle className="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" />
       </div>
-      <div className="px-4 py-2 bg-blue-600 flex justify-between items-center">
+      <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+        {duration}
+      </div>
+      <div className="p-4 bg-white">
+        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <p className="text-sm text-gray-600 mt-2">{description}</p>
+      </div>
+      <div className="bg-blue-600 text-white p-2 flex justify-between items-center">
         <div className="flex space-x-2">
-          <SkipBack className="w-5 h-5 text-white" />
-          <SkipForward className="w-5 h-5 text-white" />
+          <SkipBack className="w-5 h-5" />
+          <SkipForward className="w-5 h-5" />
         </div>
         <div className="w-1/2 bg-white rounded-full h-1">
           <div className="bg-blue-300 h-1 rounded-full w-1/3"></div>
         </div>
-        <Volume2 className="w-5 h-5 text-white" />
-      </div>
-      <div className="p-4">
-        <p className="text-gray-600 text-sm">{description}</p>
+        <Volume2 className="w-5 h-5" />
       </div>
     </div>
   );
@@ -103,10 +82,9 @@ const data = {
   heading: "Sign Up Today",
   description: [
     {
-      text: ` Your superpower packed plug and play ppt tool is just a click
-                away.`,
+      text: ` Your superpower-packed plug-and-play PPT tool is just a click away.`,
       class: "font-[500] text-bodyColor",
-      },
+    },
   ],
   btnText: "Get Started",
 };
@@ -114,7 +92,7 @@ const data = {
 export default function TutorialGrid() {
   return (
     <>
-      {/* <Header /> */}
+      {/* Header Component can be uncommented and used */}
       <div className="p-6 bg-pink-50 bg-opacity-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-center text-indigo-900 mb-8">
@@ -134,9 +112,9 @@ export default function TutorialGrid() {
             <h2 className="text-xl font-semibold text-indigo-900">
               Slide Elements
             </h2>
-            <span className="text-gray-600">Showing 6 of 9</span>
+            <span className="text-gray-600">Showing {tutorials.length} of 9</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {tutorials.map((tutorial, index) => (
               <TutorialCard key={index} {...tutorial} />
             ))}
@@ -144,7 +122,7 @@ export default function TutorialGrid() {
         </div>
       </div>
       <LeftImage image={Images.signup} data={data} />
-      {/* <Footer /> */}
+      {/* Footer Component can be uncommented and used */}
     </>
   );
 }
