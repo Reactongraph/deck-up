@@ -102,68 +102,85 @@ export default function Header() {
                 className="absolute top-5 right-[60px] text-gray-500 hover:text-gray-700"
                 onClick={toggleMenu}
               >
-                <img src='/images/close.svg' alt='close' />
+                <img src="/images/close.svg" alt="close" />
               </button>
               <div className="w-[80%] sm:w-[60%] m-auto">
-
-              <ul className="space-y-10">
-                <li>
-                  <a href="#home" className="text-3xl font-medium	 pl-[18px] text-gray-700 hover:text-gray-900">
-                    Home
-                  </a>
+                <ul className="space-y-10">
+                  <li>
+                    <p
+                      onClick={() => {
+                        handleNavigate("/");
+                        setIsOpen(false);
+                      }}
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                    >
+                      Home
+                    </p>
                   </li>
                   <hr className="text-[#64A4C0]" />
-                <li>
-                  <a
-                    href="#order"
-                    className="text-3xl font-medium	 pl-[18px] text-gray-700 hover:text-gray-900 mt-[30px]"
-                  >
-                    Order
-                  </a>
+                  <li>
+                    <p
+                      onClick={() => {
+                        handleNavigate("/orders");
+                        setIsOpen(false);
+                      }}
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                    >
+                      Order
+                    </p>
                   </li>
                   <hr className="text-[#64A4C0]" />
-                <li>
-                  <a
-                    href="#features"
-                    className="text-3xl font-medium	 pl-[18px]  text-gray-700 hover:text-gray-900"
-                  >
-                    Features
-                  </a>
+                  <li>
+                    <p
+                      onClick={() => {
+                        handleNavigate("/features");
+                        setIsOpen(false);
+                      }}
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                    >
+                      Features
+                    </p>
                   </li>
                   <hr className="text-[#64A4C0]" />
-                <li>
-                  <a
-                    href="#about"
-                    className="text-3xl font-medium	 pl-[18px]  text-gray-700 hover:text-gray-900"
-                  >
-                    About Us
-                  </a>
+                  <li>
+                    <p
+                      onClick={() => {
+                        handleNavigate("/about");
+                        setIsOpen(false);
+                      }}
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                    >
+                      About Us
+                    </p>
                   </li>
                   <hr className="text-[#64A4C0]" />
-                <li>
+                  <li>
+                    <p
+                      onClick={() => {
+                        handleNavigate("/login");
+                        setIsOpen(false);
+                      }}
+                      className="text-subhead font-medium	 pl-[18px] text-secondary"
+                    >
+                      Login
+                    </p>
+                  </li>
+                </ul>
+                <div className="flex space-x-2 mt-[60px]">
                   <a
-                    href="#login"
-                    className="text-3xl font-medium	 pl-[18px] text-blue-500 hover:text-blue-700"
-                  >
-                    Login
-                  </a>
-                </li>
-              </ul>
-              <div className="flex space-x-2 mt-[60px]">
-                <a
-                  href="#linkedin"
-                  className="text-3xl pl-[18px]  text-gray-700 hover:text-gray-900"
+                    href="#linkedin"
+                    className="text-3xl pl-[18px]  text-gray-700 hover:text-gray-900"
                   >
                     <img src="/images/linkdin.svg" alt="linkedin" />
-                </a>
-                <a
-                  href="#youtube"
-                  className="text-gray-700 pl-[18px] hover:text-gray-900"
+                  </a>
+                  <a
+                    href="#youtube"
+                    className="text-gray-700 pl-[18px] hover:text-gray-900"
                   >
                     <img src="/images/youtube.svg" alt="youtube" />
-                </a>
+                  </a>
                 </div>
-                </div>
+              </div>
             </div>
           )}
         </div>

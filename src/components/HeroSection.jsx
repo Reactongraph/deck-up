@@ -5,7 +5,7 @@ import CommonInput from "./common/CommonInput";
 
 export default function HeroSection() {
   return (
-    <div className="container flex items-center ">
+    <div className="container flex items-center ps-2.5">
       <div className="w-full max-w-[465px] pr-[40px]">
         <h1 className="text-[55px] text-banner text-paleBlue">
           Create decks at lightning speed
