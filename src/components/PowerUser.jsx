@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PowerUsers() {
   return (
-    <section className="bg-linear py-16 px-4 relative overflow-hidden">
+    <section className="bg-linear py-16 px-4 relative overflow-hidden ps-2.5 pe-2.5">
       <div className="max-w-6xl mx-auto text-white">
         <h2 className="text-4xl font-bold text-center mb-4">
           Designed for power users across industries

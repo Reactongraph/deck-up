@@ -3,7 +3,7 @@ import { Images } from "../../utils/images";
 
 export default function OsSelector() {
   return (
-    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] py-[120px] ">
+    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] py-[120px] ps-2.5 pe-2.5">
       <div className="text-center ">
         <h2 className="text-3xl font-bold text-white mb-8">
           Thumbs up for choosing DeckUp!

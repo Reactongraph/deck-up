@@ -6,4 +6,5 @@ export const Images = {
   ios: "/images/ios.svg",
   signup: "/images/signup.svg",
   about: "/images/aboutus.svg",
+  thumbnail: "/images/thumbnail.svg",
 };

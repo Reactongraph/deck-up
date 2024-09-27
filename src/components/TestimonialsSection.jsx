@@ -28,17 +28,21 @@ const testimonials = [
     position: "Sr. Consultant @McKinsey",
     avatar: "/images/avatar3.svg",
   },
- 
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)]">
+    <section className="relative pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
       <div className="container">
-        <h2 className="text-headline text-center mb-[45px]  text-paleBlue font-extrabold">Loved by users</h2>
+        <h2 className="text-headline text-center mb-[45px]  text-paleBlue font-extrabold">
+          Loved by users
+        </h2>
         <div className="grid gap-[24px] grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white py-[54px] text-center px-[54px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between">
+            <div
+              key={index}
+              className="bg-white py-[54px] text-center px-[54px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between"
+            >
               <div className="">
                 <img
                   src={testimonial.logo}

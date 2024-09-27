@@ -4,8 +4,8 @@ const Footer = () => {
   return (
     <footer className="bg-darkBlue text-white py-12 px-[1.5rem] md:px-[6.5rem]">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col xl:flex-row justify-between items-baseline mb-12 text-center xl:text-left">
-          <div className="flex flex-col items-center xl:items-start mb-8 xl:mb-0">
+        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] mb-12 text-center xl:text-left">
+          <div className="flex flex-col items-start mb-8 xl:mb-0">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
               Need some answers or want to catch up with us!
             </h2>
@@ -15,16 +15,16 @@ const Footer = () => {
           </div>
 
           <div className="flex justify-center xl:justify-end space-x-6 mb-6 xl:mb-0">
-            <p className="text-secondary underline underline-offset-2 hover:cursor-pointer">
+            <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer">
               FAQs
             </p>
-            <p className="text-secondary underline underline-offset-2 hover:cursor-pointer">
+            <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer">
               Get in touch
             </p>
           </div>
         </div>
 
-        <div className="border-t border-blue-800 pt-12">
+        <div className="pt-12">
           <div className="flex flex-col md:flex-row justify-between items-center mb-[25px] text-center md:text-left">
             <div>
               <p className="text-2xl md:text-4xl font-bold inline-block">
@@ -32,16 +32,16 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <button className="bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded-xl text-sm md:text-base">
+              <button className="bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded-[20px] text-sm md:text-base">
                 Download
               </button>
-              <button className="bg-secondary text-white font-bold py-2 px-4 rounded-xl text-sm md:text-base">
+              <button className="bg-secondary text-white font-bold py-2 px-4 rounded-[20px] text-sm md:text-base">
                 Buy now
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-12">
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col-reverse lg:flex-row justify-between  gap-8 mb-12">
+            <div className="flex flex-row justify-between lg:justify-start lg:flex-col items-center md:items-start text-center md:text-left">
               <p className="mb-4">info@deckup.com</p>
               <div className="flex justify-center md:justify-start space-x-4">
                 <a
@@ -82,68 +82,69 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+            <div className="flex lg:gap-[90px] md:gap-[50px]">
+              <div>
+                <h3 className="font-semibold mb-4 text-lg">Try our product</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <p className="hover:text-blue-300">Free trial</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Download</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Pricing & plans</p>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="font-semibold mb-4 text-lg">Try our product</h3>
-              <ul className="space-y-2">
-                <li>
-                  <p className="hover:text-blue-300">Free trial</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Download</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Pricing & plans</p>
-                </li>
-              </ul>
-            </div>
+              <div>
+                <h3 className="font-semibold mb-4 text-lg">Learn</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <p className="hover:text-blue-300">Features at a glance</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Interactive tour</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Watch Demo</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Tutorials</p>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="font-semibold mb-4 text-lg">Learn</h3>
-              <ul className="space-y-2">
-                <li>
-                  <p className="hover:text-blue-300">Features at a glance</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Interactive tour</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Watch Demo</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Tutorials</p>
-                </li>
-              </ul>
-            </div>
+              <div>
+                <h3 className="font-semibold mb-4 text-lg">Purchase</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <p className="hover:text-blue-300">Buy new licences</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Renew licence</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Enterprise</p>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h3 className="font-semibold mb-4 text-lg">Purchase</h3>
-              <ul className="space-y-2">
-                <li>
-                  <p className="hover:text-blue-300">Buy new licences</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Renew licence</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Enterprise</p>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-2 text-lg">Account</h3>
-              <ul className="space-y-2">
-                <li>
-                  <p className="hover:text-blue-300">My account</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">My Orders</p>
-                </li>
-                <li>
-                  <p className="hover:text-blue-300">Login</p>
-                </li>
-              </ul>
+              <div>
+                <h3 className="font-semibold mb-2 text-lg">Account</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <p className="hover:text-blue-300">My account</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">My Orders</p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300">Login</p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

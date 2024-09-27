@@ -28,7 +28,7 @@ const features = [
 
 export default function FeaturesShowcase() {
   return (
-    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] pt-[130px] pb-[160px]">
+    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] pt-[130px] pb-[160px] ps-2.5 pe-2.5">
       <div className="container">
         <div className="grid grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
@@ -36,18 +36,16 @@ export default function FeaturesShowcase() {
               key={index}
               className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px]"
             >
-
-                <h3 className="text-[18px] font-semibold text-paleBlue mb-[25px]">
-                  {feature.title}
-                </h3>
-                <div className="mt-4">
-                  <img
-                    src={feature.img}
-                    alt={feature.title}
-                    className="w-full h-auto"
-                  />
-                </div>
-    
+              <h3 className="text-[18px] font-semibold text-paleBlue mb-[25px]">
+                {feature.title}
+              </h3>
+              <div className="mt-4">
+                <img
+                  src={feature.img}
+                  alt={feature.title}
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           ))}
         </div>

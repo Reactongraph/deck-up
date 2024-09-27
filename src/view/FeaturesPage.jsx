@@ -25,21 +25,42 @@ const filters = [
 const tutorials = [
   {
     title: "{Company}'s Cybersecurity Awareness",
-    thumbnail: "/placeholder.svg?height=200&width=400&text=Cybersecurity",
+    thumbnail: Images.thumbnail,
     duration: "5:30",
     description:
       "Learn how to protect yourself and your organization from common cyber threats.",
   },
   {
     title: "From Everyone Here",
-    thumbnail: "/placeholder.svg?height=200&width=400&text=From+Everyone",
+    thumbnail: Images.thumbnail,
     duration: "4:15",
     description:
       "A short message from everyone here at the company to all our customers and partners.",
   },
   {
     title: "Join Us",
-    thumbnail: "/placeholder.svg?height=200&width=400&text=Join+Us",
+    thumbnail: Images.thumbnail,
+    duration: "3:45",
+    description:
+      "An invitation to join us and be a part of our growing community.",
+  },
+  {
+    title: "From Everyone Here",
+    thumbnail: Images.thumbnail,
+    duration: "4:15",
+    description:
+      "A short message from everyone here at the company to all our customers and partners.",
+  },
+  {
+    title: "{Company}'s Cybersecurity Awareness",
+    thumbnail: Images.thumbnail,
+    duration: "5:30",
+    description:
+      "Learn how to protect yourself and your organization from common cyber threats.",
+  },
+  {
+    title: "Join Us",
+    thumbnail: Images.thumbnail,
     duration: "3:45",
     description:
       "An invitation to join us and be a part of our growing community.",
@@ -52,19 +73,22 @@ function TutorialCard({ title, thumbnail, duration, description }) {
       <img
         src={thumbnail}
         alt={title}
-        className="w-full h-48 object-cover md:h-56 lg:h-64"
+        className="w-full object-contain md:h-56"
       />
-      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-60 transition-colors duration-300">
+      {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-60 transition-colors duration-300">
         <PlayCircle className="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" />
-      </div>
-      <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+      </div> */}
+      {/* <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
         {duration}
+      </div> */}
+      <div className="p-6 bg-white">
+        <div className="flex justify-between items-center">
+          <span className="text-[14px] text-primary">Side Element</span>
+          <span className="bg-lightBlue p-1 text-[14px]">Video Summary</span>
+        </div>
+        <p className="text-[14px] text-bodyColor mt-2">{description}</p>
       </div>
-      <div className="p-4 bg-white">
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-        <p className="text-sm text-gray-600 mt-2">{description}</p>
-      </div>
-      <div className="bg-blue-600 text-white p-2 flex justify-between items-center">
+      {/* <div className="bg-blue-600 text-white p-2 flex justify-between items-center">
         <div className="flex space-x-2">
           <SkipBack className="w-5 h-5" />
           <SkipForward className="w-5 h-5" />
@@ -73,7 +97,7 @@ function TutorialCard({ title, thumbnail, duration, description }) {
           <div className="bg-blue-300 h-1 rounded-full w-1/3"></div>
         </div>
         <Volume2 className="w-5 h-5" />
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -88,31 +112,36 @@ const data = {
   ],
   btnText: "Get Started",
 };
-
+const customCSS = {
+  fontSize: "text-subhead",
+  fontColor: "text-paleBlue",
+};
 export default function TutorialGrid() {
   return (
     <>
       {/* Header Component can be uncommented and used */}
-      <div className="p-6 bg-pink-50 bg-opacity-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="p-6 bg-lightBlue  py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-center text-indigo-900 mb-8">
+          <h1 className="text-subhead text-paleBlue text-left mb-[24px]">
             Tutorials to help you quickly figure out and turn around
           </h1>
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {filters.map((filter) => (
               <button
                 key={filter}
-                className="px-4 py-2 rounded-full bg-white text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-bodyColor leading-7"
               >
                 {filter}
               </button>
             ))}
           </div>
           <div className="mb-4 flex justify-between items-center">
-            <h2 className="text-xl font-semibold text-indigo-900">
+            <h2 className="text-subhead text-paleBlue text-left">
               Slide Elements
             </h2>
-            <span className="text-gray-600">Showing {tutorials.length} of 9</span>
+            {/* <span className="text-gray-600">
+              Showing {tutorials.length} of 9
+            </span> */}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {tutorials.map((tutorial, index) => (
@@ -121,7 +150,9 @@ export default function TutorialGrid() {
           </div>
         </div>
       </div>
-      <LeftImage image={Images.signup} data={data} />
+      <div className="md:pr-[10%] ">
+        <LeftImage image={Images.signup} data={data} customCSS={customCSS} />
+      </div>
       {/* Footer Component can be uncommented and used */}
     </>
   );
