@@ -8,6 +8,12 @@ import FeatureHover from "./MenuHoverComponents/FeatureHover";
 import useCustomNavigation from "../Hooks/useCustomNavigation";
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   // State to track hover for menu items
   const [hoveredItem, setHoveredItem] = useState(null);
   const navigate = useCustomNavigation();
@@ -19,16 +25,16 @@ export default function Header() {
   };
 
   return (
-    <div className="shadow-sm w-full mb-[48px]">
-      <nav className="container relative flex items-center justify-between min-h-[80px] bg-white ">
+    <div className="shadow-sm w-full mb-[48px] relative">
+      <nav className="max-w-[1443px] w-full m-auto pl-[50px] pr-[30px] lg:px-6 xl:px-[150px] relative flex items-center justify-between min-h-[80px] bg-white ">
         <div className="flex items-center">
           <CommonImage
             src={Images?.logo}
-            className={"h-[29px] w-[161px]"}
+            className={"h-[18px] w-[111px] md:h-[29px] md:w-[161px]"}
             alt="logo"
           />
         </div>
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden lg:flex space-x-4">
           {HeaderData?.map((item, index) => {
             return (
               <div
@@ -55,7 +61,7 @@ export default function Header() {
         </div>
         <div className="flex items-center justify-between gap-[32px]">
           <p
-            className="text-gray font-head cursor-pointer"
+            className="max-lg:hidden text-gray font-head cursor-pointer"
             onClick={() => handleNavigate("/login")}
           >
             Login
@@ -64,10 +70,10 @@ export default function Header() {
             type={"button"}
             text={"Try For Free"}
             className={
-              "hidden md:inline-flex bg-primary text-[#fff] cursor-pointer  h-[48px] rounded-[100px] w-full d-flex items-center px-[24px]"
+              "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer  h-[48px] rounded-[100px] w-full d-flex items-center px-[24px]"
             }
           />
-          <button className="md:hidden">
+          <button className="lg:hidden" onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -83,6 +89,83 @@ export default function Header() {
               />
             </svg>
           </button>
+          {isOpen && (
+            <div
+              className={`absolute z-[999] w-full right-0 top-0 mt-[80px] bg-white rounded-lg shadow-lg p-6 py-[50px] transform transition-all duration-300 ease-in-out ${
+                isOpen
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-4"
+              }`}
+              style={{ display: isOpen ? "block" : "none" }}
+            >
+              <button
+                className="absolute top-5 right-[60px] text-gray-500 hover:text-gray-700"
+                onClick={toggleMenu}
+              >
+                <img src='/images/close.svg' alt='close' />
+              </button>
+              <div className="w-[80%] sm:w-[60%] m-auto">
+
+              <ul className="space-y-10">
+                <li>
+                  <a href="#home" className="text-3xl font-medium	 pl-[18px] text-gray-700 hover:text-gray-900">
+                    Home
+                  </a>
+                  </li>
+                  <hr className="text-[#64A4C0]" />
+                <li>
+                  <a
+                    href="#order"
+                    className="text-3xl font-medium	 pl-[18px] text-gray-700 hover:text-gray-900 mt-[30px]"
+                  >
+                    Order
+                  </a>
+                  </li>
+                  <hr className="text-[#64A4C0]" />
+                <li>
+                  <a
+                    href="#features"
+                    className="text-3xl font-medium	 pl-[18px]  text-gray-700 hover:text-gray-900"
+                  >
+                    Features
+                  </a>
+                  </li>
+                  <hr className="text-[#64A4C0]" />
+                <li>
+                  <a
+                    href="#about"
+                    className="text-3xl font-medium	 pl-[18px]  text-gray-700 hover:text-gray-900"
+                  >
+                    About Us
+                  </a>
+                  </li>
+                  <hr className="text-[#64A4C0]" />
+                <li>
+                  <a
+                    href="#login"
+                    className="text-3xl font-medium	 pl-[18px] text-blue-500 hover:text-blue-700"
+                  >
+                    Login
+                  </a>
+                </li>
+              </ul>
+              <div className="flex space-x-2 mt-[60px]">
+                <a
+                  href="#linkedin"
+                  className="text-3xl pl-[18px]  text-gray-700 hover:text-gray-900"
+                  >
+                    <img src="/images/linkdin.svg" alt="linkedin" />
+                </a>
+                <a
+                  href="#youtube"
+                  className="text-gray-700 pl-[18px] hover:text-gray-900"
+                  >
+                    <img src="/images/youtube.svg" alt="youtube" />
+                </a>
+                </div>
+                </div>
+            </div>
+          )}
         </div>
         {hoveredItem === "Order" && (
           <div className="absolute top-full left-[35%] mt-2 z-[999]">
