@@ -1,9 +1,20 @@
 import React from "react";
 
+import GradientOverlay from "./common/GradientOverlay";
 export default function TutorialSection() {
   return (
-    <div className="container py-[115px] flex gap-[150px] item-center ps-2.5 pe-2.5">
-      <div className="max-w-[320px] w-full">
+    <div className="container py-[115px] flex gap-[150px] item-center ps-2.5 pe-2.5 relative">
+     
+      <div className="max-w-[320px] w-full items-start flex flex-col justify-center relative">
+      <GradientOverlay
+        width="140px"
+        height="140px"
+        gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+        top="59px"
+        left="-60px"
+        zIndex="-999"
+        transform="rotate(-70deg)"
+      />
         <h2 className="text-headline  text-paleBlue font-extrabold">
           Learn the tools in seconds
         </h2>

@@ -1,17 +1,27 @@
 import React from "react";
+import GradientOverlay from "./common/GradientOverlay";
 
 const Footer = () => {
   return (
     <footer className="bg-darkBlue text-white py-12 px-[1.5rem] md:px-[6.5rem]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] mb-12 text-center xl:text-left">
-          <div className="flex flex-col items-start mb-8 xl:mb-0">
+          <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[999]">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
               Need some answers or want to catch up with us!
             </h2>
             <p className="text-blue-200 text-sm md:text-base mb-4">
               Here's where you will find answers and can get to know us!
             </p>
+            <GradientOverlay
+              width="69px"
+              height="69px"
+              gradient="linear-gradient(to right, rgba(0, 176, 200, 1), rgba(0, 176, 200, 0))"
+              border-radius="50%"
+              position="absolute"
+              z-index="-999"
+              left="244px"
+            />
           </div>
 
           <div className="flex justify-center xl:justify-end space-x-6 mb-6 xl:mb-0">
