@@ -1,8 +1,19 @@
 import React from "react";
 
+import GradientOverlay from "./common/GradientOverlay";
 export default function TutorialSection() {
   return (
-    <div className="container py-[115px] flex gap-[150px] item-center ps-2.5 pe-2.5">
+    <div className="container py-[115px] flex gap-[150px] item-center ps-2.5 pe-2.5 relative">
+      <GradientOverlay
+        width="140px"
+        height="140px"
+        gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254));"
+        border-radius="50%"
+        position="absolute"
+        top="53px"
+        z-index="-999"
+        left="-54px"
+      />
       <div className="max-w-[320px] w-full">
         <h2 className="text-headline  text-paleBlue font-extrabold">
           Learn the tools in seconds

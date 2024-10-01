@@ -1,3 +1,5 @@
+import GradientOverlay from "../common/GradientOverlay";
+
 export default function FaqComponent() {
   const questions = [
     "What is DeckUp?",
@@ -10,7 +12,15 @@ export default function FaqComponent() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-full max-w-3xl  bg-white bg-opacity-70 pt-20">
+      <div className="w-full max-w-3xl  bg-white bg-opacity-70 pt-20 relative z-[999]">
+        <GradientOverlay
+          width="108px"
+          height="108px"
+          gradient="linear-gradient(to bottom right, rgba(100, 172, 205, 0.3), rgba(100, 172, 205, 0))"
+          top="0"
+          left="0"
+          zIndex="-999"
+        />
         <h2 className="text-headline text-center text-paleBlue font-bold ">
           Clear up your doubts
         </h2>

@@ -1,4 +1,5 @@
 import React from "react";
+import GradientOverlay from "./common/GradientOverlay";
 
 const testimonials = [
   {
@@ -37,7 +38,7 @@ export default function TestimonialsSection() {
         <h2 className="text-headline text-center mb-[45px]  text-paleBlue font-extrabold">
           Loved by users
         </h2>
-        <div className="grid gap-[24px] grid-cols-3">
+        <div className="grid gap-[24px] grid-cols-3 relative">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -68,6 +69,16 @@ export default function TestimonialsSection() {
               </div>
             </div>
           ))}
+          <GradientOverlay
+            width="146px"
+            height="146px"
+            gradient="linear-gradient(rgb(217, 40, 21), rgba(230, 45, 23, 1), rgba(230, 45, 23, 1))"
+            border-radius="50%"
+            position="absolute"
+            bottom="-44px"
+            z-index="-999"
+            left="-54px"
+          />
         </div>
       </div>
     </section>

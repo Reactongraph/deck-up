@@ -29,7 +29,7 @@
   color: #61dafb;
 }
 
-.container{
+.container {
   width: 100%;
   max-width: 1090px;
   margin: 0 auto;
@@ -41,4 +41,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.test {
+  position: relative;
+}
+.test:before {
+  content: "";
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(to bottom, #bfdbfe, #e0f2fe, #dbeafe);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: -63px;
+  z-index: -999;
+}
+
+.red-overlay {
+  position: relative;
+}
+
+.red-overlay:before {
+  content: "";
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(to right, #fee2e2, #fecaca, #f87171);
+  border-radius: 50%;
+  position: absolute;
+  left: 31px;
+  z-index: 999;
+  bottom: -60px;
 }

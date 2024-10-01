@@ -2,10 +2,19 @@ import React from "react";
 import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
 import CommonInput from "./common/CommonInput";
+import GradientOverlay from "./common/GradientOverlay";
 
 export default function HeroSection() {
   return (
     <div className="container flex items-center ps-2.5">
+      <GradientOverlay
+        width="140px"
+        height="140px"
+        gradient="linear-gradient(to bottom, #bfdbfe, #e0f2fe, #dbeafe)"
+        top="127px"
+        left="289px"
+        zIndex="-999"
+      />
       <div className="w-full max-w-[465px] pr-[40px]">
         <h1 className="text-[55px] text-banner text-paleBlue">
           Create decks at lightning speed
@@ -42,6 +51,15 @@ export default function HeroSection() {
           src="/images/left-logo.svg"
           alt={"Person working on a computer surrounded by charts and graphs"}
           className="w-full"
+        />
+
+        <GradientOverlay
+          width="160px"
+          height="160px"
+          gradient="linear-gradient(to right, #fee2e2, #fecaca, #f87171)"
+          bottom="-60px"
+          left="31px"
+          zIndex="999"
         />
       </div>
     </div>
