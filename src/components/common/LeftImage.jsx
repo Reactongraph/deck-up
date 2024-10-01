@@ -1,7 +1,12 @@
 import React from "react";
 import CommonButton from "./CommonButton";
-
-export default function LeftImage({ image = "", data = {}, customCSS = {} }) {
+import GradientOverlay from "./GradientOverlay";
+export default function LeftImage({
+  image = "",
+  data = {},
+  customCSS = {},
+  showGradient = false,
+}) {
   return (
     <section className="flex items-center">
       <div style={{ maxWidth: "1450px" }} className="container mx-auto py-16 ">
@@ -15,8 +20,11 @@ export default function LeftImage({ image = "", data = {}, customCSS = {} }) {
               />
             </div>
           </div>
-          <div className="flex flex-col lg:w-1/2 w-[85%] xl:pr-[126px] lg:pr-[50px]">
-            <div className="text-left ">
+          <div className="flex flex-col sm:1/2 xl:max-w-[600px] lg:w-[600px] xl:pr-[126px] lg:pr-[50px]">
+            <div
+              className="
+                 text-wrap text-left"
+            >
               <p
                 className={`${
                   customCSS?.fontSize ? customCSS.fontSize : "text-headline"
@@ -42,7 +50,6 @@ export default function LeftImage({ image = "", data = {}, customCSS = {} }) {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-stripes opacity-10 pointer-events-none" />
     </section>
   );
 }

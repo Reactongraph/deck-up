@@ -4,6 +4,7 @@ import React from "react";
 import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
 import { User, CheckCircle, Award, Smile } from "lucide-react";
+import GradientOverlay from "../components/common/GradientOverlay";
 
 const data = {
   heading: "DeckUp from Slide Expess",
@@ -68,11 +69,18 @@ const AboutUS = () => {
         </p>
         <div className="bg-opacity-50 py-16">
           <div className="max-w-7xl">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-12 lg:gap-x-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-12 lg:gap-x-4 relative">
+              <GradientOverlay
+                width="106px"
+                height="106px"
+                gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254))"
+                top="-27px"
+                left="-39px"
+              />
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-white max-w-[100%] lg:max-w-[256px] rounded-lg shadow-md pt-[21px] pb-[31px] px-[46px] xl:pt-[42px] xl:pb-[57px] xl:px-[57px] flex flex-col items-center text-center"
+                  className="bg-white max-w-[100%] lg:max-w-[256px] rounded-lg shadow-md pt-[21px] pb-[31px] px-[46px] xl:pt-[42px] xl:pb-[57px] xl:px-[57px] flex flex-col items-center text-center z-10"
                 >
                   <img
                     src={feature.icon}
@@ -87,6 +95,13 @@ const AboutUS = () => {
                   </div>
                 </div>
               ))}
+              <GradientOverlay
+                width="374px"
+                height="374px"
+                gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254))"
+                bottom="-63px"
+                right="-216px"
+              />
             </div>
           </div>
         </div>

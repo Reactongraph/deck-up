@@ -6,14 +6,15 @@ import GradientOverlay from "./common/GradientOverlay";
 
 export default function HeroSection() {
   return (
-    <div className="container flex items-center ps-2.5">
+    <div className="container flex items-center ps-2.5 relative" >
       <GradientOverlay
-        width="140px"
-        height="140px"
-        gradient="linear-gradient(to bottom, #bfdbfe, #e0f2fe, #dbeafe)"
-        top="127px"
-        left="289px"
+        width="108px"
+        height="108px"
+        gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+        top="39px"
+        left="-60px"
         zIndex="-999"
+        transform="rotate(-70deg)"
       />
       <div className="w-full max-w-[465px] pr-[40px]">
         <h1 className="text-[55px] text-banner text-paleBlue">
@@ -56,7 +57,7 @@ export default function HeroSection() {
         <GradientOverlay
           width="160px"
           height="160px"
-          gradient="linear-gradient(to right, #fee2e2, #fecaca, #f87171)"
+          gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
           bottom="-60px"
           left="31px"
           zIndex="999"

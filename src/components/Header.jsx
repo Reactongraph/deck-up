@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <div className="shadow-sm w-full mb-[48px] relative">
+    <div className="shadow-sm w-full relative">
       <nav className="max-w-[1443px] w-full m-auto pl-[50px] pr-[30px] lg:px-6 xl:px-[150px] relative flex items-center justify-between min-h-[80px] bg-white ">
         <div className="flex items-center">
           <CommonImage

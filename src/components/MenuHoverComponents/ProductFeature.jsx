@@ -3,7 +3,7 @@ import { Images } from "../../utils/images";
 export default function ProductFeatures() {
   return (
     <div className="flex flex-col md:flex-row  rounded-lg shadow-md bg-white justify-center items-stretch gap-4 p-4">
-      <div className="flex-1 bg-white p-6 flex flex-col items-center justify-center">
+      <div className="flex-1 bg-blue-50 rounded-lg p-6 flex flex-col items-center justify-center">
         <h2 className="text-lg font-semibold text-gray-700 mb-2">Free Trial</h2>
         <p className="text-6xl font-bold text-blue-500">30</p>
         <p className="text-sm text-gray-600">Days Free Trial</p>

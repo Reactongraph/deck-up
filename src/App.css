@@ -1,6 +1,10 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 .App {
   text-align: center;
   padding-inline: 10px;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -72,4 +76,15 @@
   left: 31px;
   z-index: 999;
   bottom: -60px;
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}
+
+.testimonial .slick-slider{
+  position: relative;
+  z-index: 1;
 }

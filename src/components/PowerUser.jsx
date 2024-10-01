@@ -14,11 +14,11 @@ export default function PowerUsers() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-          <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-full p-8 w-full md:w-96 relative">
-            <div className="flex justify-center items-center flex-col">
+          <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative">
+            <div className="flex justify-center items-start flex-col">
               <img
                 src="/images/building.svg"
-                className="w-12 h-12 text-red-400 mb-4"
+                className="w-[60px] mb-4"
               />
               <h3 className="text-2xl font-semibold mb-4">By Sectors</h3>
               <ul className="space-y-2">
@@ -33,7 +33,7 @@ export default function PowerUsers() {
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-red-300 rounded-full opacity-20"></div>
           </div>
 
-          <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-full p-8 w-full md:w-96 relative md:-ml-16">
+          <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative">
             <div className="flex justify-center items-center flex-col">
               <img
                 src="/images/function.svg"
