@@ -4,9 +4,9 @@ import CommonButton from "./common/CommonButton";
 export default function OnboardingSection() {
   return (
     <div className="container pt-[99px] pb-[60px] flex gap-[42px] item-center ps-2.5 pe-2.5">
-      <div className="w-full">
+      <div className="w-full ml-[-140px]">
         <img
-          src="/images/side-image.svg"
+          src="/videos/onboarding.gif"
           alt="Microsoft PowerPoint interface with DeckUp add-in"
           className="w-full"
         />

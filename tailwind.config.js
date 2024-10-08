@@ -22,7 +22,7 @@ module.exports = {
         paleBlue: "#1D375E",
         smallBlue: "#64A4C0",
         midGray: "#576676",
-        smallGray: "#CFD4E0"
+        smallGray: "#CFD4E0",
       },
       fontSize: {
         banner: ["55px", { lineHeight: "70px", fontWeight: "800" }], // Banner headline
@@ -33,6 +33,15 @@ module.exports = {
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+      },
+      screens: {
+        // Custom screen sizes
+        xs: "475px", // Extra small devices (mobile)
+        sm: "640px", // Small devices (tablets)
+        md: "768px", // Medium devices (small laptops)
+        lg: "1024px", // Large devices (laptops/desktops)
+        xl: "1280px", // Extra large devices (large desktops)
+        "2xl": "1536px", // 2XL devices (larger desktops)
       },
     },
   },

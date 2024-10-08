@@ -88,14 +88,14 @@ export default function FeaturesShowcase() {
     sliderRef.current.slickNext();
   };
   return (
-    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] pt-[130px] pb-[160px] ps-2.5 pe-2.5">
-      <div className="container">
-        <div className="slider-container ">
+    <div className="bg-gradient-to-t digram-slider  from-[#318BB4] to-[#64ACCD] pt-[130px] pb-[160px] ps-2.5 pe-2.5 pr-[0px]">
+      <div className="lg:pl-[139px] xl:container pr-[0] lg:mr-[-10px] lg:max-w-[1440px] xl:my-0 xl:mx-auto">
+        <div className="slider-container mb-[40px]">
           <CommonSlider settings={sliderSettings} ref={sliderRef}>
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[300px] min-h-[320px]" 
+                className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[350px] min-h-[420px]"
               >
                 <h3 className="text-[18px] font-semibold text-paleBlue mb-[25px]">
                   {feature.title}
@@ -128,22 +128,22 @@ export default function FeaturesShowcase() {
             </div>
           ))} */}
         </div>
-        <div className="flex justify-end mt-8 space-x-4 ">
-        <img
-          src="/images/left.svg"
-          alt="left"
-          className="w-[42px] cursor-pointer"
-          onClick={handlePrevClick}
-        />
-        <img
-          src="/images/right.svg"
-          alt="left"
-          className="w-[42px] cursor-pointer"
-          onClick={handleNextClick}
-        />
+        <div className="flex justify-end space-x-4 ml-[0px] container">
+          <img
+            src="/images/left.svg"
+            alt="left"
+            className="w-[42px] cursor-pointer"
+            onClick={handlePrevClick}
+          />
+          <img
+            src="/images/right.svg"
+            alt="left"
+            className="w-[42px] cursor-pointer"
+            onClick={handleNextClick}
+          />
+        </div>
       </div>
-      </div>
-      
+
       {/* <div className="flex justify-center mt-8 space-x-2">
         <button className="w-8 h-1 bg-white rounded-full opacity-50"></button>
         <button className="w-8 h-1 bg-white rounded-full"></button>

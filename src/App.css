@@ -35,7 +35,7 @@
 
 .container {
   width: 100%;
-  max-width: 1090px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 @keyframes App-logo-spin {
@@ -77,7 +77,7 @@
   z-index: 999;
   bottom: -60px;
 }
-.slick-slide > div {
+.digram-slider .slick-slide > div {
   margin: 0 10px;
 }
 .slick-list {
