@@ -1,20 +1,87 @@
 import React from "react";
+import { videos } from "../utils/videos";
 import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
 import CommonInput from "./common/CommonInput";
+import CommonVideo from "./common/CommonVideo";
 import GradientOverlay from "./common/GradientOverlay";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 export default function HeroSection() {
+  const size = useCustomWindowSize(); // Get screen size
+
+  // Define responsive values for GradientOverlay based on screen width
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          top: "20px",
+          left: "-40px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          top: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "160px",
+          height: "160px",
+          top: "50px",
+          left: "-100px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        };
+
+  const gradientOverlayStyles1 =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          bottom: "20px",
+          left: "-40px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          bottom: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "160px",
+          height: "160px",
+          bottom: 0,
+          left: "-18px",
+          transform: "rotate(-70deg)",
+        };
+
   return (
-    <div className="container flex items-center ps-2.5 relative" >
+    <div className="container flex items-center ps-2.5 relative max-sm:flex-col-reverse max-sm:flex">
       <GradientOverlay
-        width="108px"
-        height="108px"
+        width={gradientOverlayStyles.width}
+        height={gradientOverlayStyles.height}
         gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
-        top="39px"
-        left="-60px"
-        zIndex="-999"
-        transform="rotate(-70deg)"
+        top={gradientOverlayStyles.top}
+        left={gradientOverlayStyles.left}
+        zIndex={gradientOverlayStyles.zIndex}
+        transform={gradientOverlayStyles.transform}
       />
       <div className="w-full max-w-[465px] pr-[40px]">
         <h1 className="text-[55px] text-banner text-paleBlue">
@@ -47,20 +114,22 @@ export default function HeroSection() {
           </form>
         </div>
       </div>
-      <div className="relative w-full max-w-[816px] mr-[-195px]">
-        <CommonImage
+      <div className="relative w-full max-w-[739px] lg:mr-[-148px] xl:mr-[-195px]">
+        {/* <CommonImage
           src="/images/left-logo.svg"
           alt={"Person working on a computer surrounded by charts and graphs"}
           className="w-full"
-        />
+        /> */}
+        <CommonVideo url={videos?.hero} />
 
         <GradientOverlay
-          width="160px"
-          height="160px"
+          width={gradientOverlayStyles1.width}
+          height={gradientOverlayStyles1.height}
           gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
-          bottom="-60px"
-          left="31px"
-          zIndex="999"
+          bottom={gradientOverlayStyles1.bottom}
+          left={gradientOverlayStyles1.left}
+          zIndex={gradientOverlayStyles1.zIndex}
+          transform={gradientOverlayStyles1.transform}
         />
       </div>
     </div>

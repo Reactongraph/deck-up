@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
   const sliderSettings = {
     dots: false,
     infinite: false,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: false,
     speed: 500,
@@ -107,12 +107,13 @@ export default function TestimonialsSection() {
   };
   return (
     <section className="relative pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
-      <div className="container">
-        <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold">
+       <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold">
           Loved by users
         </h2>
+        <div className="pl-[139px] pr-[0] mr-[-10px] lg:max-w-[1440px] xl:container xl:my-0 xl:mx-auto">
+       
     
-          <div className="slider-container relative testimonial">
+          <div className="slider-container relative testimonial mb-[40px]">
             <CommonSlider settings={sliderSettings} ref={sliderRef}>
               {testimonials.map((testimonial, index) => (
                 <div
@@ -159,7 +160,7 @@ export default function TestimonialsSection() {
         />
           </div>
      
-        <div className="flex justify-end mt-8 space-x-4 ">
+          <div className="flex justify-end space-x-4 ml-[0px] container">
           <img
             src="/images/left.svg"
             alt="left"

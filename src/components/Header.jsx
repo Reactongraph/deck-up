@@ -6,17 +6,16 @@ import { HeaderData } from "../utils/data";
 import ProductFeatures from "./MenuHoverComponents/ProductFeature";
 import FeatureHover from "./MenuHoverComponents/FeatureHover";
 import useCustomNavigation from "../Hooks/useCustomNavigation";
+import TutorialExplorer from "./MenuHoverComponents/TutorialExplorer";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // Track active dropdown
+  const navigate = useCustomNavigation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  // State to track hover for menu items
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const navigate = useCustomNavigation();
 
   const handleNavigate = (path = "") => {
     if (path !== "") {
@@ -24,9 +23,16 @@ export default function Header() {
     }
   };
 
+  const handleDropdownClick = (item) => {
+    // Toggle the dropdown open/close when the down arrow is clicked
+    console.log("handleDropdownClick", item);
+    setActiveDropdown((prev) => (prev === item ? null : item));
+  };
+
+  console.log("activeDropdown", activeDropdown);
   return (
     <div className="shadow-sm w-full relative">
-      <nav className="max-w-[1443px] w-full m-auto pl-[50px] pr-[30px] lg:px-6 xl:px-[150px] relative flex items-center justify-between min-h-[80px] bg-white ">
+      <nav className="max-w-[1443px] w-full m-auto pl-[50px] pr-[30px] lg:px-6 xl:px-[150px] relative flex items-center justify-between min-h-[80px] bg-white">
         <div className="flex items-center">
           <CommonImage
             src={Images?.logo}
@@ -40,21 +46,19 @@ export default function Header() {
               <div
                 key={index}
                 className="flex gap-[10px] items-center relative"
-                onMouseEnter={() => setHoveredItem(item?.label)} // Set hover on enter
-                onMouseLeave={() => setHoveredItem(null)}
-                onClick={() => handleNavigate(item?.href)}
-                // Clear hover on leave
               >
-                <p className="text-gray font-head hover:text-blue-600 cursor-pointer">
+                <p
+                  className="text-gray font-head hover:text-blue-600 cursor-pointer"
+                  onClick={() => handleNavigate(item?.href)}
+                >
                   {item?.label}
                 </p>
                 <CommonImage
                   src={Images?.expand}
                   alt={"expand"}
-                  className={"h-[16px] w-[16px]"}
+                  className={"h-[16px] w-[16px] cursor-pointer"}
+                  onClick={() => handleDropdownClick(item?.label)} // Handle dropdown open on click
                 />
-
-                {/* Conditionally render ProductFeatures or FeatureHover based on hover */}
               </div>
             );
           })}
@@ -70,7 +74,7 @@ export default function Header() {
             type={"button"}
             text={"Try For Free"}
             className={
-              "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer  h-[48px] rounded-[100px] w-full d-flex items-center px-[24px]"
+              "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer h-[48px] rounded-[100px] w-full d-flex items-center px-[24px]"
             }
           />
           <button className="lg:hidden" onClick={toggleMenu}>
@@ -184,13 +188,20 @@ export default function Header() {
             </div>
           )}
         </div>
-        {hoveredItem === "Order" && (
-          <div className="absolute top-full left-[35%] mt-2 z-[999]">
+
+        {/* Dropdowns */}
+        {activeDropdown === "Home" && (
+          <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
             <ProductFeatures />
           </div>
         )}
-        {hoveredItem === "About Us" && (
-          <div className="absolute top-full left-[35%] mt-2 z-[999]">
+        {activeDropdown === "Features" && (
+          <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
+            <TutorialExplorer />
+          </div>
+        )}
+        {activeDropdown === "Order" && (
+          <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
             <FeatureHover />
           </div>
         )}

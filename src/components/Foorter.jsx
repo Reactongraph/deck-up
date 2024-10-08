@@ -4,13 +4,13 @@ import GradientOverlay from "./common/GradientOverlay";
 const Footer = () => {
   return (
     <footer className="bg-darkBlue text-white py-12 px-[1.5rem] md:px-[6.5rem]">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] mb-12 text-center xl:text-left">
-          <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[999]">
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+      <div className="container">
+        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] pb-[20px] mb-[63px] text-center xl:text-left">
+          <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[0] max-w-[530px] relative">
+            <h2 className="text-[24px]  font-[500] mb-2 max-w-[70%] relative z-[1]">
               Need some answers or want to catch up with us!
             </h2>
-            <p className="text-blue-200 text-sm md:text-base mb-4">
+            <p className="text-blue-200 text-sm md:text-base mb-4 relative z-[1]">
               Here's where you will find answers and can get to know us!
             </p>
             <GradientOverlay
@@ -20,7 +20,7 @@ const Footer = () => {
               border-radius="50%"
               position="absolute"
               z-index="-999"
-              left="244px"
+              left="-50px"
             />
           </div>
 
@@ -34,23 +34,23 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-[25px] text-center md:text-left">
+        <div >
+          <div className="flex flex-col md:flex-row justify-between items-center mb-[25px]  text-center md:text-left">
             <div>
               <p className="text-2xl md:text-4xl font-bold inline-block">
                 DECK<span className="text-red-500">UP</span>
               </p>
             </div>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <button className="bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded-[20px] text-sm md:text-base">
+              <button className="bg-primary hover:bg-primary text-white  py-2 px-4 rounded-[20px] text-sm md:text-base">
                 Download
               </button>
-              <button className="bg-secondary text-white font-bold py-2 px-4 rounded-[20px] text-sm md:text-base">
+              <button className="bg-secondary text-white py-2 px-4 rounded-[20px] text-sm md:text-base">
                 Buy now
               </button>
             </div>
           </div>
-          <div className="flex flex-col-reverse lg:flex-row justify-between  gap-8 mb-12">
+          <div className="flex flex-col-reverse lg:flex-row justify-between  gap-8 mt-[63px]">
             <div className="flex flex-row justify-between lg:justify-start lg:flex-col items-center md:items-start text-center md:text-left">
               <p className="mb-4">info@deckup.com</p>
               <div className="flex justify-center md:justify-start space-x-4">
