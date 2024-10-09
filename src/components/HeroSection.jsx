@@ -36,7 +36,7 @@ export default function HeroSection() {
           // Desktop styles
           width: "160px",
           height: "160px",
-          top: "50px",
+          top: 0,
           left: "-100px",
           zIndex: "-999",
           transform: "rotate(-70deg)",
