@@ -74,7 +74,7 @@ function TutorialCard({ title, thumbnail, duration, description }) {
       <img
         src={thumbnail}
         alt={title}
-        className="w-full object-cover md:h-56"
+        className="w-[355px] h-[197px] object-contain"
       />
       {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-60 transition-colors duration-300">
         <PlayCircle className="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" />
