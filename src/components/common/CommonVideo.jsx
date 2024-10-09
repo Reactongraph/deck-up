@@ -34,13 +34,18 @@ export default function VideoPlayer({ url = "" }) {
         onClick={togglePlay}
       >
         <button
-          className="p-4 text-white bg-primary rounded-full hover:bg-primary-dark transition-colors duration-300"
+          className="p-4 text-white  rounded-full transition-colors duration-300"
           aria-label={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? (
             <Pause className="w-12 h-12" />
           ) : (
-            <Play className="w-12 h-12" />
+            // <Play className="w-12 h-12" />
+            <img
+              src="/images/playsvg.svg"
+              className="w-[92px] h-[92px]"
+              alt="play"
+            />
           )}
         </button>
       </div>
