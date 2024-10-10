@@ -1,4 +1,7 @@
-export default function TutorialExplorer() {
+export default function TutorialExplorer({
+  onClick = () => {},
+  setActiveDropdown,
+}) {
   const leftColumnItems = [
     "Slide Elements",
     "Identical Select",
@@ -18,6 +21,11 @@ export default function TutorialExplorer() {
     "Agendas",
   ];
 
+  const handleNavigate = () => {
+    onClick();
+    setActiveDropdown(false);
+  };
+
   return (
     <div className="realtive flex flex-col md:flex-row  rounded-lg shadow-md bg-white justify-center items-stretch gap-4 p-4">
       {/* <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200"> */}
@@ -26,7 +34,11 @@ export default function TutorialExplorer() {
         <ul className="min-w-[270px]">
           {leftColumnItems.map((item, index) => (
             <>
-              <li key={index} className="flex items-center gap-[20px]">
+              <li
+                key={index}
+                className="flex items-center gap-[20px] cursor-pointer"
+                onClick={() => handleNavigate()}
+              >
                 <img
                   src="/images/play.svg"
                   className="h-[24px] w-[24px]"
@@ -44,7 +56,11 @@ export default function TutorialExplorer() {
         <ul className="min-w-[270px] mt-10">
           {middleColumnItems.map((item, index) => (
             <>
-              <li key={index} className="flex items-center gap-[20px]">
+              <li
+                key={index}
+                className="flex items-center gap-[20px] cursor-pointer"
+                onClick={() => handleNavigate()}
+              >
                 <img
                   src="/images/play.svg"
                   className="h-[24px] w-[24px]"
@@ -73,7 +89,7 @@ export default function TutorialExplorer() {
           Manage all users and billing at one place. Login to check your
           Dashboard.
         </p>
-        <a href="#" className="text-primary text-[16px] hover:underline">
+        <a href="/login" className="text-primary text-[16px] hover:underline">
           Login
         </a>
       </div>

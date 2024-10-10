@@ -21,7 +21,7 @@ export default function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-[999]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           <GradientOverlay
             width="106px"
             height="106px"
@@ -49,7 +49,7 @@ export default function PricingSection() {
                 <p className="pt-10 text-[#5C6E81]">{plan.description}</p>
               </div>
               <CommonButton
-                className={`w-full mt-8 ${
+                className={`w-full mt-8 border ${
                   plan.buttonVariant === "default"
                     ? "bg-[#FF7F5C] hover:bg-[#FF7F5C]/90 text-[#fff]"
                     : "border-[#FF7F5C] text-[#FF7F5C] hover:bg-[#FF7F5C] hover:text-white"

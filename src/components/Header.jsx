@@ -46,19 +46,19 @@ export default function Header() {
               <div
                 key={index}
                 className="flex gap-[10px] items-center relative"
+                onClick={() => handleDropdownClick(item?.label)}
               >
-                <p
-                  className="text-gray font-head hover:text-blue-600 cursor-pointer"
-                  onClick={() => handleNavigate(item?.href)}
-                >
+                <p className="text-gray font-head hover:text-blue-600 cursor-pointer">
                   {item?.label}
                 </p>
-                <CommonImage
-                  src={Images?.expand}
-                  alt={"expand"}
-                  className={"h-[16px] w-[16px] cursor-pointer"}
-                  onClick={() => handleDropdownClick(item?.label)} // Handle dropdown open on click
-                />
+                {item?.isIcon && (
+                  <CommonImage
+                    src={Images?.expand}
+                    alt={"expand"}
+                    className={"h-[16px] w-[16px] cursor-pointer"}
+                    // Handle dropdown open on click
+                  />
+                )}
               </div>
             );
           })}
@@ -76,6 +76,7 @@ export default function Header() {
             className={
               "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer h-[48px] rounded-[100px] w-full d-flex items-center px-[24px]"
             }
+            onClick={() => handleNavigate("/login")}
           />
           <button className="lg:hidden" onClick={toggleMenu}>
             <svg
@@ -192,17 +193,26 @@ export default function Header() {
         {/* Dropdowns */}
         {activeDropdown === "Home" && (
           <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
-            <ProductFeatures />
+            <ProductFeatures
+              onClick={() => handleNavigate("/login")}
+              setActiveDropdown={setActiveDropdown}
+            />
           </div>
         )}
         {activeDropdown === "Features" && (
           <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
-            <TutorialExplorer />
+            <TutorialExplorer
+              onClick={() => handleNavigate("/features")}
+              setActiveDropdown={setActiveDropdown}
+            />
           </div>
         )}
         {activeDropdown === "Order" && (
           <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
-            <FeatureHover />
+            <FeatureHover
+              onClick={() => handleNavigate("/orders")}
+              setActiveDropdown={setActiveDropdown}
+            />
           </div>
         )}
       </nav>

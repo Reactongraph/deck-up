@@ -73,7 +73,7 @@ export default function HeroSection() {
         };
 
   return (
-    <div className="container flex items-center ps-2.5 relative max-sm:flex-col-reverse max-sm:flex">
+    <div className="container flex items-center ps-2.5 relative max-sm:flex-col-reverse max-sm:flex pl-[22px] pr-[0px] sm:pr-[32px]">
       <GradientOverlay
         width={gradientOverlayStyles.width}
         height={gradientOverlayStyles.height}
@@ -83,14 +83,14 @@ export default function HeroSection() {
         zIndex={gradientOverlayStyles.zIndex}
         transform={gradientOverlayStyles.transform}
       />
-      <div className="w-full max-w-[465px] pr-[40px]">
+      <div className="w-full max-w-[465px] sm:pr-[40px] pr-[0px] mt-[40px] sm:mt-[0px]">
         <h1 className="text-[55px] text-banner text-paleBlue">
           Create decks at lightning speed
         </h1>
         <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading">
           Drive impact and dramatically improve quality and speed using DeckUp
         </p>
-        <div className="mt-[70px]">
+        <div className="mt-[70px] w-[90%] sm:w-[100%]">
           <p className="text-[12px] font-bold text-primary">
             START 30 DAY FREE TRIAL
           </p>
@@ -107,7 +107,7 @@ export default function HeroSection() {
             <CommonButton
               type="submit"
               className={
-                "w-full font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px]"
+                "w-full font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px] mt-[10px] mt-[0px]"
               }
               text={"Start now"}
             />

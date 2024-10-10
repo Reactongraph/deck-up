@@ -1,10 +1,21 @@
 import { Images } from "../../utils/images";
 import GradientOverlay from "../common/GradientOverlay";
+import useCustomNavigation from "../../Hooks/useCustomNavigation";
 
-export default function ProductFeatures() {
+export default function ProductFeatures({
+  onClick = () => {},
+  setActiveDropdown,
+}) {
+  const handleNavigate = () => {
+    onClick();
+    setActiveDropdown(false);
+  };
   return (
     <div className="realtive flex flex-col md:flex-row  rounded-lg shadow-md bg-white justify-center items-stretch gap-4 p-4">
-      <div className="flex-1 bg-gradient-to-b from-slate-50 to-cyan-100 rounded-lg p-6 flex flex-col items-center justify-center max-w-[270px]">
+      <div
+        className="flex-1 bg-gradient-to-b from-slate-50 to-cyan-100 rounded-lg p-6 flex flex-col items-center justify-center max-w-[270px] cursor-pointer"
+        onClick={() => handleNavigate()}
+      >
         <h2 className="text-subhead text-paleBlue mb-1">Free Trial</h2>
         <p className="text-[78px] text-secondary font-bold mb-[-30px]">30</p>
         <p className="text-head text-paleBlue">Days Free Trial</p>
@@ -31,7 +42,12 @@ export default function ProductFeatures() {
           />
           <div>
             <p className="text-primary  text-[15px] font-medium">Windows OS</p>
-            <p className="text-subhead text-paleBlue">Download</p>
+            <p
+              className="text-subhead text-paleBlue cursor-pointer"
+              onClick={() => handleNavigate()}
+            >
+              Download
+            </p>
           </div>
         </div>
         <div className="border-t-2 border-smallBlue  w-full self-center"></div>
@@ -57,6 +73,7 @@ export default function ProductFeatures() {
         right="0"
         top="10px"
         transform="rotate(180deg)"
+        zIndex="-999"
       />
     </div>
   );
