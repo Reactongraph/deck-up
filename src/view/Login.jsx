@@ -6,15 +6,15 @@ export default function LoginPage() {
   return (
     <>
       {/* <Header /> */}
-      <div className="flex">
-        <div className="flex-1 min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8 ">
-          <div className="max-w-[536px] w-full rounded-xl shadow-xl pt-[40px] pr-[50px] pb-[200px] pl-[50px]">
+      <div className="flex bg-lightBlue">
+        <div className="flex-1 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 ">
+          <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[80px] pb-[186px] pl-[80px]">
             <div className="flex justify-between items-center">
               <h2 className=" text-3xl font-extrabold text-paleBlue">Login</h2>
               <p className="mt-2 text-sm text-gray-600">
                 <a
                   href="#"
-                  className="font-medium text-darklue hover:text-indigo-500 underline underline-offset-4"
+                  className="font-medium text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue"
                 >
                   Create account
                 </a>
@@ -41,7 +41,7 @@ export default function LoginPage() {
               <div>
                 <CommonButton
                   type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white bg-primary hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white bg-primary hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                   text={"Submit"}
                 />
               </div>
@@ -61,7 +61,7 @@ export default function LoginPage() {
                 <div className="mt-6">
                   <button
                     type="button"
-                    className="text-[15px] font-[400] w-full bg-transparent text-bodyColor font-semibold  border border-lightGray rounded-[20px] flex justify-center items-center p-2"
+                    className="text-[15px] font-[400] w-full bg-transparent text-bodyColor font-semibold  border border-lightGray rounded-[20px] flex justify-center items-center p-2 py-3"
                   >
                     <span className="sr-only">Sign in with Google</span>
                     <svg
@@ -127,7 +127,7 @@ export default function LoginPage() {
         </div>
         <div className="hidden lg:block relative w-0 flex-1">
           <img
-            className="absolute inset-0 w-full h-full w-full object-contain"
+            className="absolute inset-0 w-[80%] h-[100%] object-contain"
             src="/images/login-logo.svg"
             alt="Productivity illustration"
           />

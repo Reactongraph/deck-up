@@ -1,5 +1,12 @@
 import GradientOverlay from "../common/GradientOverlay";
-export default function FeatureHover() {
+export default function FeatureHover({
+  onClick = () => {},
+  setActiveDropdown,
+}) {
+  const handleNavigate = () => {
+    onClick();
+    setActiveDropdown(false);
+  };
   return (
     <div className=" w-full flex flex-col  rounded-lg shadow-md md:flex-row justify-center bg-white items-stretch gap-4 p-4 relative">
       <div className="max-w-[270px] mx-auto p-6">
@@ -7,12 +14,27 @@ export default function FeatureHover() {
           Pricing & Plans
         </h2>
         <ul className="space-y-2">
-          <li className="text-body text-paleBlue">Individual</li>
+          <li
+            className="text-body text-paleBlue cursor-pointer"
+            onClick={() => handleNavigate()}
+          >
+            Individual
+          </li>
           <hr className="text-[#64A4C0]" />
-          <li className="text-body text-paleBlue">Small teams</li>
+          <li
+            className="text-body text-paleBluecursor-pointer"
+            onClick={() => handleNavigate()}
+          >
+            Small teams
+          </li>
           <hr className="text-[#64A4C0]" />
 
-          <li className="text-body text-paleBlue">Enterprise</li>
+          <li
+            className="text-body text-paleBluecursor-pointer"
+            onClick={() => handleNavigate()}
+          >
+            Enterprise
+          </li>
         </ul>
       </div>
       <div class="border-l-2 border-smallBlue mx-5"></div>
@@ -21,13 +43,28 @@ export default function FeatureHover() {
           Subscription Management
         </h2>
         <ul className="space-y-2">
-          <li className="text-body text-paleBlue">Manage users</li>
+          <li
+            className="text-body text-paleBlue cursor-pointer"
+            onClick={() => handleNavigate()}
+          >
+            Manage users
+          </li>
           <hr className="text-[#64A4C0]" />
 
-          <li className="text-body text-paleBlue">Buy New licences</li>
+          <li
+            className="text-body text-paleBlue cursor-pointer"
+            onClick={() => handleNavigate()}
+          >
+            Buy New licences
+          </li>
           <hr className="text-[#64A4C0]" />
 
-          <li className="text-body text-paleBlue">Renew licence</li>
+          <li
+            className="text-body text-paleBlue cursor-pointer"
+            onClick={() => handleNavigate()}
+          >
+            Renew licence
+          </li>
         </ul>
       </div>
       <div class="border-l-2 border-smallBlue mx-5"></div>

@@ -1,8 +1,8 @@
 export const HeaderData = [
-  { id: 0, label: "Home", href: "/" },
-  { id: 1, label: "Features", href: "/features" },
-  { id: 2, label: "Order", href: "/orders" },
-  { id: 3, label: "About Us", href: "/about" },
+  { id: 0, label: "Home", href: "/", isIcon: true },
+  { id: 1, label: "Features", href: "/features", isIcon: true },
+  { id: 2, label: "Order", href: "/orders", isIcon: true },
+  { id: 3, label: "About Us", href: "/about", isIcon: false },
 ];
 
 export const orderData = [

@@ -15,7 +15,7 @@ export default function PowerUsers() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] mr-[-70px] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] mr-[-70px] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:ml-[-75px]">
             <div className="flex justify-center items-start flex-col">
               <img src="/images/building.svg" className="w-[64px] mb-[20px]" />
               <h3 className="text-subhead text-paleBlue mb-4">By Sectors</h3>
@@ -43,7 +43,7 @@ export default function PowerUsers() {
             />
           </div>
 
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:mt-[-50px]">
             <div className="flex justify-center items-center flex-col">
               <img
                 src="/images/function.svg"
