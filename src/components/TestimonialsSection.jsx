@@ -3,6 +3,7 @@ import GradientOverlay from "./common/GradientOverlay";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CommonSlider from "./common/CommonSlider";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 const testimonials = [
   {
@@ -63,6 +64,8 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   const sliderRef = useRef(null);
+  const size = useCustomWindowSize(); // Get screen size
+
   const sliderSettings = {
     dots: false,
     infinite: false,
@@ -105,22 +108,55 @@ export default function TestimonialsSection() {
 
     sliderRef.current.slickNext();
   };
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          top: "inherit",
+          right: "inherit",
+          zIndex: "0",
+          left: 0,
+          bottom: "-45px",
+          transform: "rotate(90deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          top: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "146px",
+          height: "146",
+          top: "inherit",
+          left: "-41px",
+          right: "inherit",
+          zIndex: "-999",
+          bottom: "-80px",
+
+          transform: "rotate(-70deg)",
+        };
   return (
     <section className="relative pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
-       <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold">
-          Loved by users
-        </h2>
-        <div className="pl-[139px] pr-[0] mr-[-10px] lg:max-w-[1440px] xl:container xl:my-0 xl:mx-auto">
-       
-    
-          <div className="slider-container relative testimonial mb-[40px]">
-            <CommonSlider settings={sliderSettings} ref={sliderRef}>
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="" // Add horizontal margin here
-                >
-                    <div className="bg-white z-10 py-[54px] text-center px-[54px] min-h-[500px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2">
+      <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold">
+        Loved by users
+      </h2>
+      <div className="pl-[139px] pr-[0] mr-[-10px] lg:max-w-[1440px] xl:container xl:my-0 xl:mx-auto max-sm:p-0">
+        <div className="slider-container relative testimonial mb-[40px]">
+          <CommonSlider settings={sliderSettings} ref={sliderRef}>
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="" // Add horizontal margin here
+              >
+                <div className="bg-white z-10 py-[54px] text-center px-[54px] min-h-[500px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2">
                   <div>
                     <img
                       src={testimonial.logo}
@@ -146,21 +182,24 @@ export default function TestimonialsSection() {
                       </p>
                     </div>
                   </div>
-                  </div>
                 </div>
-              ))}
-            </CommonSlider>
-            <GradientOverlay
-          width="146px"
-          height="146px"
-          gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
-          bottom="-80px"
-          left="-41px"
-       
-        />
-          </div>
-     
-          <div className="flex justify-end space-x-4 ml-[0px] container">
+              </div>
+            ))}
+          </CommonSlider>
+          <GradientOverlay
+            width={gradientOverlayStyles.width}
+            height={gradientOverlayStyles.height}
+            gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
+            top={gradientOverlayStyles.top}
+            bottom={gradientOverlayStyles.bottom}
+            left={gradientOverlayStyles.left}
+            right={gradientOverlayStyles.right}
+            zIndex={gradientOverlayStyles.zIndex}
+            transform={gradientOverlayStyles.transform}
+          />
+        </div>
+
+        <div className="flex justify-end space-x-4 ml-[0px] container">
           <img
             src="/images/left.svg"
             alt="left"

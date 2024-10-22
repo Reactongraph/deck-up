@@ -23,6 +23,8 @@ module.exports = {
         smallBlue: "#64A4C0",
         midGray: "#576676",
         smallGray: "#CFD4E0",
+        regularGray: "#666A6E",
+        smallBlack: "#252525"
       },
       fontSize: {
         banner: ["55px", { lineHeight: "70px", fontWeight: "800" }], // Banner headline

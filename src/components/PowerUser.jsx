@@ -1,7 +1,86 @@
 import React from "react";
 import GradientOverlay from "./common/GradientOverlay";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 export default function PowerUsers() {
+  const size = useCustomWindowSize(); // Get screen size
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          top: "inherit",
+          right: "inherit",
+          zIndex: "0",
+          left: 0,
+          bottom: "-35px",
+          transform: "rotate(90deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          top: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "146px",
+          height: "146px",
+          top: 0,
+          left: "-41px",
+          right: "inherit",
+          zIndex: "-999",
+          bottom: "inherit",
+
+          transform: "rotate(90deg)",
+        };
+
+  const gradientOverlayStylesBottom =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          top:"inherit",
+          right: 0,
+          zIndex: "0",
+          left: "inherit",
+          bottom: 0,
+          transform: "rotate(90deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          top: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "146px",
+          height: "146px",
+          top: 0,
+          left: "-41px",
+          right: "inherit",
+          zIndex: "-999",
+          bottom: "inherit",
+
+          transform: "rotate(90deg)",
+        };
+  // //width="146px"
+  // height="146px"
+  // gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
+  // top="0"
+  // left="-41px"
+  // transform="rotate(90deg)"
   return (
     <section className="bg-linear py-16 px-4 relative overflow-hidden ps-2.5 pe-2.5">
       <div className="max-w-6xl mx-auto text-white">
@@ -15,70 +94,106 @@ export default function PowerUsers() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] mr-[-70px] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:ml-[-75px]">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] mr-[-70px] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:ml-[-75px] max-sm:p-0 max-sm:flex max-sm:justify-center max-sm:min-h-[370px] max-sm:w-full max-sm:text-center">
             <div className="flex justify-center items-start flex-col">
-              <img src="/images/building.svg" className="w-[64px] mb-[20px]" />
-              <h3 className="text-subhead text-paleBlue mb-4">By Sectors</h3>
+              <img
+                src="/images/building.svg"
+                className="w-[64px] mb-[20px] max-sm:hidden"
+              />
+              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px]">
+                By Sectors
+              </h3>
               <ul className="space-y-1">
-                <li className="text-body text-gray">Consulting Companies</li>
-                <hr className="text-[#64A4C0]" />
-                <li className="text-body text-gray">Education Institutes</li>
-                <hr className="text-[#64A4C0]" />
-                <li className="text-body text-gray">Marketing Agencies</li>
-                <hr className="text-[#64A4C0]" />
-                <li className="text-body text-gray">Entrepreneurs</li>
-                <hr className="text-[#64A4C0]" />
-                <li className="text-body text-gray">Small Businesses</li>
-                <hr className="text-[#64A4C0]" />
-                <li className="text-body text-gray">Government</li>
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Consulting Companies
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Education Institutes
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Marketing Agencies
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Entrepreneurs
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Small Businesses
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Government
+                </li>
               </ul>
             </div>
             <GradientOverlay
-              width="146px"
-              height="146px"
+              width={gradientOverlayStyles.width}
+              height={gradientOverlayStyles.height}
               gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
-              top="0"
-              left="-41px"
-              transform="rotate(90deg)"
+              top={gradientOverlayStyles.top}
+              left={gradientOverlayStyles.left}
+              right={gradientOverlayStyles.right}
+              zIndex={gradientOverlayStyles.zIndex}
+              transform={gradientOverlayStyles.transform}
             />
           </div>
 
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:mt-[-50px]">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:mt-[-50px] max-sm:p-0 max-sm:flex max-sm:justify-center max-sm:min-h-[370px] max-sm:w-full max-sm:text-center">
             <div className="flex justify-center items-center flex-col">
               <img
                 src="/images/function.svg"
-                className="w-12 h-12 text-red-400 mb-4"
+                className="w-12 h-12 text-red-400 mb-4 max-sm:hidden"
               />
 
-              <h3 className="text-subhead text-paleBlue mb-4">By Functions</h3>
+              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px]">
+                By Functions
+              </h3>
               <ul className="space-y-1">
-                <li className="text-body text-gray">Marketing</li>
-                <hr className="text-[#64A4C0]" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Marketing
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray">Sales</li>
-                <hr className="text-[#64A4C0]" />
+                <li className="text-body text-gray max-sm:text-[20px]">
+                  Sales
+                </li>
+                <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
                   HR (Human Resource)
                 </li>
-                <hr className="text-[#64A4C0]" />
+                <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
                   IT (Information Technology)
                 </li>
-                <hr className="text-[#64A4C0]" />
+                <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
                   Learning & Development
                 </li>
-                <hr className="text-[#64A4C0]" />
+                <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
                   Internal Communication
                 </li>
               </ul>
             </div>
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-300 rounded-full opacity-20"></div>
+
+            <GradientOverlay
+              width={gradientOverlayStylesBottom.width}
+              height={gradientOverlayStylesBottom.height}
+              gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+              top={gradientOverlayStylesBottom.top}
+              bottom={gradientOverlayStylesBottom.bottom}
+              left={gradientOverlayStylesBottom.left}
+              right={gradientOverlayStylesBottom.right}
+              zIndex={gradientOverlayStylesBottom.zIndex}
+              transform={gradientOverlayStylesBottom.transform}
+            />
           </div>
         </div>
       </div>

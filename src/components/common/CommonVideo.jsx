@@ -2,8 +2,11 @@
 
 import { useState, useRef } from "react";
 import { Play, Pause } from "lucide-react";
+import GradientOverlay from "./GradientOverlay";
 
-export default function VideoPlayer({ url = "" }) {
+
+
+export default function VideoPlayer({ url = "", gradientOverlayStyles1={}}) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -49,6 +52,15 @@ export default function VideoPlayer({ url = "" }) {
           )}
         </button>
       </div>
+      <GradientOverlay
+          width={gradientOverlayStyles1.width}
+          height={gradientOverlayStyles1.height}
+          gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
+          bottom={gradientOverlayStyles1.bottom}
+          left={gradientOverlayStyles1.left}
+          zIndex={gradientOverlayStyles1.zIndex}
+          transform={gradientOverlayStyles1.transform}
+        />
     </div>
   );
 }

@@ -26,6 +26,9 @@ export default function Header() {
   const handleDropdownClick = (item) => {
     // Toggle the dropdown open/close when the down arrow is clicked
     console.log("handleDropdownClick", item);
+    if(item === "About Us") {
+      handleNavigate("/about");
+    }
     setActiveDropdown((prev) => (prev === item ? null : item));
   };
 
@@ -38,6 +41,7 @@ export default function Header() {
             src={Images?.logo}
             className={"h-[18px] w-[111px] md:h-[29px] md:w-[161px]"}
             alt="logo"
+            onClick={() => navigate("/")}
           />
         </div>
         <div className="hidden lg:flex space-x-4">
@@ -64,12 +68,6 @@ export default function Header() {
           })}
         </div>
         <div className="flex items-center justify-between gap-[32px]">
-          <p
-            className="max-lg:hidden text-gray font-head cursor-pointer"
-            onClick={() => handleNavigate("/login")}
-          >
-            Login
-          </p>
           <CommonButton
             type={"button"}
             text={"Try For Free"}
@@ -78,6 +76,13 @@ export default function Header() {
             }
             onClick={() => handleNavigate("/login")}
           />
+          <p
+            className="max-lg:hidden text-gray font-head cursor-pointer"
+            onClick={() => handleNavigate("/login")}
+          >
+            Login
+          </p>
+
           <button className="lg:hidden" onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

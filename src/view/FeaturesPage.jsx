@@ -140,9 +140,9 @@ export default function TutorialGrid() {
             <h2 className="text-subhead text-paleBlue text-left">
               Slide Elements
             </h2>
-            {/* <span className="text-gray-600">
+            <span className="text-regularGray text-head">
               Showing {tutorials.length} of 9
-            </span> */}
+            </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {tutorials.map((tutorial, index) => (

@@ -9,7 +9,7 @@ import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 export default function HeroSection() {
   const size = useCustomWindowSize(); // Get screen size
-
+  console.log("sizesizesize", size);
   // Define responsive values for GradientOverlay based on screen width
   const gradientOverlayStyles =
     size.width <= 640
@@ -17,10 +17,10 @@ export default function HeroSection() {
           // Mobile styles
           width: "80px",
           height: "80px",
-          top: "20px",
-          left: "-40px",
+          top: "57px",
+          right: "18px",
           zIndex: "-999",
-          transform: "rotate(-70deg)",
+          transform: "rotate(90deg)",
         }
       : size.width <= 1024
       ? {
@@ -37,7 +37,8 @@ export default function HeroSection() {
           width: "160px",
           height: "160px",
           top: 0,
-          left: "-100px",
+          left: "-58px",
+          right: "inherit",
           zIndex: "-999",
           transform: "rotate(-70deg)",
         };
@@ -48,10 +49,9 @@ export default function HeroSection() {
           // Mobile styles
           width: "80px",
           height: "80px",
-          bottom: "20px",
-          left: "-40px",
-          zIndex: "-999",
-          transform: "rotate(-70deg)",
+          bottom: "-2px",
+          zIndex: "999",
+          transform: "rotate(-9deg)",
         }
       : size.width <= 1024
       ? {
@@ -68,28 +68,35 @@ export default function HeroSection() {
           width: "160px",
           height: "160px",
           bottom: 0,
-          left: "-18px",
+          left: "0px",
           transform: "rotate(-70deg)",
         };
 
   return (
     <div className="container flex items-center ps-2.5 relative max-sm:flex-col-reverse max-sm:flex pl-[22px] pr-[0px] sm:pr-[32px]">
-      <GradientOverlay
-        width={gradientOverlayStyles.width}
-        height={gradientOverlayStyles.height}
-        gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
-        top={gradientOverlayStyles.top}
-        left={gradientOverlayStyles.left}
-        zIndex={gradientOverlayStyles.zIndex}
-        transform={gradientOverlayStyles.transform}
-      />
       <div className="w-full max-w-[465px] sm:pr-[40px] pr-[0px] mt-[40px] sm:mt-[0px]">
-        <h1 className="text-[55px] text-banner text-paleBlue">
-          Create decks at lightning speed
-        </h1>
-        <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading">
-          Drive impact and dramatically improve quality and speed using DeckUp
-        </p>
+        <div className="relative">
+          <>
+            <h1 className="max-sm:text-[40px] max-sm:font-bold lg:text-banner text-paleBlue">
+              Create decks at lightning speed
+            </h1>
+            <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading">
+              Drive impact and dramatically improve quality and speed using
+              DeckUp
+            </p>
+          </>
+          <GradientOverlay
+            width={gradientOverlayStyles.width}
+            height={gradientOverlayStyles.height}
+            gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+            top={gradientOverlayStyles.top}
+            left={gradientOverlayStyles.left}
+            right={gradientOverlayStyles.right}
+            zIndex={gradientOverlayStyles.zIndex}
+            transform={gradientOverlayStyles.transform}
+          />
+        </div>
+
         <div className="mt-[70px] w-[90%] sm:w-[100%]">
           <p className="text-[12px] font-bold text-primary">
             START 30 DAY FREE TRIAL
@@ -120,9 +127,12 @@ export default function HeroSection() {
           alt={"Person working on a computer surrounded by charts and graphs"}
           className="w-full"
         /> */}
-        <CommonVideo url={videos?.hero} />
+        <CommonVideo
+          url={videos?.hero}
+          gradientOverlayStyles1={gradientOverlayStyles1}
+        />
 
-        <GradientOverlay
+        {/* <GradientOverlay
           width={gradientOverlayStyles1.width}
           height={gradientOverlayStyles1.height}
           gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
@@ -130,7 +140,7 @@ export default function HeroSection() {
           left={gradientOverlayStyles1.left}
           zIndex={gradientOverlayStyles1.zIndex}
           transform={gradientOverlayStyles1.transform}
-        />
+        /> */}
       </div>
     </div>
   );

@@ -26,13 +26,13 @@ const features = [
     title: "Create and format a wide variety of tables",
     icon: "/placeholder.svg?height=48&width=48",
     illustration: "/placeholder.svg?height=120&width=200",
-    img: "/images/tables.svg",
+    img: "/images/table1.svg",
   },
   {
-    title: "Edit sizes and shapes of components in one click",
+    title: "One-click selection to edit identical elements",
     icon: "/placeholder.svg?height=48&width=48",
     illustration: "/placeholder.svg?height=120&width=200",
-    img: "/images/component.svg",
+    img: "/images/identical.svg",
   },
   {
     title: "Create connector diagrams instantly",
