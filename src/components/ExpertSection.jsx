@@ -2,8 +2,8 @@ import React from "react";
 
 export default function ExpertSection() {
   return (
-    <div className="relative mt-[157px] max-w-[760px] m-auto text-center ps-2.5 pe-2.5 ">
-      <h2 className="text-headline  text-paleBlue font-extrabold bg-hero-pattern bg-contain bg-no-repeat py-[70px] px-[20px]">
+    <div className="relative mt-[157px] max-w-[760px] m-auto text-center ps-2.5 pe-2.5 max-sm:mt-[100px]">
+      <h2 className="lg:text-headline xl:text-headline max-sm:text-subhead text-paleBlue font-extrabold bg-hero-pattern bg-contain bg-no-repeat max-sm:py-[26px] py-[70px] px-[20px]">
         Built by experts in
         <br />
         visual communication

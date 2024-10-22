@@ -1,7 +1,9 @@
 import React from "react";
 import GradientOverlay from "./common/GradientOverlay";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 const Footer = () => {
+  const size = useCustomWindowSize();
   return (
     <footer className="bg-darkBlue text-white py-12 px-[1.5rem] md:px-[6.5rem]">
       <div className="container">
@@ -21,10 +23,11 @@ const Footer = () => {
               position="absolute"
               z-index="-999"
               left="-50px"
+              display={size.width <= 640 && "none"}
             />
           </div>
 
-          <div className="flex justify-center xl:justify-end space-x-6 mb-6 xl:mb-0">
+          <div className="flex justify-center xl:justify-end space-x-6 mb-6 xl:mb-0 xl:gap-[78px] lg:gap-[78px]">
             <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer">
               FAQs
             </p>
@@ -34,14 +37,19 @@ const Footer = () => {
           </div>
         </div>
 
-        <div >
+        <div>
           <div className="flex flex-col md:flex-row justify-between items-center mb-[25px]  text-center md:text-left">
             <div>
-              <p className="text-2xl md:text-4xl font-bold inline-block">
+              {/* <p className="text-2xl md:text-4xl font-bold inline-block">
                 DECK<span className="text-red-500">UP</span>
-              </p>
+              </p> */}
+              <img
+                src="/images/footerlogo.svg"
+                className="w-[156px] h-[25px]"
+                alt="logo"
+              />
             </div>
-            <div className="flex space-x-4 mt-4 md:mt-0">
+            <div className="flex space-x-4 mt-4 md:mt-0 lg:gap-[44px] xl:gap-[44px]">
               <button className="bg-primary hover:bg-primary text-white  py-2 px-4 rounded-[20px] text-sm md:text-base">
                 Download
               </button>

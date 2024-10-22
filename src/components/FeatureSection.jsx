@@ -34,7 +34,7 @@ export default function FeaturesSection() {
   return (
     <div className="relative  pt-[100px] pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
       <div className="container">
-        <h2 className="text-headline text-center  text-paleBlue font-extrabold m-auto w-[80%] sm:m-none sm:w-[100%]">
+        <h2 className="lg:text-headline xl:text-headline max-sm:text-subhead text-center  text-paleBlue font-extrabold m-auto w-[80%] sm:m-none sm:w-[100%]">
           Features that help you save time and <br /> work smart
         </h2>
         <div className="mt-[81px]">
@@ -48,13 +48,13 @@ export default function FeaturesSection() {
                   <CommonImage
                     src={feature.img}
                     alt={feature.title}
-                    className={"w-[147px]"}
+                    className={"max-w-[147px] w-full max-sm:w-[89px]"}
                   />
                 </div>
-                <h3 className="mt-[24px] text-lg text-paleBlue font-medium text-[24px] text-center">
+                <h3 className="mt-[24px] text-lg max-sm:text-[16px] text-paleBlue font-medium text-[24px] text-center">
                   {feature.title}
                 </h3>
-                <p className="mt-5 text-center px-[36px] text-body text-bodyColor">
+                <p className="mt-5 text-center px-[36px] max-sm:text-[14px] text-body text-bodyColor">
                   {feature.description}
                 </p>
               </div>

@@ -1,7 +1,28 @@
 import CommonButton from "../common/CommonButton";
 import { orderData } from "../../utils/data";
 import GradientOverlay from "../common/GradientOverlay";
+import useCustomWindowSize from "../../Hooks/useCustomWindowSize";
 export default function PricingSection() {
+  const size = useCustomWindowSize();
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "106px",
+          height: "106px",
+          gradient: "linear-gradient(to right, #fee2e2, #fecaca, #f87171)",
+          top: "-40px",
+          right: "74px",
+          zIndex: "-999",
+        }
+      : {
+          width: "70px",
+          height: "70px",
+          gradient: "linear-gradient(to right, #fee2e2, #fecaca, #f87171)",
+          top: "43px",
+          right: "-74px",
+          zIndex: "-999",
+        };
   return (
     <div className="relative pt-[40px] pb-[50px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)]">
       <div className="container mx-auto px-4">
@@ -23,12 +44,12 @@ export default function PricingSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           <GradientOverlay
-            width="106px"
-            height="106px"
-            gradient="linear-gradient(to right, #fee2e2, #fecaca, #f87171)"
-            top="43px"
-            right="-74px"
-            zIndex="-999"
+            width={gradientOverlayStyles.width}
+            height={gradientOverlayStyles.height}
+            gradient={gradientOverlayStyles.gradient}
+            top={gradientOverlayStyles.top}
+            right={gradientOverlayStyles.right}
+            zIndex={gradientOverlayStyles.zIndex}
           />
           {orderData.map((plan, index) => (
             <div
@@ -64,7 +85,7 @@ export default function PricingSection() {
             height="108px"
             gradient="linear-gradient(to bottom, #bfdbfe, #e0f2fe, #dbeafe)"
             bottom="-32px"
-            left="-55px"
+            left="-155px"
             zIndex="-999"
           />
         </div>
