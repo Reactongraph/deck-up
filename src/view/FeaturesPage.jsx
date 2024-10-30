@@ -70,35 +70,23 @@ const tutorials = [
 
 function TutorialCard({ title, thumbnail, duration, description }) {
   return (
-    <div className="relative  bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 min-h-[432px]">
+    <div className="relative bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 min-h-[432px] max-sm:min-h-[360px]">
       <img
         src={thumbnail}
         alt={title}
-        className="w-[355px] h-[197px] object-contain"
+        className="w-[355px] h-[197px] object-contain max-sm:w-full"
       />
-      {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-60 transition-colors duration-300">
-        <PlayCircle className="w-16 h-16 text-white opacity-80 hover:opacity-100 transition-opacity" />
-      </div> */}
-      {/* <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-        {duration}
-      </div> */}
-      <div className="p-6 ">
-        <div className="flex justify-between items-center">
+      <div className="p-6">
+        <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start">
           <span className="text-[14px] text-primary">Side Element</span>
-          <span className="bg-lightBlue p-1 text-[14px]">Video Summary</span>
+          <span className="bg-lightBlue p-1 text-[14px] max-sm:mt-2">
+            Video Summary
+          </span>
         </div>
-        <p className="text-[18px] my-[52px] text-bodyColor">{description}</p>
+        <p className="text-[18px] my-[52px] text-bodyColor max-sm:my-4">
+          {description}
+        </p>
       </div>
-      {/* <div className="bg-blue-600 text-white p-2 flex justify-between items-center">
-        <div className="flex space-x-2">
-          <SkipBack className="w-5 h-5" />
-          <SkipForward className="w-5 h-5" />
-        </div>
-        <div className="w-1/2 bg-white rounded-full h-1">
-          <div className="bg-blue-300 h-1 rounded-full w-1/3"></div>
-        </div>
-        <Volume2 className="w-5 h-5" />
-      </div> */}
     </div>
   );
 }
@@ -117,34 +105,31 @@ const customCSS = {
   fontSize: "text-subhead",
   fontColor: "text-paleBlue",
 };
+
 export default function TutorialGrid() {
   return (
     <>
-      {/* Header Component can be uncommented and used */}
       <div className="p-6 bg-lightBlue">
         <div className="container">
-          <h1 className="text-headline text-paleBlue text-center mb-[56px] px-[180px] mt-[40px]">
+          <h1 className="text-headline text-paleBlue text-center mb-[56px] px-[180px] mt-[40px] max-sm:text-[24px] max-sm:p-2 max-sm:m-0 max-sm:text-left max-sm:leading-9">
             Tutorials to help you quickly figure out and turn around
           </h1>
-          <div className="flex flex-wrap justify-center gap-[16px] mb-8">
+          <div className="flex flex-wrap justify-center gap-[16px] mb-8 max-sm:flex-row max-sm:gap-2 max-sm:overflow-x-auto max-sm:whitespace-nowrap">
             {filters.map((filter) => (
               <button
                 key={filter}
-                className="px-8 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-smallGray leading-7"
+                className="px-8 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
               >
                 {filter}
               </button>
             ))}
           </div>
-          <div className="mb-4 flex justify-between items-center">
-            <h2 className="text-subhead text-paleBlue text-left">
+          <div className="mb-4 flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:mb-6">
+            <h2 className="text-subhead text-paleBlue text-left max-sm:text-[18px]">
               Slide Elements
             </h2>
-            <span className="text-regularGray text-head">
-              Showing {tutorials.length} of 9
-            </span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-sm:gap-4">
             {tutorials.map((tutorial, index) => (
               <TutorialCard key={index} {...tutorial} />
             ))}
@@ -152,13 +137,7 @@ export default function TutorialGrid() {
         </div>
       </div>
       <div className="relative overflow-hidden">
-        {/* <LeftImage
-          image={Images.signup}
-          data={data}
-          customCSS={customCSS}
-          showGradient={true}
-        /> */}
-        <div className="container pt-[99px] pb-[60px] flex gap-[104px] item-center ps-2.5 pe-2.5">
+        <div className="container pt-[99px] pb-[60px] flex gap-[104px] item-center ps-2.5 pe-2.5 max-sm:flex-col max-sm:pt-[40px] max-sm:gap-4">
           <div className="w-full relative">
             <img
               src={Images.signup}
@@ -171,18 +150,17 @@ export default function TutorialGrid() {
               gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
               top="-10px"
               right="0"
-              // zIndex="999"
             />
           </div>
-          <div className="max-w-[444px] w-full flex flex-col justify-center ">
-            <h2 className="text-headline  text-paleBlue font-extrabold">
+          <div className="max-w-[444px] w-full flex flex-col justify-center max-sm:text-center">
+            <h2 className="text-headline text-paleBlue font-extrabold max-sm:text-[24px]">
               Sign up today
             </h2>
-            <p className="mt-[24px] text-body text-bodyColor">
+            <p className="mt-[24px] text-body text-bodyColor max-sm:mt-4">
               Your superpower-packed plug-&-play PPT tool is just a click away!
             </p>
-            <div className="flex flex-row gap-[12px]">
-              <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px]">
+            <div className="flex flex-row gap-[12px] max-sm:justify-center max-sm:gap-4">
+              <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px] max-sm:px-8 max-sm:py-2 max-sm:mt-6">
                 Get Started
               </button>
             </div>
@@ -197,7 +175,6 @@ export default function TutorialGrid() {
           transform="rotate(110deg)"
         />
       </div>
-      {/* Footer Component can be uncommented and used */}
     </>
   );
 }

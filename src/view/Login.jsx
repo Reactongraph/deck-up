@@ -1,23 +1,100 @@
 import CommonButton from "../components/common/CommonButton";
 import CommonInput from "../components/common/CommonInput";
+import GradientOverlay from "../components/common/GradientOverlay";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
 export default function LoginPage() {
+  const size = useCustomWindowSize(); // Get screen size
+  console.log("sizesizesize", size);
+  // Define responsive values for GradientOverlay based on screen width
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          top: "57px",
+          right: "18px",
+          zIndex: "-999",
+          transform: "rotate(90deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          top: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "300px",
+          height: "300px",
+          top: "-44px",
+          left: "-152px",
+          right: "inherit",
+          zIndex: "-99",
+          transform: "rotate(188deg)",
+        };
+
+  const gradientOverlayStyles1 =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "80px",
+          height: "80px",
+          bottom: "-2px",
+          zIndex: "999",
+          transform: "rotate(-9deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "108px",
+          height: "108px",
+          bottom: "39px",
+          left: "-60px",
+          zIndex: "-999",
+          transform: "rotate(-70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "485px",
+          height: "485px",
+          top: "inherit",
+          right: "-206px",
+          bottom: 0,
+          left: "inherit",
+          transform: "rotate(158deg)",
+        };
   return (
     <>
       {/* <Header /> */}
       <div className="bg-lightBlue min-h-screen flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px]">
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+          <GradientOverlay
+            width={gradientOverlayStyles.width}
+            height={gradientOverlayStyles.height}
+            gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+            top={gradientOverlayStyles.top}
+            left={gradientOverlayStyles.left}
+            right={gradientOverlayStyles.right}
+            zIndex={gradientOverlayStyles.zIndex}
+            transform={gradientOverlayStyles.transform}
+          />
           {/* Left section for the login form */}
           <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 order-2 lg:order-1">
             <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[24px] pb-[186px] pl-[24px] sm:pr-[80px] sm:pl-[80px]">
               <div className="flex justify-between items-center">
-                <h2 className="text-subhead text-paleBlue">Login</h2>
+                <h2 className="text-subhead text-paleBlue font-inter">Login</h2>
                 <p className="mt-2 text-sm text-gray-600">
                   <a
                     href="#"
-                    className="font-normal text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue"
+                    className="font-normal text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue font-inter"
                   >
                     Create account
                   </a>
@@ -27,7 +104,7 @@ export default function LoginPage() {
               <form className="mt-8 space-y-6" action="#" method="POST">
                 <div className="rounded-md shadow-sm -space-y-px">
                   <div>
-                    <p className="text-bodyColor text-[14px] mb-2">
+                    <p className="text-bodyColor text-[14px] mb-2 font-inter">
                       Enter your email ID (OTP will be sent to entered email)
                     </p>
                     <CommonInput
@@ -36,7 +113,7 @@ export default function LoginPage() {
                       type="email"
                       autoComplete="email"
                       required
-                      className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue"
+                      className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
                       placeholder="Enter your email ID"
                     />
                   </div>
@@ -45,7 +122,7 @@ export default function LoginPage() {
                 <div>
                   <CommonButton
                     type="submit"
-                    className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
+                    className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
                     text={"Submit"}
                   />
                 </div>
@@ -56,7 +133,7 @@ export default function LoginPage() {
                       <div className="w-full border-t border-lightGray" />
                     </div>
                     <div className="relative flex justify-center text-sm">
-                      <span className="py-4 text-head bg-white text-lightGray">
+                      <span className="py-4 text-head bg-white text-lightGray font-inter">
                         OR
                       </span>
                     </div>
@@ -65,9 +142,11 @@ export default function LoginPage() {
                   <div className="mt-6">
                     <button
                       type="button"
-                      className="text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
+                      className=" font-inter text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
                     >
-                      <span className="sr-only">Sign in with Google</span>
+                      <span className="sr-only font-inter">
+                        Sign in with Google
+                      </span>
                       <svg
                         className="w-5 h-5 mr-2"
                         viewBox="0 0 21 20"
@@ -109,20 +188,20 @@ export default function LoginPage() {
                 </div>
               </form>
 
-              <p className="mt-2 text-[14px] text-bodyColor text-center pt-2 font-normal">
+              <p className="mt-2 text-[14px] text-bodyColor text-center pt-2 font-normal font-inter">
                 By signing up, you agree to the{" "}
                 <a
                   href="#"
-                  className="font-medium text-bodyColor underline underline-offset-2"
+                  className="font-medium text-bodyColor underline underline-offset-2 font-inter"
                 >
                   Terms and Conditions
                 </a>{" "}
                 <br />
-                <p className="mt-2 text-xs text-gray-500 text-center">
+                <p className="mt-2 text-xs text-gray-500 text-center font-inter">
                   and{" "}
                   <a
                     href="#"
-                    className="font-medium text-bodyColor underline underline-offset-2"
+                    className="font-medium text-bodyColor underline underline-offset-2 font-inter"
                   >
                     Privacy Policy
                   </a>
@@ -148,6 +227,17 @@ export default function LoginPage() {
               alt="Productivity illustration"
             />
           </div>
+          <GradientOverlay
+            width={gradientOverlayStyles1.width}
+            height={gradientOverlayStyles1.height}
+            gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+            top={gradientOverlayStyles1.top}
+            bottom={gradientOverlayStyles1.bottom}
+            left={gradientOverlayStyles1.left}
+            right={gradientOverlayStyles1.right}
+            zIndex={gradientOverlayStyles1.zIndex}
+            transform={gradientOverlayStyles1.transform}
+          />
         </div>
       </div>
       {/* <Footer /> */}

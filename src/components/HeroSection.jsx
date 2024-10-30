@@ -18,9 +18,9 @@ export default function HeroSection() {
           width: "80px",
           height: "80px",
           top: "57px",
-          right: "18px",
+          right: "104px",
           zIndex: "-999",
-          transform: "rotate(90deg)",
+          transform: "rotate(135deg)",
         }
       : size.width <= 1024
       ? {
@@ -75,9 +75,9 @@ export default function HeroSection() {
   return (
     <div className="container flex items-center ps-2.5 relative max-sm:flex-col-reverse max-sm:flex pl-[22px] pr-[0px] sm:pr-[32px]">
       <div className="w-full max-w-[465px] sm:pr-[40px] pr-[0px] mt-[40px] sm:mt-[0px]">
-        <div className="relative">
+        <div className="relative ">
           <>
-            <h1 className="max-sm:text-[40px] max-sm:font-bold lg:text-banner text-paleBlue font-inter">
+            <h1 className="max-sm:text-[40px] max-sm:font-bold lg:text-banner text-paleBlue font-inter max-sm:max-w-[300px] w-full">
               Create decks at lightning speed
             </h1>
             <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading font-inter max-sm:text-[14px]">
@@ -96,8 +96,16 @@ export default function HeroSection() {
             transform={gradientOverlayStyles.transform}
           />
         </div>
-
-        <div className="mt-[70px] w-[90%] sm:w-[100%]">
+        <div className="w-[90%] sm:w-[100%] max-sm:max-w[124px] max-sm:block hidden">
+          <CommonButton
+            type="submit"
+            className={
+              "w-full font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[124px] mt-[32px] font-inter max-sm:p-2"
+            }
+            text={"Watch Demo"}
+          />
+        </div>
+        <div className="mt-[70px] w-[90%] sm:w-[100%] max-sm:hidden">
           <p className="text-[12px] font-bold text-primary font-inter">
             START 30 DAY FREE TRIAL
           </p>
