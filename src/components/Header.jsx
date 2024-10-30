@@ -7,6 +7,7 @@ import ProductFeatures from "./MenuHoverComponents/ProductFeature";
 import FeatureHover from "./MenuHoverComponents/FeatureHover";
 import useCustomNavigation from "../Hooks/useCustomNavigation";
 import TutorialExplorer from "./MenuHoverComponents/TutorialExplorer";
+import GradientOverlay from "./common/GradientOverlay";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -101,13 +102,23 @@ export default function Header() {
           </button>
           {isOpen && (
             <div
-              className={`absolute z-[9999] w-full right-0 top-0 mt-[80px] bg-white rounded-lg shadow-lg p-6 py-[50px] transform transition-all duration-300 ease-in-out ${
+              className={`absolute z-[99999] overflow-hidden w-full right-0 top-0 mt-[80px] bg-white rounded-lg shadow-lg p-6 py-[50px] transform transition-all duration-300 ease-in-out ${
                 isOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 -translate-y-4"
               }`}
               style={{ display: isOpen ? "block" : "none" }}
             >
+              <GradientOverlay
+                width="205px"
+                height="205px"
+                gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+                left="-60px"
+                top="0"
+                bottom="inherit"
+                right="inherit"
+                transform="rotate(270deg)"
+              />
               <button
                 className="absolute top-5 right-[60px] text-gray-500 hover:text-gray-700"
                 onClick={toggleMenu}
@@ -191,6 +202,15 @@ export default function Header() {
                   </a>
                 </div>
               </div>
+              <GradientOverlay
+                width="309px"
+                height="309px"
+                gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+                left="inherit"
+                bottom="0"
+                right="-33px"
+                transform="rotate(110deg)"
+              />
             </div>
           )}
         </div>

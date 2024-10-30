@@ -21,7 +21,7 @@ export default function FaqComponent() {
           left="109px"
           zIndex="-999"
         />
-        <h2 className="text-headline text-center text-paleBlue font-bold font-inter">
+        <h2 className="text-headline text-center text-paleBlue font-bold font-inter max-sm:text-[24px]">
           Clear up your doubts
         </h2>
         <div className="mt-[113px] mb-[116px] border-b border-b-smallBlue sm:mx-20 mx-8 relative z-[-999]">
@@ -30,7 +30,7 @@ export default function FaqComponent() {
               key={index}
               className="flex items-center justify-between  py-7 bg-white border-t border-t-smallBlue"
             >
-              <span className="text-midGray text-body font-inter">{question}</span>
+              <span className="text-midGray text-body font-inter max-sm:text-[14px]">{question}</span>
               <span className="h-8 w-8 mr-6">
                 <img
                   src="/images/right_arrow.svg"

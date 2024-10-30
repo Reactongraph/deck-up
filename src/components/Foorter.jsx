@@ -7,12 +7,12 @@ const Footer = () => {
   return (
     <footer className="bg-darkBlue text-white py-12 px-[1.5rem] md:px-[6.5rem]">
       <div className="container">
-        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] pb-[20px] mb-[63px] text-center xl:text-left">
-          <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[0] max-w-[530px] relative">
-            <h2 className="text-[24px]  font-[500] mb-2 max-w-[70%] relative z-[1] font-inter">
+        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] pb-[20px] mb-[63px] text-center xl:text-left max-sm:flex-col max-sm:items-baseline max-sm:mb-[30px]">
+          <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[0] max-w-[530px] relative max-sm:mb-0">
+            <h2 className="text-[24px]  font-[500] mb-2 max-w-[70%] relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
               Need some answers or want to catch up with us!
             </h2>
-            <p className="text-blue-200 text-sm md:text-base mb-4 relative z-[1] font-inter">
+            <p className="text-blue-200 text-sm md:text-base mb-4 relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
               Here's where you will find answers and can get to know us!
             </p>
             <GradientOverlay
@@ -28,17 +28,17 @@ const Footer = () => {
           </div>
 
           <div className="flex justify-center xl:justify-end space-x-6 mb-6 xl:mb-0 xl:gap-[78px] lg:gap-[78px]">
-            <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer font-inter">
+            <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer font-inter max-sm:text-[14px]">
               FAQs
             </p>
-            <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer font-inter">
+            <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer font-inter max-sm:text-[14px]">
               Get in touch
             </p>
           </div>
         </div>
 
         <div>
-          <div className="flex flex-col md:flex-row justify-between items-center mb-[25px]  text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-[25px]  text-center md:text-left max-sm:items-baseline">
             <div>
               {/* <p className="text-2xl md:text-4xl font-bold inline-block">
                 DECK<span className="text-red-500">UP</span>
@@ -60,7 +60,16 @@ const Footer = () => {
           </div>
           <div className="flex flex-col-reverse lg:flex-row justify-between  gap-8 mt-[63px]">
             <div className="flex flex-row justify-between lg:justify-start lg:flex-col items-center md:items-start text-center md:text-left">
-              <p className="mb-4 font-inter">info@deckup.com</p>
+              <div className="flex gap-2 items-center">
+                <img
+                  src="/images/mail.svg"
+                  alt="img"
+                  className="max-sm:h-[24] max-sm:w-[24]"
+                />
+                <p className="mb-4 font-inter max-sm:mb-0 max-sm:text-[14px]">
+                  info@deckup.com
+                </p>
+              </div>
               <div className="flex justify-center md:justify-start space-x-4">
                 <a
                   href="#"
@@ -100,20 +109,24 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            <div className="flex lg:gap-[90px] md:gap-[50px]">
+            <div className="flex lg:gap-[90px] md:gap-[50px] max-sm:flex-wrap max-sm:gap-[50px]">
               <div>
-                <h3 className="font-semibold mb-4 text-lg font-inter">
+                <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
                   Try our product
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter">Free trial</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Free trial
+                    </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">Download</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Download
+                    </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
                       Pricing & plans
                     </p>
                   </li>
@@ -121,61 +134,75 @@ const Footer = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold mb-4 text-lg font-inter">Learn</h3>
+                <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                  Learn
+                </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter">
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
                       Features at a glance
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
                       Interactive tour
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">Watch Demo</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Watch Demo
+                    </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">Tutorials</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Tutorials
+                    </p>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="font-semibold mb-4 text-lg font-inter">
+                <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
                   Purchase
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter">
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
                       Buy new licences
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
                       Renew licence
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">Enterprise</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Enterprise
+                    </p>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="font-semibold mb-2 text-lg font-inter">
+                <h3 className="font-semibold mb-2 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
                   Account
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter">My account</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      My account
+                    </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">My Orders</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      My Orders
+                    </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter">Login</p>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Login
+                    </p>
                   </li>
                 </ul>
               </div>
