@@ -34,9 +34,9 @@ export default function HeroSection() {
         }
       : {
           // Desktop styles
-          width: "160px",
-          height: "160px",
-          top: 0,
+          width: "108px",
+          height: "108px",
+          top: "-63px",
           left: "-58px",
           right: "inherit",
           zIndex: "-999",
@@ -65,8 +65,8 @@ export default function HeroSection() {
         }
       : {
           // Desktop styles
-          width: "160px",
-          height: "160px",
+          width: "155px",
+          height: "155px",
           bottom: 0,
           left: "0px",
           transform: "rotate(-70deg)",
@@ -77,10 +77,10 @@ export default function HeroSection() {
       <div className="w-full max-w-[465px] sm:pr-[40px] pr-[0px] mt-[40px] sm:mt-[0px]">
         <div className="relative">
           <>
-            <h1 className="max-sm:text-[40px] max-sm:font-bold lg:text-banner text-paleBlue">
+            <h1 className="max-sm:text-[40px] max-sm:font-bold lg:text-banner text-paleBlue font-inter">
               Create decks at lightning speed
             </h1>
-            <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading">
+            <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading font-inter max-sm:text-[14px]">
               Drive impact and dramatically improve quality and speed using
               DeckUp
             </p>
@@ -98,7 +98,7 @@ export default function HeroSection() {
         </div>
 
         <div className="mt-[70px] w-[90%] sm:w-[100%]">
-          <p className="text-[12px] font-bold text-primary">
+          <p className="text-[12px] font-bold text-primary font-inter">
             START 30 DAY FREE TRIAL
           </p>
           <form action="#" method="POST" className="mt-[8px] gap-[8px] sm:flex">
@@ -107,14 +107,14 @@ export default function HeroSection() {
               name="email"
               id="email"
               className={
-                "w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray"
+                "w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
               }
               placeholder={"example@xyz.com"}
             />
             <CommonButton
               type="submit"
               className={
-                "w-full font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px] mt-[10px] mt-[0px]"
+                "w-full font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px] mt-[0px] font-inter"
               }
               text={"Start now"}
             />

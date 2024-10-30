@@ -26,7 +26,7 @@ export default function Header() {
   const handleDropdownClick = (item) => {
     // Toggle the dropdown open/close when the down arrow is clicked
     console.log("handleDropdownClick", item);
-    if(item === "About Us") {
+    if (item === "About Us") {
       handleNavigate("/about");
     }
     setActiveDropdown((prev) => (prev === item ? null : item));
@@ -52,7 +52,7 @@ export default function Header() {
                 className="flex gap-[10px] items-center relative"
                 onClick={() => handleDropdownClick(item?.label)}
               >
-                <p className="text-gray font-head hover:text-blue-600 cursor-pointer">
+                <p className="text-gray font-head hover:text-blue-600 cursor-pointer font-inter">
                   {item?.label}
                 </p>
                 {item?.isIcon && (
@@ -68,20 +68,20 @@ export default function Header() {
           })}
         </div>
         <div className="flex items-center justify-between gap-[32px]">
-          <CommonButton
-            type={"button"}
-            text={"Try For Free"}
-            className={
-              "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer h-[48px] rounded-[100px] w-full d-flex items-center px-[24px]"
-            }
-            onClick={() => handleNavigate("/login")}
-          />
           <p
-            className="max-lg:hidden text-gray font-head cursor-pointer"
+            className="max-lg:hidden text-gray font-head cursor-pointer font-inter"
             onClick={() => handleNavigate("/login")}
           >
             Login
           </p>
+          <CommonButton
+            type={"button"}
+            text={"Try For Free"}
+            className={
+              "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer h-[48px] rounded-[100px] w-full d-flex items-center px-[24px] font-inter"
+            }
+            onClick={() => handleNavigate("/login")}
+          />
 
           <button className="lg:hidden" onClick={toggleMenu}>
             <svg
@@ -101,7 +101,7 @@ export default function Header() {
           </button>
           {isOpen && (
             <div
-              className={`absolute z-[999] w-full right-0 top-0 mt-[80px] bg-white rounded-lg shadow-lg p-6 py-[50px] transform transition-all duration-300 ease-in-out ${
+              className={`absolute z-[9999] w-full right-0 top-0 mt-[80px] bg-white rounded-lg shadow-lg p-6 py-[50px] transform transition-all duration-300 ease-in-out ${
                 isOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 -translate-y-4"
@@ -122,7 +122,7 @@ export default function Header() {
                         handleNavigate("/");
                         setIsOpen(false);
                       }}
-                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer font-inter"
                     >
                       Home
                     </p>
@@ -134,7 +134,7 @@ export default function Header() {
                         handleNavigate("/orders");
                         setIsOpen(false);
                       }}
-                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer font-inter"
                     >
                       Order
                     </p>
@@ -146,7 +146,7 @@ export default function Header() {
                         handleNavigate("/features");
                         setIsOpen(false);
                       }}
-                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer font-inter"
                     >
                       Features
                     </p>
@@ -158,7 +158,7 @@ export default function Header() {
                         handleNavigate("/about");
                         setIsOpen(false);
                       }}
-                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer"
+                      className="text-subhead text-paleBlue pl-[18px] cursor-pointer font-inter"
                     >
                       About Us
                     </p>
@@ -170,7 +170,7 @@ export default function Header() {
                         handleNavigate("/login");
                         setIsOpen(false);
                       }}
-                      className="text-subhead font-medium	 pl-[18px] text-secondary"
+                      className="text-subhead font-medium	 pl-[18px] text-secondary font-inter"
                     >
                       Login
                     </p>
@@ -197,7 +197,7 @@ export default function Header() {
 
         {/* Dropdowns */}
         {activeDropdown === "Home" && (
-          <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
+          <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden">
             <ProductFeatures
               onClick={() => handleNavigate("/login")}
               setActiveDropdown={setActiveDropdown}
@@ -205,7 +205,7 @@ export default function Header() {
           </div>
         )}
         {activeDropdown === "Features" && (
-          <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
+          <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden">
             <TutorialExplorer
               onClick={() => handleNavigate("/features")}
               setActiveDropdown={setActiveDropdown}
@@ -213,7 +213,7 @@ export default function Header() {
           </div>
         )}
         {activeDropdown === "Order" && (
-          <div className="w-[80%] absolute top-full mt-2 z-[999] bg-white">
+          <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden">
             <FeatureHover
               onClick={() => handleNavigate("/orders")}
               setActiveDropdown={setActiveDropdown}

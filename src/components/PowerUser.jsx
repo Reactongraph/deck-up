@@ -100,31 +100,31 @@ export default function PowerUsers() {
                 src="/images/building.svg"
                 className="w-[64px] mb-[20px] max-sm:hidden"
               />
-              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px]">
+              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px] font-inter">
                 By Sectors
               </h3>
               <ul className="space-y-1">
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Consulting Companies
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Education Institutes
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Marketing Agencies
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Entrepreneurs
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Small Businesses
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Government
                 </li>
               </ul>
@@ -148,36 +148,36 @@ export default function PowerUsers() {
                 className="w-12 h-12 text-red-400 mb-4 max-sm:hidden"
               />
 
-              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px]">
+              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px] font-inter">
                 By Functions
               </h3>
               <ul className="space-y-1">
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Marketing
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray max-sm:text-[20px]">
+                <li className="text-body text-gray max-sm:text-[20px] font-inter">
                   Sales
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
                   HR (Human Resource)
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
                   IT (Information Technology)
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
                   Learning & Development
                 </li>
                 <hr className="text-[#64A4C0] max-sm:hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px]">
+                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
                   Internal Communication
                 </li>
               </ul>
