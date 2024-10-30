@@ -50,14 +50,14 @@ export default function TutorialSection() {
             zIndex={gradientOverlayStyles.zIndex}
             transform={gradientOverlayStyles.transform}
           />
-          <h2 className="g:text-headline xl:text-headline max-sm:text-subhead   text-paleBlue font-extrabold">
+          <h2 className="g:text-headline xl:text-headline max-sm:text-subhead   text-paleBlue font-extrabold font-inter">
             Learn the tools in seconds
           </h2>
-          <p className="mt-[24px] text-body text-bodyColor">
+          <p className="mt-[24px] text-body text-bodyColor font-inter">
             Mulates real DeckUp Add-in to learn how a particular tool works
           </p>
         </div>
-        <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px]">
+        <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
           Check tutorials
         </button>
       </div>

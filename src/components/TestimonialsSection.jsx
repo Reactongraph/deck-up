@@ -145,7 +145,7 @@ export default function TestimonialsSection() {
         };
   return (
     <section className="relative pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
-      <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold">
+      <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold font-inter">
         Loved by users
       </h2>
       <div className="pl-[139px] pr-[0] mr-[-10px] lg:max-w-[1440px] xl:container xl:my-0 xl:mx-auto max-sm:p-0">
@@ -163,7 +163,7 @@ export default function TestimonialsSection() {
                       alt={`${testimonial.company} logo`}
                       className="w-[144px] m-auto mb-[47px]"
                     />
-                    <p className="text-body text-bodyColor">
+                    <p className="text-body text-bodyColor font-inter">
                       {testimonial.quote}
                     </p>
                   </div>
@@ -174,10 +174,10 @@ export default function TestimonialsSection() {
                       className="rounded-full h-[39px] w-[39px]"
                     />
                     <div className="text-left leading-[14px] text-[#1D375E]">
-                      <p className="font-semibold text-[13px]">
+                      <p className="font-semibold text-[13px] font-inter">
                         {testimonial.author}
                       </p>
-                      <p className="text-sm text-gray-600 text-[10px]">
+                      <p className="text-sm text-gray-600 text-[10px] font-inter">
                         {testimonial.position}
                       </p>
                     </div>

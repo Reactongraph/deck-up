@@ -5,7 +5,7 @@ export default function OsSelector() {
   return (
     <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] py-[120px] ps-2.5 pe-2.5">
       <div className="text-center ">
-        <h2 className="text-3xl font-bold text-white mb-8">
+        <h2 className="text-3xl font-bold text-white mb-8 font-inter">
           Thumbs up for choosing DeckUp!
         </h2>
         <div className="flex space-x-4 justify-center">
@@ -16,10 +16,10 @@ export default function OsSelector() {
                 alt="Windows"
                 className="w-16 h-16 text-gray-600 mb-4"
               />
-              <h2 className="text-xl font-semibold mb-4">Windows OS</h2>
+              <h2 className="text-xl font-semibold mb-4 font-inter">Windows OS</h2>
               <CommonButton
                 text={"Download"}
-                className="max-w-[216px] w-full bg-primary hover:bg-bprimary text-white font-semibold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded"
+                className="font-inter max-w-[216px] w-full bg-primary hover:bg-bprimary text-white font-semibold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded"
               />
             </div>
           </div>
@@ -30,8 +30,8 @@ export default function OsSelector() {
                 alt="ios"
                 className="w-16 h-16 text-gray-600 mb-4"
               />
-              <h2 className="text-xl font-semibold mb-4">Mac OS</h2>
-              <p className="text-red-400">coming soon!</p>
+              <h2 className="text-xl font-semibold mb-4 font-inter">Mac OS</h2>
+              <p className="text-red-400 font-inter">coming soon!</p>
             </div>
           </div>
         </div>

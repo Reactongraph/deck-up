@@ -97,7 +97,7 @@ export default function FeaturesShowcase() {
                 key={index}
                 className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[350px] min-h-[420px]"
               >
-                <h3 className="text-[18px] font-semibold text-paleBlue mb-[25px]">
+                <h3 className="text-[18px] font-semibold text-paleBlue mb-[25px] font-inter">
                   {feature.title}
                 </h3>
                 <div className="mt-4">

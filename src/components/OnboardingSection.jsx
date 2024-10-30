@@ -60,18 +60,18 @@ export default function OnboardingSection() {
         />
       </div>
       <div className="max-w-[480px] w-full flex flex-col justify-center">
-        <h2 className="text-headline  text-paleBlue font-extrabold">
+        <h2 className="text-headline  text-paleBlue font-extrabold font-inter">
           Get onboard for a smarter workflow today!
         </h2>
-        <p className="mt-[24px] text-body text-bodyColor">
+        <p className="mt-[24px] text-body text-bodyColor font-inter">
           Why wait to enhance existing capability and improve productivity? Your
           superpower-packed plug-and-play PPT tool is just a click away!
         </p>
         <div className="flex flex-row gap-[12px]">
-          <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px]">
+          <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
             Start free trial
           </button>
-          <button className="mt-[40px] bg-secondary text-white px-[24px] py-[12px] rounded-[100px]">
+          <button className="mt-[40px] bg-secondary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
             Explore plans
           </button>
         </div>
