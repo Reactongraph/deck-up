@@ -6,6 +6,8 @@ import LoginPage from "./view/Login";
 import Orders from "./view/Orders";
 import FeaturesPage from "./view/FeaturesPage";
 import AboutUS from "./view/AboutUs";
+import SetupPage from "./view/SetupPage";
+import VerifyMail from "./view/VerifyMail";
 function App() {
   return (
     <Router>
@@ -47,6 +49,22 @@ function App() {
           element={
             <PublicLayout>
               <AboutUS />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/setup"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <SetupPage />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/verify-mail"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <VerifyMail />
             </PublicLayout>
           }
         />
