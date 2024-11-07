@@ -27,7 +27,7 @@ export default function LoginPage() {
       dispatch(setEmail(email));
       navigate("/verify-mail");
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, dispatch, email, navigate]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -119,7 +119,7 @@ export default function LoginPage() {
                 <h2 className="text-subhead text-paleBlue font-inter">Login</h2>
                 <p className="mt-2 text-sm text-gray-600">
                   <a
-                    href="#"
+                    href="/"
                     className="font-normal text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue font-inter"
                   >
                     Create account
@@ -225,7 +225,7 @@ export default function LoginPage() {
               <p className="mt-2 text-[14px] text-bodyColor text-center pt-2 font-normal font-inter">
                 By signing up, you agree to the{" "}
                 <a
-                  href="#"
+                  href="/"
                   className="font-medium text-bodyColor underline underline-offset-2 font-inter"
                 >
                   Terms and Conditions
@@ -234,7 +234,7 @@ export default function LoginPage() {
                 <p className="mt-2 text-xs text-gray-500 text-center font-inter">
                   and{" "}
                   <a
-                    href="#"
+                    href="/"
                     className="font-medium text-bodyColor underline underline-offset-2 font-inter"
                   >
                     Privacy Policy

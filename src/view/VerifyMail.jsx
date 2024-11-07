@@ -79,7 +79,7 @@ const VerifyMail = () => {
               Enter the OTP sent to{" "}
               <span className="font-medium text-bodyColor">{email}</span>
               <a
-                href="#"
+                href="/"
                 className="text-blue-500 font-medium hover:underline underline underline-offset-1 pl-[5px]"
               >
                 Change

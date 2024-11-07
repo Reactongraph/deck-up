@@ -98,7 +98,7 @@ export default function PowerUsers() {
             <div className="flex justify-center items-start flex-col">
               <img
                 src="/images/building.svg"
-                alt="image"
+                alt=""
                 className="w-[64px] mb-[20px] max-sm:hidden"
               />
               <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px] font-inter">
@@ -147,7 +147,7 @@ export default function PowerUsers() {
               <img
                 src="/images/function.svg"
                 className="w-12 h-12 text-red-400 mb-4 max-sm:hidden"
-                alt="image"
+                alt=""
               />
 
               <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px] font-inter">
