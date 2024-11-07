@@ -5,8 +5,13 @@ import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 import { useDispatch, useSelector } from "react-redux";
-import { useRegisterUserMutation } from "../store/auth/authApiSlice";
+import {
+  useCreateFreeTrialUserMutation,
+  useRegisterUserMutation,
+} from "../store/auth/authApiSlice";
 import { setEmail } from "../store/auth/authSlice";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
@@ -14,6 +19,8 @@ export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
 
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
+  const [createFreeTrialApi] = useCreateFreeTrialUserMutation();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
@@ -32,6 +39,28 @@ export default function LoginPage() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     loginAPi(email);
+  };
+
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        const user = result.user;
+
+        await createFreeTrialApi({
+          email: user.email,
+          uid: user.uid,
+        }).unwrap();
+
+        console.log("Google Login Success:", user);
+
+        setTimeout(() => {
+          navigate("/setup");
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Google Login Error:", error);
+      });
   };
 
   // Define responsive values for GradientOverlay based on screen width
@@ -175,6 +204,7 @@ export default function LoginPage() {
 
                   <div className="mt-6">
                     <button
+                      onClick={handleGoogleLogin}
                       type="button"
                       className=" font-inter text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
                     >

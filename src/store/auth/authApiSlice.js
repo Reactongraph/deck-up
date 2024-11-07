@@ -27,6 +27,15 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+
+    // create free trail user
+    createFreeTrialUser: builder.mutation({
+      query: ({ email, uid }) => ({
+        url: "https://dupe-be.up.railway.app/users/trail",
+        method: "POST",
+        body: { email, uid },
+      }),
+    }),
   }),
 });
 
@@ -34,4 +43,5 @@ export const {
   useRegisterUserMutation,
   useVerifyOtpForLoginMutation,
   useCheckUserExistsQuery,
+  useCreateFreeTrialUserMutation,
 } = authApiSlice;
