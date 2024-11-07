@@ -1,5 +1,5 @@
-import { PlayCircle, Volume2, SkipBack, SkipForward } from "lucide-react";
-import LeftImage from "../components/common/LeftImage";
+// import { PlayCircle, Volume2, SkipBack, SkipForward } from "lucide-react";
+// import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
 import GradientOverlay from "../components/common/GradientOverlay";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import CommonButton from "./common/CommonButton";
+// import CommonButton from "./common/CommonButton";
 import GradientOverlay from "./common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 

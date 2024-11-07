@@ -15,7 +15,9 @@ const VerifyMail = () => {
 
   useEffect(() => {
     if (!isLoading && data?.message === "OTP verified") {
-      navigate("/setup");
+      setTimeout(() => {
+        navigate("/setup");
+      }, 3000);
     }
 
     if (error) {

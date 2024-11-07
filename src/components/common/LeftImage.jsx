@@ -1,6 +1,6 @@
 import React from "react";
 import CommonButton from "./CommonButton";
-import GradientOverlay from "./GradientOverlay";
+// import GradientOverlay from "./GradientOverlay";
 export default function LeftImage({
   image = "",
   data = {},

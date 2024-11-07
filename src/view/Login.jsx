@@ -1,13 +1,39 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CommonButton from "../components/common/CommonButton";
 import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterUserMutation } from "../store/auth/authApiSlice";
+import { setEmail } from "../store/auth/authSlice";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
 export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
-  console.log("sizesizesize", size);
+
+  const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.auth.email);
+
+  const handleEmailChange = (event) => {
+    dispatch(setEmail(event.target.value));
+  };
+
+  useEffect(() => {
+    if (!isLoading && data?.message === "OTP sent to your email please check") {
+      dispatch(setEmail(email));
+      navigate("/verify-mail");
+    }
+  }, [data, isLoading]);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    loginAPi(email);
+  };
+
   // Define responsive values for GradientOverlay based on screen width
   const gradientOverlayStyles =
     size.width <= 640
@@ -101,7 +127,12 @@ export default function LoginPage() {
                 </p>
               </div>
 
-              <form className="mt-8 space-y-6" action="#" method="POST">
+              <form
+                className="mt-8 space-y-6"
+                action="#"
+                method="POST"
+                onSubmit={handleFormSubmit}
+              >
                 <div className="rounded-md shadow-sm -space-y-px">
                   <div>
                     <p className="text-bodyColor text-[14px] mb-2 font-inter">
@@ -115,6 +146,8 @@ export default function LoginPage() {
                       required
                       className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
                       placeholder="Enter your email ID"
+                      value={email}
+                      onChange={handleEmailChange}
                     />
                   </div>
                 </div>
@@ -123,7 +156,8 @@ export default function LoginPage() {
                   <CommonButton
                     type="submit"
                     className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
-                    text={"Submit"}
+                    text={isLoading ? "Loading..." : "Submit"}
+                    disabled={isLoading}
                   />
                 </div>
 

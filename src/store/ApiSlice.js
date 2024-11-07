@@ -23,10 +23,20 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReAuth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  const { data, error, meta } = result;
+  const { data, error,} = result;
 
-  if (error?.data?.message) toast.error(error?.data?.message);
-  if (data?.message && !error) toast.success(data?.message);
+  if (error?.message) toast.error(error?.message);
+  if (
+    data?.message === "Invalid OTP " ||
+    data?.message === "Invalid OTP  " ||
+    data?.message === "Invalid email address"
+  ) {
+    toast.error(data?.message);
+  } else if (
+    data?.message ||
+    data?.message === "OTP sent to your email please check"
+  )
+    toast.success(data?.message);
 
   return result;
 };

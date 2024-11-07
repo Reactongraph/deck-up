@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { videos } from "../utils/videos";
-import CommonImage from "./common/CommonImage";
+// import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
 import CommonInput from "./common/CommonInput";
 import CommonVideo from "./common/CommonVideo";
@@ -19,7 +19,7 @@ export default function HeroSection() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
-  
+
   const handleEmailChange = (event) => {
     dispatch(setEmail(event.target.value));
   };
@@ -27,9 +27,11 @@ export default function HeroSection() {
   useEffect(() => {
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       dispatch(setEmail(email));
-      navigate("/verify-mail");
+      setTimeout(() => {
+        navigate("/verify-mail");
+      }, 3000);
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, dispatch, email, navigate]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
