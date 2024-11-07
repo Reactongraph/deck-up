@@ -19,6 +19,7 @@ export default function LoginPage() {
           right: "18px",
           zIndex: "-999",
           transform: "rotate(90deg)",
+          opacity: "30%",
         }
       : size.width <= 1024
       ? {
@@ -29,6 +30,7 @@ export default function LoginPage() {
           left: "-60px",
           zIndex: "-999",
           transform: "rotate(-70deg)",
+          opacity: "30%",
         }
       : {
           // Desktop styles
@@ -39,6 +41,7 @@ export default function LoginPage() {
           right: "inherit",
           zIndex: "-99",
           transform: "rotate(188deg)",
+          opacity: "30%",
         };
 
   const gradientOverlayStyles1 =
@@ -50,6 +53,7 @@ export default function LoginPage() {
           bottom: "-2px",
           zIndex: "999",
           transform: "rotate(-9deg)",
+          opacity: "30%",
         }
       : size.width <= 1024
       ? {
@@ -60,6 +64,7 @@ export default function LoginPage() {
           left: "-60px",
           zIndex: "-999",
           transform: "rotate(-70deg)",
+          opacity: "30%",
         }
       : {
           // Desktop styles
@@ -70,12 +75,13 @@ export default function LoginPage() {
           bottom: 0,
           left: "inherit",
           transform: "rotate(158deg)",
+          opacity: "30%",
         };
   return (
     <>
       {/* <Header /> */}
-      <div className="bg-lightBlue min-h-screen flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+      <div className="bg-lightBlue min-h-[100%] flex flex-col">
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] xl:pt-[48px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
             height={gradientOverlayStyles.height}
@@ -85,9 +91,10 @@ export default function LoginPage() {
             right={gradientOverlayStyles.right}
             zIndex={gradientOverlayStyles.zIndex}
             transform={gradientOverlayStyles.transform}
+            opacity={gradientOverlayStyles.opacity}
           />
           {/* Left section for the login form */}
-          <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 order-2 lg:order-1">
+          <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-[23px] order-2 lg:order-1">
             <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[24px] pb-[186px] pl-[24px] sm:pr-[80px] sm:pl-[80px]">
               <div className="flex justify-between items-center">
                 <h2 className="text-subhead text-paleBlue font-inter">Login</h2>
@@ -211,9 +218,9 @@ export default function LoginPage() {
           </div>
 
           {/* Right section for the image */}
-          <div className="hidden lg:block relative w-0 flex-1 m-auto order-1 lg:order-2">
+          <div className="hidden lg:block relative w-0 flex-1 order-1 lg:order-2">
             <img
-              className="absolute inset-0 w-full max-w-[659px] m-auto object-contain"
+              className="absolute inset-0 w-auto max-w-[659px] mt-[47px] object-contain"
               src="/images/login-logo.svg"
               alt="Productivity illustration"
             />
@@ -237,6 +244,7 @@ export default function LoginPage() {
             right={gradientOverlayStyles1.right}
             zIndex={gradientOverlayStyles1.zIndex}
             transform={gradientOverlayStyles1.transform}
+            opacity={gradientOverlayStyles1.opacity}
           />
         </div>
       </div>
