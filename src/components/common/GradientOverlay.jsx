@@ -12,7 +12,8 @@ const GradientOverlay = ({
   right,
   zIndex = "",
   transform = "",
-  display = ""
+  display = "",
+  opacity = ""
 }) => {
   const style = {
     width,
@@ -26,7 +27,8 @@ const GradientOverlay = ({
     right,
     zIndex,
     transform,
-    display
+    display,
+    opacity
   };
 
   return <div style={style} />;
