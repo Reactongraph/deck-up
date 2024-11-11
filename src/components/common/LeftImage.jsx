@@ -13,17 +13,17 @@ export default function LeftImage({
         style={{ maxWidth: "1450px" }}
         className="container mx-auto py-8 lg:py-16 "
       >
-        <div className="flex flex-col lg:flex-row items-center gap-8 px-5 lg:px-0">
+        <div className="flex flex-col lg:flex-row items-center gap-8">
           <div className="mb-10 lg:mb-0 lg:w-1/2 w-[100%]">
-            <div className="relative w-full max-w-[816px] mr-[-195px] flex justify-center lg:block">
+            <div className="relative w-full max-w-[816px] mr-[-195px] lg:block">
               <img
                 src={image}
                 alt="Person relaxing in office chair"
-                className="w-[90%] lg:w-full lg:pl-[10px] pl-0"
+                className="w-[90%] lg:w-full"
               />
             </div>
           </div>
-          <div className="flex flex-col sm:1/2 xl:max-w-[600px] lg:w-[600px] xl:pr-[126px] lg:pr-[50px]">
+          <div className="flex flex-col sm:1/2 xl:max-w-[600px] lg:w-[600px] xl:pr-[126px] lg:pr-[50px] px-14">
             <div
               className="
                  text-wrap text-left"
