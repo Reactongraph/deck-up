@@ -64,7 +64,7 @@ const Footer = () => {
                 <img
                   src="/images/mail.svg"
                   alt="img"
-                  className="max-sm:h-[24] max-sm:w-[24]"
+                  className="max-sm:h-[24] max-sm:w-[24] mb-4"
                 />
                 <p className="mb-4 font-inter max-sm:mb-0 max-sm:text-[14px]">
                   info@deckup.com
@@ -72,7 +72,7 @@ const Footer = () => {
               </div>
               <div className="flex justify-center md:justify-start space-x-4">
                 <a
-                  href="#"
+                  href="/"
                   aria-label="LinkedIn"
                   className="text-white hover:text-blue-300"
                 >
@@ -90,7 +90,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   aria-label="YouTube"
                   className="text-white hover:text-blue-300"
                 >
