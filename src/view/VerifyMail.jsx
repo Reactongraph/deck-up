@@ -69,7 +69,7 @@ const VerifyMail = () => {
         closeOnClick
         pauseOnHover
       />
-      <div className="flex flex-col lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+      <div className="flex flex-col lg:flex-row container lg:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
         <div className="flex-1 flex items-center justify-center mt-10">
           <div className="max-w-[536px] w-full bg-white rounded-lg sm:px-[66px] px-[40px] pt-[50px] pb-[300px] text-start mx-[40px] xl:mx-[0px]">
             <h2 className="text-2xl font-semibold text-paleBlue mb-2">

@@ -23,7 +23,7 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReAuth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  const { data, error,} = result;
+  const { data, error } = result;
 
   if (error?.message) toast.error(error?.message);
   if (
@@ -37,6 +37,9 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
     data?.message === "OTP sent to your email please check"
   )
     toast.success(data?.message);
+  if (error?.data) {
+    toast.error(error?.data?.error);
+  }
 
   return result;
 };
