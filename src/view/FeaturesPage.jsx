@@ -1,5 +1,5 @@
-import { PlayCircle, Volume2, SkipBack, SkipForward } from "lucide-react";
-import LeftImage from "../components/common/LeftImage";
+// import { PlayCircle, Volume2, SkipBack, SkipForward } from "lucide-react";
+// import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
 import GradientOverlay from "../components/common/GradientOverlay";
 
@@ -91,20 +91,20 @@ function TutorialCard({ title, thumbnail, duration, description }) {
   );
 }
 
-const data = {
-  heading: "Sign Up Today",
-  description: [
-    {
-      text: ` Your superpower-packed plug-and-play PPT tool is just a click away.`,
-      class: "font-[500] text-bodyColor",
-    },
-  ],
-  btnText: "Get Started",
-};
-const customCSS = {
-  fontSize: "text-subhead",
-  fontColor: "text-paleBlue",
-};
+// const data = {
+//   heading: "Sign Up Today",
+//   description: [
+//     {
+//       text: ` Your superpower-packed plug-and-play PPT tool is just a click away.`,
+//       class: "font-[500] text-bodyColor",
+//     },
+//   ],
+//   btnText: "Get Started",
+// };
+// const customCSS = {
+//   fontSize: "text-subhead",
+//   fontColor: "text-paleBlue",
+// };
 
 export default function TutorialGrid() {
   return (

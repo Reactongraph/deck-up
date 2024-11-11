@@ -3,7 +3,7 @@ import React from "react";
 // import Footer from "../components/Foorter";
 import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
-import { User, CheckCircle, Award, Smile } from "lucide-react";
+// import { User, CheckCircle, Award, Smile } from "lucide-react";
 import GradientOverlay from "../components/common/GradientOverlay";
 
 const data = {
@@ -100,7 +100,7 @@ const AboutUS = () => {
                 height="374px"
                 gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254))"
                 bottom="-63px"
-                right="-216px"
+                right="-10%"
               />
             </div>
           </div>

@@ -1,14 +1,85 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CommonButton from "../components/common/CommonButton";
 import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterUserMutation } from "../store/auth/authApiSlice";
+import { setEmail } from "../store/auth/authSlice";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import { toast, ToastContainer } from "react-toastify";
+import googleLoginPostApiRequest from "../helper/helper";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
 export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
-  console.log("sizesizesize", size);
+
+  const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.auth.email);
+
+  const handleEmailChange = (event) => {
+    const email = event.target.value;
+    dispatch(setEmail(email));
+    localStorage.setItem("email", email);
+  };
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    if (storedEmail) {
+      dispatch(setEmail(storedEmail));
+    }
+
+    if (!isLoading && data?.message === "OTP sent to your email please check") {
+      dispatch(setEmail(email));
+      navigate("/verify-mail");
+    }
+  }, [data, isLoading, dispatch, email, navigate]);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    loginAPi(email);
+  };
+
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        const user = result.user;
+
+        localStorage.setItem("email", user.email);
+
+        try {
+          const responseData = await googleLoginPostApiRequest(
+            user.email,
+            user.uid
+          );
+          console.log("Google Login Success:", user, responseData);
+
+          toast.success("Google login successfully");
+
+          setTimeout(() => {
+            navigate("/setup");
+          }, 3000);
+        } catch (error) {
+          console.log("error: ", error);
+          toast.error(
+            error?.response?.data?.error || "Something went wrong. Try again"
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Google Login Error:", error);
+      });
+  };
+
   // Define responsive values for GradientOverlay based on screen width
+
   const gradientOverlayStyles =
     size.width <= 640
       ? {
@@ -74,8 +145,15 @@ export default function LoginPage() {
   return (
     <>
       {/* <Header /> */}
-      <div className="bg-lightBlue min-h-screen flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+      <div className="bg-lightBlue min-h-[100%] flex flex-col">
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+        />
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
             height={gradientOverlayStyles.height}
@@ -93,7 +171,7 @@ export default function LoginPage() {
                 <h2 className="text-subhead text-paleBlue font-inter">Login</h2>
                 <p className="mt-2 text-sm text-gray-600">
                   <a
-                    href="#"
+                    href="/"
                     className="font-normal text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue font-inter"
                   >
                     Create account
@@ -101,7 +179,12 @@ export default function LoginPage() {
                 </p>
               </div>
 
-              <form className="mt-8 space-y-6" action="#" method="POST">
+              <form
+                className="mt-8 space-y-6"
+                action="#"
+                method="POST"
+                onSubmit={handleFormSubmit}
+              >
                 <div className="rounded-md shadow-sm -space-y-px">
                   <div>
                     <p className="text-bodyColor text-[14px] mb-2 font-inter">
@@ -115,6 +198,8 @@ export default function LoginPage() {
                       required
                       className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
                       placeholder="Enter your email ID"
+                      value={email}
+                      onChange={handleEmailChange}
                     />
                   </div>
                 </div>
@@ -123,7 +208,8 @@ export default function LoginPage() {
                   <CommonButton
                     type="submit"
                     className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
-                    text={"Submit"}
+                    text={isLoading ? "Loading..." : "Submit"}
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -141,6 +227,7 @@ export default function LoginPage() {
 
                   <div className="mt-6">
                     <button
+                      onClick={handleGoogleLogin}
                       type="button"
                       className=" font-inter text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
                     >
@@ -191,7 +278,7 @@ export default function LoginPage() {
               <p className="mt-2 text-[14px] text-bodyColor text-center pt-2 font-normal font-inter">
                 By signing up, you agree to the{" "}
                 <a
-                  href="#"
+                  href="/"
                   className="font-medium text-bodyColor underline underline-offset-2 font-inter"
                 >
                   Terms and Conditions
@@ -200,7 +287,7 @@ export default function LoginPage() {
                 <p className="mt-2 text-xs text-gray-500 text-center font-inter">
                   and{" "}
                   <a
-                    href="#"
+                    href="/"
                     className="font-medium text-bodyColor underline underline-offset-2 font-inter"
                   >
                     Privacy Policy
