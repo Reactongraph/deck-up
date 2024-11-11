@@ -5,13 +5,12 @@ import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useCreateFreeTrialUserMutation,
-  useRegisterUserMutation,
-} from "../store/auth/authApiSlice";
+import { useRegisterUserMutation } from "../store/auth/authApiSlice";
 import { setEmail } from "../store/auth/authSlice";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { toast, ToastContainer } from "react-toastify";
+import googleLoginPostApiRequest from "../helper/helper";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
@@ -19,17 +18,23 @@ export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
 
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
-  const [createFreeTrialApi] = useCreateFreeTrialUserMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
 
   const handleEmailChange = (event) => {
-    dispatch(setEmail(event.target.value));
+    const email = event.target.value;
+    dispatch(setEmail(email));
+    localStorage.setItem("email", email);
   };
 
   useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    if (storedEmail) {
+      dispatch(setEmail(storedEmail));
+    }
+
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       dispatch(setEmail(email));
       navigate("/verify-mail");
@@ -47,16 +52,25 @@ export default function LoginPage() {
       .then(async (result) => {
         const user = result.user;
 
-        await createFreeTrialApi({
-          email: user.email,
-          uid: user.uid,
-        }).unwrap();
+        localStorage.setItem("email", user.email);
 
-        console.log("Google Login Success:", user);
+        try {
+          const responseData = await googleLoginPostApiRequest(
+            user.email,
+            user.uid
+          );
+          console.log("Google Login Success:", user, responseData);
 
-        setTimeout(() => {
-          navigate("/setup");
-        }, 3000);
+          toast.success("Google login successfully");
+
+          setTimeout(() => {
+            navigate("/setup");
+          }, 3000);
+        } catch (error) {
+          toast.error(
+            error?.response?.data?.error || "Something went wrong. Try again"
+          );
+        }
       })
       .catch((error) => {
         console.error("Google Login Error:", error);
@@ -64,6 +78,7 @@ export default function LoginPage() {
   };
 
   // Define responsive values for GradientOverlay based on screen width
+
   const gradientOverlayStyles =
     size.width <= 640
       ? {
@@ -130,7 +145,14 @@ export default function LoginPage() {
     <>
       {/* <Header /> */}
       <div className="bg-lightBlue min-h-screen flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+        />
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
             height={gradientOverlayStyles.height}
