@@ -15,6 +15,14 @@ const VerifyMail = () => {
     useVerifyOtpForLoginMutation();
 
   useEffect(() => {
+    dispatch(setOtp(["", "", "", "", "", ""]));
+
+    return () => {
+      dispatch(setOtp(["", "", "", "", "", ""]));
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
     // if (!isLoading && data?.message === "OTP verified") {
     //   setTimeout(() => {
     //     navigate("/setup");
