@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const googleLoginPostApiRequest = async (email, uid) => {
+export const googleLoginPostApiRequest = async (email, uid) => {
   const url = process.env.REACT_APP_FIREBASE_APP_URL;
 
   try {
@@ -16,4 +16,25 @@ const googleLoginPostApiRequest = async (email, uid) => {
   }
 };
 
-export default googleLoginPostApiRequest;
+export const checkUserTrailApiRequest = async (email) => {
+  const url = process.env.REACT_APP_FIREBASE_APP_URL;
+
+  try {
+    const response = await axios.post(
+      url,
+      {
+        email,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error during user check API request:", error);
+    throw error;
+  }
+};

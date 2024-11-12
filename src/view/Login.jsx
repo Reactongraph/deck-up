@@ -10,7 +10,7 @@ import { setEmail } from "../store/auth/authSlice";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast, ToastContainer } from "react-toastify";
-import googleLoginPostApiRequest from "../helper/helper";
+import { googleLoginPostApiRequest } from "../helper/helper";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
