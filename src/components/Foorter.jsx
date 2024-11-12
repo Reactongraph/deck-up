@@ -64,7 +64,7 @@ const Footer = () => {
                 <img
                   src="/images/mail.svg"
                   alt="img"
-                  className="max-sm:h-[24] max-sm:w-[24]"
+                  className="max-sm:h-[24] max-sm:w-[24] mb-4"
                 />
                 <p className="mb-4 font-inter max-sm:mb-0 max-sm:text-[14px]">
                   info@deckup.com

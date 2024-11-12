@@ -67,6 +67,7 @@ export default function LoginPage() {
             navigate("/setup");
           }, 3000);
         } catch (error) {
+          console.log("error: ", error);
           toast.error(
             error?.response?.data?.error || "Something went wrong. Try again"
           );
@@ -144,7 +145,7 @@ export default function LoginPage() {
   return (
     <>
       {/* <Header /> */}
-      <div className="bg-lightBlue min-h-screen flex flex-col">
+      <div className="bg-lightBlue min-h-[100%] flex flex-col">
         <ToastContainer
           position="top-right"
           autoClose={3000}
@@ -152,7 +153,7 @@ export default function LoginPage() {
           closeOnClick
           pauseOnHover
         />
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
             height={gradientOverlayStyles.height}

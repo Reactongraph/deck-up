@@ -100,7 +100,7 @@ const AboutUS = () => {
                 height="374px"
                 gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254))"
                 bottom="-63px"
-                right="-216px"
+                right="-10%"
               />
             </div>
           </div>
