@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2.03,
         },
       },
       {
@@ -144,8 +144,8 @@ export default function TestimonialsSection() {
           transform: "rotate(-70deg)",
         };
   return (
-    <section className="relative pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
-      <h2 className="text-headline text-center mb-[45px] text-paleBlue font-extrabold font-inter">
+    <section className="relative pb-8 lg:pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
+      <h2 className="text-2xl lg:text-headline text-center mb-[45px] text-paleBlue font-extrabold font-inter">
         Loved by users
       </h2>
       <div className="pl-[139px] pr-[0] mr-[-10px] lg:max-w-[1440px] xl:container xl:my-0 xl:mx-auto max-sm:p-0">
@@ -156,7 +156,7 @@ export default function TestimonialsSection() {
                 key={index}
                 className="" // Add horizontal margin here
               >
-                <div className="bg-white z-10 py-[54px] text-center px-[54px] min-h-[500px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2">
+                <div className="bg-white z-10 py-[54px] text-center px-[54px] min-h-[378px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2">
                   <div>
                     <img
                       src={testimonial.logo}

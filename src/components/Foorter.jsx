@@ -9,10 +9,10 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] pb-8 md:pb-[20px] mb-[63px] text-center xl:text-left max-sm:flex-col max-sm:items-baseline max-sm:mb-[30px]">
           <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[0] max-w-[530px] relative max-sm:mb-0">
-            <h2 className="text-[24px]  font-[500] mb-2 max-w-[70%] relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
+            <h2 className="text-base xl:text-[24px] font-[500] mb-2 max-w-[70%] relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
               Need some answers or want to catch up with us!
             </h2>
-            <p className="text-blue-200 text-sm md:text-base mb-4 relative z-[1] font-inter max-sm:max-w-full max-sm:text-justify">
+            <p className="text-blue-200 text-sm xl:text-base mb-4 relative z-[1] font-inter max-w-full text-justify">
               Here's where you will find answers and can get to know us!
             </p>
             <GradientOverlay

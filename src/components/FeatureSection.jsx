@@ -32,12 +32,12 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <div className="relative  pt-[100px] pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">
+    <div className="relative pt-[82px] xl:pt-[100px] pb-[72px] xl:pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] px-14 xl:px-[10px]">
       <div className="container">
-        <h2 className="lg:text-headline xl:text-headline max-sm:text-subhead text-center  text-paleBlue font-extrabold m-auto w-[80%] sm:m-none sm:w-[100%] font-inter">
+        <h2 className="lg:text-headline xl:text-headline text-subhead text-center  text-paleBlue font-extrabold m-auto w-[80%] sm:m-none sm:w-[100%] font-inter">
           Features that help you save time and <br /> work smart
         </h2>
-        <div className="mt-[81px]">
+        <div className="mt-6 xl:mt-[81px]">
           <div className="grid grid-cols-2 gap-[16px] sm:gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <div

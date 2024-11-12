@@ -73,14 +73,14 @@ export default function HeroSection() {
         };
 
   return (
-    <div className="container flex items-center ps-2.5 relative flex-col-reverse pl-[22px] pr-[0px] sm:pr-[32px]">
-      <div className="w-full max-w-[465px] sm:pr-[40px] pr-[0px] mt-[40px] sm:mt-[0px]">
+    <div className="container flex items-center gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
+      <div className="w-full lg:max-w-[465px] pl-[57px] xl:pl-0 xl:pr-[40px] pr-[57px] mt-[40px] sm:mt-[0px]">
         <div className="relative ">
           <>
-            <h1 className="max-sm:text-[40px] max-sm:font-bold lg:text-banner text-paleBlue font-inter max-sm:max-w-[300px] w-full">
+            <h1 className="text-[40px] font-bold lg:text-banner text-paleBlue font-inter max-sm:max-w-[300px] w-full">
               Create decks at lightning speed
             </h1>
-            <p className="mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading font-inter max-sm:text-[14px]">
+            <p className="mt-6 xl:mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading font-inter max-sm:text-[14px]">
               Drive impact and dramatically improve quality and speed using
               DeckUp
             </p>
@@ -105,7 +105,7 @@ export default function HeroSection() {
             text={"Watch Demo"}
           />
         </div>
-        <div className="mt-[70px] w-[90%] sm:w-[100%] max-sm:hidden">
+        <div className="mt-8 xl:mt-[70px] w-[90%] sm:w-[100%] max-sm:hidden">
           <p className="text-[12px] font-bold text-primary font-inter">
             START 30 DAY FREE TRIAL
           </p>
@@ -115,21 +115,21 @@ export default function HeroSection() {
               name="email"
               id="email"
               className={
-                "w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
+                "w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
               }
               placeholder={"example@xyz.com"}
             />
             <CommonButton
               type="submit"
               className={
-                "w-full font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px] mt-[0px] font-inter"
+                "w-full text-sm xl:text-base font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px] mt-[0px] font-inter"
               }
               text={"Start now"}
             />
           </form>
         </div>
       </div>
-      <div className="relative w-full max-w-[739px] lg:mr-[-148px] xl:mr-[-195px]">
+      <div className="relative flex justify-end xl:block w-full xl:max-w-[739px] lg:mr-[-148px] xl:mr-[-195px]">
         {/* <CommonImage
           src="/images/left-logo.svg"
           alt={"Person working on a computer surrounded by charts and graphs"}
@@ -138,6 +138,7 @@ export default function HeroSection() {
         <CommonVideo
           url={videos?.hero}
           gradientOverlayStyles1={gradientOverlayStyles1}
+          className="w-[79.9%] h-[377px] xl:h-full mx-0 xl:mx-auto"
         />
 
         {/* <GradientOverlay
