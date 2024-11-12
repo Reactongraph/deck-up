@@ -73,7 +73,7 @@ export default function HeroSection() {
         };
 
   return (
-    <div className="container flex items-center ps-2.5 relative max-sm:flex-col-reverse max-sm:flex pl-[22px] pr-[0px] sm:pr-[32px]">
+    <div className="container flex items-center ps-2.5 relative flex-col-reverse pl-[22px] pr-[0px] sm:pr-[32px]">
       <div className="w-full max-w-[465px] sm:pr-[40px] pr-[0px] mt-[40px] sm:mt-[0px]">
         <div className="relative ">
           <>
