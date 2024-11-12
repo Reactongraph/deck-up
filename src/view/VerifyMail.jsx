@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { setOtp, selectAuthState } from "../store/auth/authSlice";
 import { useVerifyOtpForLoginMutation } from "../store/auth/authApiSlice";
+import { checkUserTrailApiRequest } from "../helper/helper";
 
 const VerifyMail = () => {
   const dispatch = useDispatch();
@@ -14,16 +15,28 @@ const VerifyMail = () => {
     useVerifyOtpForLoginMutation();
 
   useEffect(() => {
-    if (!isLoading && data?.message === "OTP verified") {
-      setTimeout(() => {
-        navigate("/setup");
-      }, 3000);
-    }
+    // if (!isLoading && data?.message === "OTP verified") {
+    //   setTimeout(() => {
+    //     navigate("/setup");
+    //   }, 3000);
+    // }
 
     if (error) {
       toast.error("An error occurred. Please try again later.");
     }
   }, [data, isLoading, error, navigate]);
+
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pastedOtp = e.clipboardData.getData("Text").slice(0, otp.length);
+
+    if (/^\d{6}$/.test(pastedOtp)) {
+      const newOtp = pastedOtp.split("");
+      dispatch(setOtp(newOtp));
+    } else {
+      toast.error("Invalid OTP format.");
+    }
+  };
 
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
@@ -57,7 +70,21 @@ const VerifyMail = () => {
 
     const otpString = otp.join("");
 
-    verifyApi({ email, otp: otpString });
+    try {
+      const responseData = await checkUserTrailApiRequest(email);
+      await verifyApi({ email, otp: otpString }).unwrap();
+
+      setTimeout(() => {
+        navigate("/setup");
+      }, 3000);
+
+      // toast.success("Verified");
+      console.log("responseData:", responseData);
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.error || "Verification failed. Please try again."
+      );
+    }
   };
 
   return (
@@ -95,6 +122,7 @@ const VerifyMail = () => {
                     type="text"
                     maxLength="1"
                     value={digit}
+                    onPaste={index === 0 ? handlePaste : null}
                     onChange={(e) => handleOtpChange(e, index)}
                     className="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
                   />
