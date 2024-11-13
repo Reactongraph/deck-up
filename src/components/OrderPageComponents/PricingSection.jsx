@@ -2,8 +2,16 @@ import CommonButton from "../common/CommonButton";
 import { orderData } from "../../utils/data";
 import GradientOverlay from "../common/GradientOverlay";
 import useCustomWindowSize from "../../Hooks/useCustomWindowSize";
+import { useNavigate } from "react-router-dom";
+
 export default function PricingSection() {
   const size = useCustomWindowSize();
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate("/create-account");
+  };
+
   const gradientOverlayStyles =
     size.width <= 640
       ? {
@@ -128,6 +136,7 @@ export default function PricingSection() {
                 }`}
                 variant="outline"
                 text={plan.buttonText}
+                onClick={handleGetStarted}
               />
             </div>
           ))}

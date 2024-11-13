@@ -8,6 +8,7 @@ import FeaturesPage from "./view/FeaturesPage";
 import AboutUS from "./view/AboutUs";
 import SetupPage from "./view/SetupPage";
 import VerifyMail from "./view/VerifyMail";
+import CreateAccount from "./components/SingleUser/CreateAccount";
 function App() {
   return (
     <Router>
@@ -65,6 +66,14 @@ function App() {
           element={
             <PublicLayout hasNoFooter={true}>
               <VerifyMail />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/create-account"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <CreateAccount />
             </PublicLayout>
           }
         />
