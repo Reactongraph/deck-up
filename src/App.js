@@ -8,7 +8,8 @@ import FeaturesPage from "./view/FeaturesPage";
 import AboutUS from "./view/AboutUs";
 import SetupPage from "./view/SetupPage";
 import VerifyMail from "./view/VerifyMail";
-import CreateAccount from "./components/SingleUser/CreateAccount";
+import CreateAccountPage from "./components/SingleUser/CreateAccountPage";
+import QuantityPage from "./components/SingleUser/QuantityPage";
 function App() {
   return (
     <Router>
@@ -73,7 +74,15 @@ function App() {
           path="/create-account"
           element={
             <PublicLayout hasNoFooter={true}>
-              <CreateAccount />
+              <CreateAccountPage />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/quantity"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <QuantityPage />
             </PublicLayout>
           }
         />

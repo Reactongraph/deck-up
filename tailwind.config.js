@@ -27,6 +27,8 @@ module.exports = {
         smallBlack: "#252525",
         hoverButton: "#DB4C38",
         hoverSecondary: "#1B909F",
+        borderGray: "#CFCFCF",
+        lighCyan: "#E4F6F9",
       },
       fontSize: {
         banner: ["55px", { lineHeight: "70px", fontWeight: "800" }], // Banner headline
