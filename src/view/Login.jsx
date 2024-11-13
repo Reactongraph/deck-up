@@ -14,7 +14,6 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast, ToastContainer } from "react-toastify";
 import {
-  checkUserTrailApiRequest,
   googleLoginPostApiRequest,
 } from "../helper/helper";
 // import Footer from "../components/Foorter";
@@ -65,7 +64,6 @@ export default function LoginPage() {
 
         try {
           await triggerCheckUserApi(user.email).unwrap();
-          await checkUserTrailApiRequest(user.email);
           const responseData = await googleLoginPostApiRequest(
             user.email,
             user.uid
