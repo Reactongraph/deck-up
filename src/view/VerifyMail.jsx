@@ -15,8 +15,7 @@ const VerifyMail = () => {
 
   const navigate = useNavigate();
 
-  const [verifyApi, { data, isLoading, error }] =
-    useVerifyOtpForLoginMutation();
+  const [verifyApi, { isLoading }] = useVerifyOtpForLoginMutation();
 
   const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
 
@@ -27,14 +26,6 @@ const VerifyMail = () => {
       dispatch(setOtp(["", "", "", "", "", ""]));
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    if (!isLoading && data?.message === "OTP verified") {
-      setTimeout(() => {
-        navigate("/setup");
-      }, 3000);
-    }
-  }, [data, isLoading, error, navigate]);
 
   const handlePaste = (e) => {
     e.preventDefault();
@@ -61,6 +52,16 @@ const VerifyMail = () => {
         if (nextInput) {
           nextInput.focus();
         }
+      }
+    }
+  };
+
+  const handleBackspace = (e, index) => {
+    if (e.key === "Backspace" && otp[index] === "") {
+      const prevIndex = index - 1;
+      const prevInput = document.getElementById(`otp-input-${prevIndex}`);
+      if (prevInput) {
+        prevInput.focus();
       }
     }
   };
@@ -134,6 +135,7 @@ const VerifyMail = () => {
                     value={digit}
                     onPaste={index === 0 ? handlePaste : null}
                     onChange={(e) => handleOtpChange(e, index)}
+                    onKeyDown={(e) => handleBackspace(e, index)}
                     className="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
                   />
                 ))}

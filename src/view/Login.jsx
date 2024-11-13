@@ -13,10 +13,7 @@ import { setEmail } from "../store/auth/authSlice";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast, ToastContainer } from "react-toastify";
-import {
-  checkUserTrailApiRequest,
-  googleLoginPostApiRequest,
-} from "../helper/helper";
+import { googleLoginPostApiRequest } from "../helper/helper";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
@@ -28,7 +25,7 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const email = useSelector((state) => state.auth.email);
+  let email = useSelector((state) => state.auth.email);
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
@@ -37,12 +34,11 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
-    const storedEmail = localStorage.getItem("email");
-    if (storedEmail) {
-      dispatch(setEmail(storedEmail));
-    }
-
     if (!isLoading && data?.message === "OTP sent to your email please check") {
+      const storedEmail = localStorage.getItem("email");
+      if (storedEmail) {
+        dispatch(setEmail(storedEmail));
+      }
       dispatch(setEmail(email));
       setTimeout(() => {
         navigate("/verify-mail");
@@ -56,6 +52,7 @@ export default function LoginPage() {
   };
 
   const handleGoogleLogin = () => {
+    email = "";
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(async (result) => {
@@ -65,7 +62,6 @@ export default function LoginPage() {
 
         try {
           await triggerCheckUserApi(user.email).unwrap();
-          await checkUserTrailApiRequest(user.email);
           const responseData = await googleLoginPostApiRequest(
             user.email,
             user.uid
