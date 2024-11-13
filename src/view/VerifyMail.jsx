@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { setOtp, selectAuthState } from "../store/auth/authSlice";
-import { useVerifyOtpForLoginMutation } from "../store/auth/authApiSlice";
+import {
+  useLazyCheckUserExistsQuery,
+  useVerifyOtpForLoginMutation,
+} from "../store/auth/authApiSlice";
 import { checkUserTrailApiRequest } from "../helper/helper";
 
 const VerifyMail = () => {
@@ -11,8 +14,11 @@ const VerifyMail = () => {
   const { email, otp } = useSelector(selectAuthState);
 
   const navigate = useNavigate();
+
   const [verifyApi, { data, isLoading, error }] =
     useVerifyOtpForLoginMutation();
+
+  const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
 
   useEffect(() => {
     dispatch(setOtp(["", "", "", "", "", ""]));
@@ -23,14 +29,10 @@ const VerifyMail = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // if (!isLoading && data?.message === "OTP verified") {
-    //   setTimeout(() => {
-    //     navigate("/setup");
-    //   }, 3000);
-    // }
-
-    if (error) {
-      toast.error("An error occurred. Please try again later.");
+    if (!isLoading && data?.message === "OTP verified") {
+      setTimeout(() => {
+        navigate("/setup");
+      }, 3000);
     }
   }, [data, isLoading, error, navigate]);
 
@@ -79,19 +81,19 @@ const VerifyMail = () => {
     const otpString = otp.join("");
 
     try {
-      const responseData = await checkUserTrailApiRequest(email);
-      await verifyApi({ email, otp: otpString }).unwrap();
+      const otpVerify = await verifyApi({ email, otp: otpString }).unwrap();
+      if (otpVerify?.message === "OTP verified") {
+        await triggerCheckUserApi(email).unwrap();
+        await checkUserTrailApiRequest(email);
 
-      setTimeout(() => {
-        navigate("/setup");
-      }, 3000);
+        setTimeout(() => {
+          navigate("/setup");
+        }, 3000);
 
-      // toast.success("Verified");
-      console.log("responseData:", responseData);
+        toast.success("Verified. Redirecting to setup page...");
+      }
     } catch (error) {
-      toast.error(
-        error?.response?.data?.error || "Verification failed. Please try again."
-      );
+      toast.error(error?.response?.data?.error);
     }
   };
 
