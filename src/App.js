@@ -10,6 +10,8 @@ import SetupPage from "./view/SetupPage";
 import VerifyMail from "./view/VerifyMail";
 import CreateAccountPage from "./components/SingleUser/CreateAccountPage";
 import QuantityPage from "./components/SingleUser/QuantityPage";
+import PaymentPage from "./components/SingleUser/PaymentPage";
+import Dashboard from "./components/SingleUser/Dashboard/Dashboad";
 function App() {
   return (
     <Router>
@@ -83,6 +85,22 @@ function App() {
           element={
             <PublicLayout hasNoFooter={true}>
               <QuantityPage />
+            </PublicLayout>
+          }
+        />
+         <Route
+          path="/payment"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <PaymentPage />
+            </PublicLayout>
+          }
+        />
+         <Route
+          path="/dashboard"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <Dashboard />
             </PublicLayout>
           }
         />
