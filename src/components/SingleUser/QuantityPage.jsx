@@ -4,7 +4,7 @@ import CommonButton from "../common/CommonButton";
 
 export default function QuantityPage() {
   return (
-    <div className="flex justify-center pt-16 bg-lightBlue h-screen">
+    <div className="flex justify-center pt-16 bg-lightBlue h-full">
       <div className="flex gap-11 bg-white rounded-[10px] max-h-[600px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[79.67px]">
         <div className="w-1/2">
           <h2 className="text-2xl leading-[29.05px] font-medium text-paleBlue font-inter">

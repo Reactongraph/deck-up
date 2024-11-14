@@ -2,9 +2,11 @@ import React, { useRef } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { useCheckUserExistsQuery } from "../store/auth/authApiSlice";
+import { useSelector } from "react-redux";
+import { selectAuthState } from "../store/auth/authSlice";
 
 const SetupPage = () => {
-  const email = localStorage.getItem("email");
+  const { email } = useSelector(selectAuthState);
 
   const { data, isLoading, error } = useCheckUserExistsQuery(email);
 
