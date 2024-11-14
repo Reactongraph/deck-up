@@ -14,7 +14,17 @@ export default function PaymentPage() {
               <img src="/images/check_circle.svg" alt="" />
             </div>
             <CommonButton
-              text="Invoice for the payment"
+              text={
+                <div className="flex gap-2 items-start">
+                  <img
+                    src="/images/Vector.svg"
+                    alt="icon"
+                    width="18px"
+                    height="19px"
+                  />
+                  <p>Invoice for the payment</p>
+                </div>
+              }
               className="w-full mt-[21px] flex justify-center items-center border rounded-lg text-darkBlue border-secondary"
             />
           </div>
@@ -23,18 +33,36 @@ export default function PaymentPage() {
               <p className="leading-[19.05px] text-bodyColor font-inter">
                 Thank you for choosing Deckup!
               </p>
-              <p className="leading-[19.05px] text-darkBlue font-inter">
-                Happy Decking Up
-              </p>
+              <div className="flex gap-1 items-start">
+                <img
+                  src="/images/family_star.svg"
+                  alt="icon"
+                  width="20px"
+                  height="19px"
+                />
+                <p className="leading-[19.05px] text-darkBlue font-inter">
+                  Happy Decking Up
+                </p>
+              </div>
             </div>
             <div className="w-[40%] bg-lighCyan pt-4 pl-[17px] text-paleBlue flex flex-col gap-[34px] justify-center items-center text-center pr-[18px] pb-[18px]">
               <div className="flex flex-col justify-center items-center">
-              <img src="/images/download.svg" alt="icon" width="20px" height="20px"/>
-              <p className="font-semibold">Download link</p>
+                <img
+                  src="/images/download.svg"
+                  alt="icon"
+                  width="20px"
+                  height="20px"
+                />
+                <p className="font-semibold">Download link</p>
               </div>
               <div className="flex flex-col justify-center items-center">
-              <img src="/images/share.svg" alt="icon" width="20px" height="20px"/>
-              <p className="font-semibold">Share</p>
+                <img
+                  src="/images/share.svg"
+                  alt="icon"
+                  width="20px"
+                  height="20px"
+                />
+                <p className="font-semibold">Share</p>
               </div>
             </div>
           </div>
