@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { setOtp, selectAuthState } from "../store/auth/authSlice";
-import { useVerifyOtpForLoginMutation } from "../store/auth/authApiSlice";
+import {
+  useLazyCheckUserExistsQuery,
+  useVerifyOtpForLoginMutation,
+} from "../store/auth/authApiSlice";
 import { checkUserTrailApiRequest } from "../helper/helper";
 
 const VerifyMail = () => {
@@ -11,8 +14,10 @@ const VerifyMail = () => {
   const { email, otp } = useSelector(selectAuthState);
 
   const navigate = useNavigate();
-  const [verifyApi, { data, isLoading, error }] =
-    useVerifyOtpForLoginMutation();
+
+  const [verifyApi, { isLoading }] = useVerifyOtpForLoginMutation();
+
+  const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
 
   useEffect(() => {
     dispatch(setOtp(["", "", "", "", "", ""]));
@@ -21,18 +26,6 @@ const VerifyMail = () => {
       dispatch(setOtp(["", "", "", "", "", ""]));
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    // if (!isLoading && data?.message === "OTP verified") {
-    //   setTimeout(() => {
-    //     navigate("/setup");
-    //   }, 3000);
-    // }
-
-    if (error) {
-      toast.error("An error occurred. Please try again later.");
-    }
-  }, [data, isLoading, error, navigate]);
 
   const handlePaste = (e) => {
     e.preventDefault();
@@ -63,6 +56,16 @@ const VerifyMail = () => {
     }
   };
 
+  const handleBackspace = (e, index) => {
+    if (e.key === "Backspace" && otp[index] === "") {
+      const prevIndex = index - 1;
+      const prevInput = document.getElementById(`otp-input-${prevIndex}`);
+      if (prevInput) {
+        prevInput.focus();
+      }
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -79,19 +82,19 @@ const VerifyMail = () => {
     const otpString = otp.join("");
 
     try {
-      const responseData = await checkUserTrailApiRequest(email);
-      await verifyApi({ email, otp: otpString }).unwrap();
+      const otpVerify = await verifyApi({ email, otp: otpString }).unwrap();
+      if (otpVerify?.message === "OTP verified") {
+        await triggerCheckUserApi(email).unwrap();
+        await checkUserTrailApiRequest(email);
 
-      setTimeout(() => {
-        navigate("/setup");
-      }, 3000);
+        setTimeout(() => {
+          navigate("/setup");
+        }, 3000);
 
-      // toast.success("Verified");
-      console.log("responseData:", responseData);
+        toast.success("Verified. Redirecting to setup page...");
+      }
     } catch (error) {
-      toast.error(
-        error?.response?.data?.error || "Verification failed. Please try again."
-      );
+      toast.error(error?.response?.data?.error);
     }
   };
 
@@ -132,6 +135,7 @@ const VerifyMail = () => {
                     value={digit}
                     onPaste={index === 0 ? handlePaste : null}
                     onChange={(e) => handleOtpChange(e, index)}
+                    onKeyDown={(e) => handleBackspace(e, index)}
                     className="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
                   />
                 ))}
