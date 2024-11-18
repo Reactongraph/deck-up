@@ -1,6 +1,6 @@
-import { Images } from "../../utils/images";
+// import { Images } from "../../utils/images";
 import GradientOverlay from "../common/GradientOverlay";
-import useCustomNavigation from "../../Hooks/useCustomNavigation";
+// import useCustomNavigation from "../../Hooks/useCustomNavigation";
 
 export default function ProductFeatures({
   onClick = () => {},

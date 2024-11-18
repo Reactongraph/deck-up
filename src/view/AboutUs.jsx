@@ -3,7 +3,7 @@ import React from "react";
 // import Footer from "../components/Foorter";
 import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
-import { User, CheckCircle, Award, Smile } from "lucide-react";
+// import { User, CheckCircle, Award, Smile } from "lucide-react";
 import GradientOverlay from "../components/common/GradientOverlay";
 
 const data = {

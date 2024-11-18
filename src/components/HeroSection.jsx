@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { videos } from "../utils/videos";
-import CommonImage from "./common/CommonImage";
+// import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
 import CommonInput from "./common/CommonInput";
 import CommonVideo from "./common/CommonVideo";
 import GradientOverlay from "./common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmail } from "../store/auth/authSlice";
+import { useRegisterUserMutation } from "../store/auth/authApiSlice";
 
 export default function HeroSection() {
   const size = useCustomWindowSize(); // Get screen size
-  console.log("sizesizesize", size);
+  const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.auth.email);
+
+  const handleEmailChange = (event) => {
+    dispatch(setEmail(event.target.value));
+  };
+
+  useEffect(() => {
+    if (!isLoading && data?.message === "OTP sent to your email please check") {
+      dispatch(setEmail(email));
+      setTimeout(() => {
+        navigate("/verify-mail");
+      }, 3000);
+    }
+  }, [data, isLoading, dispatch, email, navigate]);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    loginAPi(email);
+  };
+
   // Define responsive values for GradientOverlay based on screen width
   const gradientOverlayStyles =
     size.width <= 640
@@ -74,6 +102,13 @@ export default function HeroSection() {
 
   return (
     <div className="container flex items-center gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+      />
       <div className="w-full lg:max-w-[465px] pl-[57px] xl:pl-0 xl:pr-[40px] pr-[57px] mt-[40px] sm:mt-[0px]">
         <div className="relative ">
           <>
@@ -109,7 +144,12 @@ export default function HeroSection() {
           <p className="text-[12px] font-bold text-primary font-inter">
             START 30 DAY FREE TRIAL
           </p>
-          <form action="#" method="POST" className="mt-[8px] gap-[8px] sm:flex">
+          <form
+            action="#"
+            method="POST"
+            className="mt-[8px] gap-[8px] sm:flex"
+            onSubmit={handleFormSubmit}
+          >
             <CommonInput
               type={"email"}
               name="email"
@@ -118,13 +158,16 @@ export default function HeroSection() {
                 "w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
               }
               placeholder={"example@xyz.com"}
+              value={email}
+              onChange={handleEmailChange}
             />
             <CommonButton
               type="submit"
               className={
                 "w-full text-sm xl:text-base font-medium text-white bg-primary shadow-sm rounded-[20px] max-w-[123px] mt-[0px] font-inter"
               }
-              text={"Start now"}
+              text={isLoading ? "Loading..." : "Start now"}
+              disabled={isLoading}
             />
           </form>
         </div>

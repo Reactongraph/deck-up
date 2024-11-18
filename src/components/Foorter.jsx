@@ -72,7 +72,7 @@ const Footer = () => {
               </div>
               <div className="flex justify-center md:justify-start space-x-4 pr-[28%] md:pr-0">
                 <a
-                  href="#"
+                  href="/"
                   aria-label="LinkedIn"
                   className="text-white hover:text-blue-300"
                 >
@@ -90,7 +90,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   aria-label="YouTube"
                   className="text-white hover:text-blue-300"
                 >

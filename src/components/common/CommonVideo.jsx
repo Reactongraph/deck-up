@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Play, Pause } from "lucide-react";
+import { Pause } from "lucide-react";
 import GradientOverlay from "./GradientOverlay";
 
 export default function VideoPlayer({

@@ -1,57 +1,157 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { setOtp, selectAuthState } from "../store/auth/authSlice";
+import {
+  useLazyCheckUserExistsQuery,
+  useVerifyOtpForLoginMutation,
+} from "../store/auth/authApiSlice";
+import { checkUserTrailApiRequest } from "../helper/helper";
 
 const VerifyMail = () => {
+  const dispatch = useDispatch();
+  const { email, otp } = useSelector(selectAuthState);
+
+  const navigate = useNavigate();
+
+  const [verifyApi, { isLoading }] = useVerifyOtpForLoginMutation();
+
+  const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
+
+  useEffect(() => {
+    dispatch(setOtp(["", "", "", "", "", ""]));
+
+    return () => {
+      dispatch(setOtp(["", "", "", "", "", ""]));
+    };
+  }, [dispatch]);
+
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pastedOtp = e.clipboardData.getData("Text").slice(0, otp.length);
+
+    if (/^\d{6}$/.test(pastedOtp)) {
+      const newOtp = pastedOtp.split("");
+      dispatch(setOtp(newOtp));
+    } else {
+      toast.error("Invalid OTP format.");
+    }
+  };
+
+  const handleOtpChange = (e, index) => {
+    const value = e.target.value;
+
+    if (/^\d$/.test(value) || value === "") {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      dispatch(setOtp(newOtp));
+
+      if (value && index < otp.length - 1) {
+        const nextInput = document.getElementById(`otp-input-${index + 1}`);
+        if (nextInput) {
+          nextInput.focus();
+        }
+      }
+    }
+  };
+
+  const handleBackspace = (e, index) => {
+    if (e.key === "Backspace" && otp[index] === "") {
+      const prevIndex = index - 1;
+      const prevInput = document.getElementById(`otp-input-${prevIndex}`);
+      if (prevInput) {
+        prevInput.focus();
+      }
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (otp.length !== 6 || otp.some((digit) => digit === "")) {
+      toast.error("Please enter the full 6-digit OTP.");
+      return;
+    }
+
+    if (!email || !otp || otp.length !== 6) {
+      toast.error("Invalid email or OTP. Please check your input.");
+      return;
+    }
+
+    const otpString = otp.join("");
+
+    try {
+      const otpVerify = await verifyApi({ email, otp: otpString }).unwrap();
+      if (otpVerify?.message === "OTP verified") {
+        await triggerCheckUserApi(email).unwrap();
+        await checkUserTrailApiRequest(email);
+
+        const loginSource = localStorage.getItem("loginSource");
+        const targetPage =
+          loginSource === "createAccount" ? "/account-details" : "/setup";
+
+        setTimeout(() => {
+          localStorage.removeItem("loginSource");
+          navigate(targetPage);
+        }, 3000);
+
+        toast.success(`Verified. Redirecting to next page...`);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.error);
+    }
+  };
+
   return (
     <div className="bg-lightBlue min-h-screen flex flex-col">
-      <div className="flex flex-col lg:flex-row container lg:pt-[48px] xl:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+      />
+      <div className="flex flex-col lg:flex-row container lg:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
         <div className="flex-1 flex items-center justify-center mt-10">
-          <div class="max-w-[536px] w-full bg-white rounded-lg sm:px-[66px] px-[40px] pt-[50px] pb-[300px] text-start mx-[40px] xl:mx-[0px]">
-            <h2 class="text-2xl font-semibold text-paleBlue mb-2">
+          <div className="max-w-[536px] w-full bg-white rounded-lg sm:px-[66px] px-[40px] pt-[50px] pb-[300px] text-start mx-[40px] xl:mx-[0px]">
+            <h2 className="text-2xl font-semibold text-paleBlue mb-2">
               Verify your email
             </h2>
-            <p class="text-gray-600 mb-14 text-bodyColor">
+            <p className="text-gray-600 mb-14 text-bodyColor">
               Enter the OTP sent to{" "}
-              <span class="font-medium text-bodyColor">malar@mecstudio.com</span>
-              <a href="#" class="text-blue-500 font-medium hover:underline underline underline-offset-1 pl-[5px]">
+              <span className="font-medium text-bodyColor">{email}</span>
+              <a
+                href="/"
+                className="text-blue-500 font-medium hover:underline underline underline-offset-1 pl-[5px]"
+              >
                 Change
               </a>
             </p>
 
-            <div class="flex justify-start  gap-2 sm:gap-7 mb-6 pt-13">
-              <input
-                type="text"
-                maxlength="1"
-                class="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="text"
-                maxlength="1"
-                class="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="text"
-                maxlength="1"
-                class="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="text"
-                maxlength="1"
-                class="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="text"
-                maxlength="1"
-                class="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="text"
-                maxlength="1"
-                class="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
-              />
+            <div className="flex justify-start gap-2 sm:gap-7 mb-6 pt-13">
+              {Array.isArray(otp) &&
+                otp.map((digit, index) => (
+                  <input
+                    key={index}
+                    id={`otp-input-${index}`}
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    onPaste={index === 0 ? handlePaste : null}
+                    onChange={(e) => handleOtpChange(e, index)}
+                    onKeyDown={(e) => handleBackspace(e, index)}
+                    className="w-12 h-14 text-center text-lg border-2 border-lightGray bg-lightBlue rounded-md focus:outline-none focus:border-blue-500"
+                  />
+                ))}
             </div>
 
-            <button class="w-full bg-primary hover:bg-red-600 text-white font-medium py-3 rounded-full">
-              Submit
+            <button
+              onClick={handleSubmit}
+              className="w-full bg-primary hover:bg-red-600 text-white font-medium py-3 rounded-full"
+              disabled={isLoading}
+            >
+              {isLoading ? "Verifying..." : "Submit"}
             </button>
           </div>
         </div>
