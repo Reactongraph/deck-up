@@ -34,4 +34,5 @@ export const {
   useRegisterUserMutation,
   useVerifyOtpForLoginMutation,
   useCheckUserExistsQuery,
+  useLazyCheckUserExistsQuery,
 } = authApiSlice;

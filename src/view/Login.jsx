@@ -5,7 +5,10 @@ import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 import { useDispatch, useSelector } from "react-redux";
-import { useRegisterUserMutation } from "../store/auth/authApiSlice";
+import {
+  useLazyCheckUserExistsQuery,
+  useRegisterUserMutation,
+} from "../store/auth/authApiSlice";
 import { setEmail } from "../store/auth/authSlice";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebaseConfig";
@@ -18,10 +21,11 @@ export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
 
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
+  const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const email = useSelector((state) => state.auth.email);
+  let email = useSelector((state) => state.auth.email);
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
@@ -30,14 +34,15 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
-    const storedEmail = localStorage.getItem("email");
-    if (storedEmail) {
-      dispatch(setEmail(storedEmail));
-    }
-
     if (!isLoading && data?.message === "OTP sent to your email please check") {
+      const storedEmail = localStorage.getItem("email");
+      if (storedEmail) {
+        dispatch(setEmail(storedEmail));
+      }
       dispatch(setEmail(email));
-      navigate("/verify-mail");
+      setTimeout(() => {
+        navigate("/verify-mail");
+      }, 3000);
     }
   }, [data, isLoading, dispatch, email, navigate]);
 
@@ -47,6 +52,7 @@ export default function LoginPage() {
   };
 
   const handleGoogleLogin = () => {
+    email = "";
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(async (result) => {
@@ -55,6 +61,7 @@ export default function LoginPage() {
         localStorage.setItem("email", user.email);
 
         try {
+          await triggerCheckUserApi(user.email).unwrap();
           const responseData = await googleLoginPostApiRequest(
             user.email,
             user.uid
@@ -68,9 +75,7 @@ export default function LoginPage() {
           }, 3000);
         } catch (error) {
           console.log("error: ", error);
-          toast.error(
-            error?.response?.data?.error || "Something went wrong. Try again"
-          );
+          toast.error(error?.response?.data?.error);
         }
       })
       .catch((error) => {
