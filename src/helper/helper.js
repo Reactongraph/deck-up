@@ -38,3 +38,8 @@ export const checkUserTrailApiRequest = async (email) => {
     throw error;
   }
 };
+
+export const years = Array.from({ length: 10 }, (_, i) => ({
+  label: `${new Date().getFullYear() + i}`,
+  value: new Date().getFullYear() + i,
+}));

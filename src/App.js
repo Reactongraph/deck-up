@@ -8,6 +8,11 @@ import FeaturesPage from "./view/FeaturesPage";
 import AboutUS from "./view/AboutUs";
 import SetupPage from "./view/SetupPage";
 import VerifyMail from "./view/VerifyMail";
+import CreateAccountPage from "./components/SingleUser/CreateAccountPage";
+import QuantityPage from "./components/SingleUser/QuantityPage";
+import PaymentPage from "./components/SingleUser/PaymentPage";
+import Dashboard from "./components/SingleUser/Dashboard/Dashboad";
+import AccountDetailsForm from "./components/SingleUser/AccountDetailsForm";
 function App() {
   return (
     <Router>
@@ -65,6 +70,46 @@ function App() {
           element={
             <PublicLayout hasNoFooter={true}>
               <VerifyMail />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/create-account"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <CreateAccountPage />
+            </PublicLayout>
+          }
+        />
+          <Route
+          path="/account-details"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <AccountDetailsForm />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/quantity"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <QuantityPage />
+            </PublicLayout>
+          }
+        />
+         <Route
+          path="/payment"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <PaymentPage />
+            </PublicLayout>
+          }
+        />
+         <Route
+          path="/dashboard"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <Dashboard />
             </PublicLayout>
           }
         />

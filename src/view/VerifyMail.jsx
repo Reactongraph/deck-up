@@ -87,11 +87,16 @@ const VerifyMail = () => {
         await triggerCheckUserApi(email).unwrap();
         await checkUserTrailApiRequest(email);
 
+        const loginSource = localStorage.getItem("loginSource");
+        const targetPage =
+          loginSource === "createAccount" ? "/account-details" : "/setup";
+
         setTimeout(() => {
-          navigate("/setup");
+          localStorage.removeItem("loginSource");
+          navigate(targetPage);
         }, 3000);
 
-        toast.success("Verified. Redirecting to setup page...");
+        toast.success(`Verified. Redirecting to next page...`);
       }
     } catch (error) {
       toast.error(error?.response?.data?.error);
