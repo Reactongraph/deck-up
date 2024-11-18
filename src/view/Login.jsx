@@ -34,6 +34,7 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
+   
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       const storedEmail = localStorage.getItem("email");
       if (storedEmail) {
@@ -41,6 +42,7 @@ export default function LoginPage() {
       }
       dispatch(setEmail(email));
       setTimeout(() => {
+        localStorage.setItem("loginSource", "login");
         navigate("/verify-mail");
       }, 3000);
     }
@@ -71,6 +73,7 @@ export default function LoginPage() {
           toast.success("Google login successfully");
 
           setTimeout(() => {
+            localStorage.setItem("loginSource", "login");
             navigate("/setup");
           }, 3000);
         } catch (error) {
