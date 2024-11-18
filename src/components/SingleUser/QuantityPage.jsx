@@ -5,6 +5,9 @@ import CommonInput from "../common/CommonInput";
 import CommonButton from "../common/CommonButton";
 import { QuantitySchema } from "../../form-validations/QuantitySchema";
 import { Tooltip } from "react-tooltip";
+import CommonDropdown from "../common/CommonDropdown";
+import { months } from "../../utils/data";
+import { years } from "../../helper/helper";
 
 export default function QuantityPage() {
   const navigate = useNavigate();
@@ -128,18 +131,14 @@ export default function QuantityPage() {
               <div className="grid grid-cols-2 gap-4 mb-[18px]">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm text-bodyColor">Expiry Month</label>
-                  <CommonInput
-                    type="text"
+                  <CommonDropdown
                     name="expiryMonth"
-                    placeholder="MM"
+                    placeholder=""
                     value={formik.values.expiryMonth}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
-                      formik.touched.expiryMonth && formik.errors.expiryMonth
-                        ? "border-red-500"
-                        : "border-lightGray"
-                    } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                    options={months}
+                    className="text-bodyColor text-[14px] rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
                   />
                   {formik.touched.expiryMonth && formik.errors.expiryMonth && (
                     <div className="text-xs text-red-500">
@@ -149,18 +148,14 @@ export default function QuantityPage() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-sm text-bodyColor">Expiry Year</label>
-                  <CommonInput
+                  <CommonDropdown
                     name="expiryYear"
-                    type="text"
-                    placeholder="YYYY"
+                    placeholder=""
                     value={formik.values.expiryYear}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
-                      formik.touched.expiryYear && formik.errors.expiryYear
-                        ? "border-red-500"
-                        : "border-lightGray"
-                    } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                    options={years}
+                    className="text-bodyColor text-[14px] rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
                   />
                   {formik.touched.expiryYear && formik.errors.expiryYear && (
                     <div className="text-xs text-red-500">

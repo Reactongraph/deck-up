@@ -9,6 +9,7 @@ const CommonDropdown = ({
   id,
   placeholder = "Select an option",
   error,
+  onBlur,
   ...rest
 }) => {
   return (
@@ -17,6 +18,7 @@ const CommonDropdown = ({
         className={`px-4 py-2 border rounded-[8px] ${className}`}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         name={name}
         id={id}
         {...rest}

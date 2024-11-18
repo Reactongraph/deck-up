@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 export default function PaymentPage() {
   const navigate = useNavigate();
 
   const handleGoDashboard = () => {
     navigate("/dashboard");
+  };
+
+  const pdfRef = useRef(null);
+
+  const handleDownload = async () => {
+    try {
+      const canvas = await html2canvas(pdfRef.current, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+
+      const pdf = new jsPDF("p", "mm", "a4");
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("DeckUp_Setup.pdf");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
   };
 
   return (
@@ -22,7 +42,10 @@ export default function PaymentPage() {
             </div>
             <CommonButton
               text={
-                <div className="flex gap-2 items-start">
+                <div
+                  className="flex gap-2 items-start"
+                  onClick={handleDownload}
+                >
                   <img
                     src="/images/Vector.svg"
                     alt="icon"
@@ -32,11 +55,14 @@ export default function PaymentPage() {
                   <p>Invoice for the payment</p>
                 </div>
               }
-              className="w-full mt-[21px] flex justify-center items-center border rounded-lg text-darkBlue border-secondary"
+              className="w-full mt-[21px] flex justify-center items-center border rounded-lg text-darkBlue border-secondary hover:bg-paleBlue hover:text-white"
             />
           </div>
           <div className="w-full flex mt-[38px] mb-8 rounded-[10px]">
-            <div className="w-[60%] flex flex-col gap-6 bg-lightGrayShade pl-6 pb-[34px] pt-[46px]">
+            <div
+              ref={pdfRef}
+              className="w-[60%] flex flex-col gap-6 bg-lightGrayShade pl-6 pb-[34px] pt-[46px]"
+            >
               <p className="leading-[19.05px] text-bodyColor font-inter">
                 Thank you for choosing Deckup!
               </p>
@@ -53,7 +79,10 @@ export default function PaymentPage() {
               </div>
             </div>
             <div className="w-[40%] bg-lighCyan pt-4 pl-[17px] text-paleBlue flex flex-col gap-[34px] justify-center items-center text-center pr-[18px] pb-[18px]">
-              <div className="flex flex-col justify-center items-center">
+              {/* <div
+                className="flex flex-col justify-center items-center"
+                onClick={handleDownload}
+              >
                 <img
                   src="/images/download.svg"
                   alt="icon"
@@ -61,7 +90,25 @@ export default function PaymentPage() {
                   height="20px"
                 />
                 <p className="font-semibold">Download link</p>
-              </div>
+              </div> */}
+
+              <CommonButton
+                text={
+                  <div
+                    className="flex flex-col justify-center items-center gap-2"
+                    onClick={handleDownload}
+                  >
+                    <img
+                      src="/images/download.svg"
+                      alt="icon"
+                      width="20px"
+                      height="20px"
+                    />
+                    <p className="font-semibold">Download link</p>
+                  </div>
+                }
+                className="hover:bg-transparent"
+              />
               <div className="flex flex-col justify-center items-center">
                 <img
                   src="/images/share.svg"
