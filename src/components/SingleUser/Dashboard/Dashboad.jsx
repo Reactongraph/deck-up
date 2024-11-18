@@ -23,7 +23,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex gap-[41px] mt-12 pl-7">
+    <div className="flex h-full gap-[41px] pt-12 pl-7 bg-lightBlue">
       <aside className="sidebar">
         <nav className="flex flex-col justify-start items-start">
           <button onClick={() => setActiveTab("User Management")}>

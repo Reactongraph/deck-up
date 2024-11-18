@@ -49,7 +49,7 @@ const Footer = () => {
                 alt="logo"
               />
             </div>
-            <div className="flex space-x-4 mt-4 md:mt-0 lg:gap-[44px] xl:gap-[44px]">
+            <div className="flex space-x-4 mt-6 md:mt-0 lg:gap-[44px] xl:gap-[44px]">
               <button className="bg-primary hover:bg-primary text-white  py-2 px-4 rounded-[20px] text-sm md:text-base font-inter">
                 Download
               </button>
@@ -64,7 +64,7 @@ const Footer = () => {
                 <img
                   src="/images/mail.svg"
                   alt="img"
-                  className="max-sm:h-[24] max-sm:w-[24] mb-4"
+                  className="max-sm:h-[24] max-sm:w-[24] mb-0 md:mb-4"
                 />
                 <p className="mb-4 font-inter max-sm:mb-0 max-sm:text-[14px]">
                   info@deckup.com

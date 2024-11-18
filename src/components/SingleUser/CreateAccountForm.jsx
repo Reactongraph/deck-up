@@ -4,7 +4,7 @@ import CommonButton from "../common/CommonButton";
 import { ToastContainer } from "react-toastify";
 
 export default function CreateAccountForm({
-  email ="",
+  email = "",
   isLoading = false,
   handleEmailChange = () => {},
   handleOtpLogin = () => {},
@@ -12,14 +12,14 @@ export default function CreateAccountForm({
 }) {
   return (
     <div>
-      <div className="flex justify-between items-center">
       <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          closeOnClick
-          pauseOnHover
-        />
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+      />
+      <div className="flex justify-between items-center">
         <h2 className="text-subhead text-paleBlue font-inter">
           Create account
         </h2>
@@ -56,7 +56,7 @@ export default function CreateAccountForm({
         <div>
           <CommonButton
             type="submit"
-            className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"           
+            className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
             text={isLoading ? "Loading..." : "Submit"}
             disabled={isLoading}
             onClick={handleOtpLogin}
