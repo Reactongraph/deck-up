@@ -89,7 +89,7 @@ const VerifyMail = () => {
 
         const loginSource = localStorage.getItem("loginSource");
         const targetPage =
-          loginSource === "createAccount" ? "/quantity" : "/setup";
+          loginSource === "createAccount" ? "/account-details" : "/setup";
 
         setTimeout(() => {
           localStorage.removeItem("loginSource");

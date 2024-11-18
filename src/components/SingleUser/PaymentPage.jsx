@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
 
 export default function PaymentPage() {
+  const navigate = useNavigate();
+
+  const handleGoDashboard = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <div className="flex justify-center pt-16 bg-lightBlue h-full">
       <div className="flex gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[66px]">
@@ -70,6 +77,7 @@ export default function PaymentPage() {
           <div>
             <CommonButton
               type="button"
+              onClick={handleGoDashboard}
               className="font-inter group relative w-full h-[42px] flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
               text={"Go to dashboard"}
             />
@@ -116,7 +124,6 @@ export default function PaymentPage() {
             </div>
             <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-[188px] justify-between min-h-[170px]">
               <div class="flex-1 items-center flex">
-                {" "}
                 <img src="/images/deckup.svg" alt="folder" />
               </div>
               <div class="flex-1">

@@ -10,7 +10,7 @@ import {
   useRegisterUserMutation,
 } from "../store/auth/authApiSlice";
 import { setEmail } from "../store/auth/authSlice";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast, ToastContainer } from "react-toastify";
 import { googleLoginPostApiRequest } from "../helper/helper";

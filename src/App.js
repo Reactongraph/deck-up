@@ -12,6 +12,7 @@ import CreateAccountPage from "./components/SingleUser/CreateAccountPage";
 import QuantityPage from "./components/SingleUser/QuantityPage";
 import PaymentPage from "./components/SingleUser/PaymentPage";
 import Dashboard from "./components/SingleUser/Dashboard/Dashboad";
+import AccountDetailsForm from "./components/SingleUser/AccountDetailsForm";
 function App() {
   return (
     <Router>
@@ -77,6 +78,14 @@ function App() {
           element={
             <PublicLayout hasNoFooter={true}>
               <CreateAccountPage />
+            </PublicLayout>
+          }
+        />
+          <Route
+          path="/account-details"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <AccountDetailsForm />
             </PublicLayout>
           }
         />

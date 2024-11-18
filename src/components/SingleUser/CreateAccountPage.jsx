@@ -9,7 +9,6 @@ import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../../firebaseConfig";
 import { googleLoginPostApiRequest } from "../../helper/helper";
-// import AccountDetailsForm from "./AccountDetailsForm";
 
 export default function CreateAccountPage() {
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
@@ -81,22 +80,13 @@ export default function CreateAccountPage() {
         form={
           <CreateAccountForm
             email={email}
-            isLoading = {isLoading}
+            isLoading={isLoading}
             handleEmailChange={handleEmailChange}
             handleOtpLogin={handleFormSubmit}
             handleGoogleLogin={handleGoogleLogin}
           />
         }
       />
-      {/* <CommonLoginLayout
-        form={
-          <AccountDetailsForm
-          // handleOtpLogin={handleOtpLogin}
-          // handleGoogleLogin={handleGoogleLogin}
-          />
-        }
-        className="pb-[58px]"
-      /> */}
     </>
   );
 }

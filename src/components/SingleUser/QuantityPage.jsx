@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 import CommonInput from "../common/CommonInput";
 import CommonButton from "../common/CommonButton";
+import { QuantitySchema } from "../../form-validations/QuantitySchema";
+import { Tooltip } from "react-tooltip";
 
 export default function QuantityPage() {
+  const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+  const [subtotal, setSubtotal] = useState(99);
+
+  const handleIncrement = () => {
+    setQuantity((prev) => prev + 1);
+    setSubtotal((prev) => prev + 99);
+  };
+
+  const handleDecrement = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+    setSubtotal((prev) => (prev > 99 ? prev - 99 : 99));
+  };
+
+  const handleSubmit = (values) => {
+    console.log("Form submit:", values);
+    navigate("/payment");
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      cardNumber: "",
+      expiryMonth: "",
+      expiryYear: "",
+      name: "",
+      securityCode: "",
+    },
+    validationSchema: QuantitySchema,
+    onSubmit: handleSubmit,
+  });
+
   return (
     <div className="flex justify-center pt-16 bg-lightBlue h-full">
       <div className="flex gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[79.67px]">
@@ -26,15 +61,17 @@ export default function QuantityPage() {
                 <div className="flex gap-[5px]">
                   <CommonButton
                     text={"-"}
+                    onClick={handleDecrement}
                     className="w-[36px] h-[36px] flex justify-center items-center border rounded-lg border-lightGray"
                   />
                   <CommonInput
                     type="text"
-                    value={"01"}
-                    className="w-[36px] text-sm h-[36px] px-0 py-0 pl-2 flex justify-center items-center border rounded-lg border-lightGray"
+                    value={quantity}
+                    className="w-[36px] text-sm h-[36px] pt-0 pb-0 pr-0 pl-0 text-center border rounded-lg border-lightGray"
                   />
                   <CommonButton
                     text={"+"}
+                    onClick={handleIncrement}
                     className="w-[36px] h-[36px] flex justify-center items-center border rounded-lg border-lightGray"
                   />
                 </div>
@@ -44,9 +81,9 @@ export default function QuantityPage() {
                   </p>
                 </div>
               </div>
-              <div>
-                <h4 className="text-sm font-semibold text-bodyColor leading-[16.94px]">
-                  $3240
+              <div className="relative">
+                <h4 className="absolute bottom-0 right-0 text-sm font-semibold text-bodyColor leading-[16.94px]">
+                  ${subtotal}
                 </h4>
               </div>
             </div>
@@ -66,59 +103,132 @@ export default function QuantityPage() {
             Payment Information
           </h2>
           <div className="mt-6 mb-[34px]">
-            <div className="mb-[18px] flex flex-col gap-2">
-              <label className="text-sm text-bodyColor">Card Number</label>
-              <CommonInput
-                type="text"
-                placeholder="Credit card number"
-                className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4 mb-[18px]">
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-bodyColor">Expiry Month</label>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="mb-[18px] flex flex-col gap-2">
+                <label className="text-sm text-bodyColor">Card Number</label>
                 <CommonInput
-                  type="date"
-                  name={"expiryMonth"}
-                  placeholder="MM"
-                  className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
+                  type="text"
+                  placeholder="Credit card number"
+                  name="cardNumber"
+                  value={formik.values.cardNumber}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
+                    formik.touched.cardNumber && formik.errors.cardNumber
+                      ? "border-red-500"
+                      : "border-lightGray"
+                  } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                />
+                {formik.touched.cardNumber && formik.errors.cardNumber && (
+                  <div className="text-xs text-red-500">
+                    {formik.errors.cardNumber}
+                  </div>
+                )}
+              </div>
+              <div className="grid grid-cols-2 gap-4 mb-[18px]">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-bodyColor">Expiry Month</label>
+                  <CommonInput
+                    type="text"
+                    name="expiryMonth"
+                    placeholder="MM"
+                    value={formik.values.expiryMonth}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
+                      formik.touched.expiryMonth && formik.errors.expiryMonth
+                        ? "border-red-500"
+                        : "border-lightGray"
+                    } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                  />
+                  {formik.touched.expiryMonth && formik.errors.expiryMonth && (
+                    <div className="text-xs text-red-500">
+                      {formik.errors.expiryMonth}
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-bodyColor">Expiry Year</label>
+                  <CommonInput
+                    name="expiryYear"
+                    type="text"
+                    placeholder="YYYY"
+                    value={formik.values.expiryYear}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
+                      formik.touched.expiryYear && formik.errors.expiryYear
+                        ? "border-red-500"
+                        : "border-lightGray"
+                    } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                  />
+                  {formik.touched.expiryYear && formik.errors.expiryYear && (
+                    <div className="text-xs text-red-500">
+                      {formik.errors.expiryYear}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 mb-[18px]">
+                <label className="text-sm text-bodyColor">Name on Card</label>
+                <CommonInput
+                  type="text"
+                  name="name"
+                  placeholder="Enter name"
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
+                    formik.touched.name && formik.errors.name
+                      ? "border-red-500"
+                      : "border-lightGray"
+                  } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                />
+                {formik.touched.name && formik.errors.name && (
+                  <div className="text-xs text-red-500">
+                    {formik.errors.name}
+                  </div>
+                )}
+              </div>
+              <div className="flex flex-col gap-2 mb-[18px]">
+                <div className="flex items-center gap-1">
+                  <label className="text-sm text-bodyColor">
+                    Security code
+                  </label>
+                  <a id="not-clickable" href="/">
+                    <img src="/images/info.svg" alt="icon" />
+                  </a>
+                  <Tooltip anchorSelect="#not-clickable">
+                    <img src="/images/tooltipBox.svg" alt="box" />
+                  </Tooltip>
+                </div>
+                <CommonInput
+                  type="text"
+                  name="securityCode"
+                  placeholder="Enter CVV"
+                  value={formik.values.securityCode}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className={`text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border ${
+                    formik.touched.securityCode && formik.errors.securityCode
+                      ? "border-red-500"
+                      : "border-lightGray"
+                  } placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter`}
+                />
+                {formik.touched.securityCode && formik.errors.securityCode && (
+                  <div className="text-xs text-red-500">
+                    {formik.errors.securityCode}
+                  </div>
+                )}
+              </div>
+              <div className="mt-6">
+                <CommonButton
+                  text="Make payment"
+                  type="submit"
+                  className="w-full bg-hoverButton text-white py-2 font-semibold leading-[26px]"
                 />
               </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-bodyColor">Expiry Year</label>
-                <CommonInput
-                  name={"expiryYear"}
-                  type="date"
-                  placeholder="YYYY"
-                  className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 mb-[18px]">
-              <label className="text-sm text-bodyColor">Name on Card</label>
-              <CommonInput
-                type="text"
-                name={"name"}
-                placeholder="Enter name"
-                className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
-              />
-            </div>
-            <div className="flex flex-col gap-2 mb-[18px]">
-              <label className="text-sm text-bodyColor">Security Code</label>
-              <CommonInput
-                type="text"
-                name={"cvv"}
-                placeholder="Enter CVV"
-                className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
-              />
-            </div>
-          </div>
-          <div>
-            <CommonButton
-              type="submit"
-              className="font-inter group relative w-full h-[42px] flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
-              text={"Make payment"}
-            />
+            </form>
           </div>
         </div>
       </div>
