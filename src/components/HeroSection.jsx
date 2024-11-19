@@ -105,7 +105,7 @@ export default function HeroSection() {
       <div className="w-full lg:max-w-[465px] pl-[57px] xl:pl-0 xl:pr-[40px] pr-[57px] mt-[40px] sm:mt-[0px] lg:mt-[152px]">
         <div className="relative ">
           <>
-            <h1 className="text-[40px] font-bold lg:text-banner text-paleBlue font-inter max-w-[300px] w-full">
+            <h1 className="text-[40px] font-bold lg:text-banner text-paleBlue font-inter max-w-[300px] lg:max-w-[100%] w-full">
               Create decks at lightning speed
             </h1>
             <p className="mt-6 xl:mt-[48px] lg:text-[18px] pr-[100px] text-bodyColor text-heading font-inter text-[14px]">
@@ -187,13 +187,13 @@ export default function HeroSection() {
           transform={gradientOverlayStyles1.transform}
           /> */}
       </div>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            closeOnClick
-            pauseOnHover
-          />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+      />
     </div>
   );
 }
