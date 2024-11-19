@@ -116,13 +116,13 @@ export default function TutorialGrid() {
 
   return (
     <>
-      <div className="p-8 md:p-6 bg-lightBlue">
+      <div className="p-8 md:px-14 md:pt-[47px] md:pb-[72px] lg:pb-0 lg:px-0 lg:pt-0 lg:p-6 bg-lightBlue">
         <div className="container">
-          <h1 className="w-[88%] md:w-full font-bold md:font-extrabold md:text-headline text-paleBlue md:text-center pb-2 md:pb-[56px] px-0 md:px-[180px] pt-2 text-[24px] m-0 text-left leading-9">
+          <h1 className="w-[88%] md:w-[70%] lg:w-full font-bold lg:font-extrabold lg:text-headline text-paleBlue lg:text-center pb-2 lg:pb-[56px] px-0 lg:px-[180px] pt-2 text-[24px] m-0 text-left leading-9">
             Tutorials to help you quickly figure out and turn around
           </h1>
-          <div className="w-full mt-6 md:mt-0 justify-center md:gap-[16px] mb-[51px] md:mb-8 flex-row gap-2 overflow-x-auto whitespace-nowrap">
-            <div className="flex sm:flex-wrap gap-2 md:gap-[16px]">
+          <div className="w-full mt-6 md:mt-4 lg:mt-0 justify-center lg:gap-[16px] mb-[51px] md:mb-10 lg:mb-8 flex-row gap-2 overflow-x-auto whitespace-nowrap">
+            <div className="flex sm:flex-wrap gap-2 lg:gap-[16px]">
               {filters.map((filter) => (
                 <button
                   key={filter}
@@ -138,12 +138,12 @@ export default function TutorialGrid() {
               Slide Elements
             </h2>
           </div>
-          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
+          <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-[22px] lg:gap-8 gap-4">
             {tutorials.map((tutorial, index) => (
               <TutorialCard key={index} {...tutorial} />
             ))}
           </div>
-          <div className="grid grid-cols-1 md:hidden gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-4">
             {(showAll ? tutorials : tutorials.slice(0, 2)).map(
               (tutorial, index) => (
                 <TutorialCard key={index} {...tutorial} />
@@ -155,16 +155,16 @@ export default function TutorialGrid() {
             <div className="flex mt-4 mb-2">
               <button
                 onClick={handleViewMore}
-                className="text-sm md:text-base block md:hidden bg-transparent text-secondary underline hover:bg-darkPrimary"
+                className="text-sm md:text-base block lg:hidden bg-transparent text-secondary underline hover:bg-darkPrimary"
               >
                 View More
-              </button>
+              </button> 
             </div>
           )}
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <div className="container md:pt-[99px] pb-14 md:pb-[60px] flex md:gap-[104px] item-center md:ps-2.5 md:pe-2.5 flex-col pt-[57px] gap-[41px]">
+        <div className="container lg:pt-[99px] pb-14 md:pb-[71px] lg:pb-[60px] pr-0 md:pr-20 lg:pr-0 flex md:gap-16 lg:gap-[104px] item-center lg:ps-2.5 lg:pe-2.5 flex-col md:flex-row lg:flex-col pt-[57px] md:pt-[72px] gap-[41px]">
           <div className="w-full relative">
             <img
               src={Images.signup}
@@ -179,21 +179,21 @@ export default function TutorialGrid() {
               right="0"
             />
           </div>
-          <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center md:text-center">
-            <h2 className="md:text-headline text-paleBlue font-extrabold text-[24px]">
+          <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center lg:text-center">
+            <h2 className="lg:text-headline text-paleBlue font-bold lg:font-extrabold text-[24px]">
               Sign up today
             </h2>
-            <p className="mt-[24px] text-body text-bodyColor md:mt-4">
+            <p className="mt-[24px] text-body text-bodyColor lg:mt-4">
               Your superpower-packed plug-&-play PPT tool is just a click away!
             </p>
-            <div className="flex flex-row md:gap-[12px] md:justify-center gap-4">
-              <button className="text-sm md:text-base md:mt-[40px] bg-primary text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6">
+            <div className="flex flex-row md:gap-[12px] lg:justify-center gap-4">
+              <button className="text-sm md:text-base lg:mt-[40px] bg-primary text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
                 Watch demo
               </button>
             </div>
           </div>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <GradientOverlay
             width="500px"
             height="500px"

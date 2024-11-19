@@ -99,6 +99,7 @@ export default function PowerUsers() {
               <img
                 src="/images/building.svg"
                 className="w-[64px] mb-[20px] hidden"
+                alt=""
               />
               <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-inter font-bold">
                 By Sectors
@@ -146,6 +147,7 @@ export default function PowerUsers() {
               <img
                 src="/images/function.svg"
                 className="w-12 h-12 text-red-400 mb-4 hidden"
+                alt=""
               />
 
               <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-bold font-inter">
