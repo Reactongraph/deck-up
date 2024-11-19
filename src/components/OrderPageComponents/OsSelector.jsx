@@ -3,13 +3,13 @@ import { Images } from "../../utils/images";
 
 export default function OsSelector() {
   return (
-    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] py-[120px] ps-2.5 pe-2.5">
+    <div className="bg-gradient-to-t from-[#318BB4] to-[#64ACCD] py-12 px-8 md:py-[72px] md:px-[54px] xl:py-[120px] xl:px-[10px]">
       <div className="text-center ">
         <h2 className="text-3xl font-bold text-white mb-8 font-inter max-sm:text-[24px]">
           Thumbs up for choosing DeckUp!
         </h2>
-        <div className="flex  justify-center max-sm:flex-col max-sm:gap-[10px] max-sm:items-center">
-          <div className="max-w-[444px] w-full bg-white rounded-lg">
+        <div className="flex justify-center flex-col md:flex-row gap-[16px] md:gap-[27px] items-center h-auto md:h-[294px]">
+          <div className="max-w-[444px] w-full h-full md:w-2/4 xl:w-full bg-white rounded-lg">
             <div className="p-6 flex flex-col items-center">
               <img
                 src={Images.window}
@@ -25,7 +25,7 @@ export default function OsSelector() {
               />
             </div>
           </div>
-          <div className="max-w-[444px] w-full bg-white rounded-lg">
+          <div className="max-w-[444px] w-full h-full md:w-2/4 xl:w-full bg-white rounded-lg">
             <div className="p-6 flex flex-col items-center">
               <img
                 src={Images.ios}

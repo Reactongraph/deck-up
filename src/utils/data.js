@@ -94,3 +94,17 @@ export const months = [
     value: 12,
   },
 ];
+
+
+export const statesByCountry = {
+  US: [
+    { label: "California", value: "CA" },
+    { label: "Texas", value: "TX" },
+    { label: "New York", value: "NY" },
+  ],
+  CA: [
+    { label: "Ontario", value: "ON" },
+    { label: "Quebec", value: "QC" },
+    { label: "British Columbia", value: "BC" },
+  ],
+};

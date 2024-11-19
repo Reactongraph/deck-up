@@ -4,9 +4,11 @@ import { useState, useRef } from "react";
 import { Pause } from "lucide-react";
 import GradientOverlay from "./GradientOverlay";
 
-
-
-export default function VideoPlayer({ url = "", gradientOverlayStyles1={}}) {
+export default function VideoPlayer({
+  url = "",
+  gradientOverlayStyles1 = {},
+  className = "",
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -22,7 +24,9 @@ export default function VideoPlayer({ url = "", gradientOverlayStyles1={}}) {
   };
 
   return (
-    <div className="relative w-full h-full  mx-auto overflow-hidden">
+    <div
+      className={` ${className} relative w-full h-full  mx-auto overflow-hidden`}
+    >
       <video
         ref={videoRef}
         className="w-full h-full object-cover h-[568px]"
@@ -53,14 +57,14 @@ export default function VideoPlayer({ url = "", gradientOverlayStyles1={}}) {
         </button>
       </div>
       <GradientOverlay
-          width={gradientOverlayStyles1.width}
-          height={gradientOverlayStyles1.height}
-          gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
-          bottom={gradientOverlayStyles1.bottom}
-          left={gradientOverlayStyles1.left}
-          zIndex={gradientOverlayStyles1.zIndex}
-          transform={gradientOverlayStyles1.transform}
-        />
+        width={gradientOverlayStyles1.width}
+        height={gradientOverlayStyles1.height}
+        gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
+        bottom={gradientOverlayStyles1.bottom}
+        left={gradientOverlayStyles1.left}
+        zIndex={gradientOverlayStyles1.zIndex}
+        transform={gradientOverlayStyles1.transform}
+      />
     </div>
   );
 }

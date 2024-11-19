@@ -13,6 +13,7 @@ import QuantityPage from "./components/SingleUser/QuantityPage";
 import PaymentPage from "./components/SingleUser/PaymentPage";
 import Dashboard from "./components/SingleUser/Dashboard/Dashboad";
 import AccountDetailsForm from "./components/SingleUser/AccountDetailsForm";
+import InvoiceRedirect from "./components/SingleUser/InvoiceRedirect";
 function App() {
   return (
     <Router>
@@ -81,7 +82,7 @@ function App() {
             </PublicLayout>
           }
         />
-          <Route
+        <Route
           path="/account-details"
           element={
             <PublicLayout hasNoFooter={true}>
@@ -97,7 +98,7 @@ function App() {
             </PublicLayout>
           }
         />
-         <Route
+        <Route
           path="/payment"
           element={
             <PublicLayout hasNoFooter={true}>
@@ -105,11 +106,19 @@ function App() {
             </PublicLayout>
           }
         />
-         <Route
+        <Route
           path="/dashboard"
           element={
             <PublicLayout hasNoFooter={true}>
               <Dashboard />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/invoice"
+          element={
+            <PublicLayout hasNoFooter={false}>
+              <InvoiceRedirect />
             </PublicLayout>
           }
         />

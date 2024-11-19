@@ -1,5 +1,6 @@
 import GradientOverlay from "./GradientOverlay";
 import useCustomWindowSize from "../../Hooks/useCustomWindowSize";
+import { ToastContainer } from "react-toastify";
 
 export default function CommonLoginLayout({ form, className = "" }) {
   const size = useCustomWindowSize(); // Get screen size
@@ -72,13 +73,6 @@ export default function CommonLoginLayout({ form, className = "" }) {
     <>
       {/* <Header /> */}
       <div className="bg-lightBlue min-h-[100%] flex flex-col">
-        {/* <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          closeOnClick
-          pauseOnHover
-        /> */}
         <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
@@ -128,6 +122,13 @@ export default function CommonLoginLayout({ form, className = "" }) {
             transform={gradientOverlayStyles1.transform}
           />
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+        />
       </div>
       {/* <Footer /> */}
     </>

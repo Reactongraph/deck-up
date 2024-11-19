@@ -1,6 +1,9 @@
 import * as Yup from "yup";
 
 export const QuantitySchema = Yup.object({
+  quantity: Yup.number()
+    .min(1, "Quantity must be at least 1")
+    .max(20, "*less than 20"),
   cardNumber: Yup.string()
     .matches(/^\d{16}$/, "Card number must be 16 digits")
     .required("Card number is required"),

@@ -9,6 +9,7 @@ const CommonInput = ({
   name,
   id,
   error,
+  disabled = false,
   ...rest
 }) => {
   return (
@@ -21,6 +22,7 @@ const CommonInput = ({
         onChange={onChange}
         name={name}
         id={id}
+        disabled={disabled}
         {...rest} // Spread any other props passed to the input
       />
       {error && <p className="mt-1 text-xs text-red-500">{error}</p>}

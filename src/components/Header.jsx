@@ -36,7 +36,7 @@ export default function Header() {
   console.log("activeDropdown", activeDropdown);
   return (
     <div className="shadow-sm w-full relative">
-      <nav className="max-w-[1443px] w-full m-auto pl-[50px] pr-[30px] lg:px-6 xl:px-[150px] relative flex items-center justify-between min-h-[80px] bg-white">
+      <nav className="max-w-[1443px] w-full m-auto pl-8 md:pl-[50px] pr-[30px] lg:px-6 xl:px-[150px] relative flex items-center justify-between min-h-[80px] bg-white">
         <div className="flex items-center">
           <CommonImage
             src={Images?.logo}
@@ -68,13 +68,7 @@ export default function Header() {
             );
           })}
         </div>
-        <div className="flex items-center justify-between gap-[32px]">
-          <p
-            className="max-lg:hidden text-gray font-head cursor-pointer font-inter"
-            onClick={() => handleNavigate("/login")}
-          >
-            Login
-          </p>
+        <div className="flex items-center justify-between gap-[10px]">
           <CommonButton
             type={"button"}
             text={"Try For Free"}
@@ -83,6 +77,12 @@ export default function Header() {
             }
             onClick={() => handleNavigate("/login")}
           />
+          <p
+            className="max-lg:hidden text-gray font-head cursor-pointer font-inter"
+            onClick={() => handleNavigate("/login")}
+          >
+            Login
+          </p>
 
           <button className="lg:hidden" onClick={toggleMenu}>
             <svg

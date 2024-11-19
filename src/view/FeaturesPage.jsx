@@ -2,6 +2,7 @@
 // import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
 import GradientOverlay from "../components/common/GradientOverlay";
+import { useState } from "react";
 
 // Sample Filters for Dynamic Filtering
 const filters = [
@@ -77,7 +78,7 @@ function TutorialCard({ title, thumbnail, duration, description }) {
         className="w-[355px] h-[197px] object-contain max-sm:w-full"
       />
       <div className="p-6">
-        <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start">
+        <div className="flex justify-between items-center md:flex-col md:items-start">
           <span className="text-[14px] text-primary">Side Element</span>
           <span className="bg-lightBlue p-1 text-[14px] max-sm:mt-2">
             Video Summary
@@ -107,37 +108,63 @@ function TutorialCard({ title, thumbnail, duration, description }) {
 // };
 
 export default function TutorialGrid() {
+  const [showAll, setShowAll] = useState(false);
+
+  const handleViewMore = () => {
+    setShowAll(true);
+  };
+
   return (
     <>
-      <div className="p-6 bg-lightBlue">
+      <div className="p-8 md:px-14 md:pt-[47px] md:pb-[72px] lg:pb-0 lg:px-0 lg:pt-0 lg:p-6 bg-lightBlue">
         <div className="container">
-          <h1 className="text-headline text-paleBlue text-center mb-[56px] px-[180px] mt-[40px] max-sm:text-[24px] max-sm:p-2 max-sm:m-0 max-sm:text-left max-sm:leading-9">
+          <h1 className="w-[88%] md:w-[70%] lg:w-full font-bold lg:font-extrabold lg:text-headline text-paleBlue lg:text-center pb-2 lg:pb-[56px] px-0 lg:px-[180px] pt-2 text-[24px] m-0 text-left leading-9">
             Tutorials to help you quickly figure out and turn around
           </h1>
-          <div className="flex flex-wrap justify-center gap-[16px] mb-8 max-sm:flex-row max-sm:gap-2 max-sm:overflow-x-auto max-sm:whitespace-nowrap">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                className="px-8 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
-              >
-                {filter}
-              </button>
-            ))}
+          <div className="w-full mt-6 md:mt-4 lg:mt-0 justify-center lg:gap-[16px] mb-[51px] md:mb-10 lg:mb-8 flex-row gap-2 overflow-x-auto whitespace-nowrap">
+            <div className="flex sm:flex-wrap gap-2 lg:gap-[16px]">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  className="px-8 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="mb-4 flex justify-between items-center max-sm:flex-col max-sm:items-start max-sm:mb-6">
-            <h2 className="text-subhead text-paleBlue text-left max-sm:text-[18px]">
+          <div className="mb-4 flex justify-between items-center max-sm:flex-col max-sm:items-start md:mb-6">
+            <h2 className="text-subhead text-paleBlue text-left">
               Slide Elements
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-sm:gap-4">
+          <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-[22px] lg:gap-8 gap-4">
             {tutorials.map((tutorial, index) => (
               <TutorialCard key={index} {...tutorial} />
             ))}
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-4">
+            {(showAll ? tutorials : tutorials.slice(0, 2)).map(
+              (tutorial, index) => (
+                <TutorialCard key={index} {...tutorial} />
+              )
+            )}
+          </div>
+
+          {!showAll && (
+            <div className="flex mt-4 mb-2">
+              <button
+                onClick={handleViewMore}
+                className="text-sm md:text-base block lg:hidden bg-transparent text-secondary underline hover:bg-darkPrimary"
+              >
+                View More
+              </button> 
+            </div>
+          )}
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <div className="container pt-[99px] pb-[60px] flex gap-[104px] item-center ps-2.5 pe-2.5 max-sm:flex-col max-sm:pt-[40px] max-sm:gap-4">
+        <div className="container lg:pt-[99px] pb-14 md:pb-[71px] lg:pb-[60px] pr-0 md:pr-20 lg:pr-0 flex md:gap-16 lg:gap-[104px] item-center lg:ps-2.5 lg:pe-2.5 flex-col md:flex-row lg:flex-col pt-[57px] md:pt-[72px] gap-[41px]">
           <div className="w-full relative">
             <img
               src={Images.signup}
@@ -152,28 +179,30 @@ export default function TutorialGrid() {
               right="0"
             />
           </div>
-          <div className="max-w-[444px] w-full flex flex-col justify-center max-sm:text-center">
-            <h2 className="text-headline text-paleBlue font-extrabold max-sm:text-[24px]">
+          <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center lg:text-center">
+            <h2 className="lg:text-headline text-paleBlue font-bold lg:font-extrabold text-[24px]">
               Sign up today
             </h2>
-            <p className="mt-[24px] text-body text-bodyColor max-sm:mt-4">
+            <p className="mt-[24px] text-body text-bodyColor lg:mt-4">
               Your superpower-packed plug-&-play PPT tool is just a click away!
             </p>
-            <div className="flex flex-row gap-[12px] max-sm:justify-center max-sm:gap-4">
-              <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px] max-sm:px-8 max-sm:py-2 max-sm:mt-6">
-                Get Started
+            <div className="flex flex-row md:gap-[12px] lg:justify-center gap-4">
+              <button className="text-sm md:text-base lg:mt-[40px] bg-primary text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
+                Watch demo
               </button>
             </div>
           </div>
         </div>
-        <GradientOverlay
-          width="500px"
-          height="500px"
-          gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
-          right="-70px"
-          bottom="-70px"
-          transform="rotate(110deg)"
-        />
+        <div className="hidden lg:block">
+          <GradientOverlay
+            width="500px"
+            height="500px"
+            gradient="linear-gradient(to bottom, rgba(100,172,205,.5), rgba(100,172,205,0))"
+            right="-70px"
+            bottom="-70px"
+            transform="rotate(110deg)"
+          />
+        </div>
       </div>
     </>
   );

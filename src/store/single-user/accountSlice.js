@@ -5,9 +5,10 @@ const accountSlice = createSlice({
   initialState: {
     firstName: "",
     lastName: "",
-    company: "",
-    addressLine1: "",
-    addressLine2: "",
+    email: "",
+    companyName: "",
+    addressLineOne: "",
+    addressLineTwo: "",
     city: "",
     zip: "",
     country: "",
