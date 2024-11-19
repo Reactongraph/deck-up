@@ -14,7 +14,7 @@ import { statesByCountry } from "../../utils/data";
 
 export default function AccountDetailsForm() {
   const dispatch = useDispatch();
-  const [createUserApi] = useCreateAccountMutation();
+  const [createUserApi, { isLoading }] = useCreateAccountMutation();
   const email = localStorage.getItem("email");
   const [stateOptions, setStateOptions] = useState([]);
 
@@ -247,7 +247,7 @@ export default function AccountDetailsForm() {
           <CommonButton
             type="submit"
             className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white bg-primary hover:bg-red-500"
-            text="Go for payment"
+            text={isLoading ? "loading..." : "Go for payment"}
           />
         </Form>
       )}
