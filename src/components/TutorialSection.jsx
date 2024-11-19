@@ -37,8 +37,8 @@ export default function TutorialSection() {
           transform: "rotate(-70deg)",
         };
   return (
-    <div className="container py-[115px] flex gap-[150px] item-center ps-2.5 pe-2.5 relative  max-sm:flex-col max-sm:flex">
-      <div className="max-w-[320px] w-full items-start flex flex-col justify-center">
+    <div className="container pl-[56px] pr-0 lg:pl-[10px] lg:pr-[10px] py-[72px] lg:py-[115px] flex gap-[52px] lg:gap-[150px] item-center relative  max-sm:flex-col max-sm:flex">
+      <div className="w-[27.3%] max-w-[320px] lg:w-full items-start flex flex-col justify-center">
         <div className="relative">
           <GradientOverlay
             width={gradientOverlayStyles.width}
@@ -57,11 +57,11 @@ export default function TutorialSection() {
             Mulates real DeckUp Add-in to learn how a particular tool works
           </p>
         </div>
-        <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
+        <button className="mt-[40px] bg-primary text-white px-[13px] lg:px-[24px] py-[10px] lg:py-[12px] rounded-[100px] font-inter">
           Check tutorials
         </button>
       </div>
-      <div className="w-full mr-[-182px] lg:mr-[-133px]">
+      <div className="w-[62%] lg:w-full mr-[-182px] lg:mr-[-133px]">
         <img
           src="/videos/tutorial.gif"
           alt="Microsoft PowerPoint interface with DeckUp add-in"

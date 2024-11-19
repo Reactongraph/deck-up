@@ -7,12 +7,12 @@ const Footer = () => {
   return (
     <footer className="bg-darkBlue text-white py-12 px-[1.5rem] md:px-[6.5rem]">
       <div className="container">
-        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] pb-[20px] mb-[63px] text-center xl:text-left max-sm:flex-col max-sm:items-baseline max-sm:mb-[30px]">
+        <div className="flex flex-row justify-between border-b-2 border-b-[#6592BF] pb-8 md:pb-[20px] mb-[63px] text-center xl:text-left max-sm:flex-col max-sm:items-baseline max-sm:mb-[30px]">
           <div className="flex flex-col items-start mb-8 xl:mb-0 realtive z-[0] max-w-[530px] relative max-sm:mb-0">
-            <h2 className="text-[24px]  font-[500] mb-2 max-w-[70%] relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
+            <h2 className="text-base xl:text-[24px] font-[500] mb-2 max-w-[70%] relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
               Need some answers or want to catch up with us!
             </h2>
-            <p className="text-blue-200 text-sm md:text-base mb-4 relative z-[1] font-inter max-sm:text-[16px] max-sm:max-w-full max-sm:text-justify">
+            <p className="text-blue-200 text-sm xl:text-base mb-4 relative z-[1] font-inter max-w-full text-justify">
               Here's where you will find answers and can get to know us!
             </p>
             <GradientOverlay
@@ -27,7 +27,7 @@ const Footer = () => {
             />
           </div>
 
-          <div className="flex justify-center xl:justify-end space-x-6 mb-6 xl:mb-0 xl:gap-[78px] lg:gap-[78px]">
+          <div className="flex justify-center xl:justify-end space-x-6 xl:gap-[78px] lg:gap-[78px]">
             <p className="text-secondary text-nowrap underline underline-offset-2 hover:cursor-pointer font-inter max-sm:text-[14px]">
               FAQs
             </p>
@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <div className="flex flex-col md:flex-row justify-between items-center mb-[25px]  text-center md:text-left max-sm:items-baseline">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-0 md:mb-[25px]  text-center md:text-left max-sm:items-baseline">
             <div>
               {/* <p className="text-2xl md:text-4xl font-bold inline-block">
                 DECK<span className="text-red-500">UP</span>
@@ -49,35 +49,35 @@ const Footer = () => {
                 alt="logo"
               />
             </div>
-            <div className="flex space-x-4 mt-6 md:mt-0 lg:gap-[44px] xl:gap-[44px]">
-              <button className="bg-primary hover:bg-primary text-white  py-2 px-4 rounded-[20px] text-sm md:text-base font-inter">
+            <div className="flex space-x-4 mt-4 md:mt-0 lg:gap-[44px] xl:gap-[44px]">
+              <button className="bg-primary hover:bg-primary text-white  py-2 px-5 md:px-4 rounded-[20px] text-sm md:text-base font-inter">
                 Download
               </button>
-              <button className="bg-secondary text-white py-2 px-4 rounded-[20px] text-sm md:text-base font-inter">
+              <button className="bg-secondary text-white py-2 px-5 md:px-4 rounded-[20px] text-sm md:text-base font-inter">
                 Buy now
               </button>
             </div>
           </div>
-          <div className="flex flex-col-reverse lg:flex-row justify-between  gap-8 mt-[63px]">
+          <div className="flex flex-col-reverse lg:flex-row justify-between  gap-8 mt-[49px] md:mt-[63px]">
             <div className="flex flex-row justify-between lg:justify-start lg:flex-col items-center md:items-start text-center md:text-left">
               <div className="flex gap-2 items-center">
                 <img
                   src="/images/mail.svg"
                   alt="img"
-                  className="max-sm:h-[24] max-sm:w-[24] mb-0 md:mb-4"
+                  className="w-5 h-5 md:w-[25px] md:h-[25px] mb-0 md:mb-4"
                 />
                 <p className="mb-4 font-inter max-sm:mb-0 max-sm:text-[14px]">
                   info@deckup.com
                 </p>
               </div>
-              <div className="flex justify-center md:justify-start space-x-4">
+              <div className="flex justify-center md:justify-start space-x-4 pr-[28%] md:pr-0">
                 <a
                   href="/"
                   aria-label="LinkedIn"
                   className="text-white hover:text-blue-300"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-[18px] h-[17px] md:w-6 md:h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -95,7 +95,7 @@ const Footer = () => {
                   className="text-white hover:text-blue-300"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-[22px] h-5 md:w-6 md:h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -109,7 +109,7 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            <div className="flex lg:gap-[90px] md:gap-[50px] max-sm:flex-wrap max-sm:gap-[50px]">
+            <div className="flex gap-8 lg:gap-[90px] md:gap-[50px] max-sm:flex-wrap">
               <div>
                 <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
                   Try our product

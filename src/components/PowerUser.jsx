@@ -46,7 +46,7 @@ export default function PowerUsers() {
           // Mobile styles
           width: "80px",
           height: "80px",
-          top:"inherit",
+          top: "inherit",
           right: 0,
           zIndex: "0",
           left: "inherit",
@@ -84,48 +84,47 @@ export default function PowerUsers() {
   return (
     <section className="bg-linear py-16 px-4 relative overflow-hidden ps-2.5 pe-2.5">
       <div className="max-w-6xl mx-auto text-white">
-        <h2 className="text-4xl font-bold text-center mb-4">
+        <h2 className="text-2xl xl:text-4xl font-bold text-center mb-4">
           Designed for power users across industries
         </h2>
-        <p className="text-center mb-12 max-w-2xl mx-auto">
+        <p className="text-sm text-center w-[62.7%] xl:w-full mb-8 xl:mb-12 max-w-2xl mx-auto">
           Whether you are an independent consultant, work in a small team or a
           large corporation, we understand your needs and have come up with a
           solution specially for you.
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] mr-[-70px] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:ml-[-75px] max-sm:p-0 max-sm:flex max-sm:justify-center max-sm:min-h-[370px] max-sm:w-full max-sm:text-center">
-            <div className="flex justify-center items-start flex-col">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] mr-[-50px] xl:mr-[-70px] rounded-full xl:px-[150px] xl:py-[100px] w-[48.2%] xl:w-full max-w-[491px] relative ml-0 xl:ml-[-75px] px-0 py-0 flex justify-center min-h-[370px] text-center">
+            <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/building.svg"
-                alt=""
-                className="w-[64px] mb-[20px] max-sm:hidden"
+                className="w-[64px] mb-[20px] hidden"
               />
-              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px] font-inter">
+              <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-inter font-bold">
                 By Sectors
               </h3>
               <ul className="space-y-1">
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray text-sm font-inter">
                   Consulting Companies
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <hr className="text-[#64A4C0] hidden" />
+                <li className="text-body text-gray text-sm font-inter">
                   Education Institutes
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <hr className="text-[#64A4C0] hidden" />
+                <li className="text-body text-gray text-sm font-inter">
                   Marketing Agencies
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <hr className="text-[#64A4C0] hidden" />
+                <li className="text-body text-gray text-sm font-inter">
                   Entrepreneurs
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <hr className="text-[#64A4C0] hidden" />
+                <li className="text-body text-gray text-sm font-inter">
                   Small Businesses
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <hr className="text-[#64A4C0] hidden" />
+                <li className="text-body text-gray text-sm font-inter">
                   Government
                 </li>
               </ul>
@@ -142,44 +141,43 @@ export default function PowerUsers() {
             />
           </div>
 
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] rounded-full px-[150px] py-[100px] w-full max-w-[491px]  relative max-sm:mt-[-50px] max-sm:p-0 max-sm:flex max-sm:justify-center max-sm:min-h-[370px] max-sm:w-full max-sm:text-center">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] rounded-full px-0 xl:px-[150px] py-0 xl:py-[100px] w-[48.2%] xl:w-full max-w-[491px] relative mt-0 xl:mt-[-50px] flex justify-center min-h-[370px] text-center">
             <div className="flex justify-center items-center flex-col">
               <img
                 src="/images/function.svg"
-                className="w-12 h-12 text-red-400 mb-4 max-sm:hidden"
-                alt=""
+                className="w-12 h-12 text-red-400 mb-4 hidden"
               />
 
-              <h3 className="text-subhead text-paleBlue mb-4 max-sm:text-[20px] font-inter">
+              <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-bold font-inter">
                 By Functions
               </h3>
               <ul className="space-y-1">
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray text-sm font-inter">
                   Marketing
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <hr className="text-[#64A4C0] hidden" />
 
-                <li className="text-body text-gray max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray text-sm font-inter">
                   Sales
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <hr className="text-[#64A4C0] hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray whitespace-nowrap text-sm font-inter">
                   HR (Human Resource)
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <hr className="text-[#64A4C0] hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray whitespace-nowrap text-sm font-inter">
                   IT (Information Technology)
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <hr className="text-[#64A4C0] hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray whitespace-nowrap text-sm font-inter">
                   Learning & Development
                 </li>
-                <hr className="text-[#64A4C0] max-sm:hidden" />
+                <hr className="text-[#64A4C0] hidden" />
 
-                <li className="text-body text-gray whitespace-nowrap max-sm:text-[20px] font-inter">
+                <li className="text-body text-gray whitespace-nowrap text-sm font-inter">
                   Internal Communication
                 </li>
               </ul>

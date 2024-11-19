@@ -154,14 +154,14 @@ export default function LoginPage() {
     <>
       {/* <Header /> */}
       <div className="bg-lightBlue min-h-[100%] flex flex-col">
-        <ToastContainer
+      <ToastContainer
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}
           closeOnClick
           pauseOnHover
         />
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] xl:pt-[48px] pt-[55.5px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
             height={gradientOverlayStyles.height}
@@ -173,14 +173,16 @@ export default function LoginPage() {
             transform={gradientOverlayStyles.transform}
           />
           {/* Left section for the login form */}
-          <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 order-2 lg:order-1">
-            <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[24px] pb-[186px] pl-[24px] sm:pr-[80px] sm:pl-[80px]">
+          <div className="flex-1 flex items-center justify-center px-8 sm:px-6 lg:px-[23px] order-2 lg:order-1">
+            <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32.5px] pr-[32px] pb-[31.6px] sm:pb-[186px] pl-[32px] sm:pr-[80px] sm:pl-[80px]">
               <div className="flex justify-between items-center">
-                <h2 className="text-subhead text-paleBlue font-inter">Login</h2>
+                <h2 className="text-[16px] md:text-subhead text-paleBlue font-inter">
+                  Login
+                </h2>
                 <p className="mt-2 text-sm text-gray-600">
                   <a
                     href="/"
-                    className="font-normal text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue font-inter"
+                    className="font-normal text-[10px] md:text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue font-inter"
                   >
                     Create account
                   </a>
@@ -188,15 +190,18 @@ export default function LoginPage() {
               </div>
 
               <form
-                className="mt-8 space-y-6"
-                action="#"
+                className="mt-[42px] md:mt-8 space-y-4 lg:space-y-6"
+                action="/"
                 method="POST"
                 onSubmit={handleFormSubmit}
               >
                 <div className="rounded-md shadow-sm -space-y-px">
                   <div>
-                    <p className="text-bodyColor text-[14px] mb-2 font-inter">
-                      Enter your email ID (OTP will be sent to entered email)
+                    <p className="text-bodyColor text-[12px] md:text-[14px] mb-2 font-inter">
+                      Enter your email ID{" "}
+                      <span className="text-[9px] md:text-[12px]">
+                        (OTP will be sent to entered email)
+                      </span>
                     </p>
                     <CommonInput
                       id="email-address"
@@ -204,7 +209,7 @@ export default function LoginPage() {
                       type="email"
                       autoComplete="email"
                       required
-                      className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
+                      className="text-bodyColor text-[9px] md:text-[14px] appearance-none rounded-lg relative block w-full px-[11px] md:px-3 py-[9px] md:py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
                       placeholder="Enter your email ID"
                       value={email}
                       onChange={handleEmailChange}
@@ -215,7 +220,7 @@ export default function LoginPage() {
                 <div>
                   <CommonButton
                     type="submit"
-                    className="font-inter group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
+                    className="font-inter group relative w-full flex justify-center py-[6px] md:py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white text-[14px] bg-primary hover:bg-red-500"
                     text={isLoading ? "Loading..." : "Submit"}
                     disabled={isLoading}
                   />
@@ -226,18 +231,18 @@ export default function LoginPage() {
                     <div className="absolute inset-0 flex items-center">
                       <div className="w-full border-t border-lightGray" />
                     </div>
-                    <div className="relative flex justify-center text-sm">
-                      <span className="py-4 text-head bg-white text-lightGray font-inter">
+                    <div className="relative flex justify-center text-[11px] md:text-sm">
+                      <span className="py-4 h-12 md:h-[80px] text-head bg-white text-lightGray font-inter flex items-center md:block">
                         OR
                       </span>
                     </div>
                   </div>
 
-                  <div className="mt-6">
+                  <div className="mt-0 md:mt-6">
                     <button
                       onClick={handleGoogleLogin}
                       type="button"
-                      className=" font-inter text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
+                      className="font-inter text-[9px] md:text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-[6px] md:py-3"
                     >
                       <span className="sr-only font-inter">
                         Sign in with Google
@@ -283,7 +288,7 @@ export default function LoginPage() {
                 </div>
               </form>
 
-              <p className="mt-2 text-[14px] text-bodyColor text-center pt-2 font-normal font-inter">
+              <p className="mt-[11px] md:mt-2 text-[8px] md:text-[14px] text-bodyColor text-center pt-0 md:pt-2 font-normal font-inter">
                 By signing up, you agree to the{" "}
                 <a
                   href="/"
@@ -292,7 +297,7 @@ export default function LoginPage() {
                   Terms and Conditions
                 </a>{" "}
                 <br />
-                <p className="mt-2 text-xs text-gray-500 text-center font-inter">
+                <p className="mt-2 text-[8px] md:text-xs text-gray-500 text-center font-inter">
                   and{" "}
                   <a
                     href="/"
