@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { updateField } from "../../store/single-user/accountSlice";
 import CommonInput from "../common/CommonInput";
 import CommonDropdown from "../common/CommonDropdown";
 import CommonButton from "../common/CommonButton";
 import CommonLoginLayout from "../common/CommonLoginLayout";
 import { AccountDetailsSchema } from "../../form-validations/AccountDetailsSchema";
+import { useCreateAccountMutation } from "../../store/single-user/accountApiSlice";
+import { toast } from "react-toastify";
+import { iso31661 } from "iso-3166";
+import { statesByCountry } from "../../utils/data";
 
 export default function AccountDetailsForm() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [createUserApi] = useCreateAccountMutation();
+  const email = localStorage.getItem("email");
+  const [stateOptions, setStateOptions] = useState([]);
 
   const {
     firstName,
     lastName,
-    company,
-    addressLine1,
-    addressLine2,
+    companyName,
+    addressLineOne,
+    addressLineTwo,
     city,
     zip,
     country,
@@ -28,11 +33,36 @@ export default function AccountDetailsForm() {
   const handleFieldChange = (e) => {
     const { name, value } = e.target;
     dispatch(updateField({ field: name, value }));
+    if (name === "country") {
+      setStateOptions(statesByCountry[value] || []);
+    }
   };
 
-  const handleSubmit = (values) => {
-    console.log("Form Data:", values);
-    navigate("/quantity");
+  useEffect(() => {
+    if (country) {
+      setStateOptions(statesByCountry[country] || []);
+    }
+  }, [country]);
+
+  const countryOptions = iso31661?.map((country) => ({
+    label: country.name,
+    value: country.alpha2,
+  }));
+
+  const handleSubmit = async (values) => {
+    try {
+      const response = await createUserApi(values).unwrap();
+
+      if (response.redirect_url) {
+        toast.success("Account created successfully!");
+        window.open(response.redirect_url, "_blank");
+      } else {
+        toast.error("No URL provided in response.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Failed to create account. Please try again.");
+    }
   };
 
   const accountDetailsForm = (
@@ -40,9 +70,11 @@ export default function AccountDetailsForm() {
       initialValues={{
         firstName,
         lastName,
-        company,
-        addressLine1,
-        addressLine2,
+        email,
+        companyName,
+        addressLineOne,
+        addressLineTwo,
+        itemPriceId: "cbdemo_sample_plan-inr-monthly",
         city,
         zip,
         country,
@@ -90,42 +122,54 @@ export default function AccountDetailsForm() {
           <div className="mb-4">
             <Field
               as={CommonInput}
-              id="company"
-              name="company"
+              id="email"
+              name="email"
               type="text"
-              value={company}
+              value={email}
+              disabled={true}
+              className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
+            />
+          </div>
+
+          <div className="mb-4">
+            <Field
+              as={CommonInput}
+              id="company-name"
+              name="companyName"
+              type="text"
+              value={companyName}
               placeholder="Company (optional)"
               onChange={handleFieldChange}
               className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-              error={touched.company && errors.company}
+              error={touched.companyName && errors.companyName}
             />
           </div>
 
           <div className="mb-4">
             <Field
               as={CommonInput}
-              id="address-Line-1"
-              name="addressLine1"
+              id="address-line-one"
+              name="addressLineOne"
               type="text"
-              value={addressLine1}
+              value={addressLineOne}
               placeholder="Address line 1"
               onChange={handleFieldChange}
               className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-              error={touched.addressLine1 && errors.addressLine1}
+              error={touched.addressLineOne && errors.addressLineOne}
             />
           </div>
 
           <div className="mb-4">
             <Field
               as={CommonInput}
-              id="addressLine2"
-              name="addressLine2"
+              id="address-line-two"
+              name="addressLineTwo"
               type="text"
-              value={addressLine2}
+              value={addressLineTwo}
               placeholder="Address line 2 (optional)"
               onChange={handleFieldChange}
               className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-              error={touched.addressLine2 && errors.addressLine2}
+              error={touched.addressLineTwo && errors.addressLineTwo}
             />
           </div>
 
@@ -163,10 +207,7 @@ export default function AccountDetailsForm() {
                 placeholder="Country"
                 value={country}
                 onChange={handleFieldChange}
-                options={[
-                  { label: "United States", value: "US" },
-                  { label: "Canada", value: "CA" },
-                ]}
+                options={countryOptions}
                 className="text-bodyColor text-[14px] rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
                 error={touched.country && errors.country}
               />
@@ -177,10 +218,7 @@ export default function AccountDetailsForm() {
                 placeholder="State"
                 value={state}
                 onChange={handleFieldChange}
-                options={[
-                  { label: "State 1", value: "ST1" },
-                  { label: "State 2", value: "ST2" },
-                ]}
+                options={stateOptions}
                 className="text-bodyColor text-[14px] rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
                 error={touched.state && errors.state}
               />
@@ -197,7 +235,7 @@ export default function AccountDetailsForm() {
               <CommonInput
                 type="checkbox"
                 name="billing-address"
-                value={addressLine1}
+                value={addressLineOne}
                 className="w-[18px] h-[18px]"
               />
               <p className="text-sm font-inter leading-[16.94px] text-bodyColor">

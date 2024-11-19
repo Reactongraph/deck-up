@@ -101,21 +101,14 @@ export default function HeroSection() {
         };
 
   return (
-    <div className="container flex items-center gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-      />
-      <div className="w-full lg:max-w-[465px] pl-[57px] xl:pl-0 xl:pr-[40px] pr-[57px] mt-[40px] sm:mt-[0px]">
+    <div className="container flex items-center gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
+      <div className="w-full lg:max-w-[465px] pl-[57px] xl:pl-0 xl:pr-[40px] pr-[57px] mt-[40px] sm:mt-[0px] lg:mt-[152px]">
         <div className="relative ">
           <>
-            <h1 className="text-[40px] font-bold lg:text-banner text-paleBlue font-inter max-sm:max-w-[300px] w-full">
+            <h1 className="text-[40px] font-bold lg:text-banner text-paleBlue font-inter max-w-[300px] w-full">
               Create decks at lightning speed
             </h1>
-            <p className="mt-6 xl:mt-[48px] text-[18px] pr-[100px] text-bodyColor text-heading font-inter max-sm:text-[14px]">
+            <p className="mt-6 xl:mt-[48px] lg:text-[18px] pr-[100px] text-bodyColor text-heading font-inter text-[14px]">
               Drive impact and dramatically improve quality and speed using
               DeckUp
             </p>
@@ -192,8 +185,15 @@ export default function HeroSection() {
           left={gradientOverlayStyles1.left}
           zIndex={gradientOverlayStyles1.zIndex}
           transform={gradientOverlayStyles1.transform}
-        /> */}
+          /> */}
       </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            closeOnClick
+            pauseOnHover
+          />
     </div>
   );
 }

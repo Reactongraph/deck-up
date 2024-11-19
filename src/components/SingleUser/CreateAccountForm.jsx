@@ -1,7 +1,6 @@
 import React from "react";
 import CommonInput from "../common/CommonInput";
 import CommonButton from "../common/CommonButton";
-import { ToastContainer } from "react-toastify";
 
 export default function CreateAccountForm({
   email = "",
@@ -12,13 +11,6 @@ export default function CreateAccountForm({
 }) {
   return (
     <div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-      />
       <div className="flex justify-between items-center">
         <h2 className="text-subhead text-paleBlue font-inter">
           Create account

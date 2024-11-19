@@ -1,32 +1,47 @@
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import { useCreateInvoiceMutation } from "../../store/single-user/accountApiSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function PaymentPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [downloadUrl, setDownloadUrl] = useState(null);
+  const { createInvoiceApi } = useCreateInvoiceMutation();
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const hostedPageId = params.get("id");
+
+    if (hostedPageId) {
+      createInvoiceApi(hostedPageId)
+        .then((response) => {
+          if (response?.data?.download_url) {
+            setDownloadUrl(response.data.download_url);
+            toast.success("Invoice data retrieved successfully!");
+          } else {
+            throw new Error("Invalid response structure.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error retrieving invoice data:", error);
+          toast.error("Failed to retrieve invoice data.");
+        });
+    } else {
+      toast.error("Invalid or missing hostedPageId.");
+    }
+  }, [location.search, createInvoiceApi]);
+
+  const handleDownload = () => {
+    if (downloadUrl) {
+      window.open(downloadUrl, "_blank");
+    } else {
+      toast.error("No download URL available.");
+    }
+  };
   const handleGoDashboard = () => {
     navigate("/dashboard");
-  };
-
-  const pdfRef = useRef(null);
-
-  const handleDownload = async () => {
-    try {
-      const canvas = await html2canvas(pdfRef.current, { scale: 2 });
-      const imgData = canvas.toDataURL("image/png");
-
-      const pdf = new jsPDF("p", "mm", "a4");
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("DeckUp_Setup.pdf");
-    } catch (error) {
-      console.error("Error generating PDF:", error);
-    }
   };
 
   return (
@@ -59,10 +74,7 @@ export default function PaymentPage() {
             />
           </div>
           <div className="w-full flex mt-[38px] mb-8 rounded-[10px]">
-            <div
-              ref={pdfRef}
-              className="w-[60%] flex flex-col gap-6 bg-lightGrayShade pl-6 pb-[34px] pt-[46px]"
-            >
+            <div className="w-[60%] flex flex-col gap-6 bg-lightGrayShade pl-6 pb-[34px] pt-[46px]">
               <p className="leading-[19.05px] text-bodyColor font-inter">
                 Thank you for choosing Deckup!
               </p>
@@ -79,19 +91,6 @@ export default function PaymentPage() {
               </div>
             </div>
             <div className="w-[40%] bg-lighCyan pt-4 pl-[17px] text-paleBlue flex flex-col gap-[34px] justify-center items-center text-center pr-[18px] pb-[18px]">
-              {/* <div
-                className="flex flex-col justify-center items-center"
-                onClick={handleDownload}
-              >
-                <img
-                  src="/images/download.svg"
-                  alt="icon"
-                  width="20px"
-                  height="20px"
-                />
-                <p className="font-semibold">Download link</p>
-              </div> */}
-
               <CommonButton
                 text={
                   <div
@@ -181,6 +180,13 @@ export default function PaymentPage() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+      />
     </div>
   );
 }
