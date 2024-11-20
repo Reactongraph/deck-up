@@ -11,7 +11,8 @@ const initialState = {
   zip: "",
   country: "",
   state: "",
-  billingSameAsShipping: false,
+  billingAddress: true,
+  redirectUrl: `${window.location.origin}/invoice`,
 };
 
 const accountDetailsSlice = createSlice({
@@ -28,7 +29,8 @@ const accountDetailsSlice = createSlice({
   },
 });
 
-export const { setField, setBillingSameAsShipping } = accountDetailsSlice.actions;
+export const { setField, setBillingSameAsShipping } =
+  accountDetailsSlice.actions;
 export const selectAccountDetails = (state) => state.accountDetails;
 
 export default accountDetailsSlice.reducer;

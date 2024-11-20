@@ -13,6 +13,8 @@ const accountSlice = createSlice({
     zip: "",
     country: "",
     state: "",
+    billingAddress: true,
+    redirectUrl: `${window.location.origin}/invoice`,
   },
   reducers: {
     updateField: (state, action) => {

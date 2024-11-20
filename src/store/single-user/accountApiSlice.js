@@ -13,10 +13,11 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       query: (hostedPageId) => ({
         url: "/checkoutpage/invoice",
         method: "POST",
-        body: hostedPageId,
+        body: { hostedPageId: hostedPageId },
       }),
     }),
   }),
 });
 
-export const { useCreateAccountMutation, useCreateInvoiceMutation } = accountApiSlice;
+export const { useCreateAccountMutation, useCreateInvoiceMutation } =
+  accountApiSlice;
