@@ -13,7 +13,17 @@ const accountSlice = createSlice({
     zip: "",
     country: "",
     state: "",
-    billingAddress: true,
+    billingAddress: {
+      firstName: "",
+      lastName: "",
+      companyName: "",
+      addressLineOne: "",
+      addressLineTwo: "",
+      city: "",
+      zip: "",
+      country: "",
+      state: "",
+    },
     redirectUrl: `${window.location.origin}/invoice`,
   },
   reducers: {

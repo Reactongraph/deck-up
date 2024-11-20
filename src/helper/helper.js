@@ -43,3 +43,13 @@ export const years = Array.from({ length: 10 }, (_, i) => ({
   label: `${new Date().getFullYear() + i}`,
   value: new Date().getFullYear() + i,
 }));
+
+export const setNestedValue = (keyPath, value, baseObject = {}) => {
+  const keys = keyPath.split(".");
+  return keys.reduceRight((acc, key, index) => {
+    if (index === keys.length - 1) {
+      return { ...baseObject, [key]: value };
+    }
+    return { ...baseObject, [key]: acc };
+  }, baseObject);
+};
