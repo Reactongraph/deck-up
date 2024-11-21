@@ -1,4 +1,5 @@
 import React from "react";
+import CommonButton from "../common/CommonButton";
 
 const UserManagement = () => {
   return (
@@ -10,7 +11,7 @@ const UserManagement = () => {
 
       {/* Stats Section */}
       <div className="w-full flex gap-6 mb-10">
-        <div className="bg-white w-[35.5%] shadow rounded-lg py-4 pl-6 pr-[31px]">
+        <div className="bg-white w-[35.5%] shadow rounded-[10px] py-4 pl-6 pr-[31px]">
           <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
             Active licenses
           </p>
@@ -30,7 +31,7 @@ const UserManagement = () => {
             </progress> */}
           </div>
         </div>
-        <div className="bg-white w-[26%] shadow rounded-lg pt-[17px] pb-[18px] px-6">
+        <div className="bg-white w-[26%] shadow rounded-[10px] pt-[17px] pb-[18px] px-6">
           <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
             Active plan
           </p>
@@ -44,34 +45,49 @@ const UserManagement = () => {
       </div>
 
       {/* User Management Table */}
-      <div className="bg-white shadow rounded-lg">
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-left text-gray-700">
-            <thead className="bg-gray-100 border-b">
-              <tr>
-                <th className="py-2 px-4">User name</th>
-                <th className="py-2 px-4">Email</th>
-                <th className="py-2 px-4">Date added</th>
-                <th className="py-2 px-4">Device ID</th>
-                <th className="py-2 px-4">Role</th>
-                <th className="py-2 px-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b">
-                <td className="py-2 px-4">Swapnil Lad</td>
-                <td className="py-2 px-4">swapnil.lad@gmail.com</td>
-                <td className="py-2 px-4">04 March 2023</td>
-                <td className="py-2 px-4">d9fgv-jhtd-d6f56</td>
-                <td className="py-2 px-4">Admin</td>
-                <td className="py-2 px-4">
-                  <button className="text-red-500 hover:text-red-700 text-sm">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <div className="flex flex-col gap-3">
+        <div className="flex justify-between items-center">
+          <div className="flex gap-2">
+            <CommonButton
+              text="+ Add user"
+              className="hover:bg-transparent bg-disableGray rounded-lg"
+            />
+            <div></div>
+          </div>
+          <div className="flex gap-2">
+            <div className="bg-white py-[10px] px-4 rounded-[10px]">Filter</div>
+            <div className="bg-white py-[10px] px-4 rounded-[10px]">Sort</div>
+          </div>
+        </div>
+        <div className="bg-white shadow rounded-l-[10px] rounded-r-[10px] p-4">
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-left text-gray-700">
+              <thead className="bg-gray-100 border-b">
+                <tr>
+                  <th className="py-2 px-4">User name</th>
+                  <th className="py-2 px-4">Email</th>
+                  <th className="py-2 px-4">Date added</th>
+                  <th className="py-2 px-4">Device ID</th>
+                  <th className="py-2 px-4">Role</th>
+                  <th className="py-2 px-4">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="py-2 px-4">Swapnil Lad</td>
+                  <td className="py-2 px-4">swapnil.lad@gmail.com</td>
+                  <td className="py-2 px-4">04 March 2023</td>
+                  <td className="py-2 px-4">d9fgv-jhtd-d6f56</td>
+                  <td className="py-2 px-4">Admin</td>
+                  <td className="py-2 px-4">
+                    <button className="text-red-500 hover:text-red-700 text-sm">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
