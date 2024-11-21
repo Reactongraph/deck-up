@@ -10,19 +10,34 @@ const UserManagement = () => {
 
       {/* Stats Section */}
       <div className="w-full flex gap-6 mb-10">
-        <div className="bg-white w-[35.5%] shadow rounded-lg p-4">
-          <p className="text-sm font-normal leading-[16.94px]">
+        <div className="bg-white w-[35.5%] shadow rounded-lg py-4 pl-6 pr-[31px]">
+          <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
             Active licenses
           </p>
-          <h2 className="text-[40px] font-semibold leading-[48.41px]">01</h2>
-          <p className="text-sm font-normal leading-[26px]">/01 Total</p>
+          <h2 className="text-[40px] font-semibold leading-[48.41px]">
+            01{" "}
+            <span className="text-sm font-normal leading-[26px]">
+              /01 Total
+            </span>
+          </h2>
+          <div className="w-full h-2 rounded-[10px] bg-[#26C4D8] text-[#26C4D8] mt-[14px] mb-1">
+            {/* <progress
+              id="file"
+              value="100" 
+              className="w-full h-2 rounded-[10px] bg-[#26C4D8] text-[#26C4D8]"
+            >
+              32%
+            </progress> */}
+          </div>
         </div>
-        <div className="bg-white w-[26%] shadow rounded-lg p-4">
-          <p className="text-sm text-gray-600">Active plan</p>
-          <h2 className="text-sm font-medium text-blue-600">
+        <div className="bg-white w-[26%] shadow rounded-lg pt-[17px] pb-[18px] px-6">
+          <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
+            Active plan
+          </p>
+          <h2 className="text-lg font-semibold leading-[17.96px] text-bodyColor mt-2">
             Single user plan
           </h2>
-          <button className="mt-2 text-xs text-red-500 underline">
+          <button className="mt-6 text-sm font-semibold leading-[26px] text-red-500">
             Upgrade
           </button>
         </div>
@@ -30,11 +45,6 @@ const UserManagement = () => {
 
       {/* User Management Table */}
       <div className="bg-white shadow rounded-lg">
-        <div className="p-4 border-b">
-          <h3 className="text-lg font-semibold text-gray-800">
-            User Management
-          </h3>
-        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left text-gray-700">
             <thead className="bg-gray-100 border-b">

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProfileInfo({ setActiveSubTab }) {
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       <div className="text-2xl font-semibold">Account Info</div>
 
       {/* Profile Info */}

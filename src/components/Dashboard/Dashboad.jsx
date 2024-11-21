@@ -26,22 +26,45 @@ const Dashboard = () => {
   return (
     <div className="flex h-full gap-[41px] pt-12 pl-7 bg-lightBlue">
       <aside className="sidebar w-[20%]">
-        <nav className="flex flex-col justify-start items-start">
+        <nav className="flex flex-col justify-start items-start mt-[71px]">
           <CommonButton
             text="User Management"
             onClick={() => setActiveTab("User Management")}
             className={`${
-              activeTab ? "bg-primary text-white" : "bg-black"
-            } w-full`}
+              activeTab === "User Management"
+                ? "bg-primary text-white -ml-[25%] w-full"
+                : "hover:bg-transparent"
+            } `}
+          />
+          <CommonButton
+            text="Account Info"
+            onClick={() => setActiveTab("Account Info")}
+            className={`${
+              activeTab === "Account Info"
+                ? "bg-primary text-white -ml-[25%] w-full"
+                : "hover:bg-transparent"
+            } `}
           />
 
-          <button onClick={() => setActiveTab("Account Info")}>
-            Account Info
-          </button>
-          <button onClick={() => setActiveTab("Billing History")}>
-            Billing History
-          </button>
-          <button onClick={() => setActiveTab("Support")}>Support</button>
+          <CommonButton
+            text="Billing History"
+            onClick={() => setActiveTab("Billing History")}
+            className={`${
+              activeTab === "Billing History"
+                ? "bg-primary text-white -ml-[25%] w-full"
+                : "hover:bg-transparent"
+            } `}
+          />
+
+          <CommonButton
+            text="Support"
+            onClick={() => setActiveTab("Support")}
+            className={`${
+              activeTab === "Support"
+                ? "bg-primary text-white -ml-[25%] w-full"
+                : "hover:bg-transparent"
+            } `}
+          />
         </nav>
       </aside>
 
