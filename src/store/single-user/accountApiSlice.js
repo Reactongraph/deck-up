@@ -28,6 +28,16 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    fetchUsersDetails: builder.query({
+      query: (email) => ({
+        url: "/dupe-api/users",
+        method: "GET",
+        params: { value: email, by: "email" },
+      }),
+    }),
+    fetchAccountInfo: builder.query({
+      query: (email) => `dashboard/${email}`,
+    }),
   }),
 });
 
@@ -36,4 +46,6 @@ export const {
   useCreateInvoiceMutation,
   useFetchCountriesQuery,
   useFetchStatesQuery,
+  useFetchUsersDetailsQuery,
+  useFetchAccountInfoQuery,
 } = accountApiSlice;

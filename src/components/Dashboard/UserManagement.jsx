@@ -1,7 +1,16 @@
-import React from "react";
-import CommonButton from "../common/CommonButton";
+import React, { useEffect } from "react";
+import UserDashboardTable from "./UserDashboardTable";
+import { useFetchUsersDetailsQuery } from "../../store/single-user/accountApiSlice";
 
 const UserManagement = () => {
+  const email = localStorage.getItem("email");
+  const { data, isLoading, error, refetch } =
+    useFetchUsersDetailsQuery(email);
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
+
   return (
     <div className="font-inter">
       {/* Top Section */}
@@ -44,52 +53,15 @@ const UserManagement = () => {
         </div>
       </div>
 
+      {isLoading && <p>Loading user details...</p>}
+      {error && <p className="text-red-500">Failed to fetch user details.</p>}
+
       {/* User Management Table */}
-      <div className="flex flex-col gap-3">
-        <div className="flex justify-between items-center">
-          <div className="flex gap-2">
-            <CommonButton
-              text="+ Add user"
-              className="hover:bg-transparent bg-disableGray rounded-lg"
-            />
-            <div></div>
-          </div>
-          <div className="flex gap-2">
-            <div className="bg-white py-[10px] px-4 rounded-[10px]">Filter</div>
-            <div className="bg-white py-[10px] px-4 rounded-[10px]">Sort</div>
-          </div>
-        </div>
-        <div className="bg-white shadow rounded-l-[10px] rounded-r-[10px] p-4">
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-left text-gray-700">
-              <thead className="bg-gray-100 border-b">
-                <tr>
-                  <th className="py-2 px-4">User name</th>
-                  <th className="py-2 px-4">Email</th>
-                  <th className="py-2 px-4">Date added</th>
-                  <th className="py-2 px-4">Device ID</th>
-                  <th className="py-2 px-4">Role</th>
-                  <th className="py-2 px-4">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="py-2 px-4">Swapnil Lad</td>
-                  <td className="py-2 px-4">swapnil.lad@gmail.com</td>
-                  <td className="py-2 px-4">04 March 2023</td>
-                  <td className="py-2 px-4">d9fgv-jhtd-d6f56</td>
-                  <td className="py-2 px-4">Admin</td>
-                  <td className="py-2 px-4">
-                    <button className="text-red-500 hover:text-red-700 text-sm">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      {data ? (
+        <UserDashboardTable data={data} />
+      ) : (
+        !isLoading && <p>No users found.</p>
+      )}
     </div>
   );
 };
