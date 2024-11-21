@@ -32,25 +32,41 @@ export default function AccountDetailsForm() {
   const { data: countries } = useFetchCountriesQuery();
   const { data: states } = useFetchStatesQuery(country);
 
+  const [billingCountry, setBillingCountry] = useState("");
+  const { data: billingStates } = useFetchStatesQuery(billingCountry);
+
   const email = localStorage.getItem("email");
   const [stateOptions, setStateOptions] = useState([]);
   const [billingStateOptions, setBillingStateOptions] = useState([]);
   const [isSameAsAbove, setIsSameAsAbove] = useState(true);
-  const [billingAddresss, setBillingAddresss] = useState({});
+  const [billingAddresss, setBillingAddresss] = useState({
+    firstName: "",
+    lastName: "",
+    addressLineOne: "",
+    city: "",
+    country: "",
+    state: "",
+  });
 
   useEffect(() => {
     if (country && states) {
       setStateOptions(
         states.map((state) => ({ label: state.name, value: state.code }))
       );
-      setBillingStateOptions(
-        states.map((state) => ({ label: state.name, value: state.code }))
-      );
     } else if (country) {
       setStateOptions([]);
-      setBillingStateOptions([]);
     }
   }, [country, states]);
+
+  useEffect(() => {
+    if (billingCountry && billingStates) {
+      setBillingStateOptions(
+        billingStates.map((state) => ({ label: state.name, value: state.code }))
+      );
+    } else {
+      setBillingStateOptions([]);
+    }
+  }, [billingCountry, billingStates]);
 
   const handleFieldChange = (e) => {
     const { name, value } = e.target;
@@ -66,8 +82,14 @@ export default function AccountDetailsForm() {
       dispatch(
         updateField({ field: "billingAddress", value: updatedBillingAddress })
       );
+      if (name === "billingAddress.country") {
+        setBillingCountry(value);
+      }
     } else {
       dispatch(updateField({ field: name, value }));
+      if (name === "country") {
+        dispatch(updateField({ field: "country", value }));
+      }
     }
   };
   const handleSubmit = async (values) => {
@@ -101,7 +123,20 @@ export default function AccountDetailsForm() {
         zip,
         country,
         state,
-        billingAddress: isSameAsAbove ? {} : billingAddresss,
+        billingAddress: isSameAsAbove
+          ? {
+              firstName: firstName || "",
+              lastName: lastName || "",
+              email: email || "",
+              companyName: companyName || "",
+              addressLineOne: addressLineOne || "",
+              addressLineTwo: addressLineTwo || "",
+              city: city || "",
+              zip: zip || "",
+              country: billingCountry || country,
+              state: state || "",
+            }
+          : { ...billingAddresss, email },
         redirectUrl: `${window.location.origin}/invoice`,
       }}
       validationSchema={AccountDetailsSchema}
@@ -155,8 +190,8 @@ export default function AccountDetailsForm() {
             <CommonAccountForm
               handleFieldChange={handleFieldChange}
               values={values.billingAddress}
-              touched={touched}
-              errors={errors}
+              touched={touched.billingAddress || {}}
+              errors={errors.billingAddress || {}}
               email={email}
               stateOptions={billingStateOptions}
               prefix="billingAddress."

@@ -11,9 +11,10 @@ import VerifyMail from "./view/VerifyMail";
 import CreateAccountPage from "./components/SingleUser/CreateAccountPage";
 import QuantityPage from "./components/SingleUser/QuantityPage";
 import PaymentPage from "./components/SingleUser/PaymentPage";
-import Dashboard from "./components/SingleUser/Dashboard/Dashboad";
 import AccountDetailsForm from "./components/SingleUser/AccountDetailsForm";
 import InvoiceRedirect from "./components/SingleUser/InvoiceRedirect";
+import Dashboard from "./components/Dashboard/Dashboad";
+import BuyLicenses from "./components/Dashboard/BuyLicenses";
 function App() {
   return (
     <Router>
@@ -114,6 +115,15 @@ function App() {
             </PublicLayout>
           }
         />
+        <Route
+          path="/buy-licenses"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <BuyLicenses />
+            </PublicLayout>
+          }
+        />
+
         <Route
           path="/invoice"
           element={

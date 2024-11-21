@@ -26,9 +26,7 @@ const CommonAccountForm = ({
             placeholder="First name"
             onChange={handleFieldChange}
             className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-            error={
-              touched[`${prefix}firstName`] && errors[`${prefix}firstName`]
-            }
+            error={touched[`firstName`] && errors[`firstName`]}
           />
         </div>
         <div>
@@ -41,7 +39,7 @@ const CommonAccountForm = ({
             placeholder="Last name"
             onChange={handleFieldChange}
             className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-            error={touched[`${prefix}lastName`] && errors[`${prefix}lastName`]}
+            error={touched[`lastName`] && errors[`lastName`]}
           />
         </div>
       </div>
@@ -69,9 +67,7 @@ const CommonAccountForm = ({
           placeholder="Company (optional)"
           onChange={handleFieldChange}
           className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-          error={
-            touched[`${prefix}companyName`] && errors[`${prefix}companyName`]
-          }
+          error={touched[`companyName`] && errors[`companyName`]}
         />
       </div>
 
@@ -85,10 +81,7 @@ const CommonAccountForm = ({
           placeholder="Address line 1"
           onChange={handleFieldChange}
           className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-          error={
-            touched[`${prefix}addressLineOne`] &&
-            errors[`${prefix}addressLineOne`]
-          }
+          error={touched[`addressLineOne`] && errors[`addressLineOne`]}
         />
       </div>
 
@@ -102,10 +95,7 @@ const CommonAccountForm = ({
           placeholder="Address line 2 (optional)"
           onChange={handleFieldChange}
           className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-          error={
-            touched[`${prefix}addressLineTwo`] &&
-            errors[`${prefix}addressLineTwo`]
-          }
+          error={touched[`addressLineTwo`] && errors[`addressLineTwo`]}
         />
       </div>
 
@@ -120,7 +110,7 @@ const CommonAccountForm = ({
             placeholder="City"
             onChange={handleFieldChange}
             className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-            error={touched[`${prefix}city`] && errors[`${prefix}city`]}
+            error={touched[`city`] && errors[`city`]}
           />
         </div>
         <Field
@@ -132,7 +122,7 @@ const CommonAccountForm = ({
           placeholder="Zip (optional)"
           onChange={handleFieldChange}
           className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-          error={touched[`${prefix}zip`] && errors[`${prefix}zip`]}
+          error={touched[`zip`] && errors[`zip`]}
         />
       </div>
 
@@ -141,22 +131,22 @@ const CommonAccountForm = ({
           <CommonDropdown
             name={`${prefix}country`}
             placeholder="Country"
-            value={values[`${prefix}country`]}
+            value={values[`${prefix}country`] || values[`country`] || ""}
             onChange={handleFieldChange}
             className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
             options={countryOptions}
-            error={touched[`${prefix}country`] && errors[`${prefix}country`]}
+            error={touched[`country`] && errors[`country`]}
           />
         </div>
         <div>
           <CommonDropdown
             name={`${prefix}state`}
             placeholder="State"
-            value={values[`${prefix}state`]}
+            value={values[`${prefix}state`] || values[`state`] || ""}
             onChange={handleFieldChange}
             className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
             options={stateOptions}
-            error={touched[`${prefix}state`] && errors[`${prefix}state`]}
+            error={touched[`state`] && errors[`state`]}
           />
         </div>
       </div>
