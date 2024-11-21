@@ -8,7 +8,7 @@ export default function PaymentPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [downloadUrl, setDownloadUrl] = useState(null);
-  const { createInvoiceApi } = useCreateInvoiceMutation();
+  const [createInvoiceApi] = useCreateInvoiceMutation();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -26,7 +26,6 @@ export default function PaymentPage() {
         })
         .catch((error) => {
           console.error("Error retrieving invoice data:", error);
-          toast.error("Failed to retrieve invoice data.");
         });
     } else {
       toast.error("Invalid or missing hostedPageId.");

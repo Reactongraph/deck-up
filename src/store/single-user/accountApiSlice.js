@@ -13,10 +13,27 @@ export const accountApiSlice = apiSlice.injectEndpoints({
       query: (hostedPageId) => ({
         url: "/checkoutpage/invoice",
         method: "POST",
-        body: hostedPageId,
+        body: { hostedPageId: hostedPageId },
+      }),
+    }),
+    fetchCountries: builder.query({
+      query: () => ({
+        url: "/countries",
+        method: "GET",
+      }),
+    }),
+    fetchStates: builder.query({
+      query: (country) => ({
+        url: `/countries/${country}/states`,
+        method: "GET",
       }),
     }),
   }),
 });
 
-export const { useCreateAccountMutation, useCreateInvoiceMutation } = accountApiSlice;
+export const {
+  useCreateAccountMutation,
+  useCreateInvoiceMutation,
+  useFetchCountriesQuery,
+  useFetchStatesQuery,
+} = accountApiSlice;
