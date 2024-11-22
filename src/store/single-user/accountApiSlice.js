@@ -24,7 +24,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
     }),
     fetchStates: builder.query({
       query: (country) => ({
-        url: `/countries/${country}/states`,
+        url: `/countries/${country}states`,
         method: "GET",
       }),
     }),
@@ -38,6 +38,12 @@ export const accountApiSlice = apiSlice.injectEndpoints({
     fetchAccountInfo: builder.query({
       query: (email) => `dashboard/${email}`,
     }),
+    fetchLicenseDetails: builder.query({
+      query: (email) => ({
+        url: `/dupe-api/users/licenses/${email}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -48,4 +54,5 @@ export const {
   useFetchStatesQuery,
   useFetchUsersDetailsQuery,
   useFetchAccountInfoQuery,
+  useFetchLicenseDetailsQuery,
 } = accountApiSlice;

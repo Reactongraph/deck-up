@@ -14,32 +14,25 @@ const AccountInfo = () => {
   const renderSubContent = () => {
     switch (activeSubTab) {
       case "Profile Info":
-        return <ProfileInfo data={data} setActiveSubTab={setActiveSubTab} />;
+        return (
+          <ProfileInfo
+            data={data}
+            isLoading={isLoading}
+            isError={isError}
+            error={error}
+            setActiveSubTab={setActiveSubTab}
+          />
+        );
       case "Renew License":
         return <RenewLicense setActiveSubTab={setActiveSubTab} />;
       case "Buy Additional Licenses":
-        return <BuyLicenses data={data} />;
+        return <BuyLicenses data={data} setActiveSubTab={setActiveSubTab} />;
       case "Cancel":
         return <CancelSubscription />;
       default:
         return <ProfileInfo data={data} setActiveSubTab={setActiveSubTab} />;
     }
   };
-
-  if (isLoading) {
-    return <div>Loading account information...</div>;
-  }
-
-  if (isError) {
-    return (
-      <div>
-        <p className="text-red-500">
-          Error loading account information:{" "}
-          {error?.data?.message || "An error occurred"}
-        </p>
-      </div>
-    );
-  }
 
   return <div className="sub-tab-content">{renderSubContent()}</div>;
 };

@@ -19,7 +19,6 @@ export default function CreateAccountPage() {
   const handleEmailChange = (event) => {
     const email = event.target.value;
     dispatch(setEmail(email));
-    localStorage.setItem("email", email);
   };
 
   useEffect(() => {
@@ -40,6 +39,7 @@ export default function CreateAccountPage() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     loginAPi(email);
+    localStorage.setItem("email", email);
   };
 
   const handleGoogleLogin = () => {

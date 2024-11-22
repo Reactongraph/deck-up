@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import CommonButton from "../common/CommonButton";
+import { formatDate } from "../../helper/helper";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -75,7 +76,7 @@ export default function UserDashboardTable({ data }) {
               )}
               <table className="min-w-full table-fixed divide-y divide-gray-300">
                 <thead>
-                  <tr>
+                  <tr className="border-b border-disableGray">
                     <th scope="col" className="relative px-7 sm:w-12 sm:px-6">
                       <input
                         type="checkbox"
@@ -165,10 +166,10 @@ export default function UserDashboardTable({ data }) {
                         {person.email}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.createdAt}
+                        {formatDate(person?.createdAt)}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person._id}
+                        {"-"}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {person.role}

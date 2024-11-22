@@ -5,10 +5,7 @@ import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useLazyCheckUserExistsQuery,
-  useRegisterUserMutation,
-} from "../store/auth/authApiSlice";
+import { useRegisterUserMutation } from "../store/auth/authApiSlice";
 import { setEmail } from "../store/auth/authSlice";
 import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { auth } from "../firebaseConfig";
@@ -21,7 +18,7 @@ export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
 
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
-  const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
+  // const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,11 +27,9 @@ export default function LoginPage() {
   const handleEmailChange = (event) => {
     const email = event.target.value;
     dispatch(setEmail(email));
-    localStorage.setItem("email", email);
   };
 
   useEffect(() => {
-   
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       const storedEmail = localStorage.getItem("email");
       if (storedEmail) {
@@ -51,6 +46,7 @@ export default function LoginPage() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     loginAPi(email);
+    localStorage.setItem("email", email);
   };
 
   const handleGoogleLogin = () => {
@@ -63,7 +59,7 @@ export default function LoginPage() {
         localStorage.setItem("email", user.email);
 
         try {
-          await triggerCheckUserApi(user.email).unwrap();
+          // await triggerCheckUserApi(user.email).unwrap();
           const responseData = await googleLoginPostApiRequest(
             user.email,
             user.uid
@@ -154,7 +150,7 @@ export default function LoginPage() {
     <>
       {/* <Header /> */}
       <div className="bg-lightBlue min-h-[100%] flex flex-col">
-      <ToastContainer
+        <ToastContainer
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}

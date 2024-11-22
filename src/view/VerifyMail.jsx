@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { setOtp, selectAuthState } from "../store/auth/authSlice";
-import {
-  useLazyCheckUserExistsQuery,
-  useVerifyOtpForLoginMutation,
-} from "../store/auth/authApiSlice";
-import { checkUserTrailApiRequest } from "../helper/helper";
+import { useVerifyOtpForLoginMutation } from "../store/auth/authApiSlice";
+// import { checkUserTrailApiRequest } from "../helper/helper";
 
 const VerifyMail = () => {
   const dispatch = useDispatch();
@@ -16,8 +13,6 @@ const VerifyMail = () => {
   const navigate = useNavigate();
 
   const [verifyApi, { isLoading }] = useVerifyOtpForLoginMutation();
-
-  const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
 
   useEffect(() => {
     dispatch(setOtp(["", "", "", "", "", ""]));
@@ -83,9 +78,10 @@ const VerifyMail = () => {
 
     try {
       const otpVerify = await verifyApi({ email, otp: otpString }).unwrap();
-      if (otpVerify?.message === "OTP verified") {
-        await triggerCheckUserApi(email).unwrap();
-        await checkUserTrailApiRequest(email);
+      if (otpVerify?.message === "OTP verified" && otpVerify.tokens) {
+        localStorage.setItem("accessToken", otpVerify.tokens.accessToken);
+        localStorage.setItem("refreshToken", otpVerify.tokens.refreshToken);
+        // await checkUserTrailApiRequest(email);
 
         const loginSource = localStorage.getItem("loginSource");
         const targetPage =

@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-import { useCheckUserExistsQuery } from "../store/auth/authApiSlice";
-import { useSelector } from "react-redux";
-import { selectAuthState } from "../store/auth/authSlice";
+// import { useCheckUserExistsQuery } from "../store/auth/authApiSlice";
+// import { useSelector } from "react-redux";
+// import { selectAuthState } from "../store/auth/authSlice";
 
 const SetupPage = () => {
-  const { email } = useSelector(selectAuthState);
+  // const { email } = useSelector(selectAuthState);
 
-  const { data, isLoading, error } = useCheckUserExistsQuery(email);
+  // const { data, isLoading, error } = useCheckUserExistsQuery(email);
 
   const pdfRef = useRef(null);
 
@@ -37,17 +37,15 @@ const SetupPage = () => {
           <p class="text-bodyColor pb-2">
             Download the setup file and follow the steps given below
           </p>
-          {isLoading ? (
+          {/* {isLoading ? (
             <p>Loading...</p>
           ) : error ? (
             <p>Error checking user registration status.</p>
-          ) : (
+          ) : ( */}
             <button
               onClick={downloadPdf}
-              className={`mt-4 bg-primary hover:bg-red-600 text-white font-medium py-3 px-4 rounded-full inline-flex items-center ${
-                data.userExists ? "cursor-not-allowed opacity-50" : ""
-              }`}
-              disabled={data.userExists}
+              className={`mt-4 bg-primary hover:bg-red-600 text-white font-medium py-3 px-4 rounded-full inline-flex items-center cursor-not-allowed opacity-50`}
+              // disabled={data.userExists}
             >
               <img
                 className="mr-2"
@@ -56,12 +54,12 @@ const SetupPage = () => {
               />
               Download setup file
             </button>
-          )}
-          {data?.userExists && (
+          {/* )} */}
+          {/* {data?.userExists && (
             <p className="text-red-600 font-medium mt-2">
               You are already registered and cannot proceed to the next step.
             </p>
-          )}
+          )} */}
         </div>
 
         <div ref={pdfRef}>
