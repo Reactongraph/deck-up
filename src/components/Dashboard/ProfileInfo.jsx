@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import CommonButton from "../common/CommonButton";
 import { formatCurrency, formatDate } from "../../helper/helper";
+import { useFetchLicenseDetailsQuery } from "../../store/single-user/accountApiSlice";
 
 export default function ProfileInfo({
   data,
@@ -9,22 +10,16 @@ export default function ProfileInfo({
   error,
   setActiveSubTab,
 }) {
-  // if (isLoading) {
-  //   return <div>Loading account information...</div>;
-  // }
+  const [showCVV, setShowCVV] = useState(false);
 
-  // if (isError) {
-  //   return (
-  //     <div>
-  //       <p className="text-red-500">
-  //         Error loading account information:{" "}
-  //         {error?.data?.message || "An error occurred"}
-  //       </p>
-  //     </div>
-  //   );
-  // }
+  const handleToggleCVV = () => {
+    setShowCVV((prev) => !prev);
+  };
 
-  console.log("data......", data);
+  const email = localStorage.getItem("email");
+  const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
+  console.log("data......", data, "LicenseDetails", LicenseDetails);
+
   const SubscriptionsDetails = data?.subscriptions;
   const CardDetails = data?.subscriptions?.card;
   return (
@@ -55,7 +50,7 @@ export default function ProfileInfo({
                   <p>Single user</p>
                   <p>Cerner Corporation</p>
                   <p>Michigan, USA</p>
-                  <p>01</p>
+                  <p>{LicenseDetails?.activatedUsers || 0}</p>
                 </div>
               </div>
               <div className="w-[66%] flex gap-4 justify-between">
@@ -69,7 +64,8 @@ export default function ProfileInfo({
                   <p>
                     {formatCurrency(
                       SubscriptionsDetails?.base_currency_code,
-                      "99"
+                      SubscriptionsDetails?.subscription_items[0]?.unit_price /
+                        100
                     )}
                     /user/
                     {SubscriptionsDetails?.billing_period_unit}
@@ -77,11 +73,11 @@ export default function ProfileInfo({
                   <p>
                     {formatCurrency(
                       SubscriptionsDetails?.base_currency_code,
-                      "254"
+                      SubscriptionsDetails?.subscription_items[0]?.amount / 100
                     )}
                   </p>
-                  <p>{formatDate(SubscriptionsDetails?.created_at)}</p>
-                  <p>2nd March 2024</p>
+                  <p>{formatDate(SubscriptionsDetails?.current_term_start)}</p>
+                  <p>{formatDate(SubscriptionsDetails?.current_term_end)}</p>
                 </div>
               </div>
             </div>
@@ -100,24 +96,22 @@ export default function ProfileInfo({
                   Payment modes
                 </h2>
               </div>
-              <div className="text-[10px] px-10 pt-[18px] pb-6">
+              <div className="px-10 pt-[18px] pb-6">
                 <div className="flex gap-3">
-                  <div className="w-[62%] bg-lightBlue rounded-[10px] p-6">
+                  <div className="w-[63%] bg-lightBlue rounded-[10px] p-6">
                     <div className="flex justify-between items-center">
-                      {/* </div>
-                    <div className="flex gap-[45px] justify-between"> */}
                       <div>
                         <p className="text-[10px] font-semibold leading-[12.1px] text-bodyColor mb-6">
                           My Personal Card
                         </p>
-                        <div className="flex flex-col gap-[6px]">
+                        <div className="text-[10px] flex flex-col gap-[6px]">
                           <p className="leading-[12.1px]">Card Number:</p>
                           <p className="font-semibold leading-[12.1px]">
                             {CardDetails?.masked_number}
                           </p>
                         </div>
 
-                        <div className="flex flex-col gap-[6px] mt-[14px]">
+                        <div className="text-[10px] flex flex-col gap-[6px] mt-[14px]">
                           <p className="leading-[12.1px]">Card Holder Name:</p>
                           <p className="font-semibold leading-[12.1px]">
                             {CardDetails?.first_name} {CardDetails?.last_name}
@@ -125,22 +119,38 @@ export default function ProfileInfo({
                         </div>
                       </div>
                       <div>
-                        <p className="text-xl mb-6">{CardDetails?.card_type}</p>
-
-                        <p>
-                          <p>Exp:</p> {CardDetails?.expiry_month}/
-                          {CardDetails?.expiry_year}
+                        <p className="text-xl mb-[20px] font-extrabold italic text-paleBlue">
+                          {CardDetails?.card_type}
                         </p>
-                        <p>
-                          <p>CVV/CVC:</p>
-                          ***
-                        </p>
+                        <div className="text-[10px] flex flex-col gap-[14px]">
+                          <div className="flex flex-col gap-[6px]">
+                            <p>Exp:</p>{" "}
+                            <p className="font-semibold leading-[12.1px]">
+                              {CardDetails?.expiry_month}/
+                              {CardDetails?.expiry_year}
+                            </p>
+                          </div>
+                          <div className="flex flex-col gap-[6px] items-start">
+                            <span>CVV/CVC:</span>
+                            <div className="flex items-center">
+                              <p className="font-semibold leading-[12.1px]">
+                                {showCVV ? CardDetails?.cvv || "123" : "***"}
+                              </p>
+                              <CommonButton
+                                onClick={handleToggleCVV}
+                                className="text-primary hover:bg-transparent bg-transparent px-0 py-0"
+                                text={showCVV ? "Hide" : "View"}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="w-[36%] flex flex-col gap-3">
-                    <div className="bg-lightBlue rounded-[10px] p-6"></div>
-                    <div className="bg-lightBlue rounded-[10px] p-6"></div>
+                  <div className="w-[35%] h-full flex flex-col gap-3">
+                    <div className="bg-lightBlue h-full rounded-[10px] p-6">
+                      Add new +
+                    </div>
                   </div>
                 </div>
                 <div className="flex gap-2">

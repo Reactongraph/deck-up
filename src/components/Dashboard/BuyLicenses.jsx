@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { singleUserOrderData } from "../../utils/data";
 import CommonButton from "../common/CommonButton";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-export default function BuyLicenses() {
-  const [plan, setPlan] = useState("Single user"); // Default selected plan
-  const navigate = useNavigate();
+export default function BuyLicenses({ setActiveSubTab }) {
+  const [plan, setPlan] = useState("Single user");
+  // const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1);
+    setActiveSubTab("Profile Info");
   };
 
   return (
     <div className="bg-white font-inter flex flex-col gap-6 mt-[14px] rounded-[10px] pl-20 pt-[59px] pb-[39px] pr-8 lg:pr-[107px]">
       <div>
-        <button onClick={handleBack}>Back</button>
+        <CommonButton
+          text="Back"
+          onClick={handleBack}
+          className="bg-white text-primary hover:text-white"
+        />
         <h2 className="text-2xl font-semibold leading-[29.05px] text-paleBlue">
           Plans & Pricing
         </h2>

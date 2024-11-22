@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import CommonAccountForm from "./CommonAccountForm";
 import { setNestedValue } from "../../helper/helper";
 
-export default function AccountDetailsForm() {
+export default function AccountDetailsForm({ dashboardPage = false }) {
   const dispatch = useDispatch();
   const [createUserApi, { isLoading }] = useCreateAccountMutation();
   const {
@@ -36,6 +36,8 @@ export default function AccountDetailsForm() {
   const { data: billingStates } = useFetchStatesQuery(billingCountry);
 
   const email = localStorage.getItem("email");
+  const accountData = JSON.parse(localStorage.getItem("accountData"));
+
   const [stateOptions, setStateOptions] = useState([]);
   const [billingStateOptions, setBillingStateOptions] = useState([]);
   const [isSameAsAbove, setIsSameAsAbove] = useState(true);
@@ -95,6 +97,7 @@ export default function AccountDetailsForm() {
   const handleSubmit = async (values) => {
     try {
       const response = await createUserApi(values).unwrap();
+      localStorage.setItem("accountData", JSON.stringify(values));
 
       if (response.redirect_url) {
         toast.success("Account created successfully!");
@@ -150,7 +153,7 @@ export default function AccountDetailsForm() {
           </h2>
           <CommonAccountForm
             handleFieldChange={handleFieldChange}
-            values={values}
+            values={values || accountData}
             touched={touched}
             errors={errors}
             email={email}
@@ -189,7 +192,7 @@ export default function AccountDetailsForm() {
           {!isSameAsAbove && (
             <CommonAccountForm
               handleFieldChange={handleFieldChange}
-              values={values.billingAddress}
+              values={values.billingAddress || accountData}
               touched={touched.billingAddress || {}}
               errors={errors.billingAddress || {}}
               email={email}
@@ -217,5 +220,17 @@ export default function AccountDetailsForm() {
     </Formik>
   );
 
-  return <CommonLoginLayout form={accountDetailsForm} className="pb-[58px]" />;
+  return (
+    <>
+      {dashboardPage ? (
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 order-2 lg:order-1">
+          <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[24px] pb-[56px] pl-[24px] sm:pr-[80px] sm:pl-[80px]">
+            {accountDetailsForm}
+          </div>
+        </div>
+      ) : (
+        <CommonLoginLayout form={accountDetailsForm} className="pb-[58px]" />
+      )}
+    </>
+  );
 }

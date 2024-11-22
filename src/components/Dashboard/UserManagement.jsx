@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import UserDashboardTable from "./UserDashboardTable";
-import { useFetchUsersDetailsQuery } from "../../store/single-user/accountApiSlice";
+import {
+  useFetchLicenseDetailsQuery,
+  useFetchUsersDetailsQuery,
+} from "../../store/single-user/accountApiSlice";
 
 const UserManagement = () => {
   const email = localStorage.getItem("email");
   const { data, isLoading, error, refetch } = useFetchUsersDetailsQuery(email);
-
-  console.log("UserManagement datadata", data);
+  const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
 
   useEffect(() => {
     refetch();
@@ -25,10 +27,10 @@ const UserManagement = () => {
           <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
             Active licenses
           </p>
-          <h2 className="text-[40px] font-semibold leading-[48.41px]">
-            01{" "}
-            <span className="text-sm font-normal leading-[26px]">
-              /01 Total
+          <h2 className="text-[40px] text-[#26C4D8] font-semibold leading-[48.41px]">
+            {LicenseDetails?.activatedUsers || 0}{" "}
+            <span className="text-sm text-bodyColor font-normal leading-[26px]">
+              /{LicenseDetails?.maxUsers || 0} Total
             </span>
           </h2>
           <div className="w-full h-2 rounded-[10px] bg-[#26C4D8] text-[#26C4D8] mt-[14px] mb-1">

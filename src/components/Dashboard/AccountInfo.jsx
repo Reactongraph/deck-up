@@ -26,7 +26,7 @@ const AccountInfo = () => {
       case "Renew License":
         return <RenewLicense setActiveSubTab={setActiveSubTab} />;
       case "Buy Additional Licenses":
-        return <BuyLicenses data={data} />;
+        return <BuyLicenses data={data} setActiveSubTab={setActiveSubTab} />;
       case "Cancel":
         return <CancelSubscription />;
       default:
