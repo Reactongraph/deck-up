@@ -95,7 +95,6 @@ export const months = [
   },
 ];
 
-
 export const statesByCountry = {
   US: [
     { label: "California", value: "CA" },
@@ -108,3 +107,33 @@ export const statesByCountry = {
     { label: "British Columbia", value: "BC" },
   ],
 };
+
+export const singleUserOrderData = [
+  {
+    title: "Single user",
+    subtitle: "Only 1 user",
+    price: "$99",
+    period: "per user",
+    description: "*billed annually",
+    buttonText: "Get started",
+    buttonVariant: "outline",
+  },
+  {
+    title: "Multiuser",
+    subtitle: "Upto 20 users",
+    price: "$89",
+    period: "per user",
+    description: "*billed annually",
+    buttonText: "Get started",
+    buttonVariant: "outline",
+  },
+  {
+    title: "Enterprise plan",
+    subtitle: "Teams of 50+ users",
+    price: "50+",
+    period: "users",
+    description: "corporate requirements",
+    buttonText: "Contact us",
+    buttonVariant: "outline",
+  },
+];

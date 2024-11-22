@@ -4,8 +4,9 @@ import { useFetchUsersDetailsQuery } from "../../store/single-user/accountApiSli
 
 const UserManagement = () => {
   const email = localStorage.getItem("email");
-  const { data, isLoading, error, refetch } =
-    useFetchUsersDetailsQuery(email);
+  const { data, isLoading, error, refetch } = useFetchUsersDetailsQuery(email);
+
+  console.log("UserManagement datadata", data);
 
   useEffect(() => {
     refetch();
@@ -57,7 +58,7 @@ const UserManagement = () => {
       {error && <p className="text-red-500">Failed to fetch user details.</p>}
 
       {/* User Management Table */}
-      {data ? (
+      {data?.length > 0 ? (
         <UserDashboardTable data={data} />
       ) : (
         !isLoading && <p>No users found.</p>

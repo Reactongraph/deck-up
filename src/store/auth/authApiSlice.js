@@ -21,18 +21,18 @@ export const authApiSlice = apiSlice.injectEndpoints({
     }),
 
     // Check if user exists
-    checkUserExists: builder.query({
-      query: (email) => ({
-        url: `/dupe-api/check?email=${email}`,
-        method: "GET",
-      }),
-    }),
+    // checkUserExists: builder.query({
+    //   query: (email) => ({
+    //     url: `/dupe-api/check?email=${email}`,
+    //     method: "GET",
+    //   }),
+    // }),
   }),
 });
 
 export const {
   useRegisterUserMutation,
   useVerifyOtpForLoginMutation,
-  useCheckUserExistsQuery,
-  useLazyCheckUserExistsQuery,
+  // useCheckUserExistsQuery,
+  // useLazyCheckUserExistsQuery,
 } = authApiSlice;
