@@ -18,7 +18,6 @@ export default function ProfileInfo({
 
   const email = localStorage.getItem("email");
   const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
-  console.log("data......", data, "LicenseDetails", LicenseDetails);
 
   const SubscriptionsDetails = data?.subscriptions;
   const CardDetails = data?.subscriptions?.card;

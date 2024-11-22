@@ -1,6 +1,5 @@
 import React from "react";
 import AccountDetailsForm from "../SingleUser/AccountDetailsForm";
-import CommonButton from "../common/CommonButton";
 
 export default function RenewLicense({ setActiveSubTab }) {
   const handleBack = () => {
@@ -8,11 +7,9 @@ export default function RenewLicense({ setActiveSubTab }) {
   };
   return (
     <div className="bg-white rounded-xl p-5">
-      <CommonButton
-        text="Back"
-        onClick={handleBack}
-        className="bg-white text-primary hover:text-white"
-      />
+      <div onClick={handleBack} className="cursor-pointer mb-[15px]">
+        <img src="/images/backIcon.svg" alt="" />
+      </div>
       <AccountDetailsForm dashboardPage={true} />
     </div>
   );

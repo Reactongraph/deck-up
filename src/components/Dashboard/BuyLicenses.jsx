@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { singleUserOrderData } from "../../utils/data";
 import CommonButton from "../common/CommonButton";
-// import { useNavigate } from "react-router-dom";
-
 export default function BuyLicenses({ setActiveSubTab }) {
   const [plan, setPlan] = useState("Single user");
-  // const navigate = useNavigate();
 
   const handleBack = () => {
     setActiveSubTab("Profile Info");
@@ -14,11 +11,9 @@ export default function BuyLicenses({ setActiveSubTab }) {
   return (
     <div className="bg-white font-inter flex flex-col gap-6 mt-[14px] rounded-[10px] pl-20 pt-[59px] pb-[39px] pr-8 lg:pr-[107px]">
       <div>
-        <CommonButton
-          text="Back"
-          onClick={handleBack}
-          className="bg-white text-primary hover:text-white"
-        />
+        <div onClick={handleBack} className="cursor-pointer mb-[15px]">
+          <img src="/images/backIcon.svg" alt="" />
+        </div>
         <h2 className="text-2xl font-semibold leading-[29.05px] text-paleBlue">
           Plans & Pricing
         </h2>
