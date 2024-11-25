@@ -8,12 +8,15 @@ import FeatureHover from "./MenuHoverComponents/FeatureHover";
 import useCustomNavigation from "../Hooks/useCustomNavigation";
 import TutorialExplorer from "./MenuHoverComponents/TutorialExplorer";
 import GradientOverlay from "./common/GradientOverlay";
+import { useFetchUsersDetailsQuery } from "../store/single-user/accountApiSlice";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // Track active dropdown
   const navigate = useCustomNavigation();
   const token = localStorage.getItem("accessToken");
+  const email = localStorage.getItem("email");
+  const { data: userDetails } = useFetchUsersDetailsQuery(email);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -55,13 +58,13 @@ export default function Header() {
             <div className="flex gap-[6px] items-center">
               <img src="/images/profileIcon.svg" alt="" />
               <p className="text-sm font-medium text-bodyColor leading-[16.94px]">
-                Owner
+                {userDetails[0]?.first_name}
               </p>
             </div>
-            <div>
+            <div className="cursor-pointer">
               <img src="/images/powerButton.svg" alt="" />
             </div>
-            <div>
+            <div className="cursor-pointer">
               <img src="/images/bellIcon.svg" alt="" />
             </div>
           </div>
