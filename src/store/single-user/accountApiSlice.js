@@ -27,6 +27,8 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         url: `/countries/${country}/states`,
         method: "GET",
       }),
+      transformResponse: (response) =>
+        response?.sort((a, b) => a.name.localeCompare(b.name)),
     }),
     fetchUsersDetails: builder.query({
       query: (email) => ({

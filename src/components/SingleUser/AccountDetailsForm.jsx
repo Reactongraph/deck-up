@@ -10,6 +10,7 @@ import {
   useCreateAccountMutation,
   useFetchCountriesQuery,
   useFetchStatesQuery,
+  useFetchUsersDetailsQuery,
 } from "../../store/single-user/accountApiSlice";
 import { toast } from "react-toastify";
 import CommonAccountForm from "./CommonAccountForm";
@@ -40,6 +41,7 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
 
   const email = localStorage.getItem("email");
   const accountData = JSON.parse(localStorage.getItem("accountData"));
+  const { data: userDetails } = useFetchUsersDetailsQuery(email);
 
   const [stateOptions, setStateOptions] = useState([]);
   const [billingStateOptions, setBillingStateOptions] = useState([]);
@@ -52,6 +54,12 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
     country: "",
     state: "",
   });
+
+  useEffect(() => {
+    if (userDetails) {
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    }
+  }, [userDetails]);
 
   useEffect(() => {
     if (country && states) {
@@ -101,6 +109,9 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
     try {
       const response = await createUserApi(values).unwrap();
       localStorage.setItem("accountData", JSON.stringify(values));
+      if (userDetails) {
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      }
 
       if (response.redirect_url) {
         toast.success("Account created successfully!");

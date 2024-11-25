@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
 import { Images } from "../utils/images";
@@ -8,15 +8,19 @@ import FeatureHover from "./MenuHoverComponents/FeatureHover";
 import useCustomNavigation from "../Hooks/useCustomNavigation";
 import TutorialExplorer from "./MenuHoverComponents/TutorialExplorer";
 import GradientOverlay from "./common/GradientOverlay";
-import { useFetchUsersDetailsQuery } from "../store/single-user/accountApiSlice";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // Track active dropdown
   const navigate = useCustomNavigation();
   const token = localStorage.getItem("accessToken");
-  const email = localStorage.getItem("email");
-  const { data: userDetails } = useFetchUsersDetailsQuery(email);
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+  useEffect(() => {
+    if (userDetails) {
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    }
+  }, [userDetails]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -37,7 +41,7 @@ export default function Header() {
     setActiveDropdown((prev) => (prev === item ? null : item));
   };
 
-  console.log("activeDropdown", activeDropdown);
+  // console.log("activeDropdown", activeDropdown);
   return (
     <div className="shadow-sm w-full relative">
       <nav
@@ -58,7 +62,9 @@ export default function Header() {
             <div className="flex gap-[6px] items-center">
               <img src="/images/profileIcon.svg" alt="" />
               <p className="text-sm font-medium text-bodyColor leading-[16.94px]">
-                {userDetails[0]?.first_name}
+                {userDetails?.[0]?.first_name
+                  ? userDetails[0].first_name
+                  : "User"}
               </p>
             </div>
             <div className="cursor-pointer">
