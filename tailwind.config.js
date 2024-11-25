@@ -31,6 +31,7 @@ module.exports = {
         lighCyan: "#E4F6F9",
         lightGrayShade: "#F9FBFC",
         disableGray: "#D9E2EB",
+        textAreaGray: "#8A8A8A",
       },
       fontSize: {
         banner: ["55px", { lineHeight: "70px", fontWeight: "800" }], // Banner headline
