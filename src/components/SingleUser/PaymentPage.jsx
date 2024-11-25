@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
-import { useCreateInvoiceMutation, useFetchUsersDetailsQuery } from "../../store/single-user/accountApiSlice";
+import {
+  useCreateInvoiceMutation,
+  useFetchUsersDetailsQuery,
+} from "../../store/single-user/accountApiSlice";
 import { toast, ToastContainer } from "react-toastify";
 
-export default function PaymentPage() {
+export default function PaymentPage({ mainClassName, subClassName }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [downloadUrl, setDownloadUrl] = useState(null);
@@ -52,8 +55,12 @@ export default function PaymentPage() {
   };
 
   return (
-    <div className="flex justify-center pt-16 bg-lightBlue h-full">
-      <div className="flex gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[66px]">
+    <div
+      className={`${mainClassName} flex justify-center pt-16 bg-lightBlue h-full`}
+    >
+      <div
+        className={`${subClassName} flex gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[66px]`}
+      >
         <div className="w-[48%]">
           <div className="w-full bg-lighCyan px-[54px] py-[27px] rounded-[6px]">
             <div className="flex gap-1">

@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { singleUserOrderData } from "../../utils/data";
 import CommonButton from "../common/CommonButton";
-export default function BuyLicenses({ setActiveSubTab }) {
-  const [plan, setPlan] = useState("Single user");
 
+export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
   const handleBack = () => {
     setActiveSubTab("Profile Info");
   };
 
+  const handleGetStarted = (isDisabled, planData) => {
+    if (!isDisabled) {
+      setPlan(planData.title);
+      setActiveSubTab("Quantity");
+    }
+  };
   return (
     <div className="bg-white font-inter flex flex-col gap-6 mt-[14px] rounded-[10px] pl-20 pt-[59px] pb-[39px] pr-8 lg:pr-[107px]">
       <div>
@@ -61,11 +66,7 @@ export default function BuyLicenses({ setActiveSubTab }) {
                 }`}
                 variant="outline"
                 text={planData.buttonText}
-                onClick={() => {
-                  if (!isDisabled) {
-                    setPlan(planData.title);
-                  }
-                }}
+                onClick={() => handleGetStarted(isDisabled, planData)}
                 disabled={isDisabled}
               />
             </div>
