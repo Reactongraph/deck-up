@@ -43,8 +43,8 @@ export default function CancelSubscription({ setActiveSubTab }) {
             onClick={() => setSelectedReason(reason)}
             className={`px-4 py-3 border border-disableGray text-center font-medium rounded-[10px] text-sm ${
               selectedReason === reason
-                ? "border-blue-500 text-blue-500 bg-blue-100"
-                : "border-gray-300 text-bodyColor hover:bg-gray-100"
+                ? "border-paleBlue text-paleBlue bg-lightBlue font-semibold"
+                : "border-disableGray text-bodyColor hover:text-paleBlue hover:bg-lightBlue"
             }`}
           >
             {reason}
