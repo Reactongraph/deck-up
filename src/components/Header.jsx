@@ -51,8 +51,19 @@ export default function Header() {
           />
         </div>
         {token ? (
-          <div>
-            <img src="/images/headerRight.svg" alt="" />
+          <div className="flex items-center gap-6">
+            <div className="flex gap-[6px] items-center">
+              <img src="/images/profileIcon.svg" alt="" />
+              <p className="text-sm font-medium text-bodyColor leading-[16.94px]">
+                Owner
+              </p>
+            </div>
+            <div>
+              <img src="/images/powerButton.svg" alt="" />
+            </div>
+            <div>
+              <img src="/images/bellIcon.svg" alt="" />
+            </div>
           </div>
         ) : (
           <>

@@ -24,7 +24,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
     }),
     fetchStates: builder.query({
       query: (country) => ({
-        url: `/countries/${country}states`,
+        url: `/countries/${country}/states`,
         method: "GET",
       }),
     }),
