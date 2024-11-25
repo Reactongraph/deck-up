@@ -23,8 +23,6 @@ export default function ProfileInfo({
   const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
   const { data: userDetails } = useFetchUsersDetailsQuery(email);
 
-  console.log("userDetails", userDetails);
-
   const SubscriptionsDetails = data?.subscriptions;
   const CardDetails = data?.subscriptions?.card;
   return (
@@ -174,15 +172,23 @@ export default function ProfileInfo({
             </div>
 
             {/* Owner */}
-            <div className="w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5">
-              {/* <h2 className="text-lg font-medium mb-2">Owner</h2>
+            {userDetails?.length > 0 ? (
+              <div className="w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5">
+                {/* <h2 className="text-lg font-medium mb-2">Owner</h2>
               <p className="text-sm">Ravi Shah - ravi.shah@cerner.com</p> */}
-              <h2 className="text-lg font-medium mt-4 mb-2">Admins</h2>
-              <p className="text-sm">
-                {userDetails[0]?.first_name} {userDetails[0]?.last_name} -{" "}
-                {userDetails[0]?.email}
-              </p>
-            </div>
+                <h2 className="text-lg font-medium mt-4 mb-2">
+                  {userDetails[0]?.role}
+                </h2>
+                <div className="text-sm flex gap-4">
+                  <p className=" font-medium">
+                    {userDetails[0]?.first_name} {userDetails[0]?.last_name}{" "}
+                  </p>
+                  <p className="font-normal">{userDetails[0]?.email}</p>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       )}
