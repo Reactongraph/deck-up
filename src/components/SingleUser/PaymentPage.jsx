@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
-import { useCreateInvoiceMutation } from "../../store/single-user/accountApiSlice";
+import { useCreateInvoiceMutation, useFetchUsersDetailsQuery } from "../../store/single-user/accountApiSlice";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function PaymentPage() {
@@ -9,6 +9,14 @@ export default function PaymentPage() {
   const location = useLocation();
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [createInvoiceApi] = useCreateInvoiceMutation();
+  const email = localStorage.getItem("email");
+  const { data: userDetails } = useFetchUsersDetailsQuery(email);
+
+  useEffect(() => {
+    if (userDetails) {
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    }
+  }, [userDetails]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

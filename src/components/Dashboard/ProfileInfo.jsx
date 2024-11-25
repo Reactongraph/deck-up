@@ -117,7 +117,7 @@ export default function ProfileInfo({
                         <div className="text-[10px] flex flex-col gap-[6px] mt-[14px]">
                           <p className="leading-[12.1px]">Card Holder Name:</p>
                           <p className="font-semibold leading-[12.1px]">
-                            {CardDetails?.first_name} {CardDetails?.last_name}
+                            {userDetails[0]?.first_name} {userDetails[0]?.last_name}
                           </p>
                         </div>
                       </div>
