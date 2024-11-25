@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import CommonButton from "../common/CommonButton";
 import { formatCurrency, formatDate } from "../../helper/helper";
-import { useFetchLicenseDetailsQuery } from "../../store/single-user/accountApiSlice";
+import {
+  useFetchLicenseDetailsQuery,
+  useFetchUsersDetailsQuery,
+} from "../../store/single-user/accountApiSlice";
 
 export default function ProfileInfo({
   data,
@@ -18,7 +21,9 @@ export default function ProfileInfo({
 
   const email = localStorage.getItem("email");
   const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
-  console.log("data......", data, "LicenseDetails", LicenseDetails);
+  const { data: userDetails } = useFetchUsersDetailsQuery(email);
+
+  console.log("userDetails", userDetails);
 
   const SubscriptionsDetails = data?.subscriptions;
   const CardDetails = data?.subscriptions?.card;
@@ -170,11 +175,13 @@ export default function ProfileInfo({
 
             {/* Owner */}
             <div className="w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5">
-              <h2 className="text-lg font-medium mb-2">Owner</h2>
-              <p className="text-sm">Ravi Shah - ravi.shah@cerner.com</p>
+              {/* <h2 className="text-lg font-medium mb-2">Owner</h2>
+              <p className="text-sm">Ravi Shah - ravi.shah@cerner.com</p> */}
               <h2 className="text-lg font-medium mt-4 mb-2">Admins</h2>
-              <p className="text-sm">Swapnil Shukla - swapnil.s@cerner.com</p>
-              <p className="text-sm">Nilesh Ahire - nilesh.a@cerner.com</p>
+              <p className="text-sm">
+                {userDetails[0]?.first_name} {userDetails[0]?.last_name} -{" "}
+                {userDetails[0]?.email}
+              </p>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import {
 import { toast } from "react-toastify";
 import CommonAccountForm from "./CommonAccountForm";
 import { setNestedValue } from "../../helper/helper";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 export default function AccountDetailsForm({ dashboardPage = false }) {
   const dispatch = useDispatch();
@@ -30,10 +31,12 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
     state,
   } = useSelector((state) => state.account);
   const { data: countries } = useFetchCountriesQuery();
-  const { data: states } = useFetchStatesQuery(country);
+  const { data: states } = useFetchStatesQuery(country || skipToken);
 
   const [billingCountry, setBillingCountry] = useState("");
-  const { data: billingStates } = useFetchStatesQuery(billingCountry);
+  const { data: billingStates } = useFetchStatesQuery(
+    billingCountry || skipToken
+  );
 
   const email = localStorage.getItem("email");
   const accountData = JSON.parse(localStorage.getItem("accountData"));
