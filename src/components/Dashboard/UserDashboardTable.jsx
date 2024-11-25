@@ -34,7 +34,7 @@ export default function UserDashboardTable({ data }) {
         <div className="w-[60%] flex gap-2">
           <CommonButton
             text="+ Add user"
-            className="bg-disableGray text-white rounded-lg hover:bg-disableGray"
+            className="bg-disableGray text-white rounded-lg"
             disabled={true}
           />
           <div className="w-[50%] bg-white rounded-[10px] py-3 px-4 text-sm text-disableGray">

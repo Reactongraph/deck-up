@@ -55,14 +55,10 @@ export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
                 </p>
               </div>
               <CommonButton
-                className={`w-full mt-8 border ${
-                  planData.buttonVariant === "default"
-                    ? "bg-primary hover:bg-primary/90 text-[#fff]"
-                    : " text-primary hover:bg-primary hover:text-white font-inter"
-                } ${
+                className={`w-full mt-8 border  ${
                   isDisabled
-                    ? "cursor-not-allowed border-bodyColor hover:bg-white hover:text-bodyColor text-bodyColor"
-                    : ""
+                    ? "cursor-not-allowed border-bodyColor text-bodyColor"
+                    : "border border-primary text-primary hover:text-white"
                 }`}
                 variant="outline"
                 text={planData.buttonText}

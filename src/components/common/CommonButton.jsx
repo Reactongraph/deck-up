@@ -11,7 +11,9 @@ const CommonButton = ({
   return (
     <button
       type={type}
-      className={`px-4 py-2 ${className} rounded-full hover:bg-hoverButton`}
+      className={`px-4 py-2 ${className} rounded-full ${
+        disabled ? "" : "hover:bg-hoverButton"
+      } `}
       onClick={onClick}
       variant={variant}
       disabled={disabled}

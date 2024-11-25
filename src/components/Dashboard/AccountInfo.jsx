@@ -57,7 +57,7 @@ const AccountInfo = () => {
           />
         );
       case "Cancel":
-        return <CancelSubscription />;
+        return <CancelSubscription setActiveSubTab={setActiveSubTab} />;
       default:
         return <ProfileInfo data={data} setActiveSubTab={setActiveSubTab} />;
     }
