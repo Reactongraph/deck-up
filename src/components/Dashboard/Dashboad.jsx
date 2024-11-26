@@ -6,7 +6,12 @@ import Support from "./Support";
 import CommonButton from "../common/CommonButton";
 
 const Dashboard = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("User Management");
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -24,67 +29,149 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-full gap-[41px] pt-12 pl-7 pb-4 bg-lightBlue">
-      <aside className="sidebar w-[20%] flex flex-col justify-between mb-8">
-        <nav className="flex flex-col justify-start items-start mt-[71px]">
+    <div className="flex flex-col lg:flex-row h-full gap-[41px] pt-12 pl-7 pb-4 pr-7 lg:pr-0 bg-lightBlue">
+      <div
+        onClick={toggleSidebar}
+        className="lg:hidden cursor-pointer flex items-center text-paleBlue"
+      >
+        <img src="/images/hamburger.svg" alt="" />
+      </div>
+
+      <div
+        className={`fixed lg:static lg:hidden top-0 left-0 h-full bg-white shadow-lg z-50 transition-transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0 lg:w-[20%] p-6`}
+      >
+        <div className="flex justify-end lg:hidden">
           <CommonButton
-            text={
+            text="✕"
+            onClick={toggleSidebar}
+            className="text-paleBlue hover:text-white px-[10px] py-[5px]"
+          />
+        </div>
+        <aside className="sidebar w-full h-[700px] flex flex-col justify-between mb-8">
+          <nav className="flex flex-col justify-start items-start mt-[71px]">
+            <div
+              onClick={() => setActiveTab("User Management")}
+              className={`${
+                activeTab === "User Management"
+                  ? "bg-primary font-extrabold py-3 px-9 text-white -ml-[22%] w-full"
+                  : "hover:bg-transparent font-semibold text-bodyColor"
+              } px-0 text-sm leading-[16.94px] cursor-pointer rounded-full`}
+            >
               <div className="flex gap-4 items-center justify-center">
                 <img src="/images/touch.svg" alt="" />
                 <p>User Management</p>
               </div>
-            }
-            onClick={() => setActiveTab("User Management")}
-            className={`${
-              activeTab === "User Management"
-                ? "bg-primary text-white -ml-[25%] w-full"
-                : "hover:bg-transparent"
-            } px-0 py-0 `}
-          />
-          <CommonButton
-            text={
+            </div>
+            <div
+              onClick={() => setActiveTab("Account Info")}
+              className={`${
+                activeTab === "Account Info"
+                  ? "bg-primary font-extrabold py-3 px-9 text-white -ml-[29%] w-full"
+                  : "hover:bg-transparent font-semibold text-bodyColor"
+              } text-sm leading-[16.94px] mt-8 cursor-pointer rounded-full`}
+            >
               <div className="flex gap-4 items-center justify-center">
                 <img src="/images/groupAdd.svg" alt="" />
                 <p>Account Info</p>
               </div>
-            }
-            onClick={() => setActiveTab("Account Info")}
-            className={`${
-              activeTab === "Account Info"
-                ? "bg-primary text-white -ml-[25%] w-full"
-                : "hover:bg-transparent"
-            } `}
-          />
-
-          <CommonButton
-            text={
+            </div>
+            <div
+              onClick={() => setActiveTab("Billing History")}
+              className={`${
+                activeTab === "Billing History"
+                  ? "bg-primary  font-extrabold py-3 px-9 text-white -ml-[29%] w-full"
+                  : "hover:bg-transparent font-semibold text-bodyColor"
+              } text-sm leading-[16.94px] mt-8 cursor-pointer rounded-full`}
+            >
               <div className="flex gap-4 items-center justify-center">
                 <img src="/images/creditCard.svg" alt="" />
                 <p>Billing History</p>
               </div>
-            }
-            onClick={() => setActiveTab("Billing History")}
-            className={`${
-              activeTab === "Billing History"
-                ? "bg-primary text-white -ml-[25%] w-full"
-                : "hover:bg-transparent"
-            } `}
-          />
-
-          <CommonButton
-            text={
+            </div>
+            <div
+              onClick={() => setActiveTab("Support")}
+              className={`${
+                activeTab === "Support"
+                  ? "bg-primary text-white font-extrabold py-3 px-9 -ml-[34%] w-full"
+                  : "hover:bg-transparent font-semibold text-bodyColor"
+              } text-sm leading-[16.94px] mt-8 cursor-pointer rounded-full`}
+            >
               <div className="flex gap-4 items-center justify-center">
                 <img src="/images/infoIcon.svg" alt="" />
                 <p>Support</p>
               </div>
-            }
+            </div>
+          </nav>
+          <div className="flex flex-col gap-4 text-bodyColor">
+            <p className="text-sm font-semibold leading-[16.94px]">
+              Cerner Corporation
+            </p>
+            <div className="flex gap-2 items-center">
+              <img src="/images/locationIcon.svg" alt="" />
+              <p className="text-xs font-normal leading-[14.52px]">
+                Michigan, USA 4000 048
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <aside className="hidden lg:flex sidebar font-inter w-[20%] h-[700px] flex-col justify-between mb-8">
+        <nav className="flex flex-col justify-start items-start mt-[71px]">
+          <div
+            onClick={() => setActiveTab("User Management")}
+            className={`${
+              activeTab === "User Management"
+                ? "bg-primary font-extrabold py-3  text-white -ml-[22%] w-full"
+                : "hover:bg-transparent font-semibold text-bodyColor"
+            } px-0 text-sm leading-[16.94px] cursor-pointer rounded-full`}
+          >
+            <div className="flex gap-4 items-center justify-center">
+              <img src="/images/touch.svg" alt="" />
+              <p>User Management</p>
+            </div>
+          </div>
+          <div
+            onClick={() => setActiveTab("Account Info")}
+            className={`${
+              activeTab === "Account Info"
+                ? "bg-primary font-extrabold py-3  text-white -ml-[29%] w-full"
+                : "hover:bg-transparent font-semibold text-bodyColor"
+            } text-sm leading-[16.94px] mt-8 cursor-pointer rounded-full`}
+          >
+            <div className="flex gap-4 items-center justify-center">
+              <img src="/images/groupAdd.svg" alt="" />
+              <p>Account Info</p>
+            </div>
+          </div>
+          <div
+            onClick={() => setActiveTab("Billing History")}
+            className={`${
+              activeTab === "Billing History"
+                ? "bg-primary  font-extrabold py-3 text-white -ml-[29%] w-full"
+                : "hover:bg-transparent font-semibold text-bodyColor"
+            } text-sm leading-[16.94px] mt-8 cursor-pointer rounded-full`}
+          >
+            <div className="flex gap-4 items-center justify-center">
+              <img src="/images/creditCard.svg" alt="" />
+              <p>Billing History</p>
+            </div>
+          </div>
+          <div
             onClick={() => setActiveTab("Support")}
             className={`${
               activeTab === "Support"
-                ? "bg-primary text-white -ml-[25%] w-full"
-                : "hover:bg-transparent"
-            } `}
-          />
+                ? "bg-primary text-white font-extrabold py-3  -ml-[34%] w-full"
+                : "hover:bg-transparent font-semibold text-bodyColor"
+            } text-sm leading-[16.94px] mt-8 cursor-pointer rounded-full`}
+          >
+            <div className="flex gap-4 items-center justify-center">
+              <img src="/images/infoIcon.svg" alt="" />
+              <p>Support</p>
+            </div>
+          </div>
         </nav>
         <div className="flex flex-col gap-4 text-bodyColor">
           <p className="text-sm font-semibold leading-[16.94px]">
@@ -99,7 +186,9 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      <div className="w-[70%] bg-gray-100 min-h-screen">{renderContent()}</div>
+      <div className="w-full lg:w-[70%] bg-gray-100 min-h-screen">
+        {renderContent()}
+      </div>
     </div>
   );
 };

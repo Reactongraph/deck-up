@@ -41,8 +41,8 @@ export default function ProfileInfo({
                 Profile Info
               </h2>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="w-[63%] flex gap-4 justify-between">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm">
+              <div className="w-full lg:w-[63%] flex gap-4 justify-between">
                 <div className="flex flex-col gap-4">
                   <p>Type: </p>
                   <p>Organization:</p>
@@ -56,7 +56,7 @@ export default function ProfileInfo({
                   <p>{LicenseDetails?.activatedUsers || 0}</p>
                 </div>
               </div>
-              <div className="w-[66%] flex gap-4 justify-between">
+              <div className="w-full lg:w-[66%] flex gap-4 justify-between">
                 <div className="flex flex-col gap-4">
                   <p>Pricing:</p>
                   <p>Last payment:</p>
@@ -92,16 +92,16 @@ export default function ProfileInfo({
           </div>
 
           {/* Payment Modes */}
-          <div className="w-full flex gap-6 ">
-            <div className="w-[58%] bg-white rounded-lg shadow-md">
+          <div className="w-full flex flex-col lg:flex-row gap-6 ">
+            <div className="w-full lg:w-[58%] bg-white rounded-lg shadow-md">
               <div className="py-[18px] px-[38px] border-b border-disableGray">
                 <h2 className="text-sm font-semibold leading-[16.94px] text-paleBlue">
                   Payment modes
                 </h2>
               </div>
               <div className="px-10 pt-[18px] pb-6">
-                <div className="flex gap-3">
-                  <div className="w-[63%] bg-lightBlue rounded-[10px] p-6">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="w-full sm:w-[63%] bg-lightBlue rounded-[10px] p-6">
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="text-[10px] font-semibold leading-[12.1px] text-bodyColor mb-6">
@@ -150,13 +150,13 @@ export default function ProfileInfo({
                       </div>
                     </div>
                   </div>
-                  <div className="w-[35%] h-full flex flex-col gap-3">
+                  <div className="w-[50%] sm:w-[35%] h-full flex flex-col gap-3">
                     <div className="bg-lightBlue h-full rounded-[10px] p-6">
                       Add new +
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <CommonButton
                     text="Renew License"
                     onClick={() => setActiveSubTab("Renew License")}
@@ -173,7 +173,7 @@ export default function ProfileInfo({
 
             {/* Owner */}
             {userDetails?.length > 0 ? (
-              <div className="w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5">
+              <div className="w-full lg:w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5">
                 {/* <h2 className="text-lg font-medium mb-2">Owner</h2>
               <p className="text-sm">Ravi Shah - ravi.shah@cerner.com</p> */}
                 <h2 className="text-lg font-medium mt-4 mb-2">

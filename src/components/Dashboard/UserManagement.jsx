@@ -22,8 +22,8 @@ const UserManagement = () => {
       </h1>
 
       {/* Stats Section */}
-      <div className="w-full flex gap-6 mb-10">
-        <div className="bg-white w-[35.5%] shadow rounded-[10px] py-4 pl-6 pr-[31px]">
+      <div className="w-full flex flex-col lg:flex-row gap-6 mb-10">
+        <div className="bg-white w-full lg:w-[35.5%] shadow rounded-[10px] py-4 pl-6 pr-[31px]">
           <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
             Active licenses
           </p>
@@ -43,7 +43,7 @@ const UserManagement = () => {
             </progress> */}
           </div>
         </div>
-        <div className="bg-white w-[26%] shadow rounded-[10px] pt-[17px] pb-[18px] px-6">
+        <div className="bg-white w-full lg:w-[26%] shadow rounded-[10px] pt-[17px] pb-[18px] px-6">
           <p className="text-sm font-normal leading-[16.94px] text-bodyColor">
             Active plan
           </p>

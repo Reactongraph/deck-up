@@ -41,7 +41,7 @@ const AccountInfo = () => {
         return (
           <QuantityPage
             mainClassName="bg-white pt-1 rounded-[10px]"
-            subClassName="w-full pt-[58px]"
+            subClassName="w-full md:pt-[58px]"
             heading="Upgrade plan"
             subHeading=""
             setActiveSubTab={setActiveSubTab}
@@ -53,7 +53,7 @@ const AccountInfo = () => {
         return (
           <PaymentPage
             mainClassName="bg-white pt-1 rounded-[10px]"
-            subClassName="w-full pt-[83px] pb-[81px]"
+            subClassName="w-full md:pt-[83px] md:pb-[81px]"
           />
         );
       case "Cancel":

@@ -30,8 +30,8 @@ export default function UserDashboardTable({ data }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="w-full flex justify-between items-center">
-        <div className="w-[60%] flex gap-2">
+      <div className="w-full flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between sm:items-center">
+        <div className="w-full sm:w-[60%] flex gap-2">
           <CommonButton
             text="+ Add user"
             className="bg-disableGray text-white rounded-lg"
