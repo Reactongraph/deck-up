@@ -56,12 +56,12 @@ export default function PaymentPage({ mainClassName, subClassName }) {
 
   return (
     <div
-      className={`${mainClassName} flex justify-center pt-16 bg-lightBlue h-full`}
+      className={`${mainClassName} flex justify-center pt-16 pb-[106px] bg-lightBlue h-full`}
     >
       <div
-        className={`${subClassName} flex gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[66px]`}
+        className={`${subClassName} flex flex-col xxl:flex-row gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[66px]`}
       >
-        <div className="w-[48%]">
+        <div className="w-full xxl:w-[48%]">
           <div className="w-full bg-lighCyan px-[54px] py-[27px] rounded-[6px]">
             <div className="flex gap-1">
               <h2 className="text-2xl leading-[29.05px] font-semibold text-paleBlue font-inter">
@@ -87,8 +87,8 @@ export default function PaymentPage({ mainClassName, subClassName }) {
               className="w-full mt-[21px] flex justify-center items-center border rounded-lg text-darkBlue border-secondary hover:bg-paleBlue hover:text-white"
             />
           </div>
-          <div className="w-full flex mt-[38px] mb-8 rounded-[10px]">
-            <div className="w-[60%] flex flex-col gap-6 bg-lightGrayShade pl-6 pb-[34px] pt-[46px]">
+          <div className="w-full flex mt-[38px] flex-col lg:flex-row mb-8 rounded-[10px]">
+            <div className="w-full lg:w-[60%] flex flex-col gap-6 bg-lightGrayShade pl-6 pb-[34px] pt-[46px]">
               <p className="leading-[19.05px] text-bodyColor font-inter">
                 Thank you for choosing Deckup!
               </p>
@@ -104,7 +104,7 @@ export default function PaymentPage({ mainClassName, subClassName }) {
                 </p>
               </div>
             </div>
-            <div className="w-[40%] bg-lighCyan pt-4 pl-[17px] text-paleBlue flex flex-col gap-[34px] justify-center items-center text-center pr-[18px] pb-[18px]">
+            <div className="w-full lg:w-[40%] bg-lighCyan pt-4 pl-[17px] text-paleBlue flex flex-col gap-[34px] justify-center items-center text-center pr-[18px] pb-[18px]">
               <CommonButton
                 text={
                   <div
@@ -144,12 +144,12 @@ export default function PaymentPage({ mainClassName, subClassName }) {
           </div>
         </div>
         <div className="border-r border-borderGray" />
-        <div className="w-[52%]">
+        <div className="w-full xxl:w-[52%]">
           <h2 class="font-semibold text-paleBlue leading-[29.05px] text-2xl mb-6">
             How it works!
           </h2>
-          <div class="flex flex-wrap gap-4 w-full">
-            <div class="bg-white shadow-lg rounded-lg flex flex-col items-center p-[22px] pt-[22px] pb-[17px] w-[188px] justify-between min-h-[170px]">
+          <div class="flex flex-col xl:flex-row xl:flex-wrap gap-4 w-full">
+            <div class="bg-white shadow-lg rounded-lg flex flex-col items-center p-[22px] pt-[22px] pb-[17px] w-full xl:w-[188px] justify-between min-h-[170px]">
               <div class="flex-1 items-center flex">
                 {" "}
                 <img src="/images/folder.svg" alt="folder" />
@@ -161,7 +161,7 @@ export default function PaymentPage({ mainClassName, subClassName }) {
                 </p>
               </div>
             </div>
-            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-[188px] justify-between min-h-[170px]">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-full xl:w-[188px] justify-between min-h-[170px]">
               <div class="flex-1 items-center flex">
                 <img src="/images/click.svg" alt="folder" />
               </div>
@@ -173,7 +173,7 @@ export default function PaymentPage({ mainClassName, subClassName }) {
               </div>
             </div>
 
-            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-[188px] justify-between min-h-[170px]">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-full xl:w-[188px] justify-between min-h-[170px]">
               <div class="flex-1 items-center flex">
                 <img src="/images/email.svg" alt="folder" />
               </div>
@@ -182,7 +182,7 @@ export default function PaymentPage({ mainClassName, subClassName }) {
                 <p class="text-bodyColor">Login using registered email ID</p>
               </div>
             </div>
-            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-[188px] justify-between min-h-[170px]">
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center pt-[22px] pb-[17px] w-full xl:w-[188px] justify-between min-h-[170px]">
               <div class="flex-1 items-center flex">
                 <img src="/images/deckup.svg" alt="folder" />
               </div>

@@ -8,8 +8,12 @@ export default function PricingSection() {
   const size = useCustomWindowSize();
   const navigate = useNavigate();
 
-  const handleGetStarted = () => {
-    navigate("/create-account");
+  const handleGetStarted = (plan) => {
+    if (plan.title === "Enterprise plan") {
+      navigate("/enterprise");
+    } else {
+      navigate("/create-account");
+    }
   };
 
   const gradientOverlayStyles =
@@ -136,7 +140,7 @@ export default function PricingSection() {
                 }`}
                 variant="outline"
                 text={plan.buttonText}
-                onClick={handleGetStarted}
+                onClick={() => handleGetStarted(plan)}
               />
             </div>
           ))}

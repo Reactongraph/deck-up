@@ -15,6 +15,8 @@ import AccountDetailsForm from "./components/SingleUser/AccountDetailsForm";
 import InvoiceRedirect from "./components/SingleUser/InvoiceRedirect";
 import Dashboard from "./components/Dashboard/Dashboad";
 import BuyLicenses from "./components/Dashboard/BuyLicenses";
+import Enterprise from "./components/Enterprise";
+import PricingSection from "./components/OrderPageComponents/PricingSection";
 function App() {
   return (
     <Router>
@@ -129,6 +131,22 @@ function App() {
           element={
             <PublicLayout hasNoFooter={false}>
               <InvoiceRedirect />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/enterprise"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <Enterprise />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/plans"
+          element={
+            <PublicLayout hasNoFooter={true}>
+              <PricingSection />
             </PublicLayout>
           }
         />

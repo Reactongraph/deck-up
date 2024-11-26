@@ -73,7 +73,7 @@ export default function CommonLoginLayout({ form, className = "" }) {
     <>
       {/* <Header /> */}
       <div className="bg-lightBlue min-h-[100%] flex flex-col">
-        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] sm:pt-[72px] sm:pb-[24px] relative z-[100]">
+        <div className="flex flex-col-reverse lg:flex-row container lg:pt-[48px] lg:pb-[48px] pt-8 sm:pt-[72px] sm:pb-[24px] relative z-[100]">
           <GradientOverlay
             width={gradientOverlayStyles.width}
             height={gradientOverlayStyles.height}
@@ -87,7 +87,7 @@ export default function CommonLoginLayout({ form, className = "" }) {
           {/* Left section for the login form */}
           <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 order-2 lg:order-1">
             <div
-              className={`${className} max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[24px] pb-[186px] pl-[24px] sm:pr-[80px] sm:pl-[80px]`}
+              className={`${className} max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32px] pr-[24px] pb-10 xl:pb-[186px] pl-[24px] sm:pr-[80px] sm:pl-[80px]`}
             >
               {form}
             </div>

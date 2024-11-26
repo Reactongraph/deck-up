@@ -1,4 +1,5 @@
 import axios from "axios";
+import dayjs from "dayjs";
 
 export const googleLoginPostApiRequest = async (email, uid) => {
   const url = process.env.REACT_APP_FIREBASE_APP_URL;
@@ -55,22 +56,21 @@ export const setNestedValue = (keyPath, value, baseObject = {}) => {
 };
 
 export const formatDate = (dateString) => {
-  if (!dateString) return ""; 
-  const date = new Date(dateString);
+  try {
+    const date = dayjs(dateString);
 
-  const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "long" }); 
-  const year = date.getFullYear();
+    if (!date.isValid()) {
+      console.error("Invalid date format:", dateString);
+      return null;
+    }
 
-  const getOrdinalSuffix = (n) => {
-    if (n % 10 === 1 && n % 100 !== 11) return "st";
-    if (n % 10 === 2 && n % 100 !== 12) return "nd";
-    if (n % 10 === 3 && n % 100 !== 13) return "rd";
-    return "th";
-  };
+    const formattedDate = date.format("DD MMM YYYY");
 
-  const ordinalSuffix = getOrdinalSuffix(day);
-  return `${day}${ordinalSuffix} ${month} ${year}`;
+    return formattedDate;
+  } catch (error) {
+    console.error("Error formatting date:", error);
+    return null;
+  }
 };
 
 export const formatCurrency = (currency, amount) => {
