@@ -1,13 +1,19 @@
 import React from "react";
-import { singleUserOrderData } from "../../utils/data";
+import { useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
+import { singleUserOrderData } from "../../utils/data";
 
 export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
+  const navigate = useNavigate();
+
   const handleBack = () => {
     setActiveSubTab("Profile Info");
   };
 
   const handleGetStarted = (isDisabled, planData) => {
+    if (planData.title === "Enterprise plan") {
+      navigate("/enterprise");
+    }
     if (!isDisabled) {
       setPlan(planData.title);
       setActiveSubTab("Quantity");

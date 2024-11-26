@@ -61,12 +61,12 @@ export default function QuantityPage({
   return (
     <form onSubmit={formik.handleSubmit}>
       <div
-        className={`${mainClassName} flex justify-center pt-16 bg-lightBlue h-full`}
+        className={`${mainClassName} flex justify-center pt-0 md:pt-16 bg-lightBlue h-full`}
       >
         <div
-          className={`${subClassName} flex gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[79.67px]`}
+          className={`${subClassName} flex flex-col md:flex-row gap-11 bg-white pl-8 pr-8 pb-10 rounded-[10px] w-[69.7%] md:pb-16 pt-8 md:pt-[89px] md:pl-20 md:pr-[79.67px]`}
         >
-          <div className="flex flex-col w-[52%]">
+          <div className="flex flex-col w-full md:w-[52%]">
             {heading === "Upgrade plan" && (
               <div onClick={handleBack} className="cursor-pointer mb-[15px]">
                 <img src="/images/backIcon.svg" alt="" />
@@ -142,7 +142,7 @@ export default function QuantityPage({
           <div
             className={` ${
               heading === "Upgrade plan" ? "mt-[15px]" : "mt-0"
-            } w-1/2`}
+            } w-full md:w-1/2`}
           >
             <h2
               className={` ${

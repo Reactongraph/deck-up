@@ -23,7 +23,7 @@ export default function Enterprise() {
   };
 
   const handleBack = () => {
-    navigate("/plans");
+    navigate(-1);
   };
 
   return (

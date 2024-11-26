@@ -56,10 +56,10 @@ export default function PaymentPage({ mainClassName, subClassName }) {
 
   return (
     <div
-      className={`${mainClassName} flex justify-center pt-16 pb-[106px] bg-lightBlue h-full`}
+      className={`${mainClassName} flex justify-center pt-0 lg:pt-16 pb-0 lg:pb-[106px] bg-lightBlue h-full`}
     >
       <div
-        className={`${subClassName} flex flex-col xxl:flex-row gap-11 bg-white rounded-[10px] w-[69.7%] pb-16 pt-[89px] pl-20 pr-[66px]`}
+        className={`${subClassName} flex flex-col xxl:flex-row gap-11 bg-white rounded-[10px] w-[69.7%] pl-8 pr-8 pb-10 md:pb-16 pt-8 md:pt-[89px] md:pl-20 md:pr-[66px]`}
       >
         <div className="w-full xxl:w-[48%]">
           <div className="w-full bg-lighCyan px-[54px] py-[27px] rounded-[6px]">
