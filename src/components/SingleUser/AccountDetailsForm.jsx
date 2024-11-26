@@ -186,7 +186,7 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
           <div className="w-full my-6 border-t border-borderGray" />
 
           <div className="flex items-center justify-between mr-[45px]">
-            <h2 className="text-subhead text-paleBlue font-inter">
+            <h2 className="text-body sm:text-subhead text-paleBlue font-inter">
               Billing address
             </h2>
             <div className="flex items-center gap-2">
