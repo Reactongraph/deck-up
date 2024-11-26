@@ -129,29 +129,41 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
   const accountDetailsForm = (
     <Formik
       initialValues={{
-        firstName,
-        lastName,
-        email,
-        companyName,
-        addressLineOne,
-        addressLineTwo,
+        firstName: firstName || accountData?.firstName || "",
+        lastName: lastName || accountData?.lastName || "",
+        email: email || accountData?.email || "",
+        companyName: companyName || accountData?.companyName || "",
+        addressLineOne: addressLineOne || accountData?.addressLineOne || "",
+        addressLineTwo: addressLineTwo || accountData?.addressLineTwo || "",
         itemPriceId: "cbdemo_sample_plan-inr-monthly",
-        city,
-        zip,
-        country,
-        state,
+        city: city || accountData?.city || "",
+        zip: zip || accountData?.zip || "",
+        country: country || accountData?.country || "",
+        state: state || accountData?.state || "",
         billingAddress: isSameAsAbove
           ? {
-              firstName: firstName || "",
-              lastName: lastName || "",
-              email: email || "",
-              companyName: companyName || "",
-              addressLineOne: addressLineOne || "",
-              addressLineTwo: addressLineTwo || "",
-              city: city || "",
-              zip: zip || "",
-              country: billingCountry || country,
-              state: state || "",
+              firstName:
+                firstName || accountData?.billingAddress?.firstName || "",
+              lastName: lastName || accountData?.billingAddress?.lastName || "",
+              email: email || accountData?.billingAddress?.email || "",
+              companyName:
+                companyName || accountData?.billingAddress?.companyName || "",
+              addressLineOne:
+                addressLineOne ||
+                accountData?.billingAddress?.addressLineOne ||
+                "",
+              addressLineTwo:
+                addressLineTwo ||
+                accountData?.billingAddress?.addressLineTwo ||
+                "",
+              city: city || accountData?.billingAddress?.city || "",
+              zip: zip || accountData?.billingAddress?.zip || "",
+              country:
+                billingCountry ||
+                country ||
+                accountData?.billingAddress?.country ||
+                "",
+              state: state || accountData?.billingAddress?.state || "",
             }
           : { ...billingAddresss, email },
         redirectUrl: `${window.location.origin}/invoice`,
@@ -167,7 +179,7 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
           </h2>
           <CommonAccountForm
             handleFieldChange={handleFieldChange}
-            values={values || accountData}
+            values={values}
             touched={touched}
             errors={errors}
             email={email}
@@ -206,7 +218,7 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
           {!isSameAsAbove && (
             <CommonAccountForm
               handleFieldChange={handleFieldChange}
-              values={values.billingAddress || accountData}
+              values={values.billingAddress}
               touched={touched.billingAddress || {}}
               errors={errors.billingAddress || {}}
               email={email}
