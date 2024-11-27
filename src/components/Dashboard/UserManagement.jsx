@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import UserDashboardTable from "./UserDashboardTable";
 import {
   useFetchLicenseDetailsQuery,
   useFetchUsersDetailsQuery,
 } from "../../store/single-user/accountApiSlice";
+import UserDashboardTable from "./UserDashboardTable";
 
 const UserManagement = () => {
   const email = localStorage.getItem("email");

@@ -57,7 +57,13 @@ export const setNestedValue = (keyPath, value, baseObject = {}) => {
 
 export const formatDate = (dateString) => {
   try {
-    const date = dayjs(dateString);
+    let date;
+
+    if (isNaN(dateString) && typeof dateString === "string") {
+      date = dayjs(dateString);
+    } else {
+      date = dayjs(dateString * 1000);
+    }
 
     if (!date.isValid()) {
       console.error("Invalid date format:", dateString);
