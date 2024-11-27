@@ -10,8 +10,10 @@ const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_BASE_API_URI,
   prepareHeaders: async (headers) => {
     const token = getAuthToken();
-    if (token) {
-      headers.set("Authorization", `Bearer ${token}`);
+    const idToken = localStorage.getItem("idToken");
+
+    if (token || idToken) {
+      headers.set("Authorization", `Bearer ${token || idToken}`);
     }
     headers.set("Content-Type", "application/json");
     headers.set("Access-Control-Allow-Origin", "*");

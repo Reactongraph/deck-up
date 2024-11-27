@@ -5,12 +5,14 @@ import CommonInput from "../components/common/CommonInput";
 import GradientOverlay from "../components/common/GradientOverlay";
 import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 import { useDispatch, useSelector } from "react-redux";
-import { useRegisterUserMutation } from "../store/auth/authApiSlice";
+import {
+  useLoginWithGoogleMutation,
+  useRegisterUserMutation,
+} from "../store/auth/authApiSlice";
 import { setEmail } from "../store/auth/authSlice";
 import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast, ToastContainer } from "react-toastify";
-import { googleLoginPostApiRequest } from "../helper/helper";
 // import Footer from "../components/Foorter";
 // import Header from "../components/Header";
 
@@ -18,7 +20,7 @@ export default function LoginPage() {
   const size = useCustomWindowSize(); // Get screen size
 
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
-  // const [triggerCheckUserApi] = useLazyCheckUserExistsQuery();
+  const [googleLoginPostApi] = useLoginWithGoogleMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -54,24 +56,33 @@ export default function LoginPage() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(async (result) => {
-        const user = result.user;
+        const tokenResponse = result._tokenResponse;
 
-        localStorage.setItem("email", user.email);
+        localStorage.setItem("email", tokenResponse.email);
+        localStorage.setItem("idToken", tokenResponse.idToken);
 
         try {
-          // await triggerCheckUserApi(user.email).unwrap();
-          const responseData = await googleLoginPostApiRequest(
-            user.email,
-            user.uid
+          const responseData = await googleLoginPostApi(
+            tokenResponse.email,
+            tokenResponse.localId
           );
-          console.log("Google Login Success:", user, responseData);
+          if (responseData.data.message === "Email verified") {
+            localStorage.removeItem("idToken");
+            localStorage.setItem(
+              "accessToken",
+              responseData.data.tokens.accessToken
+            );
+            localStorage.setItem(
+              "refreshToken",
+              responseData.data.tokens.refreshToken
+            );
+            toast.success("Google login successfully");
 
-          toast.success("Google login successfully");
-
-          setTimeout(() => {
-            localStorage.setItem("loginSource", "login");
-            navigate("/setup");
-          }, 3000);
+            setTimeout(() => {
+              localStorage.setItem("loginSource", "login");
+              navigate("/setup");
+            }, 3000);
+          }
         } catch (error) {
           console.log("error: ", error);
           toast.error(error?.response?.data?.error);

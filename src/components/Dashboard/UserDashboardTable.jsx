@@ -6,7 +6,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function UserDashboardTable({ data }) {
+const UserDashboardTable = ({ data }) => {
   const checkbox = useRef();
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
@@ -202,4 +202,6 @@ export default function UserDashboardTable({ data }) {
       </div>
     </div>
   );
-}
+};
+
+export default UserDashboardTable;

@@ -20,19 +20,18 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    // Check if user exists
-    // checkUserExists: builder.query({
-    //   query: (email) => ({
-    //     url: `/dupe-api/check?email=${email}`,
-    //     method: "GET",
-    //   }),
-    // }),
+    loginWithGoogle: builder.mutation({
+      query: (email, uid) => ({
+        url: "auth/google/tokens",
+        method: "POST",
+        body: { email, uid: uid },
+      }),
+    }),
   }),
 });
 
 export const {
   useRegisterUserMutation,
   useVerifyOtpForLoginMutation,
-  // useCheckUserExistsQuery,
-  // useLazyCheckUserExistsQuery,
+  useLoginWithGoogleMutation,
 } = authApiSlice;
