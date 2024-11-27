@@ -9,10 +9,12 @@ export default function PricingSection() {
   const navigate = useNavigate();
 
   const handleGetStarted = (plan) => {
+    const formattedTitle = plan.title.replace(/\s+/g, "");
+
     if (plan.title === "Enterprise plan") {
       navigate("/enterprise");
     } else {
-      navigate("/create-account");
+      navigate(`/create-account?user=${formattedTitle}`);
     }
   };
 
