@@ -7,7 +7,7 @@ export const AccountDetailsSchema = Yup.object().shape({
   lastName: Yup.string()
     .matches(/^[a-zA-Z]+$/, "Last name must contain only letters")
     .required("Last name is required"),
-  companyName: Yup.string(),
+  companyName: Yup.string().required("Company name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   addressLineOne: Yup.string()
     .matches(
@@ -19,7 +19,7 @@ export const AccountDetailsSchema = Yup.object().shape({
   city: Yup.string()
     .matches(/^[a-zA-Z\s]+$/, "City must contain only letters")
     .required("City is required"),
-  zip: Yup.string(),
+  zip: Yup.string().required("Zip is required"),
   country: Yup.string().required("Country is required"),
   state: Yup.string().required("State is required"),
   billingAddress: Yup.object({
@@ -29,6 +29,7 @@ export const AccountDetailsSchema = Yup.object().shape({
     lastName: Yup.string()
       .matches(/^[a-zA-Z]+$/, "Last name must contain only letters")
       .required("Billing Last name is required"),
+    companyName: Yup.string().required("Billing company name is required"),
     addressLineOne: Yup.string()
       .matches(
         /^[a-zA-Z0-9\s,'-]*$/,
@@ -43,7 +44,7 @@ export const AccountDetailsSchema = Yup.object().shape({
       .max(50, "City name cannot exceed 50 characters")
       .required("Billing city is required"),
 
-    zip: Yup.string(),
+    zip: Yup.string().required("Billing zip is required"),
 
     country: Yup.string().required("Billing country is required"),
 
