@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CommonLoginLayout from "../common/CommonLoginLayout";
 import CreateAccountForm from "./CreateAccountForm";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,11 @@ export default function CreateAccountPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const userType = queryParams.get("user");
+
+  localStorage.setItem("userType", userType);
 
   const handleEmailChange = (event) => {
     const email = event.target.value;

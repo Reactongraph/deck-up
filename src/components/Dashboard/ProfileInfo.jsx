@@ -12,8 +12,11 @@ export default function ProfileInfo({
   isError,
   error,
   setActiveSubTab,
+  CompanyInfo,
 }) {
   const [showCVV, setShowCVV] = useState(false);
+
+  const AddressDetails = CompanyInfo?.CompanyInfo?.address;
 
   const handleToggleCVV = () => {
     setShowCVV((prev) => !prev);
@@ -50,9 +53,13 @@ export default function ProfileInfo({
                   <p>No. of licenses:</p>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p>Single user</p>
-                  <p>Cerner Corporation</p>
-                  <p>Michigan, USA</p>
+                  <p>{userDetails?.[0]?.license?.license_type || ""}</p>
+                  <p>{CompanyInfo?.CompanyInfo?.organisation}</p>
+                  <p>
+                    {AddressDetails?.address1} {AddressDetails?.address2}{" "}
+                    {AddressDetails?.city} {AddressDetails?.state}{" "}
+                    {AddressDetails?.postalcode}
+                  </p>
                   <p>{LicenseDetails?.activatedUsers || 0}</p>
                 </div>
               </div>
@@ -117,7 +124,8 @@ export default function ProfileInfo({
                         <div className="text-[10px] flex flex-col gap-[6px] mt-[14px]">
                           <p className="leading-[12.1px]">Card Holder Name:</p>
                           <p className="font-semibold leading-[12.1px]">
-                            {userDetails[0]?.first_name} {userDetails[0]?.last_name}
+                            {userDetails[0]?.first_name}{" "}
+                            {userDetails[0]?.last_name}
                           </p>
                         </div>
                       </div>

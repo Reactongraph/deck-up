@@ -41,6 +41,8 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
 
   const email = localStorage.getItem("email");
   const accountData = JSON.parse(localStorage.getItem("accountData"));
+  const userType = localStorage.getItem("userType");
+
   const { data: userDetails } = useFetchUsersDetailsQuery(email);
 
   const [stateOptions, setStateOptions] = useState([]);
@@ -140,6 +142,12 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
         zip: zip || accountData?.zip || "",
         country: country || accountData?.country || "",
         state: state || accountData?.state || "",
+        licenseType:
+          userType === "Singleuser"
+            ? "individual"
+            : userType === "Multiuser"
+            ? "team"
+            : accountData?.licenseType || "",
         billingAddress: isSameAsAbove
           ? {
               firstName:

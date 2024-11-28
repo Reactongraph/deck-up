@@ -46,6 +46,12 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    fetchCompanyInfo: builder.query({
+      query: (id) => ({
+        url: `/dupe-api/users/enterprises/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -57,4 +63,5 @@ export const {
   useFetchUsersDetailsQuery,
   useFetchAccountInfoQuery,
   useFetchLicenseDetailsQuery,
+  useFetchCompanyInfoQuery,
 } = accountApiSlice;

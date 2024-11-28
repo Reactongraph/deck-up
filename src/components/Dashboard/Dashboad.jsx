@@ -4,10 +4,24 @@ import AccountInfo from "./AccountInfo";
 import BillingHistory from "./BillingHistory";
 import Support from "./Support";
 import CommonButton from "../common/CommonButton";
+import {
+  useFetchCompanyInfoQuery,
+  useFetchUsersDetailsQuery,
+} from "../../store/single-user/accountApiSlice";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("User Management");
+  const email = localStorage.getItem("email");
+  const { data: userDetails } = useFetchUsersDetailsQuery(email);
+
+  const userId = userDetails?.[0]?.enterprise_id;
+
+  const { data: CompanyInfo } = useFetchCompanyInfoQuery(userId, {
+    skip: !userId,
+  });
+
+  const AddressDetails = CompanyInfo?.address;
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -18,7 +32,7 @@ const Dashboard = () => {
       case "User Management":
         return <UserManagement />;
       case "Account Info":
-        return <AccountInfo />;
+        return <AccountInfo CompanyInfo={CompanyInfo} />;
       case "Billing History":
         return <BillingHistory />;
       case "Support":
@@ -106,12 +120,14 @@ const Dashboard = () => {
           </nav>
           <div className="flex flex-col gap-4 text-bodyColor">
             <p className="text-sm font-semibold leading-[16.94px]">
-              Cerner Corporation
+              {CompanyInfo?.organisation}
             </p>
             <div className="flex gap-2 items-center">
               <img src="/images/locationIcon.svg" alt="" />
               <p className="text-xs font-normal leading-[14.52px]">
-                Michigan, USA 4000 048
+                {AddressDetails?.address1} {AddressDetails?.address2}{" "}
+                {AddressDetails?.city} {AddressDetails?.state}{" "}
+                {AddressDetails?.postalcode}
               </p>
             </div>
           </div>
@@ -175,12 +191,14 @@ const Dashboard = () => {
         </nav>
         <div className="flex flex-col gap-4 text-bodyColor">
           <p className="text-sm font-semibold leading-[16.94px]">
-            Cerner Corporation
+            {CompanyInfo?.organisation}
           </p>
           <div className="flex gap-2 items-center">
             <img src="/images/locationIcon.svg" alt="" />
             <p className="text-xs font-normal leading-[14.52px]">
-              Michigan, USA 4000 048
+              {AddressDetails?.address1} {AddressDetails?.address2}{" "}
+              {AddressDetails?.city} {AddressDetails?.state}{" "}
+              {AddressDetails?.postalcode}
             </p>
           </div>
         </div>

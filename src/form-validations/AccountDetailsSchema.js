@@ -15,7 +15,12 @@ export const AccountDetailsSchema = Yup.object().shape({
       "Address line 1 must contain only letters, numbers, spaces, and common punctuation"
     )
     .required("Address line 1 is required"),
-  addressLineTwo: Yup.string(),
+  addressLineTwo: Yup.string()
+    .matches(
+      /^[a-zA-Z0-9\s,'-]*$/,
+      "Address line 2 must contain only letters, numbers, spaces, and common punctuation"
+    )
+    .required("Address line 2 is required"),
   city: Yup.string()
     .matches(/^[a-zA-Z\s]+$/, "City must contain only letters")
     .required("City is required"),
@@ -33,12 +38,17 @@ export const AccountDetailsSchema = Yup.object().shape({
     addressLineOne: Yup.string()
       .matches(
         /^[a-zA-Z0-9\s,'-]*$/,
-        "Address line 1 must contain only letters, numbers, spaces, and common punctuation"
+        "Billing address line 1 must contain only letters, numbers, spaces, and common punctuation"
       )
-      .max(100, "Address line 1 cannot exceed 100 characters")
+      .max(100, "Billing address line 1 cannot exceed 100 characters")
       .required("Billing address line 1 is required"),
 
-    addressLineTwo: Yup.string(),
+    addressLineTwo: Yup.string()
+    .matches(
+      /^[a-zA-Z0-9\s,'-]*$/,
+      "Billing address line 2 must contain only letters, numbers, spaces, and common punctuation"
+    )
+    .required("Billing address line 2 is required"),
     city: Yup.string()
       .matches(/^[a-zA-Z\s]+$/, "City must contain only letters")
       .max(50, "City name cannot exceed 50 characters")

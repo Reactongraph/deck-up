@@ -48,7 +48,7 @@ const UserManagement = () => {
             Active plan
           </p>
           <h2 className="text-lg font-semibold leading-[17.96px] text-bodyColor mt-2">
-            Single user plan
+            {data?.[0]?.license?.license_type || ""} plan
           </h2>
           <button className="mt-6 text-sm font-semibold leading-[26px] text-red-500">
             Upgrade
