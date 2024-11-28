@@ -64,7 +64,7 @@ const CommonAccountForm = ({
           name={`${prefix}companyName`}
           type="text"
           value={values[`${prefix}companyName`]}
-          placeholder="Company (optional)"
+          placeholder="Company"
           onChange={handleFieldChange}
           className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
           error={touched[`companyName`] && errors[`companyName`]}
@@ -92,7 +92,7 @@ const CommonAccountForm = ({
           name={`${prefix}addressLineTwo`}
           type="text"
           value={values[`${prefix}addressLineTwo`]}
-          placeholder="Address line 2 (optional)"
+          placeholder="Address line 2"
           onChange={handleFieldChange}
           className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
           error={touched[`addressLineTwo`] && errors[`addressLineTwo`]}
@@ -113,17 +113,19 @@ const CommonAccountForm = ({
             error={touched[`city`] && errors[`city`]}
           />
         </div>
-        <Field
-          as={CommonInput}
-          id={`${prefix}zip`}
-          name={`${prefix}zip`}
-          type="text"
-          value={values[`${prefix}zip`]}
-          placeholder="Zip (optional)"
-          onChange={handleFieldChange}
-          className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
-          error={touched[`zip`] && errors[`zip`]}
-        />
+        <div>
+          <Field
+            as={CommonInput}
+            id={`${prefix}zip`}
+            name={`${prefix}zip`}
+            type="text"
+            value={values[`${prefix}zip`]}
+            placeholder="Zip"
+            onChange={handleFieldChange}
+            className="text-bodyColor text-[14px] appearance-none rounded-lg relative block w-full px-3 py-3 border border-lightGray placeholder-gray-500 bg-lightBlue font-inter"
+            error={touched[`zip`] && errors[`zip`]}
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">

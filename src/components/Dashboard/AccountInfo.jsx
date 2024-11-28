@@ -7,7 +7,7 @@ import { useFetchAccountInfoQuery } from "../../store/single-user/accountApiSlic
 import QuantityPage from "../SingleUser/QuantityPage";
 import PaymentPage from "../SingleUser/PaymentPage";
 
-const AccountInfo = () => {
+const AccountInfo = (CompanyInfo) => {
   const [activeSubTab, setActiveSubTab] = useState("Profile Info");
   const email = localStorage.getItem("email");
 
@@ -24,6 +24,7 @@ const AccountInfo = () => {
             isError={isError}
             error={error}
             setActiveSubTab={setActiveSubTab}
+            CompanyInfo={CompanyInfo}
           />
         );
       case "Renew License":
@@ -33,7 +34,7 @@ const AccountInfo = () => {
           <BuyLicenses
             data={data}
             setActiveSubTab={setActiveSubTab}
-            plan={plan}
+            plan={CompanyInfo?.CompanyInfo?.configuration?.plan}
             setPlan={setPlan}
           />
         );

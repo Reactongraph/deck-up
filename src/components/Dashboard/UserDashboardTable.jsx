@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import CommonButton from "../common/CommonButton";
 import { formatDate } from "../../helper/helper";
+import CommonInput from "../common/CommonInput";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -11,6 +12,7 @@ const UserDashboardTable = ({ data }) => {
   const [checked, setChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
   const [selectedPeople, setSelectedPeople] = useState([]);
+  const type = data?.[0]?.license?.license_type;
 
   useLayoutEffect(() => {
     const isIndeterminate =
@@ -34,23 +36,34 @@ const UserDashboardTable = ({ data }) => {
         <div className="w-full sm:w-[60%] flex gap-2">
           <CommonButton
             text="+ Add user"
-            className="bg-disableGray text-white rounded-lg"
-            disabled={true}
+            className={`bg-white ${
+              type === "team" ? "text-bodyColor hover:text-white" : "text-white"
+            } rounded-lg bg-disableGray`}
+            disabled={type === "team" ? false : true}
           />
-          <div className="w-[50%] bg-white rounded-[10px] py-3 px-4 text-sm text-disableGray">
-            Search Users
+          <div className="w-[40%] bg-white rounded-[10px] text-sm text-disableGray">
+            <CommonInput
+              placeholder={"Search Users"}
+              value={""}
+              disabled={type === "team" ? false : true}
+              className="border border-none h-[40px]"
+            />
           </div>
         </div>
         <div className="flex gap-2">
           <CommonButton
             text="Filter"
-            className="bg-white text-disableGray py-[10px] px-4 rounded-lg hover:bg-white"
-            disabled={true}
+            className={`bg-white ${
+              type === "team" ? "text-bodyColor" : "text-disableGray"
+            }  py-[10px] px-4 rounded-lg hover:bg-white`}
+            disabled={type === "team" ? false : true}
           />
           <CommonButton
             text="Sort"
-            className="bg-white text-disableGray py-[10px] px-4 rounded-lg hover:bg-white"
-            disabled={true}
+            className={`bg-white ${
+              type === "team" ? "text-bodyColor" : "text-disableGray"
+            }  py-[10px] px-4 rounded-lg hover:bg-white`}
+            disabled={type === "team" ? false : true}
           />
         </div>
       </div>

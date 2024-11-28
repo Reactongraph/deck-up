@@ -31,7 +31,12 @@ export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-[9999]">
         {singleUserOrderData.map((planData, index) => {
-          const isDisabled = plan === planData.title;
+          const isDisabled =
+            plan === "team"
+              ? planData.title === "Multiuser"
+              : plan === "single" && planData.title === "Single user";
+
+          console.log("isDisabled", isDisabled);
           return (
             <div
               key={index}
