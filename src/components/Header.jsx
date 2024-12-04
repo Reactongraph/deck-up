@@ -40,7 +40,10 @@ export default function Header() {
     }
     setActiveDropdown((prev) => (prev === item ? null : item));
   };
-
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
   // console.log("activeDropdown", activeDropdown);
   return (
     <div className="shadow-sm w-full relative">
@@ -67,8 +70,15 @@ export default function Header() {
                   : "User"}
               </p>
             </div>
-            <div className="cursor-pointer">
-              <img src="/images/powerButton.svg" alt="" />
+            <div className="cursor-pointer group relative">
+              <img
+                src="/images/powerButton.svg"
+                alt=""
+                onClick={handleLogout}
+              />
+              <div className="absolute bottom-[-33px] left-1/2 -translate-x-1/2 hidden group-hover:block bg-gray-700 text-black text-sm px-3 py-1 rounded shadow-lg">
+                Logout
+              </div>
             </div>
             <div className="cursor-pointer">
               <img src="/images/bellIcon.svg" alt="" />
