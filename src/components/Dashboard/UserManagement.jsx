@@ -1,19 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  useFetchCompanyInfoQuery,
   useFetchLicenseDetailsQuery,
   useFetchUsersDetailsQuery,
+  useFetchEnterprisesDetailsQuery,
 } from "../../store/single-user/accountApiSlice";
 import UserDashboardTable from "./UserDashboardTable";
 
 const UserManagement = () => {
   const email = localStorage.getItem("email");
-  const { data, isLoading, error, refetch } = useFetchUsersDetailsQuery(email);
-  const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
+  const {
+    data: singleUserData,
+    isLoading,
+    error,
+    refetch,
+  } = useFetchUsersDetailsQuery(email);
+  const userId = singleUserData?.[0]?.enterprise_id;
+  const { data: CompanyInfo, refetch: multiUserRefetch } =
+    useFetchEnterprisesDetailsQuery(userId, {
+      skip: !userId,
+    });
 
+  const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
+  const [tableData, setTableData] = useState([]);
   useEffect(() => {
     refetch();
   }, [refetch]);
+  useEffect(() => {
+    const planType = localStorage.getItem("userType");
+    if (planType === "Multiuser") {
+      console.log("inside company", CompanyInfo);
+      setTableData(CompanyInfo);
+    } else {
+      console.log("inside single", singleUserData);
 
+      setTableData(singleUserData);
+    }
+  }, [CompanyInfo, singleUserData]);
+  console.log("table data", tableData);
   return (
     <div className="font-inter">
       {/* Top Section */}
@@ -48,7 +72,7 @@ const UserManagement = () => {
             Active plan
           </p>
           <h2 className="text-lg font-semibold leading-[17.96px] text-bodyColor mt-2">
-            {data?.[0]?.license?.license_type || ""} plan
+            {tableData?.[0]?.license?.license_type || ""} plan
           </h2>
           <button className="mt-6 text-sm font-semibold leading-[26px] text-red-500">
             Upgrade
@@ -60,8 +84,8 @@ const UserManagement = () => {
       {error && <p className="text-red-500">Failed to fetch user details.</p>}
 
       {/* User Management Table */}
-      {data?.length > 0 ? (
-        <UserDashboardTable data={data} />
+      {tableData?.length > 0 ? (
+        <UserDashboardTable data={tableData} refetchData={multiUserRefetch} />
       ) : (
         !isLoading && <p>No users found.</p>
       )}

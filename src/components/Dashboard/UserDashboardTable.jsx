@@ -1,18 +1,98 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import CommonButton from "../common/CommonButton";
 import { formatDate } from "../../helper/helper";
 import CommonInput from "../common/CommonInput";
+import UserManagementModal from "./UserManagementModal";
+import {
+  useFetchUsersDetailsQuery,
+  useAddSingleUserMutation,
+  useAddBulkUserMutation,
+} from "../../store/single-user/accountApiSlice";
+import { toast } from "react-toastify";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const UserDashboardTable = ({ data }) => {
+const UserDashboardTable = ({ data, refetchData }) => {
+  const email = localStorage.getItem("email");
+  const { data: userDetails, refetch } = useFetchUsersDetailsQuery(email);
+  const [addSingleUser, { data: userAdded }] = useAddSingleUserMutation();
+  const [addBulkUser, { data: bulkUserAdded }] = useAddBulkUserMutation();
+
   const checkbox = useRef();
   const [checked, setChecked] = useState(false);
+  const [originalData] = useState(data);
+  const [tableData, setTableData] = useState(data);
   const [indeterminate, setIndeterminate] = useState(false);
   const [selectedPeople, setSelectedPeople] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
+  const [sortConfig, setSortConfig] = useState({ key: "", direction: "" });
   const type = data?.[0]?.license?.license_type;
+  console.log("userManagement table", userDetails);
+  useEffect(() => {
+    let filteredData = [...originalData];
+
+    // Search logic
+    if (searchQuery) {
+      filteredData = filteredData.filter((person) => {
+        const fullName = `${person.first_name || ""} ${
+          person.last_name || ""
+        }`.toLowerCase();
+        return (
+          fullName.includes(searchQuery.toLowerCase()) ||
+          person.email.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      });
+    }
+
+    // Filter by role
+    if (selectedRole) {
+      filteredData = filteredData.filter(
+        (person) => person.role === selectedRole
+      );
+    }
+
+    // Sorting logic
+    if (sortConfig.key) {
+      filteredData.sort((a, b) => {
+        const aValue =
+          sortConfig.key === "date" ? new Date(a.createdAt) : a[sortConfig.key];
+        const bValue =
+          sortConfig.key === "date" ? new Date(b.createdAt) : b[sortConfig.key];
+        if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
+        return 0;
+      });
+    }
+
+    setTableData(filteredData);
+  }, [searchQuery, selectedRole, sortConfig, originalData]);
+  const filteredData = data
+    ?.filter((person) => {
+      // Filter by search query
+      const fullName = `${person.first_name || ""} ${person.last_name || ""}`;
+      return (
+        fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        person.email.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    })
+    ?.filter((person) => {
+      // Filter by role
+      return selectedRole ? person.role === selectedRole : true;
+    });
+  const sortedData = [...(filteredData || [])].sort((a, b) => {
+    if (!sortConfig.key) return 0;
+    const aValue =
+      sortConfig.key === "date" ? new Date(a.createdAt) : a[sortConfig.key];
+    const bValue =
+      sortConfig.key === "date" ? new Date(b.createdAt) : b[sortConfig.key];
+    if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
+    if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
+    return 0;
+  });
 
   useLayoutEffect(() => {
     const isIndeterminate =
@@ -24,12 +104,47 @@ const UserDashboardTable = ({ data }) => {
     }
   }, [selectedPeople, data]);
 
+  useLayoutEffect(() => {
+    if (userAdded) {
+      console.log("user added successfully");
+      toast.success("User added successfully");
+      setOpenModal(false);
+      refetchData();
+    }
+    if (bulkUserAdded) {
+      console.log("user added successfully");
+      toast.success("User added successfully");
+      setOpenModal(false);
+      // window.location.reload();
+      refetchData();
+    }
+  }, [userAdded, bulkUserAdded]);
+
   function toggleAll() {
     setSelectedPeople(checked || indeterminate ? [] : data || []);
     setChecked(!checked && !indeterminate);
     setIndeterminate(false);
   }
-
+  const handleAddSingleUser = async (email = "") => {
+    console.log("AddSingleUser called", email, userDetails);
+    let payload = {
+      body: { email: email },
+      id: userDetails[0]?.enterprise_id,
+    };
+    await addSingleUser(payload);
+  };
+  const handleBulkUsers = async (users = []) => {
+    console.log("handleBulkUsers", users);
+    let payload = {
+      body: users,
+      id: userDetails[0]?.enterprise_id,
+    };
+    await addBulkUser(payload);
+  };
+  const handleSortChange = (e) => {
+    const [key, direction] = e.target.value.split("_");
+    setSortConfig({ key, direction });
+  };
   return (
     <div className="flex flex-col gap-3">
       <div className="w-full flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between sm:items-center">
@@ -40,31 +155,41 @@ const UserDashboardTable = ({ data }) => {
               type === "team" ? "text-bodyColor hover:text-white" : "text-white"
             } rounded-lg bg-disableGray`}
             disabled={type === "team" ? false : true}
+            onClick={() => setOpenModal(true)}
           />
           <div className="w-[40%] bg-white rounded-[10px] text-sm text-disableGray">
             <CommonInput
-              placeholder={"Search Users"}
-              value={""}
+              placeholder={"Search Users by Name/ Email"}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               disabled={type === "team" ? false : true}
-              className="border border-none h-[40px]"
+              className="border border-none h-[40px] text-black"
             />
           </div>
         </div>
-        <div className="flex gap-2">
-          <CommonButton
-            text="Filter"
-            className={`bg-white ${
-              type === "team" ? "text-bodyColor" : "text-disableGray"
-            }  py-[10px] px-4 rounded-lg hover:bg-white`}
-            disabled={type === "team" ? false : true}
-          />
-          <CommonButton
-            text="Sort"
-            className={`bg-white ${
-              type === "team" ? "text-bodyColor" : "text-disableGray"
-            }  py-[10px] px-4 rounded-lg hover:bg-white`}
-            disabled={type === "team" ? false : true}
-          />
+        <div className="flex gap-2 justify-between items-center">
+          <select
+            className="text-sm px-3 py-2 border rounded-md"
+            value={selectedRole}
+            onChange={(e) => setSelectedRole(e.target.value)}
+          >
+            <option value="">All Roles</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+          <select
+            className="text-sm px-3 py-2 border rounded-md"
+            onChange={handleSortChange}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Sort By
+            </option>
+            <option value="first_name_asc">Name A-Z</option>
+            <option value="first_name_desc">Name Z-A</option>
+            <option value="date_asc">Date Added (Oldest First)</option>
+            <option value="date_desc">Date Added (Newest First)</option>
+          </select>
         </div>
       </div>
       <div className="bg-white shadow overflow-hidden rounded-l-[10px] rounded-r-[10px] p-4  flow-root">
@@ -138,7 +263,7 @@ const UserDashboardTable = ({ data }) => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {data?.map((person) => (
+                  {tableData?.map((person) => (
                     <tr
                       key={person.email}
                       className={
@@ -173,7 +298,8 @@ const UserDashboardTable = ({ data }) => {
                             : "text-gray-900"
                         )}
                       >
-                        {person.first_name} {person.last_name}
+                        {person.first_name || "John"}{" "}
+                        {person.last_name || "Doe"}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {person.email}
@@ -213,6 +339,13 @@ const UserDashboardTable = ({ data }) => {
           </div>
         </div>
       </div>
+      {openModal && (
+        <UserManagementModal
+          handleAddSingleUser={handleAddSingleUser}
+          handleBulkUsers={handleBulkUsers}
+          onClose={() => setOpenModal(false)}
+        />
+      )}
     </div>
   );
 };

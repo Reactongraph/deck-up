@@ -37,6 +37,13 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         params: { value: email, by: "email" },
       }),
     }),
+    fetchEnterprisesDetails: builder.query({
+      query: (id) => ({
+        url: "/dupe-api/users",
+        method: "GET",
+        params: { value: id, by: "enterprise_id" },
+      }),
+    }),
     fetchAccountInfo: builder.query({
       query: (email) => `dashboard/${email}`,
     }),
@@ -52,6 +59,20 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    addSingleUser: builder.mutation({
+      query: (payload) => ({
+        url: `/dupe-api/users/enterprises/${payload?.id}`,
+        method: "POST",
+        body: payload?.body,
+      }),
+    }),
+    addBulkUser: builder.mutation({
+      query: (payload) => ({
+        url: `/dupe-api/users/enterprises/${payload?.id}`,
+        method: "PUT",
+        body: payload?.body,
+      }),
+    }),
   }),
 });
 
@@ -64,4 +85,7 @@ export const {
   useFetchAccountInfoQuery,
   useFetchLicenseDetailsQuery,
   useFetchCompanyInfoQuery,
+  useAddSingleUserMutation,
+  useFetchEnterprisesDetailsQuery,
+  useAddBulkUserMutation,
 } = accountApiSlice;
