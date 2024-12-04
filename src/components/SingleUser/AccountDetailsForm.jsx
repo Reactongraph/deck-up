@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import useCustomNavigation from "../../Hooks/useCustomNavigation";
 import { updateField } from "../../store/single-user/accountSlice";
 import CommonInput from "../common/CommonInput";
 import CommonButton from "../common/CommonButton";
@@ -19,6 +20,7 @@ import { skipToken } from "@reduxjs/toolkit/query";
 
 export default function AccountDetailsForm({ dashboardPage = false }) {
   const dispatch = useDispatch();
+  const navigate = useCustomNavigation();
   const [createUserApi, { isLoading }] = useCreateAccountMutation();
   const {
     firstName,
@@ -59,6 +61,13 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
 
   useEffect(() => {
     if (userDetails) {
+      if (
+        userDetails[0]?.first_name !== "" ||
+        userDetails[0]?.last_name !== ""
+      ) {
+        navigate("/dashboard");
+      }
+
       localStorage.setItem("userDetails", JSON.stringify(userDetails));
     }
   }, [userDetails]);

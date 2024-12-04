@@ -2,6 +2,7 @@ import "./App.css";
 import HomePage from "./view/HomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
+import ProtectedRoute from "./layouts/ProtectedRoute";
 import LoginPage from "./view/Login";
 import Orders from "./view/Orders";
 import FeaturesPage from "./view/FeaturesPage";
@@ -64,9 +65,11 @@ function App() {
         <Route
           path="/setup"
           element={
-            <PublicLayout hasNoFooter={true}>
-              <SetupPage />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={true}>
+                <SetupPage />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
         <Route
@@ -88,50 +91,62 @@ function App() {
         <Route
           path="/account-details"
           element={
-            <PublicLayout hasNoFooter={true}>
-              <AccountDetailsForm />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={true}>
+                <AccountDetailsForm />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/quantity"
           element={
-            <PublicLayout hasNoFooter={true}>
-              <QuantityPage />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={true}>
+                <QuantityPage />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/payment"
           element={
-            <PublicLayout hasNoFooter={true}>
-              <PaymentPage />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={true}>
+                <PaymentPage />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/dashboard"
           element={
-            <PublicLayout hasNoFooter={true}>
-              <Dashboard />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={true}>
+                <Dashboard />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/buy-licenses"
           element={
-            <PublicLayout hasNoFooter={true}>
-              <BuyLicenses />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={true}>
+                <BuyLicenses />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
 
         <Route
           path="/invoice"
           element={
-            <PublicLayout hasNoFooter={false}>
-              <InvoiceRedirect />
-            </PublicLayout>
+            <ProtectedRoute>
+              <PublicLayout hasNoFooter={false}>
+                <InvoiceRedirect />
+              </PublicLayout>
+            </ProtectedRoute>
           }
         />
         <Route
