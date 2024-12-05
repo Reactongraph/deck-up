@@ -31,7 +31,6 @@ const UserDashboardTable = ({ data, refetchData }) => {
   const [selectedRole, setSelectedRole] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "" });
   const type = data?.[0]?.license?.license_type;
-  console.log("userManagement table", userDetails);
   useEffect(() => {
     let filteredData = [...originalData];
 
@@ -106,13 +105,11 @@ const UserDashboardTable = ({ data, refetchData }) => {
 
   useLayoutEffect(() => {
     if (userAdded) {
-      console.log("user added successfully");
       toast.success("User added successfully");
       setOpenModal(false);
       refetchData();
     }
     if (bulkUserAdded) {
-      console.log("user added successfully");
       toast.success("User added successfully");
       setOpenModal(false);
       // window.location.reload();
@@ -126,7 +123,6 @@ const UserDashboardTable = ({ data, refetchData }) => {
     setIndeterminate(false);
   }
   const handleAddSingleUser = async (email = "") => {
-    console.log("AddSingleUser called", email, userDetails);
     let payload = {
       body: { email: email },
       id: userDetails[0]?.enterprise_id,
@@ -134,7 +130,6 @@ const UserDashboardTable = ({ data, refetchData }) => {
     await addSingleUser(payload);
   };
   const handleBulkUsers = async (users = []) => {
-    console.log("handleBulkUsers", users);
     let payload = {
       body: users,
       id: userDetails[0]?.enterprise_id,

@@ -9,7 +9,6 @@ import {
 import UserDashboardTable from "./UserDashboardTable";
 import BuyLicenses from "./BuyLicenses";
 const UserManagement = ({ companyInfo }) => {
-  console.log("companyInfo", companyInfo);
   const email = localStorage.getItem("email");
   const {
     data: singleUserData,
@@ -26,7 +25,7 @@ const UserManagement = ({ companyInfo }) => {
   const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
   const [tableData, setTableData] = useState([]);
   const [plan, setPlan] = useState("Single user");
-  const [activeSubTab, setActiveSubTab] = useState("Profile Info");
+  const [activeSubTab, setActiveSubTab] = useState("account_details");
   const [isBuyLicense, setIsBuyLicense] = useState(false);
   useEffect(() => {
     refetch();
@@ -34,15 +33,12 @@ const UserManagement = ({ companyInfo }) => {
   useEffect(() => {
     const planType = localStorage.getItem("userType");
     if (planType === "Multiuser") {
-      console.log("inside company", CompanyInfo);
       setTableData(CompanyInfo);
     } else {
-      console.log("inside single", singleUserData);
 
       setTableData(singleUserData);
     }
   }, [CompanyInfo, singleUserData]);
-  console.log("table data", tableData);
   return (
     <div className="font-inter">
       {/* Top Section */}
@@ -111,6 +107,8 @@ const UserManagement = ({ companyInfo }) => {
           data={data}
           plan={companyInfo?.configuration?.plan}
           handleBackButton={() => setIsBuyLicense(false)}
+          setActiveSubTab={setActiveSubTab}
+          CompanyInfo={companyInfo}
         />
       )}
     </div>
