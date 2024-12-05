@@ -18,7 +18,11 @@ import CommonAccountForm from "./CommonAccountForm";
 import { setNestedValue } from "../../helper/helper";
 import { skipToken } from "@reduxjs/toolkit/query";
 
-export default function AccountDetailsForm({ dashboardPage = false }) {
+export default function AccountDetailsForm({
+  dashboardPage = false,
+  CompanyInfo = [],
+}) {
+  console.log("COmpanyInfo", CompanyInfo);
   const dispatch = useDispatch();
   const navigate = useCustomNavigation();
   const [createUserApi, { isLoading }] = useCreateAccountMutation();
@@ -117,6 +121,7 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
     }
   };
   const handleSubmit = async (values) => {
+    console.log("handleSubmit", values);
     try {
       const response = await createUserApi(values).unwrap();
       localStorage.setItem("accountData", JSON.stringify(values));
@@ -136,19 +141,38 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
       toast.error("Failed to create account. Please try again.");
     }
   };
-
   const accountDetailsForm = (
     <Formik
       initialValues={{
-        firstName: firstName || accountData?.firstName || "",
-        lastName: lastName || accountData?.lastName || "",
+        firstName:
+          firstName ||
+          accountData?.first_name ||
+          userDetails?.[0]?.first_name ||
+          "",
+        lastName:
+          lastName ||
+          accountData?.last_name ||
+          userDetails?.[0]?.last_name ||
+          "",
         email: email || accountData?.email || "",
-        companyName: companyName || accountData?.companyName || "",
-        addressLineOne: addressLineOne || accountData?.addressLineOne || "",
-        addressLineTwo: addressLineTwo || accountData?.addressLineTwo || "",
+        companyName:
+          companyName ||
+          accountData?.companyName ||
+          CompanyInfo?.organisation ||
+          "",
+        addressLineOne:
+          addressLineOne ||
+          accountData?.addressLineOne ||
+          CompanyInfo?.address?.address1 ||
+          "",
+        addressLineTwo:
+          addressLineTwo ||
+          accountData?.addressLineTwo ||
+          CompanyInfo?.address?.address2 ||
+          "",
         itemPriceId: "cbdemo_sample_plan-inr-monthly",
-        city: city || accountData?.city || "",
-        zip: zip || accountData?.zip || "",
+        city: city || accountData?.city || CompanyInfo?.address?.city || "",
+        zip: zip || accountData?.zip || CompanyInfo?.address?.postalcode || "",
         country: country || accountData?.country || "",
         state: state || accountData?.state || "",
         licenseType:
@@ -160,21 +184,41 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
         billingAddress: isSameAsAbove
           ? {
               firstName:
-                firstName || accountData?.billingAddress?.firstName || "",
-              lastName: lastName || accountData?.billingAddress?.lastName || "",
+                firstName ||
+                accountData?.billingAddress?.firstName ||
+                userDetails?.[0]?.first_name ||
+                "",
+              lastName:
+                lastName ||
+                accountData?.billingAddress?.lastName ||
+                userDetails?.[0]?.last_name ||
+                "",
               email: email || accountData?.billingAddress?.email || "",
               companyName:
-                companyName || accountData?.billingAddress?.companyName || "",
+                companyName ||
+                accountData?.billingAddress?.companyName ||
+                CompanyInfo?.organisation ||
+                "",
               addressLineOne:
                 addressLineOne ||
                 accountData?.billingAddress?.addressLineOne ||
+                CompanyInfo?.address?.address1 ||
                 "",
               addressLineTwo:
                 addressLineTwo ||
                 accountData?.billingAddress?.addressLineTwo ||
+                CompanyInfo?.address?.address2 ||
                 "",
-              city: city || accountData?.billingAddress?.city || "",
-              zip: zip || accountData?.billingAddress?.zip || "",
+              city:
+                city ||
+                accountData?.billingAddress?.city ||
+                CompanyInfo?.address?.city ||
+                "",
+              zip:
+                zip ||
+                accountData?.billingAddress?.zip ||
+                CompanyInfo?.address?.postalcode ||
+                "",
               country:
                 billingCountry ||
                 country ||
@@ -189,77 +233,79 @@ export default function AccountDetailsForm({ dashboardPage = false }) {
       onSubmit={handleSubmit}
       enableReinitialize
     >
-      {({ errors, touched, values }) => (
-        <Form>
-          <h2 className="text-subhead text-paleBlue font-inter">
-            Account Details
-          </h2>
-          <CommonAccountForm
-            handleFieldChange={handleFieldChange}
-            values={values}
-            touched={touched}
-            errors={errors}
-            email={email}
-            stateOptions={stateOptions}
-            prefix={""}
-            setStateOptions={setStateOptions}
-            countryOptions={
-              countries
-                ? countries?.map((country) => ({
-                    label: country.name,
-                    value: country.value,
-                  }))
-                : []
-            }
-          />
-          <div className="w-full my-6 border-t border-borderGray" />
-
-          <div className="flex items-center justify-between mr-[45px]">
-            <h2 className="text-body sm:text-subhead text-paleBlue font-inter">
-              Billing address
+      {({ errors, touched, values }) => {
+        return (
+          <Form>
+            <h2 className="text-subhead text-paleBlue font-inter">
+              Account Details
             </h2>
-            <div className="flex items-center gap-2">
-              <CommonInput
-                type="checkbox"
-                name="billing-address"
-                checked={isSameAsAbove}
-                onChange={() => setIsSameAsAbove(!isSameAsAbove)}
-                className="w-[18px] h-[18px]"
-              />
-              <p className="text-sm font-inter leading-[16.94px] text-bodyColor">
-                Same as above
-              </p>
-            </div>
-          </div>
-
-          {!isSameAsAbove && (
             <CommonAccountForm
               handleFieldChange={handleFieldChange}
-              values={values.billingAddress}
-              touched={touched.billingAddress || {}}
-              errors={errors.billingAddress || {}}
+              values={values}
+              touched={touched}
+              errors={errors}
               email={email}
-              stateOptions={billingStateOptions}
-              prefix="billingAddress."
-              setStateOptions={setBillingStateOptions}
+              stateOptions={stateOptions}
+              prefix={""}
+              setStateOptions={setStateOptions}
               countryOptions={
                 countries
-                  ? countries.map((country) => ({
+                  ? countries?.map((country) => ({
                       label: country.name,
                       value: country.value,
                     }))
                   : []
               }
             />
-          )}
+            <div className="w-full my-6 border-t border-borderGray" />
 
-          <CommonButton
-            type="submit"
-            className="font-inter group relative w-full mt-10 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white bg-primary hover:bg-red-500"
-            text={isLoading ? "Loading..." : "Go for payment"}
-          />
-        </Form>
-      )}
+            <div className="flex items-center justify-between mr-[45px]">
+              <h2 className="text-body sm:text-subhead text-paleBlue font-inter">
+                Billing address
+              </h2>
+              <div className="flex items-center gap-2">
+                <CommonInput
+                  type="checkbox"
+                  name="billing-address"
+                  checked={isSameAsAbove}
+                  onChange={() => setIsSameAsAbove(!isSameAsAbove)}
+                  className="w-[18px] h-[18px]"
+                />
+                <p className="text-sm font-inter leading-[16.94px] text-bodyColor">
+                  Same as above
+                </p>
+              </div>
+            </div>
+
+            {!isSameAsAbove && (
+              <CommonAccountForm
+                handleFieldChange={handleFieldChange}
+                values={values.billingAddress}
+                touched={touched.billingAddress || {}}
+                errors={errors.billingAddress || {}}
+                email={email}
+                stateOptions={billingStateOptions}
+                prefix="billingAddress."
+                setStateOptions={setBillingStateOptions}
+                countryOptions={
+                  countries
+                    ? countries.map((country) => ({
+                        label: country.name,
+                        value: country.value,
+                      }))
+                    : []
+                }
+              />
+            )}
+
+            <CommonButton
+              type="submit"
+              className="font-inter group relative w-full mt-10 flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-[20px] text-white bg-primary hover:bg-red-500"
+              text={isLoading ? "Loading..." : "Go for payment"}
+            />
+          </Form>
+        );
+      }}
     </Formik>
   );
 
