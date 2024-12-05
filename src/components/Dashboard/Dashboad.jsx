@@ -30,7 +30,7 @@ const Dashboard = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "User Management":
-        return <UserManagement />;
+        return <UserManagement companyInfo={CompanyInfo} />;
       case "Account Info":
         return <AccountInfo CompanyInfo={CompanyInfo} />;
       case "Billing History":

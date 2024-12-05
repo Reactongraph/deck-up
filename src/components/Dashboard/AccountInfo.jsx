@@ -36,6 +36,7 @@ const AccountInfo = (CompanyInfo) => {
             setActiveSubTab={setActiveSubTab}
             plan={CompanyInfo?.CompanyInfo?.configuration?.plan}
             setPlan={setPlan}
+            from="account"
           />
         );
       case "Quantity":

@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import CommonButton from "../common/CommonButton";
 import { singleUserOrderData } from "../../utils/data";
 
-export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
+const planToDisabled = {
+  "Single user": ["Single user"],
+  Multiuser: ["Single user", "Multiuser"],
+  enterprises: ["Single user", "Multiuser", "enterprise"],
+  individual: ["Single user"],
+  team: ["Single user", "Multiuser"],
+};
+export default function BuyLicenses({
+  setActiveSubTab,
+  plan,
+  from,
+  setPlan,
+  handleBackButton = () => {},
+}) {
+  console.log("Buy license called", plan);
   const navigate = useNavigate();
 
   const handleBack = () => {
-    setActiveSubTab("Profile Info");
+    if (from === "account") {
+      setActiveSubTab("Profile Info");
+    } else {
+      handleBackButton();
+    }
   };
 
   const handleGetStarted = (isDisabled, planData) => {
@@ -19,6 +37,11 @@ export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
       setActiveSubTab("Quantity");
     }
   };
+  const isDisabled = useMemo(() => {
+    return singleUserOrderData?.findIndex(
+      (planData) => planToDisabled[plan]?.includes(planData.title) || false
+    );
+  }, [singleUserOrderData, plan]);
   return (
     <div className="bg-white font-inter flex flex-col gap-6 mt-[14px] rounded-[10px] pl-20 pt-[59px] pb-[39px] pr-8 lg:pr-[107px]">
       <div>
@@ -31,17 +54,11 @@ export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-[9999]">
         {singleUserOrderData.map((planData, index) => {
-          const isDisabled =
-            plan === "team"
-              ? planData.title === "Multiuser"
-              : plan === "single" && planData.title === "Single user";
-
-          console.log("isDisabled", isDisabled);
           return (
             <div
               key={index}
               className={`bg-white rounded-lg shadow-lg p-10 flex flex-col justify-between lg:h-[467px] md:h-[340px] ${
-                isDisabled ? "opacity-50 cursor-not-allowed" : ""
+                index <= isDisabled ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
               <div>
@@ -50,7 +67,7 @@ export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
                 </h3>
                 <p
                   className={`${
-                    isDisabled ? "text-bodyColor" : "text-primary"
+                    index <= isDisabled ? "text-bodyColor" : "text-primary"
                   } mb-6 font-inter max-sm:text-[14px]`}
                 >
                   {planData.subtitle}
@@ -67,14 +84,14 @@ export default function BuyLicenses({ setActiveSubTab, plan, setPlan }) {
               </div>
               <CommonButton
                 className={`w-full mt-8 border  ${
-                  isDisabled
+                  index <= isDisabled
                     ? "cursor-not-allowed border-bodyColor text-bodyColor"
                     : "border border-primary text-primary hover:text-white"
                 }`}
                 variant="outline"
                 text={planData.buttonText}
-                onClick={() => handleGetStarted(isDisabled, planData)}
-                disabled={isDisabled}
+                onClick={() => handleGetStarted(index <= isDisabled, planData)}
+                disabled={index <= isDisabled}
               />
             </div>
           );
