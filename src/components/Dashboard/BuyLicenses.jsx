@@ -11,15 +11,22 @@ const planToDisabled = {
   individual: ["Single user"],
   team: ["Single user", "Multiuser"],
 };
+const planName = {
+  "Single user": "individual",
+  Multiuser: "team",
+  Enterprise: "enterprise",
+};
 export default function BuyLicenses({
   setActiveSubTab,
   plan,
   from,
+  currentPlan = "",
   setPlan = () => {},
   handleBackButton = () => {},
   CompanyInfo = [],
 }) {
   const navigate = useNavigate();
+  const [selectedPlan, setSelectedPlan] = useState("");
   const [showAccountDetails, setShowAccountDetails] = useState(false);
   const handleBack = () => {
     if (from === "account") {
@@ -34,7 +41,9 @@ export default function BuyLicenses({
       navigate("/enterprise");
     }
     if (!isDisabled) {
+      const name = planName[planData.title] || "";
       setPlan(planData.title);
+      setSelectedPlan(name);
       // setActiveSubTab("account_details");
       setShowAccountDetails(true);
     }
@@ -111,7 +120,11 @@ export default function BuyLicenses({
         </>
       )}
       {showAccountDetails && (
-        <AccountDetailsForm dashboardPage={true} CompanyInfo={CompanyInfo} />
+        <AccountDetailsForm
+          dashboardPage={true}
+          CompanyInfo={CompanyInfo}
+          plan={selectedPlan}
+        />
       )}
     </div>
   );

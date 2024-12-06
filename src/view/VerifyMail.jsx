@@ -83,9 +83,9 @@ const VerifyMail = () => {
         localStorage.setItem("refreshToken", otpVerify.tokens.refreshToken);
         // await checkUserTrailApiRequest(email);
 
-        const loginSource = localStorage.getItem("loginSource");
+        const loginSource = localStorage.getItem("userType");
         const targetPage =
-          loginSource === "createAccount" ? "/account-details" : "/setup";
+          loginSource === "Freetrial" ? "/setup" : "/account-details";
 
         setTimeout(() => {
           localStorage.removeItem("loginSource");

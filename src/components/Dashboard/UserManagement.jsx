@@ -24,7 +24,7 @@ const UserManagement = ({ companyInfo }) => {
   const { data } = useFetchAccountInfoQuery(email);
   const { data: LicenseDetails } = useFetchLicenseDetailsQuery(email);
   const [tableData, setTableData] = useState([]);
-  const [plan, setPlan] = useState("Single user");
+  const [currentPlan, setPlan] = useState("Single user");
   const [activeSubTab, setActiveSubTab] = useState("account_details");
   const [isBuyLicense, setIsBuyLicense] = useState(false);
   useEffect(() => {
@@ -35,7 +35,6 @@ const UserManagement = ({ companyInfo }) => {
     if (planType === "Multiuser") {
       setTableData(CompanyInfo);
     } else {
-
       setTableData(singleUserData);
     }
   }, [CompanyInfo, singleUserData]);
@@ -106,6 +105,8 @@ const UserManagement = ({ companyInfo }) => {
         <BuyLicenses
           data={data}
           plan={companyInfo?.configuration?.plan}
+          setPlan={setPlan}
+          currentPlan={currentPlan}
           handleBackButton={() => setIsBuyLicense(false)}
           setActiveSubTab={setActiveSubTab}
           CompanyInfo={companyInfo}
