@@ -22,13 +22,15 @@ export default function CreateAccountPage() {
   const queryParams = new URLSearchParams(location.search);
   const userType = queryParams.get("user");
 
-  localStorage.setItem("userType", userType);
-
   const handleEmailChange = (event) => {
     const email = event.target.value;
     dispatch(setEmail(email));
   };
-
+  useEffect(() => {
+    if (userType) {
+      localStorage.setItem("userType", userType);
+    }
+  }, [userType]);
   useEffect(() => {
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       const storedEmail = localStorage.getItem("email");

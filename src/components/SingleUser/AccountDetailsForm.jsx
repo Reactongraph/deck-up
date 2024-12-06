@@ -21,8 +21,10 @@ import { skipToken } from "@reduxjs/toolkit/query";
 export default function AccountDetailsForm({
   dashboardPage = false,
   CompanyInfo = [],
+  plan = "",
+  currentPlan = "",
 }) {
-  console.log("COmpanyInfo", CompanyInfo);
+  console.log("COmpanyInfo", plan, currentPlan);
   const dispatch = useDispatch();
   const navigate = useCustomNavigation();
   const [createUserApi, { isLoading }] = useCreateAccountMutation();
@@ -176,7 +178,9 @@ export default function AccountDetailsForm({
         country: country || accountData?.country || "",
         state: state || accountData?.state || "",
         licenseType:
-          userType === "Singleuser"
+          plan !== ""
+            ? plan
+            : userType === "Singleuser"
             ? "individual"
             : userType === "Multiuser"
             ? "team"
