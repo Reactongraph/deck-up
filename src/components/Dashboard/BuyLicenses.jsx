@@ -20,7 +20,6 @@ export default function BuyLicenses({
   setActiveSubTab,
   plan,
   from,
-  currentPlan = "",
   setPlan = () => {},
   handleBackButton = () => {},
   CompanyInfo = [],
@@ -49,9 +48,9 @@ export default function BuyLicenses({
     }
   };
   const isDisabled = useMemo(() => {
-    return singleUserOrderData?.findIndex(
-      (planData) => planToDisabled[plan]?.includes(planData.title) || false
-    );
+    return singleUserOrderData.map((planData) => {
+      return planToDisabled[plan]?.includes(planData.title);
+    });
   }, [singleUserOrderData, plan]);
   return (
     <div className="bg-white font-inter flex flex-col gap-6 mt-[14px] rounded-[10px] pl-20 pt-[59px] pb-[39px] pr-8 lg:pr-[107px]">
@@ -67,11 +66,14 @@ export default function BuyLicenses({
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-[9999]">
             {singleUserOrderData.map((planData, index) => {
+              const isPlanDisabled = isDisabled[index];
               return (
                 <div
                   key={index}
                   className={`bg-white rounded-lg shadow-lg p-10 flex flex-col justify-between lg:h-[467px] md:h-[340px] ${
-                    index <= isDisabled ? "opacity-50 cursor-not-allowed" : ""
+                    index <= isPlanDisabled
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
                   }`}
                 >
                   <div>
@@ -103,10 +105,8 @@ export default function BuyLicenses({
                     }`}
                     variant="outline"
                     text={planData.buttonText}
-                    onClick={() =>
-                      handleGetStarted(index <= isDisabled, planData)
-                    }
-                    disabled={index <= isDisabled}
+                    onClick={() => handleGetStarted(isPlanDisabled, planData)}
+                    disabled={isPlanDisabled}
                   />
                 </div>
               );
