@@ -39,7 +39,7 @@ export default function CancelSubscription({ setActiveSubTab }) {
 
       if (responseData) {
         setTimeout(() => {
-          setActiveSubTab("Profile Info");
+          setActiveSubTab("User Management");
         }, 3000);
       } else {
         console.error("Failed to cancel subscription:", responseData);
