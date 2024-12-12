@@ -73,6 +73,19 @@ export const accountApiSlice = apiSlice.injectEndpoints({
         body: payload?.body,
       }),
     }),
+    getReasonForCancel: builder.query({
+      query: () => ({
+        url: "/chargebee/subscriptions/cancel-reasons",
+        method: "GET",
+      }),
+    }),
+    cancelSubscription: builder.mutation({
+      query: ({ id, ...data }) => ({
+        url: `/chargebee/subscriptions/${id}`,
+        method: "PATCH",
+        body: data, 
+      }),
+    }),    
   }),
 });
 
@@ -88,4 +101,6 @@ export const {
   useAddSingleUserMutation,
   useFetchEnterprisesDetailsQuery,
   useAddBulkUserMutation,
+  useGetReasonForCancelQuery,
+  useCancelSubscriptionMutation,
 } = accountApiSlice;

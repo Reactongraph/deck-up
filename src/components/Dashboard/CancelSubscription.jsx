@@ -1,27 +1,51 @@
 import React, { useState } from "react";
 import CommonButton from "../common/CommonButton";
+import {
+  useCancelSubscriptionMutation,
+  useFetchAccountInfoQuery,
+  useGetReasonForCancelQuery,
+} from "../../store/single-user/accountApiSlice";
+import { ToastContainer } from "react-toastify";
 
 export default function CancelSubscription({ setActiveSubTab }) {
   const [selectedReason, setSelectedReason] = useState("");
   const [customReason, setCustomReason] = useState("");
+  const { data: reasons, isLoading: isReasonLoading } =
+    useGetReasonForCancelQuery();
+  const email = localStorage.getItem("email");
+  const { data: accountInfo } = useFetchAccountInfoQuery(email);
+  const [canceApi, { isLoading }] = useCancelSubscriptionMutation();
 
   const handleBack = () => {
     setActiveSubTab("Profile Info");
   };
 
-  const reasons = [
-    "I don't need the product anymore",
-    "My project requirements are over",
-    "Required features not available",
-    "I am using some other product",
-    "I don't use ppt that much now",
-  ];
+  // const reasons = [
+  // "I don't need the product anymore",
+  // "My project requirements are over",
+  // "Required features not available",
+  // "I am using some other product",
+  // "I don't use ppt that much now",
+  // ];
 
-  const handleCancel = () => {
+  const handleCancel = async () => {
     const reason = selectedReason || customReason;
-    if (!reason) {
-      alert("Please provide a reason for cancellation.");
-      return;
+    try {
+      const responseData = await canceApi({
+        id: accountInfo?.subscriptions?.id,
+        reason,
+        other: customReason ? true : false,
+      });
+
+      if (responseData) {
+        setTimeout(() => {
+          setActiveSubTab("Profile Info");
+        }, 3000);
+      } else {
+        console.error("Failed to cancel subscription:", responseData);
+      }
+    } catch (error) {
+      console.error("Error cancelling subscription:", error);
     }
   };
 
@@ -37,19 +61,24 @@ export default function CancelSubscription({ setActiveSubTab }) {
         Are you sure? Can you tell us the reason?
       </p>
       <div className="flex flex-col gap-2">
-        {reasons.map((reason, index) => (
-          <button
-            key={index}
-            onClick={() => setSelectedReason(reason)}
-            className={`px-4 py-3 border border-disableGray text-center font-medium rounded-[10px] text-sm ${
-              selectedReason === reason
-                ? "border-paleBlue text-paleBlue bg-lightBlue font-semibold"
-                : "border-disableGray text-bodyColor hover:text-paleBlue hover:bg-lightBlue"
-            }`}
-          >
-            {reason}
-          </button>
-        ))}
+        {isReasonLoading
+          ? "Loading Reasons..."
+          : reasons?.cancelReasons?.map((reason, index) => (
+              <button
+                key={index}
+                disabled={customReason ? true : false}
+                onClick={() => setSelectedReason(reason)}
+                className={`px-4 py-3 border border-disableGray text-center font-medium rounded-[10px] text-sm ${
+                  selectedReason === reason
+                    ? "border-paleBlue text-paleBlue bg-lightBlue font-semibold"
+                    : customReason
+                    ? "border-disableGray text-disableGray hover:text-disableGray hover:bg-white"
+                    : "border-disableGray text-bodyColor hover:text-paleBlue hover:bg-lightBlue"
+                }`}
+              >
+                {reason}
+              </button>
+            ))}
       </div>
       <textarea
         value={customReason}
@@ -57,13 +86,15 @@ export default function CancelSubscription({ setActiveSubTab }) {
           setSelectedReason("");
           setCustomReason(e.target.value);
         }}
-        placeholder="Type your reason here"
+        placeholder={selectedReason ? "Disabled" : "Type your reason here"}
+        disabled={selectedReason ? true : false}
         className="w-full border border-disableGray rounded-[10px] mt-8 p-3 text-sm text-textAreaGray focus:ring-2 focus:ring-blue-500 focus:outline-none"
       />
       <div className="flex flex-col items-center justify-between mt-[42px]">
         <CommonButton
-          text="Cancel"
+          text={isLoading ? "Processing..." : "Cancel"}
           onClick={handleCancel}
+          disabled={isLoading}
           className="w-full px-6 py-2 font-semibold bg-primary text-white"
         />
 
@@ -72,6 +103,13 @@ export default function CancelSubscription({ setActiveSubTab }) {
           will be processed for the same.
         </p>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+      />
     </div>
   );
 }
