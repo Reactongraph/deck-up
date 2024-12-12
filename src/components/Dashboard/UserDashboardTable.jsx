@@ -31,7 +31,9 @@ const UserDashboardTable = ({ data, refetchData }) => {
   const [selectedRole, setSelectedRole] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "" });
   const type = data?.[0]?.license?.license_type;
+  
   useEffect(() => {
+    refetch();
     let filteredData = [...originalData];
 
     // Search logic

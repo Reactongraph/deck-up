@@ -103,7 +103,7 @@ const UserManagementModal = ({
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-grow px-4 py-2 bg-gray-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-grow px-4 py-2 bg-gray-50 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               className="px-6 py-2 bg-[#ff7171] hover:bg-[#ff5c5c] text-white rounded-md transition duration-300 ease-in-out"
