@@ -17,7 +17,7 @@ export default function FeatureHover({
         bottom="0"
         transform="rotate(247deg)"
       />
-      <div className="max-w-[270px] w-full mx-auto p-6">
+      <div className="max-w-[270px] w-full mx-auto p-6 flex flex-col justify-between">
         <h2 className="text-paleBlue text-subhead mb-4 text-gray-800 font-inter">
           Pricing & Plans
         </h2>
@@ -30,7 +30,7 @@ export default function FeatureHover({
           </li>
           <hr className="text-[#64A4C0]" />
           <li
-            className="text-body text-paleBluecursor-pointer font-inter"
+            className="text-body text-paleBlue cursor-pointer font-inter"
             onClick={() => handleNavigate()}
           >
             Small teams
@@ -38,7 +38,7 @@ export default function FeatureHover({
           <hr className="text-[#64A4C0]" />
 
           <li
-            className="text-body text-paleBluecursor-pointer font-inter"
+            className="text-body text-paleBlue cursor-pointer font-inter"
             onClick={() => handleNavigate()}
           >
             Enterprise
@@ -47,7 +47,7 @@ export default function FeatureHover({
       </div>
       <div class="border-l-2 border-smallBlue mx-5"></div>
       <div className="max-w-[270px] w-full mx-auto p-6">
-        <h2 className="text-paleBlue text-subhead  mb-4 text-gray-800 whitespace-nowrap font-inter">
+        <h2 className="text-paleBlue text-subhead  mb-4 text-gray-800 font-inter">
           Subscription Management
         </h2>
         <ul className="space-y-2">
@@ -76,7 +76,7 @@ export default function FeatureHover({
         </ul>
       </div>
       <div class="border-l-2 border-smallBlue mx-5"></div>
-      <div className="flex-1 bg-gradient-to-b from-slate-50 to-cyan-100 rounded-lg w-full flex flex-col items-center justify-center max-w-[270px] mx-auto p-6">
+      <div className="flex-1 bg-gradient-to-b from-slate-50 to-cyan-100 rounded-lg w-full flex flex-col items-start justify-center max-w-[270px] mx-auto p-6">
         <h2 className="text-subhead text-left text-paleBlue mb-1">FAQs</h2>
         <p className="text-body text-paleBlue font-inter">
           Here's where you will find answers to those frequently asked questions

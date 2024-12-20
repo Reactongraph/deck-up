@@ -156,7 +156,7 @@ export default function TestimonialsSection() {
                 key={index}
                 className="" // Add horizontal margin here
               >
-                <div className="bg-white z-10 py-[54px] text-center px-[54px] min-h-[378px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2">
+                <div className="bg-white z-10 py-[54px] text-center px-[54px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2 min-h-[500px]">
                   <div>
                     <img
                       src={testimonial.logo}
@@ -167,7 +167,7 @@ export default function TestimonialsSection() {
                       {testimonial.quote}
                     </p>
                   </div>
-                  <div className="flex items-center  gap-[10px] justify-center">
+                  <div className="flex items-center  gap-[10px] justify-center mt-[">
                     <img
                       src={testimonial.avatar}
                       alt={testimonial.author}

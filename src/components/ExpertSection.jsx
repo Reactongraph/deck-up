@@ -3,7 +3,7 @@ import React from "react";
 export default function ExpertSection() {
   return (
     <div className="relative mt-12 xl:mt-[157px] max-w-[760px] m-auto text-center ps-2.5 pe-2.5 max-sm:mt-[100px]">
-      <h2 className="lg:text-headline xl:text-headline text-subhead text-paleBlue font-extrabold bg-hero-pattern bg-contain bg-no-repeat max-sm:py-[26px] py-[70px] px-[20px] font-inter">
+      <h2 className="lg:text-headline xl:text-headline text-subhead text-paleBlue font-extrabold bg-hero-pattern bg-contain bg-no-repeat max-sm:py-[26px] py-[70px] px-[20px] font-inter max-lg:w-[80%] max-lg:mx-auto">
         Built by experts in
         <br />
         visual communication
