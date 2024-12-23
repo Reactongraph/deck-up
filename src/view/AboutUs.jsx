@@ -7,7 +7,7 @@ import { Images } from "../utils/images";
 import GradientOverlay from "../components/common/GradientOverlay";
 
 const data = {
-  heading: "DeckUp from Slide Expess",
+  heading: "DeckUp from SlideXpress",
   description: [
     {
       text: `This unique PowerPoint add-in has been developed by the communication design experts at SlideXpress.`,
