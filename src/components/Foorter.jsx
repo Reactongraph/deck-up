@@ -70,7 +70,7 @@ const Footer = () => {
                   info@deckup.com
                 </p>
               </div>
-              <div className="flex justify-center md:justify-start space-x-4 pr-[28%] md:pr-0">
+              <div className="flex justify-center items-center md:justify-start space-x-4 pr-[28%] md:pr-0">
                 <a
                   href="/"
                   aria-label="LinkedIn"
@@ -95,7 +95,7 @@ const Footer = () => {
                   className="text-white hover:text-blue-300"
                 >
                   <svg
-                    className="w-[22px] h-5 md:w-6 md:h-6"
+                    className="w-[22px] h-[22px] md:w-6 md:h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -132,7 +132,28 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-
+              <div className="block md:hidden">
+                <h3 className="font-semibold mb-2 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                  Account
+                </h3>
+                <ul className="space-y-2">
+                  <li>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      My account
+                    </p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      My Orders
+                    </p>
+                  </li>
+                  <li>
+                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                      Login
+                    </p>
+                  </li>
+                </ul>
+              </div>
               <div>
                 <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
                   Learn
@@ -184,7 +205,7 @@ const Footer = () => {
                 </ul>
               </div>
 
-              <div>
+              <div className="hidden md:block">
                 <h3 className="font-semibold mb-2 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
                   Account
                 </h3>
