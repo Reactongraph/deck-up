@@ -164,33 +164,35 @@ export default function TutorialGrid() {
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <div className="container lg:pt-[99px] pb-14 md:pb-[71px] lg:pb-[60px] pr-0 md:pr-20 lg:pr-0 flex md:gap-16 lg:gap-[104px] item-center lg:ps-2.5 lg:pe-2.5 flex-col md:flex-row lg:flex-col pt-[57px] md:pt-[72px] gap-[41px]">
-          <div className="w-full relative">
+        <div className=" lg:pt-[99px] pb-14 pl-4 lg:pl-0 md:pb-[71px] lg:pb-[60px] pr-0 md:pr-20 lg:pr-0 flex md:gap-16 lg:gap-[30px] item-center lg:ps-2.5 lg:pe-2.5 flex-col lg:flex-row pt-[57px] md:pt-[72px] gap-[41px]">
+          <div className="w-full lg:w-[60%] relative">
             <img
               src={Images.signup}
               alt="Microsoft PowerPoint interface with DeckUp add-in"
-              className="w-full"
+              className="w-full h-[569px]"
             />
             <GradientOverlay
               width="141px"
               height="141px"
               gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
-              top="-10px"
-              right="0"
+              top="-26px"
+              right="10%"
             />
           </div>
-          <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center lg:text-center">
+          <div className="w-full lg:w-[40%] flex items-center">
+          <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center lg:text-start">
             <h2 className="lg:text-headline text-paleBlue font-bold lg:font-extrabold text-[24px]">
               Sign up today
             </h2>
             <p className="mt-[24px] text-body text-bodyColor lg:mt-4">
               Your superpower-packed plug-&-play PPT tool is just a click away!
             </p>
-            <div className="flex flex-row md:gap-[12px] lg:justify-center gap-4">
+            <div className="flex flex-row md:gap-[12px] lg:justify-start gap-4">
               <button className="text-sm md:text-base lg:mt-[40px] bg-primary text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
                 Watch demo
               </button>
             </div>
+          </div>
           </div>
         </div>
         <div className="hidden lg:block">
