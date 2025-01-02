@@ -9,12 +9,12 @@ export default function ExpertSection() {
         visual communication
       </h2>
       <p className="mt-0 text-sm lg:text-body text-bodyColor px-[10px] lg:px-[70px] font-inter">
-        <span className="text-[#0078F0] font-inter">SlideXpress</span> is
+        <span className="lg:text-[#0078F0] font-inter">SlideXpress</span> is
         trusted by industry leaders world over creating presentation decks as
         the most effective and expressive communication tools. It's this
         ex-McKinsey team that built DeckUp.
       </p>
-      <div className="mt-[40px] flex justify-center gap-[24px]">
+      <div className="mt-8 lg:mt-[40px] flex justify-center gap-[11px] lg:gap-[24px]">
         <button
           variant="destructive"
           className="bg-primary hover:bg-hoverButton text-white px-[24px] py-[12px] rounded-[100px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] font-inter"

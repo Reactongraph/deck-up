@@ -37,8 +37,8 @@ export default function TutorialSection() {
           transform: "rotate(-70deg)",
         };
   return (
-    <div className="container pl-[32px] xs:pl-[56px] pr-0 lg:pl-[10px] lg:pr-[10px] py-[72px] lg:py-[115px] flex gap-[52px] lg:gap-[150px] item-center relative  max-sm:flex-col max-sm:flex">
-      <div className="w-full xs:w-[27.3%] max-w-[320px] lg:w-full items-start flex flex-col justify-center">
+    <div className="container pl-[15px] md:pl-[32px] xs:pl-[56px] pr-[14px] md:pr-0 lg:pl-[10px] lg:pr-[10px] py-[72px] lg:py-[115px] flex gap-[13px] md:gap-[52px] lg:gap-[150px] item-center relative  max-sm:flex-col max-sm:flex">
+      <div className="w-full xs:w-[27.3%] max-w-[320px] px-[17px] lg:px-0 lg:w-full items-start flex flex-col justify-center">
         <div className="relative">
           <GradientOverlay
             width={gradientOverlayStyles.width}
@@ -50,14 +50,14 @@ export default function TutorialSection() {
             zIndex={gradientOverlayStyles.zIndex}
             transform={gradientOverlayStyles.transform}
           />
-          <h2 className="g:text-headline xl:text-headline max-sm:text-subhead   text-paleBlue font-extrabold font-inter">
+          <h2 className="lg:text-headline whitespace-nowrap md:whitespace-normal xl:text-headline md:text-subhead text-paleBlue font-extrabold font-inter">
             Learn the tools in seconds
           </h2>
-          <p className="mt-[24px] text-body text-bodyColor font-inter">
+          <p className="mt-[24px] text-sm leading-[20px] lg:text-body text-bodyColor font-inter">
             Mulates real DeckUp Add-in to learn how a particular tool works
           </p>
         </div>
-        <button className="mt-[24px] xs:mt-[40px] bg-primary hover:bg-hoverButton text-white px-[13px] lg:px-[24px] py-[10px] lg:py-[12px] rounded-[100px] font-inter">
+        <button className="mt-[24px] lg:mt-[40px] bg-primary hover:bg-hoverButton text-white px-[13px] lg:px-[24px] py-[10px] lg:py-[12px] rounded-[100px] font-inter">
           Check tutorials
         </button>
       </div>

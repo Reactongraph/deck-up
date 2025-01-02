@@ -68,7 +68,7 @@ const VerifyMail = () => {
       toast.error("Please enter the full 6-digit OTP.");
       return;
     }
-
+    console.log("email", email);
     if (!email || !otp || otp.length !== 6) {
       toast.error("Invalid email or OTP. Please check your input.");
       return;
@@ -105,7 +105,6 @@ const VerifyMail = () => {
     }
   };
 
-
   return (
     <div className="bg-lightBlue min-h-screen flex flex-col">
       <ToastContainer
@@ -115,8 +114,9 @@ const VerifyMail = () => {
         closeOnClick
         pauseOnHover
       />
-      <div className="flex flex-col lg:flex-row container lg:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]"
-      onKeyDown={handleKeyDown}
+      <div
+        className="flex flex-col lg:flex-row container lg:pt-[48px] lg:pb-[80px] xl:pt-[80px] sm:pt-[72px] sm:pb-[24px] relative z-[100]"
+        onKeyDown={handleKeyDown}
       >
         <div className="flex-1 flex items-center justify-center mt-10">
           <div className="max-w-[536px] w-full bg-white rounded-lg sm:px-[66px] px-[40px] pt-[50px] pb-[300px] text-start mx-[40px] xl:mx-[0px]">
@@ -153,7 +153,7 @@ const VerifyMail = () => {
 
             <button
               onClick={handleSubmit}
-              className="w-full bg-primary hover:bg-red-600 text-white font-medium py-3 rounded-full"
+              className="w-full bg-primary hover:bg-hoverButton text-white font-medium py-3 rounded-full"
               disabled={isLoading}
             >
               {isLoading ? "Verifying..." : "Submit"}

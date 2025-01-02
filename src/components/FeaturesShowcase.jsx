@@ -88,16 +88,16 @@ export default function FeaturesShowcase() {
     sliderRef.current.slickNext();
   };
   return (
-    <div className="bg-gradient-to-t digram-slider  from-[#318BB4] to-[#64ACCD] pt-12 lg:pt-[130px] pb-[101px] lg:pb-[160px] pl-[15px] sm:ps-2.5 pe-2.5 pr-[0px]">
+    <div className="bg-gradient-to-t digram-slider  from-[#318BB4] to-[#64ACCD] pt-12 md:pt-[72px] lg:pt-[130px] pb-[101px] md:pb-10 lg:pb-[160px] pl-[15px] sm:ps-2.5 pe-2.5 pr-[0px]">
       <div className="lg:pl-[139px] xl:container pr-[0] lg:mr-[-10px] lg:max-w-[1440px] xl:my-0 xl:mx-auto">
-        <div className="slider-container mb-[40px]">
+        <div className="slider-container lg:mb-[40px]">
           <CommonSlider settings={sliderSettings} ref={sliderRef}>
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[350px] min-h-[420px]"
+                className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[350px] min-h-[260px] md:min-h-[369px] lg:min-h-[420px]"
               >
-                <h3 className="text-[18px] font-semibold text-paleBlue mb-[25px] font-inter">
+                <h3 className="text-sm md:text-base lg:text-[18px] md:font-semibold text-[#282828] md:text-paleBlue mb-[25px] font-inter">
                   {feature.title}
                 </h3>
                 <div className="mt-4">

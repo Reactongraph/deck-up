@@ -41,7 +41,7 @@ export default function OnboardingSection() {
         transform: "rotate(90deg)",
       };
   return (
-    <div className="container pt-[99px] pb-[60px] flex gap-[42px] item-center ps-2.5 pe-2.5 max-sm:flex max-sm:flex-col">
+    <div className="container pt-14 lg:pt-[99px] pb-[60px] flex gap-[42px] item-center ps-2.5 pe-2.5 max-sm:flex max-sm:flex-col font-inter">
       <div className="w-full ml-[-140px] max-sm:ml-0 relative">
         <img
           src="/videos/onboarding.gif"
@@ -59,19 +59,19 @@ export default function OnboardingSection() {
           transform={gradientOverlayStyles.transform}
         />
       </div>
-      <div className="max-w-[480px] w-full flex flex-col justify-center">
-        <h2 className="text-headline  text-paleBlue font-extrabold font-inter">
+      <div className="max-w-[480px] w-full flex flex-col justify-center px-8 lg:px-0">
+        <h2 className="text-subhead lg:text-headline  text-paleBlue font-extrabold font-inter">
           Get onboard for a smarter workflow today!
         </h2>
-        <p className="mt-[24px] text-body text-bodyColor font-inter">
+        <p className="mt-[24px] text-sm leading-[20px] text-body text-bodyColor font-inter">
           Why wait to enhance existing capability and improve productivity? Your
           superpower-packed plug-and-play PPT tool is just a click away!
         </p>
         <div className="flex flex-row gap-[12px]">
-          <button className="mt-[40px] bg-primary hover:bg-hoverButton text-white px-[24px] py-[12px] rounded-[100px] font-inter">
+          <button className="mt-6 lg:mt-[40px] text-sm lg:text-base bg-primary hover:bg-hoverButton text-white px-[24px] py-[12px] rounded-[100px] font-inter">
             Start free trial
           </button>
-          <button className="mt-[40px] bg-secondary hover:bg-hoverSecondary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
+          <button className="mt-6 lg:mt-[40px] text-sm lg:text-base bg-secondary hover:bg-hoverSecondary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
             Explore plans
           </button>
         </div>
