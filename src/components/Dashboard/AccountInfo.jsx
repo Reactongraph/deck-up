@@ -25,6 +25,7 @@ const AccountInfo = (CompanyInfo) => {
             error={error}
             setActiveSubTab={setActiveSubTab}
             CompanyInfo={CompanyInfo}
+            plan={CompanyInfo?.CompanyInfo?.configuration?.plan || plan}
           />
         );
       case "Renew License":

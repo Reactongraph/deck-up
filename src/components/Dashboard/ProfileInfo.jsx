@@ -5,6 +5,7 @@ import {
   useFetchLicenseDetailsQuery,
   useFetchUsersDetailsQuery,
 } from "../../store/single-user/accountApiSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileInfo({
   data,
@@ -13,8 +14,10 @@ export default function ProfileInfo({
   error,
   setActiveSubTab,
   CompanyInfo,
+  plan
 }) {
   const [showCVV, setShowCVV] = useState(false);
+  const navigate = useNavigate();
 
   const AddressDetails = CompanyInfo?.CompanyInfo?.address;
 
@@ -91,11 +94,20 @@ export default function ProfileInfo({
                 </div>
               </div>
             </div>
+            <div className="flex gap-4 items-center">
             <CommonButton
               text="Buy additional licenses"
               onClick={() => setActiveSubTab("Buy Additional Licenses")}
               className="mt-6 bg-primary text-white px-4 py-2"
             />
+            {plan != "free" && (
+              <CommonButton
+              text="Upgrade to enterprise"
+              onClick={ () => navigate("/enterprise")}
+              className="mt-6 bg-white border border-primary text-primary px-4 py-2 hover:text-white"
+            />
+            )}
+            </div>
           </div>
 
           {/* Payment Modes */}

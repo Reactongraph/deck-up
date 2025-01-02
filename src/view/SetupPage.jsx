@@ -44,7 +44,7 @@ const SetupPage = () => {
           ) : ( */}
             <button
               onClick={downloadPdf}
-              className={`mt-4 bg-primary hover:bg-red-600 text-white font-medium py-3 px-4 rounded-full inline-flex items-center cursor-not-allowed opacity-50`}
+              className={`mt-4 bg-primary hover:bg-hoverButton text-white font-medium py-3 px-4 rounded-full inline-flex items-center cursor-not-allowed opacity-50`}
               // disabled={data.userExists}
             >
               <img

@@ -77,7 +77,7 @@ const UserManagement = ({ companyInfo }) => {
                 {tableData?.[0]?.license?.license_type || ""} plan
               </h2>
               <button
-                className="mt-6 text-sm font-semibold leading-[26px] text-red-500 cursor-pointer"
+                className="mt-6 text-sm font-semibold leading-[26px] text-primary hover:text-hoverButton cursor-pointer"
                 onClick={() => setIsBuyLicense(true)}
               >
                 Upgrade

@@ -8,12 +8,12 @@ export default function LeftImage({
   showGradient = false,
 }) {
   return (
-    <section className="flex items-center">
+    <section className="flex items-center font-inter">
       <div
         style={{ maxWidth: "1450px" }}
         className="container mx-auto py-8 lg:py-16 "
       >
-        <div className="flex flex-col lg:flex-row items-center gap-8">
+        <div className="flex flex-col lg:flex-row items-center lg:gap-8">
           <div className="mb-10 lg:mb-0 lg:w-1/2 w-[100%]">
             <div className="relative w-full max-w-[816px] mr-[-195px] lg:block">
               <img
@@ -23,7 +23,7 @@ export default function LeftImage({
               />
             </div>
           </div>
-          <div className="flex flex-col sm:1/2 xl:max-w-[600px] lg:w-[600px] xl:pr-[126px] lg:pr-[50px] px-14">
+          <div className="flex flex-col sm:1/2 xl:max-w-[600px] lg:w-[600px] xl:pr-[126px] lg:pr-[50px] px-[32px] lg:px-14">
             <div
               className="
                  text-wrap text-left"

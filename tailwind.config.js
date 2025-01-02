@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "hero-pattern": "url('/public/images/dashed.svg')",
+        "hero-pattern2": "url('/public/images/dashedimg.svg')",
       },
       colors: {
         primary: "#FF725F",
@@ -51,6 +52,9 @@ module.exports = {
         lg: "1024px", // Large devices (laptops/desktops)
         xl: "1280px", // Extra large devices (large desktops)
         xxl: "1536px", // 2XL devices (larger desktops)
+      },
+      boxShadow: {
+        custom: "0px 0px 16.4px 0px #D2D8E7",
       },
     },
   },

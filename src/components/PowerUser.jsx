@@ -82,7 +82,7 @@ export default function PowerUsers() {
   // left="-41px"
   // transform="rotate(90deg)"
   return (
-    <section className="bg-linear py-16 px-4 relative overflow-hidden ps-2.5 pe-2.5">
+    <section className="bg-linear py-16 px-4 relative overflow-hidden ps-2.5 pe-2.5 font-inter">
       <div className="max-w-6xl mx-auto text-white">
         <h2 className="text-2xl xl:text-4xl font-bold text-center mb-4">
           Designed for power users across industries
@@ -95,7 +95,7 @@ export default function PowerUsers() {
 
         <div className="flex flex-col md:flex-row justify-center items-center">
           <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] xs:mr-[-50px] xl:mr-[-70px]  xl:px-[150px] xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative ml-0 xl:ml-[-75px] px-0 py-0 flex justify-center min-h-[370px] rounded-full  xs:h-[450px] xs:w-[450px] h-[350px] w-[350px] ">
-            <div className="flex justify-center xl:items-start flex-col">
+            <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/building.svg"
                 className="w-12 h-12 text-red-400 mb-4"
@@ -104,7 +104,7 @@ export default function PowerUsers() {
               <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-inter font-bold">
                 By Sectors
               </h3>
-              <ul className="space-y-1 text-start">
+              <ul className="space-y-1 text-center lg:text-start">
                 <li className="text-body text-gray text-sm font-inter">
                   Consulting Companies
                 </li>
@@ -143,17 +143,17 @@ export default function PowerUsers() {
           </div>
 
           <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] px-0 xl:px-[150px] py-0 xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative mt-[-50px] md:mt-0  flex justify-center min-h-[370px]  rounded-full xs:h-[450px] xs:w-[450px]  h-[350px] w-[350px]">
-            <div className="flex justify-center flex-col">
+            <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/function.svg"
-                className="w-12 h-12 text-red-400 mb-4"
+                className="w-12 h-12 text-red-400 mb-4" 
                 alt=""
               />
 
               <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-bold font-inter">
                 By Functions
               </h3>
-              <ul className="space-y-1 text-start">
+              <ul className="space-y-1 text-center lg:text-start">
                 <li className="text-body text-gray text-sm font-inter">
                   Marketing
                 </li>

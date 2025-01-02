@@ -11,20 +11,20 @@ const data = {
   description: [
     {
       text: `This unique PowerPoint add-in has been developed by the communication design experts at SlideXpress.`,
-      class: "mb-4 font-[500] text-bodyColor",
+      class: "text-sm lg:text-base mb-4 font-[500] text-bodyColor",
     },
 
     {
       text: "With over 10 years of creating expressive decks at express speeds, and over 100 satisfied clients (MNCs, leading pharma companies, independent consultants and more), SlideXpress was the natural place for DeckUp to be born.",
-      class: "mb-4 text-bodyColor",
+      class: "text-sm lg:text-base mb-4 text-bodyColor",
     },
     {
       text: "Recognizing the need to boost efficiency and productivity for our own design teams, we searched for existing tools that could help.When none met our specific requirements, we decided to create our own solution based on first-hand experience of the repetitive challenges of working with PowerPoint.",
-      class: "mb-4 text-bodyColor",
+      class: "text-sm lg:text-base mb-4 text-bodyColor",
     },
     {
       text: `The result was DeckUp. Designed to simplify and enhance the presentation creation process, making life easier for everyone.`,
-      class: "font-[500] text-bodyColor",
+      class: "text-sm lg:text-base font-[500] text-bodyColor",
     },
   ],
   btnText: "",
@@ -55,19 +55,19 @@ const features = [
 
 const AboutUS = () => {
   return (
-    <div className="bg-gradient-to-b from-[#fff] to-[#ECF1F6]">
+    <div className="bg-gradient-to-b from-[#fff] to-[#ECF1F6] font-inter">
       <LeftImage data={data} image={Images.about} />
-      <div className="max-w-[1090px] m-auto lg-[60%] w-[83%] pt-10">
-        <p className="text-paleBlue text-start text-headline font-bold">
+      <div className="max-w-[1090px] m-auto lg-[60%] w-[83%] lg:pt-10">
+        <p className="text-paleBlue text-start text-subhead md:text-headline font-bold">
           Made with you in mind
         </p>
-        <p className="text-midGray mt-4 max-w-6xl">
+        <p className="text-midGray mt-4 max-w-6xl text-sm lg:text-base">
           We are delighted to have created a tool that reduces the time and
           effort it takes to prepare a professional and polished deck. Every
           feature has been designed to prioritize easy and efficient integration
           into existing workflows.
         </p>
-        <div className="bg-opacity-50 py-16">
+        <div className="bg-opacity-50 py-0 pt-8 pb-14 lg:py-16">
           <div className="max-w-7xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-12 lg:gap-x-4 relative">
               <GradientOverlay

@@ -38,11 +38,11 @@ export default function HeroSection() {
     loginAPi(email);
   };
 
-  useEffect(() => {
-    return () => {
-      dispatch(setEmail("")); // Reset email to blank on unmount
-    };
-  }, [dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(setEmail("")); // Reset email to blank on unmount
+  //   };
+  // }, []);
 
   // Define responsive values for GradientOverlay based on screen width
   const gradientOverlayStyles =
@@ -107,14 +107,14 @@ export default function HeroSection() {
         };
 
   return (
-    <div className="container flex items-center gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
-      <div className="w-full lg:max-w-[465px] pl-[32px] md:pl-[57px] xl:pl-0 pr-[32px]  xl:pr-[40px] md:pr-[57px] mt-[40px] sm:mt-[0px] lg:mt-[152px]">
-        <div className="relative ">
+    <div className="container flex items-center gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-3 pr-[0px] xl:pr-2 pt-4 lg:pt-12">
+      <div className="w-full lg:max-w-[465px] pl-[32px] md:pl-[57px] xl:pl-0 pr-[32px]  xl:pr-0 md:pr-[57px] mt-[40px] sm:mt-[81px] lg:mt-[104px]">
+        <div className="relative">
           <>
-            <h1 className="text-[40px] font-bold lg:text-banner text-paleBlue font-inter max-w-full lg:max-w-[300px] lg:max-w-[100%] w-full">
+            <h1 className="text-[40px] leading-[48px] font-bold lg:text-banner text-paleBlue font-inter max-w-full lg:max-w-[100%] w-full">
               Create decks at lightning speed
             </h1>
-            <p className="mt-6 xl:mt-[48px] lg:text-[18px] pr-0 md:pr-[100px] text-bodyColor text-heading font-inter text-[14px]">
+            <p className="mt-6 xl:mt-[48px] lg:text-[18px] pr-0 md:pr-[100px] lg:pr-[16%] text-bodyColor text-heading font-inter text-[14px]">
               Drive impact and dramatically improve quality and speed using
               DeckUp
             </p>
@@ -171,7 +171,7 @@ export default function HeroSection() {
           </form>
         </div>
       </div>
-      <div className="relative flex justify-end xl:block w-[90%] ml-auto xl:max-w-[739px] lg:mr-[-148px] xl:mr-[-195px]">
+      <div className="relative flex justify-end xl:block w-[90%] ml-auto lg:ml-0 xl:max-w-[887.6px] lg:mr-[-148px] xl:mr-[-195px] lg:max-h-[568px]">
         {/* <CommonImage
           src="/images/left-logo.svg"
           alt={"Person working on a computer surrounded by charts and graphs"}

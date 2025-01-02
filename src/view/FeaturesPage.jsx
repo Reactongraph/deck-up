@@ -78,7 +78,7 @@ function TutorialCard({ title, thumbnail, duration, description }) {
         className="w-[355px] h-[197px] object-contain max-sm:w-full"
       />
       <div className="p-6">
-        <div className="flex justify-between items-center md:flex-col md:items-start">
+        <div className="flex justify-between items-center lg:flex-col lg:items-start">
           <span className="text-[14px] text-primary">Side Element</span>
           <span className="bg-lightBlue p-1 text-[14px] max-sm:mt-2">
             Video Summary
@@ -116,7 +116,7 @@ export default function TutorialGrid() {
 
   return (
     <>
-      <div className="p-8 md:px-14 md:pt-[47px] md:pb-[72px] lg:pb-0 lg:px-0 lg:pt-0 lg:p-6 bg-lightBlue">
+      <div className="p-8 md:px-14 md:pt-[47px] md:pb-[72px] lg:pb-0 lg:px-0 lg:pt-0 lg:p-6 bg-lightBlue font-inter">
         <div className="container">
           <h1 className="w-[88%] md:w-[70%] lg:w-full font-bold lg:font-extrabold lg:text-headline text-paleBlue lg:text-center pb-2 lg:pb-[56px] px-0 lg:px-[180px] pt-2 text-[24px] m-0 text-left leading-9">
             Tutorials to help you quickly figure out and turn around
@@ -126,7 +126,7 @@ export default function TutorialGrid() {
               {filters.map((filter) => (
                 <button
                   key={filter}
-                  className="px-8 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
+                  className="px-8 py-1 rounded-[80px] text-head bg-white hover:bg-disableGray text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
                 >
                   {filter}
                 </button>
@@ -143,7 +143,7 @@ export default function TutorialGrid() {
               <TutorialCard key={index} {...tutorial} />
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-4 md:gap-[22px] lg:gap-4">
             {(showAll ? tutorials : tutorials.slice(0, 2)).map(
               (tutorial, index) => (
                 <TutorialCard key={index} {...tutorial} />
@@ -163,13 +163,13 @@ export default function TutorialGrid() {
           )}
         </div>
       </div>
-      <div className="relative overflow-hidden">
-        <div className=" lg:pt-[99px] pb-14 pl-4 lg:pl-0 md:pb-[71px] lg:pb-[60px] pr-0 md:pr-20 lg:pr-0 flex md:gap-16 lg:gap-[30px] item-center lg:ps-2.5 lg:pe-2.5 flex-col lg:flex-row pt-[57px] md:pt-[72px] gap-[41px]">
+      <div className="relative overflow-hidden font-inter">
+        <div className="lg:pt-[99px] pb-14 lg:pl-4 pl-0 md:pb-[71px] lg:pb-[60px] pr-0 md:pr-20 lg:pr-0 flex md:gap-16 lg:gap-[30px] item-center lg:ps-2.5 lg:pe-2.5 flex-col md:flex-row pt-[57px] md:pt-[72px] gap-[41px]">
           <div className="w-full lg:w-[60%] relative">
             <img
               src={Images.signup}
               alt="Microsoft PowerPoint interface with DeckUp add-in"
-              className="w-full h-[569px]"
+              className="w-full h-full lg:h-[569px]"
             />
             <GradientOverlay
               width="141px"
@@ -184,11 +184,11 @@ export default function TutorialGrid() {
             <h2 className="lg:text-headline text-paleBlue font-bold lg:font-extrabold text-[24px]">
               Sign up today
             </h2>
-            <p className="mt-[24px] text-body text-bodyColor lg:mt-4">
+            <p className="mt-[24px] text-sm leading-[20px] lg:text-body text-bodyColor lg:mt-4">
               Your superpower-packed plug-&-play PPT tool is just a click away!
             </p>
             <div className="flex flex-row md:gap-[12px] lg:justify-start gap-4">
-              <button className="text-sm md:text-base lg:mt-[40px] bg-primary text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
+              <button className="text-sm md:text-base lg:mt-[40px] bg-primary hover:bg-hoverButton text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
                 Watch demo
               </button>
             </div>

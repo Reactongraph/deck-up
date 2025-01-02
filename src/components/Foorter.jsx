@@ -50,10 +50,10 @@ const Footer = () => {
               />
             </div>
             <div className="flex space-x-4 mt-4 md:mt-0 lg:gap-[44px] xl:gap-[44px]">
-              <button className="bg-primary hover:bg-primary text-white  py-2 px-5 md:px-4 rounded-[20px] text-sm md:text-base font-inter">
+              <button className="bg-primary hover:bg-hoverButton text-white  py-2 px-5 md:px-4 rounded-[20px] text-sm md:text-base font-inter">
                 Download
               </button>
-              <button className="bg-secondary text-white py-2 px-5 md:px-4 rounded-[20px] text-sm md:text-base font-inter">
+              <button className="bg-secondary hover:bg-hoverSecondary text-white py-2 px-5 md:px-4 rounded-[20px] text-sm md:text-base font-inter">
                 Buy now
               </button>
             </div>
@@ -77,7 +77,7 @@ const Footer = () => {
                   className="text-white hover:text-blue-300"
                 >
                   <svg
-                    className="w-[18px] h-[17px] md:w-6 md:h-6"
+                    className="w-[18px] h-[17px] md:w-5 md:h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"

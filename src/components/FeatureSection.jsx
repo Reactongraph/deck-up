@@ -32,7 +32,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <div className="relative pt-[82px] xl:pt-[100px] pb-[72px] xl:pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] px-[32px] xs:px-14 xl:px-[10px]">
+    <div className="relative pt-[82px] xl:pt-[100px] pb-[56px] lg:pb-[72px] xl:pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] px-[32px] xs:px-14 xl:px-[10px]">
       <div className="container">
         <h2 className="lg:text-headline xl:text-headline text-subhead text-center  text-paleBlue font-extrabold m-auto w-[80%] sm:m-none sm:w-[100%] font-inter">
           Features that help you save time and <br /> work smart
@@ -54,7 +54,7 @@ export default function FeaturesSection() {
                 <h3 className="mt-[24px] text-lg max-sm:text-[16px] text-paleBlue font-semibold text-[24px] text-center font-inter">
                   {feature.title}
                 </h3>
-                <p className="mt-5 text-center px-[16px] xs:px-[36px] max-sm:text-[14px] text-body text-bodyColor font-inter leading-5">
+                <p className="mt-3 lg:mt-5 text-center px-[16px] xs:px-[36px] max-sm:text-[14px] text-body text-bodyColor font-inter leading-5">
                   {feature.description}
                 </p>
               </div>
