@@ -88,7 +88,7 @@ export default function FeaturesShowcase() {
     sliderRef.current.slickNext();
   };
   return (
-    <div className="bg-gradient-to-t digram-slider  from-[#318BB4] to-[#64ACCD] pt-[130px] pb-[160px] pl-[15px] sm:ps-2.5 pe-2.5 pr-[0px]">
+    <div className="bg-gradient-to-t digram-slider  from-[#318BB4] to-[#64ACCD] pt-12 lg:pt-[130px] pb-[101px] lg:pb-[160px] pl-[15px] sm:ps-2.5 pe-2.5 pr-[0px]">
       <div className="lg:pl-[139px] xl:container pr-[0] lg:mr-[-10px] lg:max-w-[1440px] xl:my-0 xl:mx-auto">
         <div className="slider-container mb-[40px]">
           <CommonSlider settings={sliderSettings} ref={sliderRef}>

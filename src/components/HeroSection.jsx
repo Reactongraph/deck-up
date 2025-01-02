@@ -107,7 +107,7 @@ export default function HeroSection() {
         };
 
   return (
-    <div className="container flex items-center gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
+    <div className="container flex items-center gap-4 md:gap-[81px] lg:gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-[22px] pr-[0px] xl:pr-[32px]">
       <div className="w-full lg:max-w-[465px] pl-[32px] md:pl-[57px] xl:pl-0 pr-[32px]  xl:pr-[40px] md:pr-[57px] mt-[40px] sm:mt-[0px] lg:mt-[152px]">
         <div className="relative ">
           <>

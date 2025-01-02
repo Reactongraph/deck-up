@@ -140,10 +140,12 @@ export default function LoginPage() {
       : size.width <= 1024
       ? {
           // Tablet styles
-          width: "108px",
-          height: "108px",
-          bottom: "39px",
-          left: "-60px",
+          width: "180px",
+          height: "180px",
+          // bottom: "39px",
+          // left: "-60px",
+          bottom: "70px",
+          right: "-34px",
           zIndex: "-999",
           transform: "rotate(-70deg)",
         }
