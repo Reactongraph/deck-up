@@ -17,13 +17,13 @@ export default function ExpertSection() {
       <div className="mt-[40px] flex justify-center gap-[24px]">
         <button
           variant="destructive"
-          className="bg-primary text-white px-[24px] py-[12px] rounded-[100px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] font-inter hover:bg-hoverButton"
+          className="bg-primary hover:bg-hoverButton text-white px-[24px] py-[12px] rounded-[100px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] font-inter"
         >
           Watch demo
         </button>
         <button
           variant="outline"
-          className="bg-secondary hover:bg-secondary text-white border-blue-400 px-[24px] py-[12px] rounded-[100px] font-inter"
+          className="bg-secondary hover:bg-hoverSecondary text-white border-blue-400 px-[24px] py-[12px] rounded-[100px] font-inter"
         >
           Check pricing
         </button>

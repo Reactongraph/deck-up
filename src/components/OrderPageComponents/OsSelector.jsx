@@ -9,7 +9,7 @@ export default function OsSelector() {
           Thumbs up for choosing DeckUp!
         </h2>
         <div className="flex justify-center flex-col md:flex-row gap-[16px] md:gap-[27px] items-center h-auto md:h-[294px]">
-          <div className="max-w-[444px] w-full h-full md:w-2/4 xl:w-full bg-white rounded-lg flex justify-center items-center shadow-custom">
+          <div className="max-w-[444px] w-full h-full md:w-2/4 xl:w-full bg-white rounded-lg flex justify-center items-center shadow-custom lg:shadow-none">
             <div className="p-6 flex flex-col items-center">
               <img
                 src={Images.window}
@@ -25,7 +25,7 @@ export default function OsSelector() {
               />
             </div>
           </div>
-          <div className="max-w-[444px] w-full h-full md:w-2/4 xl:w-full bg-white rounded-lg flex justify-center items-center shadow-custom">
+          <div className="max-w-[444px] w-full h-full md:w-2/4 xl:w-full bg-white rounded-lg flex justify-center items-center shadow-custom lg:shadow-none">
             <div className="p-6 flex flex-col items-center">
               <img
                 src={Images.ios}

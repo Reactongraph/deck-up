@@ -71,7 +71,7 @@ export default function CreateAccountForm({
             <button
               onClick={handleGoogleLogin}
               type="button"
-              className=" font-inter text-[14px] font-normal w-full bg-transparent text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
+              className=" font-inter text-[14px] font-normal w-full bg-transparent hover:bg-disableGray text-bodyColor  border border-lightGray rounded-[50px] flex justify-center items-center p-2 py-3"
             >
               <span className="sr-only font-inter">Sign in with Google</span>
               <svg

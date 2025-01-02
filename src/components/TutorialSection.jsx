@@ -57,7 +57,7 @@ export default function TutorialSection() {
             Mulates real DeckUp Add-in to learn how a particular tool works
           </p>
         </div>
-        <button className="mt-[24px] xs:mt-[40px] bg-primary text-white px-[13px] lg:px-[24px] py-[10px] lg:py-[12px] rounded-[100px] font-inter">
+        <button className="mt-[24px] xs:mt-[40px] bg-primary hover:bg-hoverButton text-white px-[13px] lg:px-[24px] py-[10px] lg:py-[12px] rounded-[100px] font-inter">
           Check tutorials
         </button>
       </div>

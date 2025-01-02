@@ -126,7 +126,7 @@ export default function TutorialGrid() {
               {filters.map((filter) => (
                 <button
                   key={filter}
-                  className="px-8 py-1 rounded-[80px] text-head bg-white text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
+                  className="px-8 py-1 rounded-[80px] text-head bg-white hover:bg-disableGray text-bodyColor hover:bg-gray-10 border border-smallGray leading-7 max-sm:px-4 max-sm:text-sm"
                 >
                   {filter}
                 </button>
@@ -188,7 +188,7 @@ export default function TutorialGrid() {
               Your superpower-packed plug-&-play PPT tool is just a click away!
             </p>
             <div className="flex flex-row md:gap-[12px] lg:justify-start gap-4">
-              <button className="text-sm md:text-base lg:mt-[40px] bg-primary text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
+              <button className="text-sm md:text-base lg:mt-[40px] bg-primary hover:bg-hoverButton text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
                 Watch demo
               </button>
             </div>

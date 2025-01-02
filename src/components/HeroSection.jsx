@@ -38,11 +38,11 @@ export default function HeroSection() {
     loginAPi(email);
   };
 
-  useEffect(() => {
-    return () => {
-      dispatch(setEmail("")); // Reset email to blank on unmount
-    };
-  }, [dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(setEmail("")); // Reset email to blank on unmount
+  //   };
+  // }, []);
 
   // Define responsive values for GradientOverlay based on screen width
   const gradientOverlayStyles =

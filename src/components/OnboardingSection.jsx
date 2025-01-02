@@ -68,10 +68,10 @@ export default function OnboardingSection() {
           superpower-packed plug-and-play PPT tool is just a click away!
         </p>
         <div className="flex flex-row gap-[12px]">
-          <button className="mt-[40px] bg-primary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
+          <button className="mt-[40px] bg-primary hover:bg-hoverButton text-white px-[24px] py-[12px] rounded-[100px] font-inter">
             Start free trial
           </button>
-          <button className="mt-[40px] bg-secondary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
+          <button className="mt-[40px] bg-secondary hover:bg-hoverSecondary text-white px-[24px] py-[12px] rounded-[100px] font-inter">
             Explore plans
           </button>
         </div>
