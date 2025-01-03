@@ -111,71 +111,71 @@ const Footer = () => {
             </div>
             <div className="flex gap-8 lg:gap-[90px] md:gap-[50px] max-sm:flex-wrap">
               <div>
-                <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                <h3 className="font-semibold mb-4 lg:text-lg font-inter text-[16px] text-secondary lg:text-white">
                   Try our product
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Free trial
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Download
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Pricing & plans
                     </p>
                   </li>
                 </ul>
               </div>
               <div className="block md:hidden">
-                <h3 className="font-semibold mb-2 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                <h3 className="font-semibold mb-2 lg:text-lg font-inter text-[16px] text-secondary lg:text-white">
                   Account
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       My account
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       My Orders
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Login
                     </p>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                <h3 className="font-semibold mb-4 lg:text-lg font-inter text-[16px] text-secondary lg:text-white">
                   Learn
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Features at a glance
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Interactive tour
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Watch Demo
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Tutorials
                     </p>
                   </li>
@@ -183,22 +183,22 @@ const Footer = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold mb-4 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                <h3 className="font-semibold mb-4 lg:text-lg font-inter text-[16px] text-secondary lg:text-white">
                   Purchase
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Buy new licences
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Renew licence
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Enterprise
                     </p>
                   </li>
@@ -206,22 +206,22 @@ const Footer = () => {
               </div>
 
               <div className="hidden md:block">
-                <h3 className="font-semibold mb-2 text-lg font-inter max-sm:text-[16px] max-sm:text-secondary">
+                <h3 className="font-semibold mb-2 lg:text-lg font-inter text-[16px] text-secondary lg:text-white">
                   Account
                 </h3>
                 <ul className="space-y-2">
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       My account
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       My Orders
                     </p>
                   </li>
                   <li>
-                    <p className="hover:text-blue-300 font-inter max-sm:text-[12px]">
+                    <p className="hover:text-blue-300 font-inter text-[12px] lg:text-base">
                       Login
                     </p>
                   </li>
