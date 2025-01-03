@@ -40,6 +40,7 @@ export default function FaqComponent() {
               </span>
             </div>
           ))}
+          <div className="hidden lg:block">
           <GradientOverlay
             width="465px"
             height="465px"
@@ -48,6 +49,7 @@ export default function FaqComponent() {
             left="342px"
             zIndex="999"
           />
+          </div>
         </div>
       </div>
     </div>

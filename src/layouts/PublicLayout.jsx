@@ -7,7 +7,7 @@ const PublicLayout = ({ children, hasNoFooter }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main>{children}</main>
+      <main className="overflow-x-hidden">{children}</main>
       {!hasNoFooter && <Footer />}
       {!hasNoFooter && <CommonCopyRight />}
     </div>
