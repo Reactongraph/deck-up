@@ -92,3 +92,7 @@ body {
   position: relative;
   z-index: 1;
 }
+
+.testimonial .slick-arrow{
+  display: none;
+}
