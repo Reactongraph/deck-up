@@ -24,7 +24,7 @@ export default function PowerUsers() {
           height: "108px",
           top: "39px",
           left: "-60px",
-          zIndex: "-999",
+          // zIndex: "-999",
           transform: "rotate(-70deg)",
         }
       : {
@@ -34,7 +34,7 @@ export default function PowerUsers() {
           top: 0,
           left: "-41px",
           right: "inherit",
-          zIndex: "-999",
+          // zIndex: "-999",
           bottom: "inherit",
 
           transform: "rotate(90deg)",
@@ -58,20 +58,24 @@ export default function PowerUsers() {
           // Tablet styles
           width: "108px",
           height: "108px",
-          top: "39px",
-          left: "-60px",
-          zIndex: "-999",
+          // top: "39px",
+          // left: "-60px",
+          // zIndex: "-999",
           transform: "rotate(-70deg)",
+          bottom:0,
+          right:0
         }
       : {
           // Desktop styles
           width: "146px",
           height: "146px",
-          top: 0,
-          left: "-41px",
+          // top: 0,
+          // left: "-41px",
           right: "inherit",
-          zIndex: "-999",
-          bottom: "inherit",
+          // zIndex: "-999",
+          // bottom: "inherit",
+          bottom: 0,
+          right: 0,
 
           transform: "rotate(90deg)",
         };
@@ -82,7 +86,7 @@ export default function PowerUsers() {
   // left="-41px"
   // transform="rotate(90deg)"
   return (
-    <section className="bg-linear py-16 px-4 relative overflow-hidden ps-2.5 pe-2.5 font-inter">
+    <section className="bg-linear py-16 px-4 md:px-16 relative overflow-hidden ps-2.5 pe-2.5 font-inter">
       <div className="max-w-6xl mx-auto text-white">
         <h2 className="text-2xl xl:text-4xl font-bold text-center mb-4">
           Designed for power users across industries
@@ -94,11 +98,11 @@ export default function PowerUsers() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] xs:mr-[-50px] xl:mr-[-70px]  xl:px-[150px] xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative ml-0 xl:ml-[-75px] px-0 py-0 flex justify-center min-h-[370px] rounded-full  xs:h-[450px] xs:w-[450px] h-[350px] w-[350px] ">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] xs:mr-[-50px] xl:mr-[-70px]  xl:px-[150px] xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative ml-0 xl:ml-[-75px] px-0 py-0 flex justify-center min-h-[370px] rounded-full  xs:h-[450px] xs:w-[450px] md:w-[50%] md:h-[326px] lg:h-[450px] lg:w-[450px] h-[350px] w-[350px] ">
             <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/building.svg"
-                className="w-12 h-12 text-red-400 mb-4"
+                className="w-12 h-12 text-red-400 mb-4 hidden lg:block"
                 alt=""
               />
               <h3 className="xl:text-subhead text-paleBlue mb-4 text-base font-inter font-bold">
@@ -142,11 +146,11 @@ export default function PowerUsers() {
             />
           </div>
 
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] px-0 xl:px-[150px] py-0 xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative mt-[-50px] md:mt-0  flex justify-center min-h-[370px]  rounded-full xs:h-[450px] xs:w-[450px]  h-[350px] w-[350px]">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] px-0 xl:px-[150px] py-0 xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative mt-[-50px] md:mt-0  flex justify-center min-h-[370px]  rounded-full xs:h-[450px] xs:w-[450px] md:w-[50%] md:h-[326px] lg:h-[450px] lg:w-[450px] h-[350px] w-[350px]">
             <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/function.svg"
-                className="w-12 h-12 text-red-400 mb-4" 
+                className="w-12 h-12 text-red-400 mb-4 hidden lg:block" 
                 alt=""
               />
 
