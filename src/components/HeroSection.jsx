@@ -56,22 +56,23 @@ export default function HeroSection() {
     size.width <= 640
       ? {
           // Mobile styles
-          width: "80px",
-          height: "80px",
-          top: "57px",
+          width: "51px",
+          height: "51px",
+          // top: "157px",
+          bottom:"140px",
           right: "104px",
-          zIndex: "-999",
+          zIndex: "1",
           transform: "rotate(135deg)",
         }
       : size.width <= 1024
       ? {
           // Tablet styles
-          width: "108px",
-          height: "108px",
+          width: "175px",
+          height: "175px",
           top: "39px",
-          left: "-60px",
+          left: "-20px",
           zIndex: "-999",
-          transform: "rotate(-70deg)",
+          transform: "rotate(70deg)",
         }
       : {
           // Desktop styles
@@ -101,7 +102,7 @@ export default function HeroSection() {
           height: "108px",
           bottom: "39px",
           left: "-60px",
-          zIndex: "-999",
+          zIndex: "1",
           transform: "rotate(-70deg)",
         }
       : {
@@ -116,7 +117,7 @@ export default function HeroSection() {
   return (
     <div className="container flex items-center gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-3 pr-[0px] xl:pr-2 pt-4 lg:pt-12">
       <div className="w-full lg:max-w-[465px] pl-[32px] md:pl-[57px] xl:pl-0 pr-[32px]  xl:pr-0 md:pr-[57px] mt-[40px] sm:mt-[81px] lg:mt-[104px]">
-        <div className="relative w-[80%] lg:w-full">
+        <div className=" w-[80%] lg:w-full lg:relative">
           <>
             <h1 className="text-[40px] leading-[48px] font-bold lg:text-banner text-paleBlue font-inter max-w-full lg:max-w-[100%] w-full">
               Create decks at lightning speed

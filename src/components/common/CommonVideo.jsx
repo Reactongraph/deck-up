@@ -25,7 +25,7 @@ export default function VideoPlayer({
 
   return (
     <div
-      className={` ${className} relative w-full h-full  mx-auto overflow-hidden`}
+      className={` ${className} relative w-full h-full  mx-auto lg:overflow-hidden`}
     >
       <video
         ref={videoRef}
