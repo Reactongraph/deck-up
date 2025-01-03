@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CommonButton from "../components/common/CommonButton";
 import CommonInput from "../components/common/CommonInput";
@@ -25,10 +25,12 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let email = useSelector((state) => state.auth.email);
+  const [userEmail, setUserEmail] = useState('')
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
     dispatch(setEmail(email));
+    setUserEmail(email);
   };
 
   useEffect(() => {
@@ -36,8 +38,10 @@ export default function LoginPage() {
       const storedEmail = localStorage.getItem("email");
       if (storedEmail) {
         dispatch(setEmail(storedEmail));
+        setUserEmail(storedEmail)
       }
       dispatch(setEmail(email));
+      setUserEmail(email)
       setTimeout(() => {
         localStorage.setItem("loginSource", "login");
         navigate("/verify-mail");
@@ -220,7 +224,7 @@ export default function LoginPage() {
                       required
                       className="text-bodyColor text-[9px] md:text-[14px] appearance-none rounded-lg relative block w-full px-[11px] md:px-3 py-[9px] md:py-3 border border-lightGray placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-lightBlue font-inter"
                       placeholder="Enter your email ID"
-                      value={email}
+                      value={userEmail}
                       onChange={handleEmailChange}
                     />
                   </div>

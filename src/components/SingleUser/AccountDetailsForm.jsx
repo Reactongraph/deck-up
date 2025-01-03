@@ -24,7 +24,6 @@ export default function AccountDetailsForm({
   plan = "",
   currentPlan = "",
 }) {
-  console.log("COmpanyInfo", plan, currentPlan);
   const dispatch = useDispatch();
   const navigate = useCustomNavigation();
   const [createUserApi, { isLoading }] = useCreateAccountMutation();
@@ -133,7 +132,12 @@ export default function AccountDetailsForm({
 
       if (response.redirect_url) {
         toast.success("Account created successfully!");
-        window.location.href = response.redirect_url;
+        if(userDetails?.[0]?.license?.license_type === "trial"){
+          navigate("/setup")
+        }
+        else {
+          window.location.href = response.redirect_url;
+        }
         // window.open(response.redirect_url, "_blank");
       } else {
         toast.error("No URL provided in response.");
@@ -177,14 +181,14 @@ export default function AccountDetailsForm({
         zip: zip || accountData?.zip || CompanyInfo?.address?.postalcode || "",
         country: country || accountData?.country || "",
         state: state || accountData?.state || "",
-        licenseType:
+        licenseType: 
           plan !== ""
             ? plan
             : userType === "Singleuser"
             ? "individual"
             : userType === "Multiuser"
             ? "team"
-            : accountData?.licenseType || "",
+            : accountData?.licenseType || (userDetails?.[0]?.license?.license_type === "trial" ? "individual" : ""),
         billingAddress: isSameAsAbove
           ? {
               firstName:

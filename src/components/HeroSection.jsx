@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { videos } from "../utils/videos";
 // import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
@@ -19,14 +19,20 @@ export default function HeroSection() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
+  const [userEmail, setUserEmail] = useState('')
 
   const handleEmailChange = (event) => {
     dispatch(setEmail(event.target.value));
+    setUserEmail(event.target.value)
   };
 
   useEffect(() => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("accountData");
+    localStorage.removeItem("userDetails");
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       dispatch(setEmail(email));
+      setUserEmail(email)
       setTimeout(() => {
         navigate("/verify-mail");
       }, 3000);
@@ -34,6 +40,7 @@ export default function HeroSection() {
   }, [data, isLoading, dispatch, email, navigate]);
 
   const handleFormSubmit = async (event) => {
+    localStorage.setItem('userType', 'Freetrial')
     event.preventDefault();
     loginAPi(email);
   };
@@ -157,7 +164,7 @@ export default function HeroSection() {
                 "w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
               }
               placeholder={"example@xyz.com"}
-              value={email}
+              value={userEmail}
               onChange={handleEmailChange}
             />
             <CommonButton
