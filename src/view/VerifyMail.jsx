@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -9,12 +9,16 @@ import { useVerifyOtpForLoginMutation } from "../store/auth/authApiSlice";
 const VerifyMail = () => {
   const dispatch = useDispatch();
   const { email, otp } = useSelector(selectAuthState);
+  const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
 
   const [verifyApi, { isLoading }] = useVerifyOtpForLoginMutation();
 
   useEffect(() => {
+    localStorage.removeItem("accountData");
+    localStorage.removeItem("userDetails");
+    setUserEmail(email)
     dispatch(setOtp(["", "", "", "", "", ""]));
 
     return () => {
@@ -125,7 +129,7 @@ const VerifyMail = () => {
             </h2>
             <p className="text-gray-600 mb-14 text-bodyColor">
               Enter the OTP sent to{" "}
-              <span className="font-medium text-bodyColor">{email}</span>
+              <span className="font-medium text-bodyColor">{userEmail}</span>
               <a
                 href="/"
                 className="text-blue-500 font-medium hover:underline underline underline-offset-1 pl-[5px]"

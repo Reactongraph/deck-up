@@ -14,7 +14,7 @@ export default function ProfileInfo({
   error,
   setActiveSubTab,
   CompanyInfo,
-  plan
+  plan,
 }) {
   const [showCVV, setShowCVV] = useState(false);
   const navigate = useNavigate();
@@ -42,12 +42,13 @@ export default function ProfileInfo({
         <div className="flex flex-col gap-6">
           {/* Profile Info */}
           <div className="bg-white rounded-lg shadow-md col-span-2 px-[38px] pb-6">
-            <div className="border-b border-borderGray py-[19.5px] mb-6">
-              <h2 className="text-sm font-semibold leading-[16.94px] text-paleBlue mb-2">
+            <div className="border-b border-borderGray py-[19.5px] mb-6 flex items-center gap-[10px]">
+              <img src="/images/account_circle.svg" alt="profile" />
+              <h2 className="text-sm font-semibold leading-[16.94px] text-paleBlue">
                 Profile Info
               </h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm text-bodyColor">
               <div className="w-full lg:w-[63%] flex gap-4 justify-between">
                 <div className="flex flex-col gap-4">
                   <p>Type: </p>
@@ -55,7 +56,7 @@ export default function ProfileInfo({
                   <p>Address:</p>
                   <p>No. of licenses:</p>
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 font-semibold">
                   <p>{userDetails?.[0]?.license?.license_type || ""}</p>
                   <p>{CompanyInfo?.CompanyInfo?.organisation}</p>
                   <p>
@@ -73,7 +74,7 @@ export default function ProfileInfo({
                   <p>Payment date:</p>
                   <p>Renewal date:</p>
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 font-semibold">
                   <p>
                     {formatCurrency(
                       SubscriptionsDetails?.base_currency_code,
@@ -95,25 +96,26 @@ export default function ProfileInfo({
               </div>
             </div>
             <div className="flex gap-4 items-center">
-            <CommonButton
-              text="Buy additional licenses"
-              onClick={() => setActiveSubTab("Buy Additional Licenses")}
-              className="mt-6 bg-primary text-white px-4 py-2"
-            />
-            {plan != "free" && (
               <CommonButton
-              text="Upgrade to enterprise"
-              onClick={ () => navigate("/enterprise")}
-              className="mt-6 bg-white border border-primary text-primary px-4 py-2 hover:text-white"
-            />
-            )}
+                text="Buy additional licenses"
+                onClick={() => setActiveSubTab("Buy Additional Licenses")}
+                className="mt-6 bg-primary text-white px-4 py-2"
+              />
+              {plan === "team" && (
+                <CommonButton
+                  text="Upgrade to enterprise"
+                  onClick={() => navigate("/enterprise")}
+                  className="mt-6 bg-white border border-primary text-primary px-4 py-2 hover:text-white"
+                />
+              )}
             </div>
           </div>
 
           {/* Payment Modes */}
           <div className="w-full flex flex-col lg:flex-row gap-6 ">
             <div className="w-full lg:w-[58%] bg-white rounded-lg shadow-md">
-              <div className="py-[18px] px-[38px] border-b border-disableGray">
+              <div className="py-[18px] px-[38px] border-b border-disableGray flex items-center gap-[10px]">
+                <img src="/images/add_card.svg" alt="card" />
                 <h2 className="text-sm font-semibold leading-[16.94px] text-paleBlue">
                   Payment modes
                 </h2>
@@ -171,10 +173,22 @@ export default function ProfileInfo({
                     </div>
                   </div>
                   <div className="w-[50%] sm:w-[35%] h-full flex flex-col gap-3">
-                    <div className="bg-lightBlue h-full rounded-[10px] p-6">
+                    <div className="bg-lightBlue h-full rounded-[10px] p-6 text-[#00508A]">
                       Add new +
                     </div>
                   </div>
+                </div>
+                <div className="flex gap-2 items-center mt-[11px]">
+                  <p className="text-bodyColor text-sm leading-[26px] mr-[14px]">
+                    Auto renew
+                  </p>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" className="sr-only peer" />
+                    <div className="w-9 h-5 bg-lightBlue rounded-full peer peer-checked:bg-lightBlue peer-checked:text-primary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4"></div>
+                  </label>
+                  <p className="text-bodyColor text-[10px] leading-[12.1px] italic">
+                    *default payment mode
+                  </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2">
                   <CommonButton
@@ -193,7 +207,7 @@ export default function ProfileInfo({
 
             {/* Owner */}
             {userDetails?.length > 0 ? (
-              <div className="w-full lg:w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5">
+              <div className="w-full lg:w-[46.5%] bg-white rounded-lg shadow-md py-4 px-5 text-bodyColor">
                 {/* <h2 className="text-lg font-medium mb-2">Owner</h2>
               <p className="text-sm">Ravi Shah - ravi.shah@cerner.com</p> */}
                 <h2 className="text-lg font-medium mt-4 mb-2">
