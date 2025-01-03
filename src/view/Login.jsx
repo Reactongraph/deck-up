@@ -187,12 +187,12 @@ export default function LoginPage() {
           />
           {/* Left section for the login form */}
           <div className="flex-1 flex items-center justify-center px-8 sm:px-6 lg:px-[23px] order-2 lg:order-1">
-            <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32.5px] pr-[32px] pb-[31.6px] sm:pb-[186px] pl-[32px] sm:pr-[80px] sm:pl-[80px]">
-              <div className="flex justify-between items-center">
-                <h2 className="text-[16px] md:text-subhead text-paleBlue font-inter">
+            <div className="max-w-[536px] bg-white w-full rounded-xl shadow-xl pt-[32.5px] md:pt-[85px] lg:pt-[32.5px] pr-[32px] pb-[31.6px] md:pb-[95px] lg:pb-[186px] pl-[32px] sm:pr-[80px] sm:pl-[80px]">
+              <div className="flex md:justify-center justify-between lg:justify-between items-center">
+                <h2 className="text-[16px] md:text-2xl leading-[19.4px] font-semibold lg:text-subhead text-paleBlue font-inter">
                   Login
                 </h2>
-                <p className="mt-2 text-sm text-gray-600">
+                <p className="mt-2 text-sm text-gray-600 hidden lg:block">
                   <a
                     href="/"
                     className="font-normal text-[10px] md:text-[12px] text-darklue hover:text-indigo-500 underline underline-offset-4 text-darkBlue font-inter"
@@ -203,7 +203,7 @@ export default function LoginPage() {
               </div>
 
               <form
-                className="mt-[42px] md:mt-8 space-y-4 lg:space-y-6"
+                className="mt-[42px] md:mt-10 space-y-4 lg:space-y-6"
                 action="/"
                 method="POST"
                 onSubmit={handleFormSubmit}
@@ -239,19 +239,19 @@ export default function LoginPage() {
                   />
                 </div>
 
-                <div className="mt-6">
+                <div className="lg:mt-6">
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center">
                       <div className="w-full border-t border-lightGray" />
                     </div>
                     <div className="relative flex justify-center text-[11px] md:text-sm">
-                      <span className="py-4 h-12 md:h-[80px] text-head bg-white text-lightGray font-inter flex items-center md:block">
+                      <span className="lg:py-4 h-12 lg:h-[80px] text-head bg-white text-lightGray font-inter flex items-center md:block">
                         OR
                       </span>
                     </div>
                   </div>
 
-                  <div className="mt-0 md:mt-6">
+                  <div className="mt-0 lg:mt-6">
                     <button
                       onClick={handleGoogleLogin}
                       type="button"
@@ -301,7 +301,7 @@ export default function LoginPage() {
                 </div>
               </form>
 
-              <p className="mt-[11px] md:mt-2 text-[8px] md:text-[14px] text-bodyColor text-center pt-0 md:pt-2 font-normal font-inter">
+              <p className="lg:mt-[11px] mt-2 text-[8px] md:text-[14px] text-bodyColor text-center pt-0 lg:pt-2 font-normal font-inter">
                 By signing up, you agree to the{" "}
                 <a
                   href="/"
