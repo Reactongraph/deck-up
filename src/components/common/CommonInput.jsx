@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const CommonInput = ({
   type = "text",
@@ -11,14 +11,24 @@ const CommonInput = ({
   error,
   disabled = false,
   inputRef = null,
+  freeTrialInputFocus = false,
   ...rest
 }) => {
+
+  useEffect(() => {
+    if (freeTrialInputFocus) {
+      inputRef.current.focus();
+    }
+  }, [freeTrialInputFocus, inputRef]);
+
   return (
     <>
       <input
         ref={inputRef}
         type={type}
-        className={`px-4 py-2 border rounded-[8px] ${className}`}
+        className={`px-4 py-2 border rounded-[8px] ${className}
+          focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
+        `}
         value={value}
         placeholder={placeholder}
         onChange={onChange}

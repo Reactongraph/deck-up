@@ -43,7 +43,6 @@ export default function HeroSection({
     }
   }, [data, isLoading, dispatch, email, navigate]);
 
-
   const handleFormSubmit = async (event) => {
     localStorage.setItem("userType", "Freetrial");
     event.preventDefault();
@@ -170,12 +169,11 @@ export default function HeroSection({
               type={"email"}
               name="email"
               id="email"
-              className={
-                "w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
-              }
+              className={`w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter`}
               placeholder={"example@xyz.com"}
               value={userEmail}
               onChange={handleEmailChange}
+              freeTrialInputFocus={freeTrialInputFocus}
             />
 
             <CommonButton

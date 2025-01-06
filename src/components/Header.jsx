@@ -258,7 +258,7 @@ export default function Header({onTryForFreeClick}) {
 
             {/* Dropdowns */}
             {activeDropdown === "Home" && (
-              <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden">
+              <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden rounded-lg">
                 <ProductFeatures
                   onClick={() => handleNavigate("/login")}
                   setActiveDropdown={setActiveDropdown}

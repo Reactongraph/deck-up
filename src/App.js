@@ -25,11 +25,10 @@ function App() {
   const freeTrialSectionRef = useRef();
 
   const handleTryForFreeClick = () => {
+    setFreeTrialInputFocus(true);
     if (freeTrialSectionRef.current) {
       freeTrialSectionRef.current.scrollIntoView({ behavior: "smooth" });
-      setFreeTrialInputFocus(true);
     }
-    setFreeTrialInputFocus(false);
   };
 
   return (

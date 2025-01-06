@@ -60,7 +60,7 @@ export default function ProductFeatures({
             </p>
           </div>
         </div>
-        <div className="border-t-2 border-smallBlue  w-full self-center"></div>
+        <div className="border-t-2 border-smallBlue  w-full lg:w-[154%] self-center"></div>
         <div className="flex items-center gap-[46px]">
           <img
             src="/images/ios.svg"
