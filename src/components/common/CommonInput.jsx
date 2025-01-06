@@ -10,11 +10,13 @@ const CommonInput = ({
   id,
   error,
   disabled = false,
+  inputRef = null,
   ...rest
 }) => {
   return (
     <>
       <input
+        ref={inputRef}
         type={type}
         className={`px-4 py-2 border rounded-[8px] ${className}`}
         value={value}

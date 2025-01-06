@@ -95,7 +95,7 @@ export default function FeaturesShowcase() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[350px] min-h-[260px] md:min-h-[369px] lg:min-h-[420px]"
+                className="bg-white rounded-lg shadow-lg overflow-hidden px-[20px] pt-[30px] max-w-[303px] lg:max-w-[350px] min-h-[260px] md:h-[369px] lg:min-h-[420px]"
               >
                 <h3 className="text-sm md:text-base lg:text-[18px] md:font-semibold text-[#282828] md:text-paleBlue mb-[25px] font-inter">
                   {feature.title}

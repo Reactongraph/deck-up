@@ -18,15 +18,31 @@ import Dashboard from "./components/Dashboard/Dashboad";
 import BuyLicenses from "./components/Dashboard/BuyLicenses";
 import Enterprise from "./components/Enterprise";
 import PricingSection from "./components/OrderPageComponents/PricingSection";
+import { useRef, useState } from "react";
+
 function App() {
+  const [freeTrialInputFocus, setFreeTrialInputFocus] = useState(false);
+  const freeTrialSectionRef = useRef();
+
+  const handleTryForFreeClick = () => {
+    if (freeTrialSectionRef.current) {
+      freeTrialSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      setFreeTrialInputFocus(true);
+    }
+    setFreeTrialInputFocus(false);
+  };
+
   return (
     <Router>
       <Routes>
         <Route
           path="/"
           element={
-            <PublicLayout>
-              <HomePage />
+            <PublicLayout handleTryForFreeClick={handleTryForFreeClick}>
+              <HomePage
+                freeTrialSectionRef={freeTrialSectionRef}
+                freeTrialInputFocus={freeTrialInputFocus}
+              />
             </PublicLayout>
           }
         />

@@ -161,7 +161,7 @@ export default function TestimonialsSection() {
                     <img
                       src={testimonial.logo}
                       alt={`${testimonial.company} logo`}
-                      className="w-[144px] m-auto mb-[47px]"
+                      className="w-[144px] m-auto mb-[47px] h-[45px]"
                     />
                     <p className="text-body text-bodyColor font-inter">
                       {testimonial.quote}
