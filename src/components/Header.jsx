@@ -9,7 +9,7 @@ import useCustomNavigation from "../Hooks/useCustomNavigation";
 import TutorialExplorer from "./MenuHoverComponents/TutorialExplorer";
 import GradientOverlay from "./common/GradientOverlay";
 
-export default function Header() {
+export default function Header({onTryForFreeClick}) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // Track active dropdown
   const navigate = useCustomNavigation();
@@ -116,7 +116,7 @@ export default function Header() {
                 className={
                   "hidden lg:inline-flex bg-primary text-[#fff] cursor-pointer h-[48px] rounded-[100px] w-full d-flex items-center px-[24px] font-inter"
                 }
-                onClick={() => handleNavigate("/login")}
+                onClick={onTryForFreeClick}
               />
               <p
                 className="max-lg:hidden text-gray font-head cursor-pointer font-inter"
@@ -258,7 +258,7 @@ export default function Header() {
 
             {/* Dropdowns */}
             {activeDropdown === "Home" && (
-              <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden">
+              <div className="w-full left-0 absolute top-full mt-2 z-[999] bg-white overflow-hidden rounded-lg">
                 <ProductFeatures
                   onClick={() => handleNavigate("/login")}
                   setActiveDropdown={setActiveDropdown}

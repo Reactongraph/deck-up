@@ -9,11 +9,15 @@ import TutorialSection from "../components/TutorialSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import PowerUsers from "../components/PowerUser";
 import OnboardingSection from "../components/OnboardingSection";
-const HomePage = () => {
+
+const HomePage = ({ freeTrialSectionRef, freeTrialInputFocus }) => {
   return (
     <>
       {/* <Header /> */}
-      <HeroSection />
+      <HeroSection
+        freeTrialSectionRef={freeTrialSectionRef}
+        freeTrialInputFocus={freeTrialInputFocus}
+      />
       <ExpertSection />
       <FeaturesSection />
       <FeaturesShowcase />

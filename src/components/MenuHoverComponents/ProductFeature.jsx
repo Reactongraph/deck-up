@@ -11,9 +11,9 @@ export default function ProductFeatures({
     setActiveDropdown(false);
   };
   return (
-    <div className="realtive flex flex-col md:flex-row  rounded-lg shadow-md bg-white justify-center items-stretch gap-4 p-4">
+    <div className="realtive flex flex-col md:flex-row  rounded-lg shadow-md bg-white justify-center items-stretch gap-4 pt-[58px] pb-[110px] px-4">
       <div
-        className="flex-1 bg-gradient-to-b from-slate-50 to-cyan-100 rounded-lg p-6 flex flex-col items-center justify-center max-w-[270px] w-full cursor-pointer"
+        className="flex-1 bg-gradient-to-b from-slate-50 to-cyan-100 rounded-lg pt-8 pb-6 px-6 flex flex-col items-center max-w-[270px] w-full cursor-pointer"
         onClick={() => handleNavigate()}
       >
         <h2 className="text-subhead text-paleBlue mb-1 font-inter">
@@ -22,10 +22,12 @@ export default function ProductFeatures({
         <p className="text-[78px] text-secondary font-bold mb-[-30px] font-inter">
           30
         </p>
-        <p className="text-head text-paleBlue font-inter">Days Free Trial</p>
+        <p className="text-head text-paleBlue font-inter">
+        Days free trial
+        </p>
       </div>
       <div class="border-l-2 border-smallBlue mx-5"></div>
-      <div className="flex-1 bg-white p-6 flex flex-col items-center justify-center max-w-[270px] w-full">
+      <div className="flex-1 bg-white p-6 flex flex-col items-start justify-center max-w-[270px] w-full">
         <h2 className="text-subhead text-paleBlue mb-1 font-inter">
           Watch Demo
         </h2>
@@ -34,7 +36,7 @@ export default function ProductFeatures({
           className="text-blue-500 mb-2"
           alt="demo"
         />
-        <p className="text-[18px]  text-bodyColor text-center font-inter">
+        <p className="text-[18px]  text-bodyColor text-start font-inter">
           Lorem ipsum dolor sit amet consectetur.
         </p>
       </div>
@@ -58,7 +60,7 @@ export default function ProductFeatures({
             </p>
           </div>
         </div>
-        <div className="border-t-2 border-smallBlue  w-full self-center"></div>
+        <div className="border-t-2 border-smallBlue  w-full lg:w-[154%] self-center"></div>
         <div className="flex items-center gap-[46px]">
           <img
             src="/images/ios.svg"

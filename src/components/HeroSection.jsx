@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { videos } from "../utils/videos";
 // import CommonImage from "./common/CommonImage";
 import CommonButton from "./common/CommonButton";
@@ -13,17 +13,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEmail } from "../store/auth/authSlice";
 import { useRegisterUserMutation } from "../store/auth/authApiSlice";
 
-export default function HeroSection() {
+export default function HeroSection({
+  freeTrialSectionRef,
+  freeTrialInputFocus,
+}) {
   const size = useCustomWindowSize(); // Get screen size
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
-  const [userEmail, setUserEmail] = useState('')
+  const [userEmail, setUserEmail] = useState("");
+  const emailInputRef = useRef(null);
 
   const handleEmailChange = (event) => {
     dispatch(setEmail(event.target.value));
-    setUserEmail(event.target.value)
+    setUserEmail(event.target.value);
   };
 
   useEffect(() => {
@@ -32,7 +36,7 @@ export default function HeroSection() {
     localStorage.removeItem("userDetails");
     if (!isLoading && data?.message === "OTP sent to your email please check") {
       dispatch(setEmail(email));
-      setUserEmail(email)
+      setUserEmail(email);
       setTimeout(() => {
         navigate("/verify-mail");
       }, 3000);
@@ -40,7 +44,7 @@ export default function HeroSection() {
   }, [data, isLoading, dispatch, email, navigate]);
 
   const handleFormSubmit = async (event) => {
-    localStorage.setItem('userType', 'Freetrial')
+    localStorage.setItem("userType", "Freetrial");
     event.preventDefault();
     loginAPi(email);
   };
@@ -59,7 +63,7 @@ export default function HeroSection() {
           width: "51px",
           height: "51px",
           // top: "157px",
-          bottom:"140px",
+          bottom: "140px",
           right: "104px",
           zIndex: "1",
           transform: "rotate(135deg)",
@@ -116,7 +120,10 @@ export default function HeroSection() {
 
   return (
     <div className="container flex items-center gap-0 px-0 xl:px-[10px] relative flex-col-reverse lg:flex-row pl-0 xl:pl-3 pr-[0px] xl:pr-2 pt-4 lg:pt-12">
-      <div className="w-full lg:max-w-[465px] pl-[32px] md:pl-[57px] xl:pl-0 pr-[32px]  xl:pr-0 md:pr-[57px] mt-[40px] sm:mt-[81px] lg:mt-[104px]">
+      <div
+        ref={freeTrialSectionRef}
+        className="w-full lg:max-w-[465px] pl-[32px] md:pl-[57px] xl:pl-0 pr-[32px]  xl:pr-0 md:pr-[57px] mt-[40px] sm:mt-[81px] lg:mt-[104px]"
+      >
         <div className=" w-[80%] lg:w-full lg:relative">
           <>
             <h1 className="text-[40px] leading-[48px] font-bold lg:text-banner text-paleBlue font-inter max-w-full lg:max-w-[100%] w-full">
@@ -158,16 +165,17 @@ export default function HeroSection() {
             onSubmit={handleFormSubmit}
           >
             <CommonInput
+              inputRef={emailInputRef}
               type={"email"}
               name="email"
               id="email"
-              className={
-                "w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter"
-              }
+              className={`w-[47.2%] xl:w-full py-3 text-[14px] placeholder-gray-500 shadow-sm rounded-[8px] bg-[#ECF1F6] border border-lightGray font-inter`}
               placeholder={"example@xyz.com"}
               value={userEmail}
               onChange={handleEmailChange}
+              freeTrialInputFocus={freeTrialInputFocus}
             />
+
             <CommonButton
               type="submit"
               className={
