@@ -91,7 +91,7 @@ export default function TestimonialsSection() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.3,
         },
       },
     ],
@@ -156,28 +156,28 @@ export default function TestimonialsSection() {
                 key={index}
                 className="" // Add horizontal margin here
               >
-                <div className="bg-white z-10 py-[54px] text-center px-[54px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2 min-h-[500px]">
+                <div className="bg-white z-10 py-11 md:py-[54px] text-center px-11 md:px-[54px] rounded-[10px] shadow-[0_0px_16px_0px_rgba(210,216,231,0.5)] flex flex-col justify-between mx-2 min-h-[240px] md:min-h-[378px] lg:min-h-[500px]">
                   <div>
                     <img
                       src={testimonial.logo}
                       alt={`${testimonial.company} logo`}
-                      className="w-[144px] m-auto mb-[47px] h-[45px]"
+                      className="w-[144px] m-auto mb-[23px] md:mb-[47px] h-[30px] md:h-[45px]"
                     />
-                    <p className="text-body text-bodyColor font-inter">
+                    <p className="text-sm leading-5 lg:text-body text-bodyColor font-inter">
                       {testimonial.quote}
                     </p>
                   </div>
-                  <div className="flex items-center  gap-[10px] justify-center mt-[">
+                  <div className="flex items-center  gap-[10px] justify-center mt-8 md:mt-0">
                     <img
                       src={testimonial.avatar}
                       alt={testimonial.author}
                       className="rounded-full h-[39px] w-[39px]"
                     />
                     <div className="text-left leading-[14px] text-[#1D375E]">
-                      <p className="font-semibold text-[13px] font-inter">
+                      <p className="font-semibold text-[10px] md:text-[13px] font-inter">
                         {testimonial.author}
                       </p>
-                      <p className="text-sm text-gray-600 text-[10px] font-inter">
+                      <p className="lg:text-sm text-gray-600 text-[8px] md:text-[10px] font-inter">
                         {testimonial.position}
                       </p>
                     </div>
