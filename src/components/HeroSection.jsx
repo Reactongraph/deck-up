@@ -16,6 +16,7 @@ import { useRegisterUserMutation } from "../store/auth/authApiSlice";
 export default function HeroSection({
   freeTrialSectionRef,
   freeTrialInputFocus,
+  setFreeTrialInputFocus,
 }) {
   const size = useCustomWindowSize(); // Get screen size
   const [loginAPi, { data, isLoading }] = useRegisterUserMutation();
@@ -174,6 +175,7 @@ export default function HeroSection({
               value={userEmail}
               onChange={handleEmailChange}
               freeTrialInputFocus={freeTrialInputFocus}
+              setFreeTrialInputFocus={setFreeTrialInputFocus}
             />
 
             <CommonButton

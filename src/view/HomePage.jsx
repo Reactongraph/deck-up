@@ -10,13 +10,14 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import PowerUsers from "../components/PowerUser";
 import OnboardingSection from "../components/OnboardingSection";
 
-const HomePage = ({ freeTrialSectionRef, freeTrialInputFocus }) => {
+const HomePage = ({ freeTrialSectionRef, freeTrialInputFocus, setFreeTrialInputFocus }) => {
   return (
     <>
       {/* <Header /> */}
       <HeroSection
         freeTrialSectionRef={freeTrialSectionRef}
         freeTrialInputFocus={freeTrialInputFocus}
+        setFreeTrialInputFocus={setFreeTrialInputFocus}
       />
       <ExpertSection />
       <FeaturesSection />

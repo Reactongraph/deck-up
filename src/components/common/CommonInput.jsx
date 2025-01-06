@@ -12,12 +12,14 @@ const CommonInput = ({
   disabled = false,
   inputRef = null,
   freeTrialInputFocus = false,
+  setFreeTrialInputFocus,
   ...rest
 }) => {
 
   useEffect(() => {
     if (freeTrialInputFocus) {
       inputRef.current.focus();
+      setTimeout(() => setFreeTrialInputFocus(false), 100); 
     }
   }, [freeTrialInputFocus, inputRef]);
 
