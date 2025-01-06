@@ -126,22 +126,22 @@ export default function TestimonialsSection() {
           // Tablet styles
           width: "108px",
           height: "108px",
-          top: "39px",
+          // top: "39px",
           left: "-60px",
-          zIndex: "-999",
-          transform: "rotate(-70deg)",
+          bottom: "-60px",
+          // zIndex: "-999",
+          // transform: "rotate(-70deg)",
         }
       : {
           // Desktop styles
           width: "146px",
-          height: "146",
+          height: "146px",
           top: "inherit",
           left: "-41px",
           right: "inherit",
-          zIndex: "-999",
+          // zIndex: "-999",
           bottom: "-80px",
-
-          transform: "rotate(-70deg)",
+          // transform: "rotate(-70deg)",
         };
   return (
     <section className="relative pb-8 lg:pb-[120px] bg-gradient-to-t from-[#ECF1F6] to-[rgba(236,241,246,0)] ps-2.5 pe-2.5">

@@ -103,20 +103,20 @@ export default function LoginPage() {
     size.width <= 640
       ? {
           // Mobile styles
-          width: "80px",
-          height: "80px",
-          top: "57px",
-          right: "18px",
+          width: "201.64px",
+          height: "201.64px",
+          top: "-40px",
+          left: "-30px",
           zIndex: "-999",
           transform: "rotate(90deg)",
         }
       : size.width <= 1024
       ? {
           // Tablet styles
-          width: "108px",
-          height: "108px",
-          top: "39px",
-          left: "-60px",
+          width: "299.54px",
+          height: "299.54px",
+          top: "-61px",
+          left: "-25px",
           zIndex: "-999",
           transform: "rotate(-70deg)",
         }
@@ -135,21 +135,22 @@ export default function LoginPage() {
     size.width <= 640
       ? {
           // Mobile styles
-          width: "80px",
-          height: "80px",
-          bottom: "-2px",
-          zIndex: "999",
+          width: "201.64px",
+          height: "201.64px",
+          bottom: "45px",
+          right: "-42px",
+          zIndex: "-999",
           transform: "rotate(-9deg)",
         }
       : size.width <= 1024
       ? {
           // Tablet styles
-          width: "180px",
-          height: "180px",
+          width: "483.4px",
+          height: "483.4px",
           // bottom: "39px",
           // left: "-60px",
-          bottom: "70px",
-          right: "-34px",
+          bottom: "246px",
+          right: "-90px",
           zIndex: "-999",
           transform: "rotate(-70deg)",
         }
@@ -157,10 +158,10 @@ export default function LoginPage() {
           // Desktop styles
           width: "485px",
           height: "485px",
-          top: "inherit",
+          // top: "inherit",
           right: "-206px",
-          bottom: 0,
-          left: "inherit",
+          // left: "inherit",
+          bottom: "75px",
           transform: "rotate(158deg)",
         };
   return (

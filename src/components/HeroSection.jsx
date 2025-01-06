@@ -100,10 +100,10 @@ export default function HeroSection() {
           // Tablet styles
           width: "108px",
           height: "108px",
-          bottom: "39px",
-          left: "-60px",
+          bottom: "-10px",
+          left: "-5px",
           zIndex: "1",
-          transform: "rotate(-70deg)",
+          // transform: "rotate(-70deg)",
         }
       : {
           // Desktop styles

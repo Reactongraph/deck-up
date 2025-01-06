@@ -50,6 +50,8 @@ export default function AccountDetailsForm({
   const accountData = JSON.parse(localStorage.getItem("accountData"));
   const userType = localStorage.getItem("userType");
 
+  console.log("userType", userType)
+
   const { data: userDetails } = useFetchUsersDetailsQuery(email);
 
   const [stateOptions, setStateOptions] = useState([]);
@@ -122,17 +124,17 @@ export default function AccountDetailsForm({
     }
   };
   const handleSubmit = async (values) => {
-    console.log("handleSubmit", values);
     try {
       const response = await createUserApi(values).unwrap();
       localStorage.setItem("accountData", JSON.stringify(values));
       if (userDetails) {
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
       }
+      console.log("userType",userType);
 
       if (response.redirect_url) {
         toast.success("Account created successfully!");
-        if(userDetails?.[0]?.license?.license_type === "trial"){
+        if(userDetails?.[0]?.license?.license_type === "trial" && userType === "Freetrial"){
           navigate("/setup")
         }
         else {
