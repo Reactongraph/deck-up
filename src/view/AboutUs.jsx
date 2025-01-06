@@ -5,6 +5,7 @@ import LeftImage from "../components/common/LeftImage";
 import { Images } from "../utils/images";
 // import { User, CheckCircle, Award, Smile } from "lucide-react";
 import GradientOverlay from "../components/common/GradientOverlay";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 const data = {
   heading: "DeckUp from SlideXpress",
@@ -54,6 +55,36 @@ const features = [
 ];
 
 const AboutUS = () => {
+  const size = useCustomWindowSize();
+
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "327.75px",
+          height: "327.75px",
+          bottom: "-84px",
+          right: "-107px",
+          transform: "rotate(135deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "275.96px",
+          height: "275.96px",
+          bottom: "-62px",
+          right: "-22%",
+          transform: "rotate(70deg)",
+        }
+      : {
+          // Desktop styles
+          width: "470px",
+          height: "470px",
+          top: "14%",
+          right: "-20%",
+          transform: "rotate(70deg)",
+        };
+
   return (
     <div className="bg-gradient-to-b from-[#fff] to-[#ECF1F6] font-inter">
       <LeftImage data={data} image={Images.about} />
@@ -96,11 +127,18 @@ const AboutUS = () => {
                 </div>
               ))}
               <GradientOverlay
-                width="374px"
-                height="374px"
+                // width="374px"
+                // height="374px"
+                // gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254))"
+                // bottom="-63px"
+                // right="-10%"
+
+                width={gradientOverlayStyles.width}
+                height={gradientOverlayStyles.height}
                 gradient="linear-gradient(rgb(191, 219, 254), rgb(224, 242, 254), rgb(219, 234, 254))"
-                bottom="-63px"
-                right="-10%"
+                bottom={gradientOverlayStyles.bottom}
+                right={gradientOverlayStyles.right}
+                top={gradientOverlayStyles.top}
               />
             </div>
           </div>

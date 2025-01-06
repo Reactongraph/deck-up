@@ -6,7 +6,7 @@ import {
   useLoginWithGoogleMutation,
   useRegisterUserMutation,
 } from "../../store/auth/authApiSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setEmail } from "../../store/auth/authSlice";
 import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { toast } from "react-toastify";
@@ -21,10 +21,12 @@ export default function CreateAccountPage() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const userType = queryParams.get("user");
+  const [userEmail, setUserEmail] = useState("");
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
     dispatch(setEmail(email));
+    setUserEmail(email);
   };
   useEffect(() => {
     if (userType) {
@@ -36,8 +38,10 @@ export default function CreateAccountPage() {
       const storedEmail = localStorage.getItem("email");
       if (storedEmail) {
         dispatch(setEmail(storedEmail));
+        setUserEmail(storedEmail);
       }
       dispatch(setEmail(email));
+      setUserEmail(email);
 
       setTimeout(() => {
         localStorage.setItem("loginSource", "createAccount");
@@ -99,7 +103,7 @@ export default function CreateAccountPage() {
       <CommonLoginLayout
         form={
           <CreateAccountForm
-            email={email}
+            email={userEmail}
             isLoading={isLoading}
             handleEmailChange={handleEmailChange}
             handleOtpLogin={handleFormSubmit}
