@@ -3,6 +3,7 @@
 import { Images } from "../utils/images";
 import GradientOverlay from "../components/common/GradientOverlay";
 import { useState } from "react";
+import useCustomWindowSize from "../Hooks/useCustomWindowSize";
 
 // Sample Filters for Dynamic Filtering
 const filters = [
@@ -109,10 +110,37 @@ function TutorialCard({ title, thumbnail, duration, description }) {
 
 export default function TutorialGrid() {
   const [showAll, setShowAll] = useState(false);
+  const size = useCustomWindowSize();
 
   const handleViewMore = () => {
     setShowAll(true);
   };
+
+  const gradientOverlayStyles =
+    size.width <= 640
+      ? {
+          // Mobile styles
+          width: "63px",
+          height: "63px",
+          right: "20px",
+          top: "8px",
+          transform: "rotate(90deg)",
+        }
+      : size.width <= 1024
+      ? {
+          // Tablet styles
+          width: "46px",
+          height: "46px",
+          top: "3px",
+          right: "20px",
+        }
+      : {
+          // // Desktop styles
+          width: "141px",
+          height: "141px",
+          top: "-26px",
+          right: "10%",
+        };
 
   return (
     <>
@@ -158,7 +186,7 @@ export default function TutorialGrid() {
                 className="text-sm md:text-base block lg:hidden bg-transparent text-secondary underline hover:bg-darkPrimary"
               >
                 View More
-              </button> 
+              </button>
             </div>
           )}
         </div>
@@ -172,27 +200,28 @@ export default function TutorialGrid() {
               className="w-full h-full lg:h-[569px]"
             />
             <GradientOverlay
-              width="141px"
-              height="141px"
+              width={gradientOverlayStyles.width}
+              height={gradientOverlayStyles.height}
               gradient="linear-gradient(to right, rgba(255,114,95,0), rgba(255,114,95,1))"
-              top="-26px"
-              right="10%"
+              top={gradientOverlayStyles.top}
+              right={gradientOverlayStyles.right}
             />
           </div>
           <div className="w-full lg:w-[40%] flex items-center">
-          <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center lg:text-start">
-            <h2 className="lg:text-headline text-paleBlue font-bold lg:font-extrabold text-[24px]">
-              Sign up today
-            </h2>
-            <p className="mt-[24px] text-sm leading-[20px] lg:text-body text-bodyColor lg:mt-4">
-              Your superpower-packed plug-&-play PPT tool is just a click away!
-            </p>
-            <div className="flex flex-row md:gap-[12px] lg:justify-start gap-4">
-              <button className="text-sm md:text-base lg:mt-[40px] bg-primary hover:bg-hoverButton text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
-                Watch demo
-              </button>
+            <div className="max-w-[444px] w-full px-8 md:px-0 flex flex-col justify-center lg:text-start">
+              <h2 className="lg:text-headline text-paleBlue font-bold lg:font-extrabold text-[24px]">
+                Sign up today
+              </h2>
+              <p className="mt-[24px] text-sm leading-[20px] lg:text-body text-bodyColor lg:mt-4">
+                Your superpower-packed plug-&-play PPT tool is just a click
+                away!
+              </p>
+              <div className="flex flex-row md:gap-[12px] lg:justify-start gap-4">
+                <button className="text-sm md:text-base lg:mt-[40px] bg-primary hover:bg-hoverButton text-white md:px-[24px] md:py-[12px] rounded-[100px] px-5 py-[12px] mt-6 md:mt-8">
+                  Watch demo
+                </button>
+              </div>
             </div>
-          </div>
           </div>
         </div>
         <div className="hidden lg:block">

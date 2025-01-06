@@ -8,24 +8,24 @@ export default function PowerUsers() {
     size.width <= 640
       ? {
           // Mobile styles
-          width: "80px",
-          height: "80px",
-          top: "inherit",
-          right: "inherit",
+          width: "55.95px",
+          height: "55.95px",
+          top: "17px",
+          // right: "inherit",
           zIndex: "0",
-          left: 0,
-          bottom: "-35px",
-          transform: "rotate(90deg)",
+          left: "20px",
+          // bottom: "-35px",
+          transform: "rotate(180deg)",
         }
       : size.width <= 1024
       ? {
           // Tablet styles
-          width: "108px",
-          height: "108px",
-          top: "39px",
-          left: "-60px",
+          width: "55.95px",
+          height: "55.95px",
+          top: 0,
+          left: "21px",
           // zIndex: "-999",
-          transform: "rotate(-70deg)",
+          transform: "rotate(-180deg)",
         }
       : {
           // Desktop styles
@@ -56,8 +56,8 @@ export default function PowerUsers() {
       : size.width <= 1024
       ? {
           // Tablet styles
-          width: "108px",
-          height: "108px",
+          width: "80.74px",
+          height: "80.74px",
           // top: "39px",
           // left: "-60px",
           // zIndex: "-999",
@@ -98,7 +98,7 @@ export default function PowerUsers() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] xs:mr-[-50px] xl:mr-[-70px]  xl:px-[150px] xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative ml-0 xl:ml-[-75px] px-0 py-0 flex justify-center min-h-[370px] rounded-full  xs:h-[450px] xs:w-[450px] md:w-[50%] md:h-[326px] lg:h-[450px] lg:w-[450px] h-[350px] w-[350px] ">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] xs:mr-[-50px] xl:mr-[-70px]  xl:px-[150px] xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative ml-0 xl:ml-[-75px] px-0 py-0 flex justify-center lg:min-h-[370px] rounded-full  xs:h-[450px] xs:w-[450px] md:w-[50%] md:h-[326px] lg:h-[450px] lg:w-[450px] h-[350px] w-[350px] ">
             <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/building.svg"
@@ -146,7 +146,7 @@ export default function PowerUsers() {
             />
           </div>
 
-          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] px-0 xl:px-[150px] py-0 xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative mt-[-50px] md:mt-0  flex justify-center min-h-[370px]  rounded-full xs:h-[450px] xs:w-[450px] md:w-[50%] md:h-[326px] lg:h-[450px] lg:w-[450px] h-[350px] w-[350px]">
+          <div className="bg-[rgba(255,255,255,.8)] shadow-[4px_5px_24px_0px_rgba(0,0,0,0.2)] px-0 xl:px-[150px] py-0 xl:pt-[80px] xl:pb-[100px] max-w-[491px] relative mt-[-50px] md:mt-0  flex justify-center lg:min-h-[370px]  rounded-full xs:h-[450px] xs:w-[450px] md:w-[50%] md:h-[326px] lg:h-[450px] lg:w-[450px] h-[350px] w-[350px]">
             <div className="flex justify-center items-center xl:items-start flex-col">
               <img
                 src="/images/function.svg"
